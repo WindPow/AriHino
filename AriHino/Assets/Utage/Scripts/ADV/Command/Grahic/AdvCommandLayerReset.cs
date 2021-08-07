@@ -9,11 +9,12 @@ namespace Utage
 	/// </summary>
 	internal class AdvCommandLayerReset : AdvCommand
 	{
+		string name;
 		public AdvCommandLayerReset(StringGridRow row, AdvSettingDataManager dataManager)
 			: base(row)
 		{
 			this.name = ParseCell<string>(AdvColumnName.Arg1);
-			if (!dataManager.LayerSetting.Contains(name))
+			if ( name != AdvCommandKeyword.All  && !dataManager.LayerSetting.Contains(name))
 			{
 				Debug.LogError(row.ToErrorString("Not found " + name + " Please input Layer name"));
 			}
@@ -21,6 +22,12 @@ namespace Utage
 
 		public override void DoCommand(AdvEngine engine)
 		{
+			if (name == AdvCommandKeyword.All)
+			{
+				engine.GraphicManager.ResetAllLayerRectTransform();
+				return;
+			}
+
 			//オブジェクト名からレイヤーを探す
 			AdvGraphicLayer layer = engine.GraphicManager.FindLayer(name);
 			if (layer != null)
@@ -33,7 +40,5 @@ namespace Utage
 				Debug.LogError("Not found " + name + " Please input Layer name");
 			}
 		}
-
-		string name;
 	}
 }

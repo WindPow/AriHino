@@ -17,7 +17,7 @@ namespace Utage
 	/// </summary>
 	[AddComponentMenu("Utage/ADV/Internal/AdvGraphicObject")]
 	[RequireComponent(typeof(RectTransform))]
-	public class AdvGraphicObject : MonoBehaviour, IAdvFadeSkippable
+	public class AdvGraphicObject : MonoBehaviour, IAdvFadeAnimation
 	{
 		//ローダー
 		public AdvGraphicLoader Loader { get { return this.GetComponentCacheCreateIfMissing<AdvGraphicLoader>(ref loader); } }
@@ -98,8 +98,16 @@ namespace Utage
 			}
 			else
 			{
-				GameObject child = this.transform.AddChildGameObject(graphic.Key);
-				this.TargetObject = this.RenderObject = child.AddComponent(graphic.GetComponentType()) as AdvGraphicBase;
+				if (graphic.IsOverridePrefab())
+				{
+					GameObject child = this.transform.AddChildPrefab(graphic.File.UnityObject as GameObject);
+					this.TargetObject = this.RenderObject = child.GetComponent<AdvGraphicBase>();
+				}
+				else
+				{
+					GameObject child = this.transform.AddChildGameObject(graphic.Key);
+					this.TargetObject = this.RenderObject = child.AddComponent(graphic.GetComponentType()) as AdvGraphicBase;
+				}
 				this.TargetObject.Init(this);
 			}
 
@@ -137,7 +145,14 @@ namespace Utage
 			renderTextureImage.Init(RenderTextureSpace);
 			this.RenderObject.Init(this);
 
-			this.TargetObject = RenderTextureSpace.RenderRoot.transform.AddChildGameObject(graphic.Key).AddComponent(graphic.GetComponentType()) as AdvGraphicBase;
+			if (graphic.IsOverridePrefab())
+			{
+				this.TargetObject = RenderTextureSpace.RenderRoot.transform.AddChildPrefab(graphic.File.UnityObject as GameObject).GetComponent<AdvGraphicBase>();
+			}
+			else
+			{
+				this.TargetObject = RenderTextureSpace.RenderRoot.transform.AddChildGameObject(graphic.Key).AddComponent(graphic.GetComponentType()) as AdvGraphicBase;
+			}
 			this.TargetObject.Init(this);
 		}
 
@@ -310,6 +325,16 @@ namespace Utage
 			swapFadeObjects.Clear();
 		}
 
+		//ルール画像つきのフェードインの初期化のみ行う
+		public IAnimationRuleFade BeginRuleFade(AdvEngine engine, AdvTransitionArgs data)
+		{
+			if ( TargetObject == null)
+			{
+				return null;
+			}
+			return RenderObject.BeginRuleFade(engine, data);
+		}
+
 		//ルール画像つきのフェードイン
 		public void RuleFadeIn(AdvEngine engine, AdvTransitionArgs data, Action onComplete)
 		{
@@ -431,7 +456,7 @@ namespace Utage
 		//ピボットの中心となる対象のローカル座標で取得
 		Vector3 GetPivotTargetInSpriteSpace(float pivotX, float pivotY, float offsetX, float offsetY, AdvGraphicObjectPivotType pivotType)
 		{
-			var childTransform = TargetObject.transform;
+			var childTransform = RenderObject.transform;
 			var childRectTransform = childTransform as RectTransform;
 			if (childRectTransform == null)
 			{

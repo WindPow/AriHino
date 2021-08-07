@@ -344,6 +344,16 @@ namespace Utage
 		bool parseNumreic = false;
 		public bool ParseNumreic { get { return parseNumreic; } }
 
+		/// 末尾に指定の数以上の空白行があったら警告を出す
+		[SerializeField]
+		int checkBlankRowCountOnImport = 1000;
+		public int CheckBlankRowCountOnImport { get { return checkBlankRowCountOnImport; } }
+
+		/// 指定の数以上の列数があった場合に警告を出す
+		[SerializeField]
+		int checkColumnCountOnImport = 500;
+		public int CheckCellCountOnImport { get { return checkColumnCountOnImport; } }
+
 		/// データ作成の段階でコメントアウトを有効にするか
 		[SerializeField]
 		bool enableCommentOutOnImport = true;
@@ -358,6 +368,11 @@ namespace Utage
 		[SerializeField]
 		bool checkExt = false;
 
+		public CustomProjectSetting CustomProjectSetting { get { return customProjectSetting; } set { customProjectSetting = value; } }
+		[SerializeField]
+		CustomProjectSetting customProjectSetting = null;
+		
+			
 		///宴用のカスタムインポート設定を強制するMovieフォルダassetのリストを追加
 		public void AddCustomImportMovieFolders(List<Object> assetList)
 		{

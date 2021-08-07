@@ -28,14 +28,20 @@ namespace Utage
 		{
 			while (IsPlaying)
 			{
-				string pattern = AvatarData.ToPatternName(Avator.AvatarPattern.GetPatternName(LipTag));
-				if (string.IsNullOrEmpty(pattern)) break;
-
+				string pattern;
 				foreach (var data in AnimationData.DataList)
 				{
-					Avator.ChangePattern(LipTag, data.ComvertName(pattern));
+					if (!TryGetCurrentPattern(data, out pattern))
+					{
+						break;
+					}
+					Avator.ChangePattern(LipTag, pattern);
 					yield return TimeUtil.WaitForSeconds(UnscaledTime, data.Duration);
 					while (IsPausing) yield return null;
+				}
+				if (!TryGetCurrentPattern(null, out pattern))
+				{
+					break;
 				}
 				Avator.ChangePattern(LipTag, pattern);
 				if (!IsPlaying) break;
@@ -45,11 +51,22 @@ namespace Utage
 			coLypSync = null;
 			yield break;
 		}
+		//現在の状態に合わせた、口パクのパターン名を取得
+		bool TryGetCurrentPattern(MiniAnimationData.Data data, out string pattern)
+		{
+			pattern = AvatarData.ToPatternName(Avator.AvatarPattern.GetOriginalPatternName(LipTag));
+			if (string.IsNullOrEmpty(pattern)) return false;
+			if (data != null)
+			{
+				pattern = data.ComvertName(pattern);
+			}
+			return true;
+		}
 
 		protected override void OnStopLipSync()
 		{
 			base.OnStopLipSync();
-			string pattern = AvatarData.ToPatternName(Avator.AvatarPattern.GetPatternName(LipTag));
+			string pattern = AvatarData.ToPatternName(Avator.AvatarPattern.GetOriginalPatternName(LipTag));
 			if (string.IsNullOrEmpty(pattern)) return;
 			Avator.ChangePattern(LipTag, pattern);
 		}

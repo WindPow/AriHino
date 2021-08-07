@@ -9,16 +9,19 @@ namespace Utage
 	/// </summary>
 	public class AdvTransitionArgs
 	{
-		internal AdvTransitionArgs( string textureName, float vague, float time )
+		internal string TextureName { get; private set; }
+		internal float Vague { get; private set; }
+		float Time { get; set; }
+		internal AdvAnimationData AnimationData{ get; set; }
+		internal bool EnableAnimation { get{ return AnimationData!=null; }}
+		
+		internal AdvTransitionArgs( string textureName, float vague, float time, AdvAnimationData animationData )
 		{
 			this.TextureName = textureName;
 			this.Vague = vague;
 			this.Time = time;
+			this.AnimationData = animationData;
 		}
-
-		internal string TextureName { get; private set; }
-		internal float Vague { get; private set; }
-		float Time { get; set; }
 
 		internal float GetSkippedTime(AdvEngine engine)
 		{

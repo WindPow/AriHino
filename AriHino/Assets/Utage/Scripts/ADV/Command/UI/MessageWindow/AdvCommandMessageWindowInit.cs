@@ -11,19 +11,30 @@ namespace Utage
 	/// </summary>
 	internal class AdvCommandMessageWindowInit : AdvCommand
 	{
+		List<string> names = new List<string>();
 		public AdvCommandMessageWindowInit(StringGridRow row)
 			: base(row)
 		{
-			if (!IsEmptyCell(AdvColumnName.Arg1)) names.Add(ParseCell<string>(AdvColumnName.Arg1));
-			if (!IsEmptyCell(AdvColumnName.Arg2)) names.Add(ParseCell<string>(AdvColumnName.Arg2));
-			if (!IsEmptyCell(AdvColumnName.Arg3)) names.Add(ParseCell<string>(AdvColumnName.Arg3));
-			if (!IsEmptyCell(AdvColumnName.Arg4)) names.Add(ParseCell<string>(AdvColumnName.Arg4));
-			if (!IsEmptyCell(AdvColumnName.Arg5)) names.Add(ParseCell<string>(AdvColumnName.Arg5));
-			if (!IsEmptyCell(AdvColumnName.Arg6)) names.Add(ParseCell<string>(AdvColumnName.Arg6));
+			if (!IsEmptyCell(AdvColumnName.Arg1)) AddName(ParseCell<string>(AdvColumnName.Arg1));
+			if (!IsEmptyCell(AdvColumnName.Arg2)) AddName(ParseCell<string>(AdvColumnName.Arg2));
+			if (!IsEmptyCell(AdvColumnName.Arg3)) AddName(ParseCell<string>(AdvColumnName.Arg3));
+			if (!IsEmptyCell(AdvColumnName.Arg4)) AddName(ParseCell<string>(AdvColumnName.Arg4));
+			if (!IsEmptyCell(AdvColumnName.Arg5)) AddName(ParseCell<string>(AdvColumnName.Arg5));
+			if (!IsEmptyCell(AdvColumnName.Arg6)) AddName(ParseCell<string>(AdvColumnName.Arg6));
 			if (names.Count <= 0)
 			{
 				Debug.LogError(ToErrorString("Not set data in this command"));
 			}
+		}
+
+		void AddName(string name)
+		{
+			if (names.Contains(name))
+			{
+				Debug.LogError(ToErrorString( name  +" is duplicated. You cannot use the same message windows name more than once."));
+				return;
+			}
+			names.Add(name);
 		}
 
 		//ページ用のデータからコマンドに必要な情報を初期化
@@ -40,7 +51,5 @@ namespace Utage
 			engine.MessageWindowManager.ChangeActiveWindows(names);
 			engine.MessageWindowManager.ChangeCurrentWindow(engine.Page.CurrentData.MessageWindowName);
 		}
-
-		List<string> names = new List<string>();
 	}
 }

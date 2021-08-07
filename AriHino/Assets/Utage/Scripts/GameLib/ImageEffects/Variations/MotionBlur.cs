@@ -42,7 +42,9 @@ namespace Utage
             if (extraBlur)
             {
                 RenderTexture blurbuffer = RenderTexture.GetTemporary(source.width/4, source.height/4, 0);
+#if !UNITY_2021_1_OR_NEWER
                 accumTexture.MarkRestoreExpected();
+#endif
                 Graphics.Blit(accumTexture, blurbuffer);
                 Graphics.Blit(blurbuffer,accumTexture);
                 RenderTexture.ReleaseTemporary(blurbuffer);
@@ -57,7 +59,9 @@ namespace Utage
 
             // We are accumulating motion over frames without clear/discard
             // by design, so silence any performance warnings from Unity
+#if !UNITY_2021_1_OR_NEWER
             accumTexture.MarkRestoreExpected();
+#endif
 
             // Render the image using the motion blur shader
             Graphics.Blit (source, accumTexture, Material);

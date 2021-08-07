@@ -44,6 +44,10 @@ namespace Utage
 		[SerializeField]
 		bool skipVoiceAndSe = false;
 
+		public bool DontSkipLoopVoiceAndSe { get { return dontSkipLoopVoiceAndSe; } }
+		[SerializeField]
+		bool dontSkipLoopVoiceAndSe = false;
+
 		[SerializeField]
 		protected AdvConfigSaveData defaultData;
 
@@ -171,15 +175,10 @@ namespace Utage
 				{
 					current.isFullScreen = value;
 					//PC版のみ、フルスクリーン切り替え
-#if UNITY_5
 					Unity5ChangeScreen(value);
-#else
-					Screen.fullScreen = value;
-#endif
 				}
 			}
 		}
-#if UNITY_5
 		//ウィンドウサイズを戻すための処理
 		bool isSavedWindowSize = false;
 		int windowWidth;
@@ -199,11 +198,11 @@ namespace Utage
 			}
 			else
 			{
-//				SaveWindowSize();
-				Screen.fullScreen = true;
+				SaveWindowSize();
+				Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
 			}
 		}
-/*		void SaveWindowSize()
+		void SaveWindowSize()
 		{
 			if (!Screen.fullScreen && !current.isFullScreen)
 			{
@@ -212,7 +211,7 @@ namespace Utage
 				isSavedWindowSize = true;
 			}
 		}
-*/		void LoadWindowSize()
+		void LoadWindowSize()
 		{
 			if (isSavedWindowSize)
 			{
@@ -223,8 +222,6 @@ namespace Utage
 				Screen.fullScreen = false;
 			}
 		}
-#endif
-
 
 		/// <summary>
 		/// フルスクリーン切り替え
@@ -241,20 +238,20 @@ namespace Utage
 		{
 			get { return current.isMouseWheelSendMessage; }
 			set	{ current.isMouseWheelSendMessage = value; }
-		}		
+		}
 		/// <summary>
 		/// マウスホイールでメッセージ送り切り替え
 		/// </summary>
 		public void ToggleMouseWheelSendMessage()
 		{
 			IsMouseWheelSendMessage = !IsMouseWheelSendMessage;
-		}		
+		}
 
 		/// <summary>
 		/// エフェクトが有効か
 		/// </summary>
 		public bool IsEffect
-		{ 
+		{
 			get { return current.isEffect; }
 			set { current.isEffect = value; }
 		}
@@ -270,7 +267,7 @@ namespace Utage
 		/// <summary>
 		/// 未読スキップが有効か
 		/// </summary>
-		public bool IsSkipUnread { 
+		public bool IsSkipUnread {
 			get { return current.isSkipUnread; }
 			set { current.isSkipUnread = value; }
 		}
@@ -297,12 +294,12 @@ namespace Utage
 		{
 			IsStopSkipInSelection = !IsStopSkipInSelection;
 		}
-		
+
 		/// <summary>
 		/// 文字送り速度
 		/// </summary>
 		public float MessageSpeed
-		{ 
+		{
 			get { return current.messageSpeed; }
 			set { current.messageSpeed = value; }
 		}
@@ -319,7 +316,7 @@ namespace Utage
 		/// <summary>
 		/// 一文字進めるのにかかる時間(既読かどうかもチェック)
 		/// </summary>
-		public float GetTimeSendChar(bool read)
+		public virtual float GetTimeSendChar(bool read)
 		{
 			if (read && useMessageSpeedRead)
 			{

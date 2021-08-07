@@ -18,7 +18,7 @@ namespace Utage
 		Timer Timer { get; set; }
 		AdvAnimationPlayer AnimationPlayer { get; set; }
 		public AdvCommandImageEffectBase(StringGridRow row, AdvSettingDataManager dataManager, bool inverse)
-			: base(row)
+			: base(row,dataManager)
 		{
 			this.inverse = inverse;
 			this.targetType = AdvEffectManager.TargetType.Camera;
@@ -30,6 +30,11 @@ namespace Utage
 		//エフェクト開始時のコールバック
 		protected override void OnStartEffect(GameObject target, AdvEngine engine, AdvScenarioThread thread)
 		{
+			if (imageEffectType == "All")
+			{
+				OnStartAll(target,engine,thread);
+				return;
+			}
 			Camera camera = target.GetComponentInChildren<Camera>(true);
 			ImageEffectBase imageEffect;
 			bool alreadyEnabled;
@@ -93,6 +98,25 @@ namespace Utage
 						Complete(imageEffect,thread);
 					});
 			}
+		}
+
+		//エフェクト開始時のコールバック
+		void OnStartAll(GameObject target, AdvEngine engine, AdvScenarioThread thread)
+		{
+			Camera camera = target.GetComponentInChildren<Camera>(true);
+
+			ImageEffectBase[] effects = camera.gameObject.GetComponents<ImageEffectBase>();
+			if (effects.Length<=0)
+			{
+				OnComplete(thread);
+				return;
+			}
+			foreach (var effect in effects)
+			{
+				if(effect is ColorFade) continue;
+				UnityEngine.Object.DestroyImmediate(effect);
+			}
+			OnComplete(thread);
 		}
 
 		void Complete(ImageEffectBase imageEffect, AdvScenarioThread thread)

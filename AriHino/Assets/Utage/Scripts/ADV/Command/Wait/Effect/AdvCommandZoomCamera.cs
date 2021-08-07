@@ -20,7 +20,7 @@ namespace Utage
 		Timer Timer { get; set; }
 		
 		public AdvCommandZoomCamera(StringGridRow row, AdvSettingDataManager dataManager)
-			: base(row)
+			: base(row,dataManager)
 		{
 			this.targetType = AdvEffectManager.TargetType.Camera;
 			this.isEmptyZoom = IsEmptyCell(AdvColumnName.Arg2);

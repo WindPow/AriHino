@@ -272,6 +272,16 @@ namespace Utage
 
 			return null;
 		}
+		
+		// 全レイヤーのリセット
+		internal void ResetAllLayerRectTransform()
+		{
+			foreach (var keyValue in Groups)
+			{
+				keyValue.Value.ResetAllLayerRectTransform();
+			}
+		}
+		
 
 		/// <summary>
 		/// 指定の名前のグラフィックオブジェクトを検索

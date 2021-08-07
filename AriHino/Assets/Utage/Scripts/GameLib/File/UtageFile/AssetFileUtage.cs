@@ -167,7 +167,11 @@ namespace Utage
 
 		WWWEx MakeWWWEx(string path)
 		{
-			if (this.FileInfo.AssetBundleInfo == null)
+			if (this.FileInfo.AssetBundleInfo == null )
+			{
+				return new WWWEx(path);
+			}
+			else if (!this.FileInfo.AssetBundleInfo.CacheLoad)
 			{
 				return new WWWEx(path);
 			}

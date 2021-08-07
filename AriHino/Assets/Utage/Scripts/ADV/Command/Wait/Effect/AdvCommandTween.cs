@@ -15,7 +15,7 @@ namespace Utage
 		private AdvITweenPlayer Player { get; set; }
 
 		public AdvCommandTween(StringGridRow row, AdvSettingDataManager dataManager)
-			: base(row)
+			: base(row,dataManager)
 		{
 			//Tweenデータの初期化
 			InitTweenData();
@@ -35,7 +35,7 @@ namespace Utage
 
 
 		//解析必要に応じてオーバーライド
-		protected override void OnParse()
+		protected override void OnParse(AdvSettingDataManager dataManager)
 		{
 			ParseEffectTarget(AdvColumnName.Arg1);
 

@@ -9,6 +9,7 @@ namespace Utage
 	/// コマンド：サブルーチンにジャンプ
 	/// </summary>
 	internal class AdvCommandJumpSubroutine : AdvCommand
+	, IAdvInitOnCreateEntity
 	{
 		public AdvCommandJumpSubroutine(StringGridRow row, AdvSettingDataManager dataManager)
 			: base(row)
@@ -35,6 +36,14 @@ namespace Utage
 		{
 			this.scenarioLabel = pageData.ScenarioLabelData.ScenarioLabel;
 			this.subroutineCommandIndex = pageData.ScenarioLabelData.CountSubroutineCommandIndex(this);
+		}
+		
+		//エンティティコマンドとして利用
+		public void InitOnCreateEntity(AdvCommand original)
+		{
+			AdvCommandJumpSubroutine originalCommand = original as AdvCommandJumpSubroutine; 
+			this.scenarioLabel = originalCommand.scenarioLabel;
+			this.subroutineCommandIndex = originalCommand.subroutineCommandIndex;
 		}
 
 		public override string[] GetJumpLabels()

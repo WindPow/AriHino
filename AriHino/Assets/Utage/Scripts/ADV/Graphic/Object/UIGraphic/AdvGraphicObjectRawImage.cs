@@ -122,7 +122,7 @@ namespace Utage
 			RawImage.enabled = false;
 
 			//カメラのキャプチャコンポーネントを有効に
-			CaptureCamera captureCamera = camera.GetComponentCreateIfMissing<CaptureCamera>();
+			CaptureCamera captureCamera = camera.gameObject.AddComponent<CaptureCamera>();
 			captureCamera.enabled = true;
 			captureCamera.OnCaptured.AddListener(OnCaptured);
 		}
@@ -157,7 +157,7 @@ namespace Utage
 
 			//カメラのキャプチャコンポーネントを無効にする
 			captureCamera.OnCaptured.RemoveListener(OnCaptured);
-			captureCamera.enabled = false;
+			Destroy(captureCamera);
 		}
 		public bool IsCrossFading
 		{

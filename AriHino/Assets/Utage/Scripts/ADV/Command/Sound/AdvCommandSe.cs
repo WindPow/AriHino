@@ -26,7 +26,22 @@ namespace Utage
 
 		public override void DoCommand(AdvEngine engine)
 		{
-			if (!engine.Page.CheckSkip () || !engine.Config.SkipVoiceAndSe) 
+			bool skip = false;
+			//スキップ中のSE無効か判定
+			if (engine.Page.CheckSkip() && engine.Config.SkipVoiceAndSe)
+			{
+				if (isLoop && engine.Config.DontSkipLoopVoiceAndSe)
+				{
+					//ループの場合はスキップしない
+					skip = false;
+				}
+				else
+				{
+					//スキップする
+					skip = true;
+				}
+			}
+			if (!skip) 
 			{
 				engine.SoundManager.PlaySe(file, volume, label, SoundPlayMode.Add, isLoop);
 			}

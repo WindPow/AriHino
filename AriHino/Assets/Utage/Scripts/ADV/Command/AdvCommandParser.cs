@@ -139,6 +139,7 @@ namespace Utage
 //		public const string IdObjectFadeOut = "ObjectFadeOut";		//オブジェクトに対してのフェードアウト
 		public const string IdWaitFadeObjects = "WaitFadeObjects";	//オブジェクトに対してのフェードを待つ
 		public const string IdWaitEffectTime = "WaitEffectTime";	//エフェクトの終了時間を待つ
+		public const string IdWaitSound = "WaitSound";				//サウンドの再生終了を待つ
 
 		public const string IdCaptureImage = "CaptureImage";		//キャプチャ画像の作成と表示
 
@@ -267,9 +268,9 @@ namespace Utage
 				case IdTween:
 					return new AdvCommandTween(row, dataManager);
 				case IdFadeIn:
-					return new AdvCommandFadeIn(row);
+					return new AdvCommandFadeIn(row, dataManager);
 				case IdFadeOut:
-					return new AdvCommandFadeOut(row);
+					return new AdvCommandFadeOut(row, dataManager);
 				case IdShake:
 					return new AdvCommandShake(row, dataManager);
 				case IdVibrate:
@@ -282,13 +283,15 @@ namespace Utage
 					return new AdvCommandPlayAnimatin(row, dataManager);
 
 				case IdRuleFadeIn:
-					return new AdvCommandRuleFadeIn(row);
+					return new AdvCommandRuleFadeIn(row,dataManager);
 				case IdRuleFadeOut:
-					return new AdvCommandRuleFadeOut(row);
+					return new AdvCommandRuleFadeOut(row,dataManager);
 				case IdWaitFadeObjects:
 					return new AdvCommandWaitFadeObjects(row, dataManager);
 				case　IdWaitEffectTime:
 					return new AdvCommandWaitEffectTime(row, dataManager);
+				case　IdWaitSound:
+					return new AdvCommandWaitSound(row, dataManager);
 
 /*				case IdObjectFadeIn:
 					return new AdvCommandObjectFadeIn(row);

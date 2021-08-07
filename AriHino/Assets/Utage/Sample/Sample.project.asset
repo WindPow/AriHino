@@ -41,6 +41,10 @@ MonoBehaviour:
   quickImport: 0
   parseFormula: 0
   parseNumreic: 0
+  checkBlankRowCountOnImport: 1000
+  checkColumnCountOnImport: 500
   enableCommentOutOnImport: 1
   recourceDir: {fileID: 102900000, guid: 8f90350b50827fe48b90d335ad69a3ae, type: 3}
   checkExt: 0
+  customProjectSetting: {fileID: 11400000, guid: 5578a7c1d20463443b1a0369e2099634,
+    type: 2}

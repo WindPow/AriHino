@@ -2250,9 +2250,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.042177916
+    y: 0
     width: 1
-    height: 0.91564417
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -4796,6 +4796,7 @@ MonoBehaviour:
   timeOut: 5
   useCacheManifest: 1
   cacheDirectoryName: Cache
+  cacheLoad: 1
   assetFileManager: {fileID: 0}
 --- !u!1 &326638303
 GameObject:
@@ -6085,9 +6086,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.042177916
+    y: 0
     width: 1
-    height: 0.91564417
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -6838,6 +6839,7 @@ MonoBehaviour:
   bootAsync: 0
   isStopSoundOnStart: 1
   isStopSoundOnEnd: 1
+  isStopVoiceOnSoundStop: 1
   languageKeyOfParam: language
   voiceLanguageKeyOfParam: voice_language
   onPreInit:
@@ -7109,7 +7111,8 @@ MonoBehaviour:
   forceSkipInputCtrl: 1
   useMessageSpeedRead: 0
   skipSpeed: 20
-  skipVoiceAndSe: 0
+  skipVoiceAndSe: 1
+  dontSkipLoopVoiceAndSe: 1
   defaultData:
     isFullScreen: 0
     isMouseWheelSendMessage: 1
@@ -14816,9 +14819,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.042177916
+    y: 0
     width: 1
-    height: 0.91564417
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -17649,9 +17652,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.042177916
+    y: 0
     width: 1
-    height: 0.91564417
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

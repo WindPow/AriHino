@@ -10,8 +10,8 @@ namespace Utage
 	internal class AdvCommandFadeIn : AdvCommandFadeBase
 	{
 
-		public AdvCommandFadeIn(StringGridRow row)
-			: base(row,true)
+		public AdvCommandFadeIn(StringGridRow row, AdvSettingDataManager dataManager)
+			: base(row, dataManager,true)
 		{
 		}
 	}

@@ -9,6 +9,7 @@ namespace Utage
 	/// コマンド：テキスト表示
 	/// </summary>
 	public class AdvCommandText : AdvCommand
+		, IAdvInitOnCreateEntity
 	{
 
 		public AdvCommandText(StringGridRow row, AdvSettingDataManager dataManager)
@@ -43,10 +44,11 @@ namespace Utage
 		}
 
 		//エンティティコマンドとして利用
-		internal void InitOnCreateEntity(AdvCommandText original)
+		public void InitOnCreateEntity(AdvCommand original)
 		{
-			this.PageData = original.PageData;
-			PageData.ChangeTextDataOnCreateEntity(original.IndexPageData, this);
+			AdvCommandText originalText = original as AdvCommandText; 
+			this.PageData = originalText.PageData;
+			PageData.ChangeTextDataOnCreateEntity(originalText.IndexPageData, this);
 		}
 
 		//コマンド実行

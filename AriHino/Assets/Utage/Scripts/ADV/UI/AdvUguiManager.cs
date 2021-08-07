@@ -10,7 +10,9 @@ namespace Utage
 	/// UI全般の入力処理。
 	/// 独自のキーボード入力などが必要な場合は
 	/// これ（AdvUguiManager）かAdvUiManagerを継承して処理を書きかえること
+	/// 3.10.0以降、DefaultExecutionOrder(-1)を設定。Update内で入力処理をするので早めに設定
 	/// </summary>
+	[DefaultExecutionOrder(-1)]	
 	[AddComponentMenu("Utage/ADV/AdvUguiManager")]
 	public class AdvUguiManager : AdvUiManager
 	{

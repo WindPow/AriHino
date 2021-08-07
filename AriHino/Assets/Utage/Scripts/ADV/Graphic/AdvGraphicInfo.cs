@@ -40,6 +40,7 @@ namespace Utage
 		public const string FileType3DPrefab = "3DPrefab";
 		public const string FileTypeCustom = "Custom";
 		public const string FileTypeCustom2D = "Custom2D";
+		public const string FileTypeOverridePrefab = "OverridePrefab";
 
 		public string DataType { get; protected set; }
 		int Index { get; set; }
@@ -140,7 +141,7 @@ namespace Utage
 			try
 			{
 				string pivot0String = AdvParser.ParseCellOptional<string>(row, AdvColumnName.Pivot0, "");
-				this.EnablePivot0 = !string.IsNullOrEmpty(pivot0String) || pivot0String != "NoUse";
+				this.EnablePivot0 = !string.IsNullOrEmpty(pivot0String) && pivot0String != "NoUse";
 				if (this.EnablePivot0)
 				{
 					this.Pivot0 = ParserUtil.ParsePivotOptional(pivot0String,new Vector2(0.5f, 0.5f));
@@ -308,11 +309,33 @@ namespace Utage
 					return typeof(AdvGraphicObjectRawImage);
 			}
 		}
+		
+		//宴のコンポーネントを継承したプレハブかどうか
+		internal bool IsOverridePrefab()
+		{
+			switch (FileType)
+			{
+				case FileTypeOverridePrefab:
+					return true;
+				default:
+					return false;
+			}
+		}
+
 
 		//コンポーネントの種別がUI系かどうか
 		internal bool IsUguiComponentType
 		{
-			get { return GetComponentType().IsSubclassOf(typeof(AdvGraphicObjectUguiBase)); }
+			get
+			{
+				switch (FileType)
+				{
+					case FileTypeOverridePrefab:
+						return true;
+					default:
+						return GetComponentType().IsSubclassOf(typeof(AdvGraphicObjectUguiBase));
+				}
+			}
 		}
 
 		//クロスフェード可能な素材か比較

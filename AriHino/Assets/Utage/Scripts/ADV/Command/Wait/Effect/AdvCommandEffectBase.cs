@@ -20,15 +20,15 @@ namespace Utage
 		protected string targetName ;
 
 		//コンストラクタ
-		protected AdvCommandEffectBase(StringGridRow row)
+		protected AdvCommandEffectBase(StringGridRow row, AdvSettingDataManager dataManager)
 			: base(row)
 		{
-			OnParse();
+			OnParse(dataManager);
 		}
 
 
 		//解析必要に応じてオーバーライド
-		protected virtual void OnParse()
+		protected virtual void OnParse(AdvSettingDataManager dataManager)
 		{
 			ParseEffectTarget(AdvColumnName.Arg1);
 			ParseWait(AdvColumnName.WaitType);

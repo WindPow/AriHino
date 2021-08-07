@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Serialization;
 using UtageExtensions;
 
 namespace Utage
@@ -14,7 +15,7 @@ namespace Utage
 	/// Graphicにトランジションをかける
 	/// </summary>
 	[AddComponentMenu("Utage/Lib/UI/UguiTransition")]
-	public class UguiTransition : MonoBehaviour, IMaterialModifier, IMeshModifier
+	public class UguiTransition : MonoBehaviour, IMaterialModifier, IMeshModifier, IAnimationRuleFade
 	{
 		public Graphic Target
 		{
@@ -53,20 +54,20 @@ namespace Utage
 		[SerializeField]
 		Texture ruleTexture;
 
-		[SerializeField, Range(0, 1.0f)]
-		float strengh = 0;
-		public float Strengh
+		[FormerlySerializedAs("strengh")] [SerializeField, Range(0, 1.0f)]
+		float strength = 0;
+		public float Strength
 		{
 			get
 			{
-				return strengh;
+				return strength;
 			}
 			set
 			{
-				if (Mathf.Approximately(strengh, value))
+				if (Mathf.Approximately(strength, value))
 					return;
 
-				strengh = value;
+				strength = value;
 				Target.SetMaterialDirty();
 			}
 		}
@@ -94,9 +95,10 @@ namespace Utage
 		bool unscaledTime = false;
 
 		public bool IsPremultipliedAlpha { get; set; }
-		Material DefaultMaterial { get; set; }
+		public Material DefaultMaterial { get; protected set; }
 
 		Timer Timer { get; set; }
+		bool PlayingAnimation { get; set; }
 
 #if UNITY_EDITOR
 		void OnValidate()
@@ -140,7 +142,7 @@ namespace Utage
 
         public Material GetModifiedMaterial(Material baseMaterial)
         {
-			baseMaterial.SetFloat("_Strength", Strengh);
+			baseMaterial.SetFloat("_Strength", Strength);
 			baseMaterial.SetFloat("_Vague", Vague);
 			baseMaterial.SetTexture("_RuleTex", RuleTexture);
 
@@ -160,8 +162,32 @@ namespace Utage
 
 			return baseMaterial;
         }
+        
+        //ルール画像つきのフェードの初期のみ行う
+        public void BeginRuleFade(Texture texture, float vague, bool isPremultipliedAlpha)
+        {
+	        PlayingAnimation = true;
+	        RuleTexture = texture;
+	        Vague = vague;
+	        IsPremultipliedAlpha = isPremultipliedAlpha;
+	        Target.material = new Material(ShaderManager.RuleFade);
+        }
 
-		//ルール画像つきのフェードイン
+        public void EndRuleFade()
+        {
+	        PlayingAnimation = false;
+	        Target.material = DefaultMaterial;
+        }
+
+        private void Update()
+        {
+	        if (PlayingAnimation)
+	        {
+		        Target.SetMaterialDirty();
+	        }
+        }
+
+        //ルール画像つきのフェードイン
 		public void RuleFadeIn(Texture texture, float vague, bool isPremultipliedAlpha,  float time, Action onComplete)
 		{
 			RuleTexture = texture;
@@ -183,7 +209,7 @@ namespace Utage
 			Timer.StartTimer(
 				time,
 				UnscaledTime,
-				x => Strengh = x.Time01Inverse,
+				x => Strength = x.Time01Inverse,
 				x =>
 				{
 					Target.material = DefaultMaterial;
@@ -215,7 +241,7 @@ namespace Utage
 			Timer.StartTimer(
 				time,
 				UnscaledTime,
-				x => Strengh = x.Time01,
+				x => Strength = x.Time01,
 				x =>
 				{
 					Target.material = DefaultMaterial;

@@ -149,7 +149,12 @@ namespace Utage
 
 		public int GetParameterInt(string key)
 		{
-			return GetParameter<int>(key);
+			AdvParamData data = SafeFindParamData(key);
+			if (data==null)
+			{
+				return 0;
+			}
+			return data.IntValue;
 		}
 
 		public void SetParameterInt(string key, int value)
@@ -159,7 +164,12 @@ namespace Utage
 
 		public float GetParameterFloat(string key)
 		{
-			return GetParameter<float>(key);
+			AdvParamData data = SafeFindParamData(key);
+			if (data==null)
+			{
+				return 0;
+			}
+			return data.FloatValue;
 		}
 
 		public void SetParameterFloat(string key, float value)
@@ -169,7 +179,12 @@ namespace Utage
 
 		public bool GetParameterBoolean(string key)
 		{
-			return GetParameter<bool>(key);
+			AdvParamData data = SafeFindParamData(key);
+			if (data==null)
+			{
+				return false;
+			}
+			return data.BoolValue;
 		}
 
 		public void SetParameterBoolean(string key, bool value)
@@ -179,12 +194,28 @@ namespace Utage
 
 		public string GetParameterString(string key)
 		{
-			return GetParameter<string>(key);
+			AdvParamData data = SafeFindParamData(key);
+			if (data==null)
+			{
+				return "";
+			}
+			return data.StringValue;
 		}
 
 		public void SetParameterString(string key, string value)
 		{
 			SetParameter<string>(key, value);
+		}
+		
+		AdvParamData SafeFindParamData(string key)
+		{
+			AdvParamData data;
+			if (!TryGetParamData(key, out data))
+			{
+				Debug.LogErrorFormat("{0} is not found in parameter",key);
+				return null;
+			}
+			return data;
 		}
 
 		public T GetParameter<T>(string key)

@@ -9,8 +9,8 @@ namespace Utage
 	/// </summary>
 	internal class AdvCommandFadeOut : AdvCommandFadeBase
 	{
-		public AdvCommandFadeOut(StringGridRow row)
-			: base(row,false)
+		public AdvCommandFadeOut(StringGridRow row, AdvSettingDataManager dataManager)
+			: base(row, dataManager,false)
 		{
 		}
 	}

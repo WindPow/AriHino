@@ -57,8 +57,12 @@ namespace Utage
 				return;
 			}
 
-			AssetFileManager.ClearCheckErrorInEditor();
+			if (CustomProjectSetting.Instance == null)
+			{
+				CustomProjectSetting.Instance = Project.CustomProjectSetting;
+			}
 			AssetFileManager.IsEditorErrorCheck = true;
+			AssetFileManager.ClearCheckErrorInEditor();
 			AdvCommand.IsEditorErrorCheck = true;
 			AdvCommand.IsEditorErrorCheckWaitType = project.CheckWaitType;
 
@@ -146,6 +150,32 @@ namespace Utage
 			if (Project.EnableCommentOutOnImport)
 			{
 				book.EraseCommentOutStrings(@"//");
+			}
+
+			int checkCount = Project.CheckBlankRowCountOnImport; 
+			int checkCellCount = Project.CheckCellCountOnImport; 
+			foreach (var sheet in book.Values)
+			{
+				var grid = sheet.Grid;
+				
+				//末尾の空白行数多すぎないかチェック
+				grid.ShapeUpRows(checkCount);
+				
+				//列数が多すぎないかチェック
+				bool isOverCell = false;
+				foreach (var row in grid.Rows)
+				{
+					if (row.Length >= checkCellCount)
+					{
+						isOverCell = true;
+						break;
+					}
+				}
+				if (isOverCell)
+				{
+					Debug.LogWarningFormat( "Column count is over {0}. {1}", checkCellCount, grid.Name  );
+				}
+				
 			}
 			return book;
 		}

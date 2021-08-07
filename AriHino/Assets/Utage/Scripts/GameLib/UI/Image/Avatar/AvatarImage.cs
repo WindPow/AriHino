@@ -121,7 +121,7 @@ namespace Utage
         }
 #endif
 
-        void Update()
+        void LateUpdate()
         {
             if (HasChanged)
             {

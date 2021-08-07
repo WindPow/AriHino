@@ -24,16 +24,17 @@ namespace Utage
 	// スキップ可能なフェード処理用のインターフェース
 	public interface IAdvFadeSkippable : IAdvFade
 	{
-		//フェードアウト
-//		void FadeInOrCrossFadeRestart(float time, Action onComplete);
-		
-		//フェードをスキップする
-//		void SkipFade();
-
 		//ルール画像付きのフェードをスキップする
 		void SkipRuleFade();
+	}
+	
+	// アニメーション制御する際の
+	public interface IAdvFadeAnimation : IAdvFadeSkippable
+	{
+		//ルール画像制御用のコンポーネントを初期化して返す
+		IAnimationRuleFade BeginRuleFade(AdvEngine engine, AdvTransitionArgs data);
 		
-		//削除
-//		void Clear();
+		//フェードアウトのときにオブジェクトの消去を行う
+		void Clear();
 	}
 }

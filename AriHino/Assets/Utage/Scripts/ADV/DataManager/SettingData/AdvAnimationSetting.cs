@@ -9,6 +9,12 @@ namespace Utage
 	public class AdvAnimationData : IAdvSettingData
 	{
 		public AnimationClip Clip { get; set; }
+		enum TangentMode
+		{
+			Default,
+			Linear,
+		}
+		TangentMode Tangent { get; set; }
 
 		public AdvAnimationData(StringGrid grid, ref int index, bool legacy)
 		{
@@ -41,15 +47,26 @@ namespace Utage
 					{
 						string str = row.ParseCell<string>(0);
 						//					Debug.LogError( row.ToErrorString("PropertyType Parse Error") );
-
 						string typeName, propertyName;
 						str.Separate('.', false, out typeName, out propertyName);
 						Type type = System.Type.GetType(typeName);
-						if (type == null)
+						if (type != null)
 						{
-							Debug.LogError(typeName + "is not class name");
+							Clip.SetCurve("", type, propertyName, ParseCurve(timeTbl, row));
 						}
-						Clip.SetCurve("", type, propertyName, ParseCurve(timeTbl, row));
+						else
+						{
+							str.Separate(',', true, out typeName, out propertyName);
+							Type type1 = System.Type.GetType(typeName);
+							if (type1 != null)
+							{
+								Clip.SetCurve("", type1, propertyName, ParseCurve(timeTbl, row));
+							}
+							else
+							{
+								Debug.LogError(typeName + "is not class name");
+							}
+						}
 					}
 					else
 					{
@@ -80,6 +97,7 @@ namespace Utage
 		{
 			Clip.name = row.ParseCell<string>(0).Substring(1);
 			Clip.wrapMode = row.ParseCellOptional<WrapMode>(1, WrapMode.Default);
+			Tangent = row.ParseCellOptional<TangentMode>(2, TangentMode.Default); 
 		}
 
 		List<float> ParseTimeTbl(StringGridRow row)
@@ -90,7 +108,8 @@ namespace Utage
 				float time;
 				if (!row.TryParseCell<float>(i, out time))
 				{
-					Debug.LogError(row.ToErrorString("TimeTbl pase error"));
+					string errorMsg = string.Format("TimeTbl parse error. The cell \" {0} \" in the {1} column cannot be parsed into numbers. is ",row.Strings[i],i);
+					Debug.LogError(row.ToErrorString(errorMsg));
 				}
 				timeTbl.Add(time);
 			}
@@ -113,6 +132,9 @@ namespace Utage
 			AngleY,
 			AngleZ,
 			Alpha,
+			R,
+			G,
+			B,
 			Texture,
 			Pattern,
 		};
@@ -197,14 +219,72 @@ namespace Utage
 				float value;
 				if (!row.TryParseCell<float>(i, out value)) continue;
 				//キーの追加
-//				Debug.Log("AddKey " + timeTbl[i - 1] + " " + value);
-				curve.AddKey(new Keyframe(timeTbl[i-1], value));
+				var key = new Keyframe(timeTbl[i - 1], value);
+				curve.AddKey(key);
 			}
 			if (curve.keys.Length <= 1)
 			{
 //				Debug.LogError(row.ToErrorString("Need more than 2 key data"));
 			}
+
+			switch (Tangent)
+			{
+				case TangentMode.Linear:
+					SetCurveLinear(curve);
+					break;
+				default:
+					break;
+			}
 			return curve;
+		}
+		
+		//https://forum.unity.com/threads/how-to-set-an-animation-curve-to-linear-through-scripting.151683/
+		public static void SetCurveLinear(AnimationCurve curve) 
+		{
+			for (int i = 0; i < curve.keys.Length; ++i) 
+			{
+				float inTangent = 0;
+				float outTangent = 0;
+				bool inTangentSet = false;
+				bool outTangentSet = false;
+				Vector2 point1;
+				Vector2 point2;
+				Vector2 deltaPoint;
+				Keyframe key = curve[i];
+ 
+				if (i == 0) {
+					inTangent = 0; inTangentSet = true;
+				}
+ 
+				if (i == curve.keys.Length - 1) {
+					outTangent = 0; outTangentSet = true;
+				}
+ 
+				if (!inTangentSet) {
+					point1.x = curve.keys[i - 1].time;
+					point1.y = curve.keys[i - 1].value;
+					point2.x = curve.keys[i].time;
+					point2.y = curve.keys[i].value;
+ 
+					deltaPoint = point2 - point1;
+ 
+					inTangent = deltaPoint.y / deltaPoint.x;
+				}
+				if (!outTangentSet) {
+					point1.x = curve.keys[i].time;
+					point1.y = curve.keys[i].value;
+					point2.x = curve.keys[i + 1].time;
+					point2.y = curve.keys[i + 1].value;
+ 
+					deltaPoint = point2 - point1;
+ 
+					outTangent = deltaPoint.y / deltaPoint.x;
+				}
+ 
+				key.inTangent = inTangent;
+				key.outTangent = outTangent;
+				curve.MoveKey(i, key);
+			}
 		}
 
 		//Animatorの場合、最後のフレームまでカーブデータがないと途中で終わってしまうのでダミーで乗せる
@@ -254,6 +334,15 @@ namespace Utage
 					break;
 				case PropertyType.Alpha:
 					Clip.SetCurve("", typeof(AdvEffectColor), "animationColor.a", curve);
+					break;
+				case PropertyType.R:
+					Clip.SetCurve("", typeof(AdvEffectColor), "animationColor.r", curve);
+					break;
+				case PropertyType.G:
+					Clip.SetCurve("", typeof(AdvEffectColor), "animationColor.g", curve);
+					break;
+				case PropertyType.B:
+					Clip.SetCurve("", typeof(AdvEffectColor), "animationColor.b", curve);
 					break;
 				default:
 					Debug.LogError("UnknownType");

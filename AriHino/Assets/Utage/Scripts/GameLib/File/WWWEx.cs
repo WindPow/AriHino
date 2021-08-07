@@ -462,7 +462,7 @@ namespace Utage
 						retry = true;
 					}
 				}
-				else if (uwr.isNetworkError || uwr.isHttpError)
+				else if ( WrapperUnityVersion.WebRequestResultError(uwr))
 				{
 					//ロードエラー
 					if (retryCount <= 0)

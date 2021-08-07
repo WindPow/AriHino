@@ -323,5 +323,34 @@ namespace Utage
 				}
 			}
 		}
+		
+		
+		//不要な末尾の行を削除する
+		public void ShapeUpRows(int checkCount)
+		{
+			int lastDataRowIndex = 0;
+			for(int i = 0; i < Rows.Count; ++i)
+			{
+				var row = Rows[i];
+				if (!row.IsEmpty)
+				{
+					lastDataRowIndex = i;
+				}
+			}
+
+			int index = lastDataRowIndex + 1; 
+			if (index >= Rows.Count)
+			{
+				return;
+			}
+
+			int old = Rows.Count;
+			int count = Rows.Count - index;
+			Rows.RemoveRange(index,count);
+			if (count > checkCount)
+			{
+				Debug.LogWarningFormat( "Blank Row count is{0} .The data is very large. Delete the extra data at the end of the sheet. {1}", count, this.Name );
+			}
+		}
 	}
 }

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using System.Collections.Generic;
+using System.IO;
 using UtageExtensions;
 
 namespace Utage
@@ -27,10 +28,24 @@ namespace Utage
 			//宴のシーンが切り替わったら、自動でプロジェクトを変更するか
 			if (editorSetting.AutoChangeProject)
 			{
-				if (engine == null) engine = UtageEditorToolKit.FindComponentAllInTheScene<AdvEngine>();
+				engine = UtageEditorToolKit.FindComponentAllInTheScene<AdvEngine>();
 				starter = UtageEditorToolKit.FindComponentAllInTheScene<AdvEngineStarter>();
 				if (engine == null || starter == null) return;
-
+				
+				//CustomProjectSettingが設定されてなかったら設定する
+				var bootSetting = UtageEditorToolKit.FindComponentAllInTheScene<BootCustomProjectSetting>();
+				if (bootSetting != null && starter.ScenarioDataProject !=null)
+				{
+					AdvScenarioDataProject project = starter.ScenarioDataProject as AdvScenarioDataProject;
+					if (project != null && project.CustomProjectSetting == null)
+					{
+						if (project.CustomProjectSetting != bootSetting.CustomProjectSetting)
+						{
+							project.CustomProjectSetting = bootSetting.CustomProjectSetting;
+							UnityEditor.EditorUtility.SetDirty(project);
+						}
+					}
+				}
 				CheckCurrentProject(engine, starter);
 			}
 

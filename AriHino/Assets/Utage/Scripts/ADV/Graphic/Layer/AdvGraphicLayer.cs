@@ -462,13 +462,29 @@ namespace Utage
 			}
 		}
 
+		protected virtual void DestroyAllAnimations()
+		{
+			foreach (var advAnimationPlayer in this.GetComponents<AdvAnimationPlayer>())
+			{
+				advAnimationPlayer.DestroyComponentImmediate();
+				Destroy(advAnimationPlayer);
+			}
+			foreach (var tweenPlayer in this.GetComponents<AdvITweenPlayer>())
+			{
+				Destroy(tweenPlayer);
+			}
+		}
 
-		const int Version = 0;
+
+		const int Version0 = 0;
+		const int Version = 1;
 		//セーブデータ用のバイナリ書き込み
 		public virtual void Write(BinaryWriter writer)
 		{
 			writer.Write(Version);
 			writer.WriteLocalTransform(this.transform);
+			writer.WriteBuffer((x)=>AdvITweenPlayer.WriteSaveData (x,this.gameObject));
+			writer.WriteBuffer((x) => AdvAnimationPlayer.WriteSaveData(x, this.gameObject));
 
 			int count = 0;
 			foreach (var keyValue in CurrentGraphics)
@@ -504,9 +520,13 @@ namespace Utage
 				Debug.LogError(LanguageErrorMsg.LocalizeTextFormat(ErrorMsg.UnknownVersion, version));
 				return;
 			}
-
+			DestroyAllAnimations();
 			reader.ReadLocalTransform(this.transform);
-
+			if (version > Version0)
+			{
+				reader.ReadBuffer((x) => AdvITweenPlayer.ReadSaveData(x,this.gameObject,true, Manager.PixelsToUnits, Engine.Time.Unscaled));
+				reader.ReadBuffer((x) => AdvAnimationPlayer.ReadSaveData(x, this.gameObject, Engine));
+			}
 			int count = reader.ReadInt32();
 			for (int i = 0; i < count; i++)
 			{
@@ -514,12 +534,30 @@ namespace Utage
 				AdvGraphicInfo graphic = null;
 				reader.ReadBuffer(x => graphic = AdvGraphicInfo.ReadGraphicInfo(Engine, x));
 				byte[] buffer = reader.ReadBuffer();
-				AdvGraphicObject obj = CreateObject(key, graphic,false);
-				obj.Read(buffer, graphic);
+				if (!graphic.IsOverridePrefab())
+				{
+					AdvGraphicObject obj = CreateObject(key, graphic,false);
+					obj.Read(buffer, graphic);
+				}
+				else
+				{
+					LoadPrefab(buffer, key, graphic);
+				}
 			}
 			string defaulObjectName = reader.ReadString();
 			DefaultObject = Find(defaulObjectName);
 		}
-
+		
+		//プレハブの場合はロード待ちしてからオブジェクトを作成
+		protected virtual void LoadPrefab(byte[] buffer, string key, AdvGraphicInfo graphic)
+		{
+			AdvGraphicLoader loader = this.gameObject.AddComponent<AdvGraphicLoader>();
+			loader.LoadGraphic(graphic, () =>
+			{
+				AdvGraphicObject obj = CreateObject(key, graphic,false);
+				obj.Read(buffer, graphic);
+				Destroy(loader);
+			});
+		}
 	}
 }

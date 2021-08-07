@@ -43,7 +43,8 @@
 		Lighting Off
 		ZWrite Off
 		ZTest[unity_GUIZTestMode]
-		Blend One SrcAlpha
+        BlendOp Add, Max
+		Blend One OneMinusSrcAlpha, One One  
 		ColorMask[_ColorMask]
 
 		Pass
@@ -104,7 +105,7 @@
 				fixed4 detail = (tex2D(_FadeTex, IN.texcoord1) + _TextureSampleAdd);
 
 				color.rgb = lerp(color.rgb*color.a*IN.color.a, detail.rgb*detail.a*IN.color.a, _Strength)*IN.color.rgb;
-				color.a = 1 - lerp(color.a, detail.a, _Strength)*IN.color.a;
+				color.a = lerp(color.a, detail.a, _Strength)*IN.color.a;
 				color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
 
 #ifdef UNITY_UI_ALPHACLIP

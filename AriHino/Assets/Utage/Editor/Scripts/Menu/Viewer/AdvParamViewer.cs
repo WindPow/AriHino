@@ -156,31 +156,31 @@ namespace Utage
 			switch (data.Type)
 			{
 				case AdvParamData.ParamType.Float:
-					float f = EditorGUILayout.FloatField(data.Key, (float)data.Parameter, paramHeight);
-					if (f != (float)data.Parameter)
+					float f = EditorGUILayout.FloatField(data.Key, data.FloatValue, paramHeight);
+					if (f != data.FloatValue)
 					{
-						data.Parameter = f;
+						data.FloatValue = f;
 					}
 					break;
 				case AdvParamData.ParamType.Int:
-					int i = EditorGUILayout.IntField(data.Key, (int)data.Parameter, paramHeight); ;
-					if (i != (int)data.Parameter)
+					int i = EditorGUILayout.IntField(data.Key, data.IntValue, paramHeight); ;
+					if (i != data.IntValue)
 					{
-						data.Parameter = i;
+						data.IntValue = i;
 					}
 					break;
 				case AdvParamData.ParamType.Bool:
-					bool b = EditorGUILayout.Toggle(data.Key, (bool)data.Parameter, paramHeight);
-					if (b != (bool)data.Parameter)
+					bool b = EditorGUILayout.Toggle(data.Key, data.BoolValue, paramHeight);
+					if (b != data.BoolValue)
 					{
-						data.Parameter = b;
+						data.BoolValue = b;
 					}
 					break;
 				case AdvParamData.ParamType.String:
-					string s = EditorGUILayout.TextField(data.Key, (string)data.Parameter, paramHeight);
-					if (s != (string)data.Parameter)
+					string s = EditorGUILayout.TextField(data.Key, data.StringValue, paramHeight);
+					if (s != data.StringValue)
 					{
-						data.Parameter = s;
+						data.StringValue = s;
 					}
 					break;
 			}
@@ -271,31 +271,31 @@ namespace Utage
 				switch (data.Type)
 				{
 					case AdvParamData.ParamType.Float:
-						float f = EditorGUILayout.FloatField((float)data.Parameter, paramHeight, paramWidth);
-						if (f != (float)data.Parameter)
+						float f = EditorGUILayout.FloatField(data.FloatValue, paramHeight, paramWidth);
+						if (f != data.FloatValue)
 						{
-							data.Parameter = f;
+							data.FloatValue = f;
 						}
 						break;
 					case AdvParamData.ParamType.Int:
-						int i = EditorGUILayout.IntField((int)data.Parameter, paramHeight, paramWidth);
-						if (i != (int)data.Parameter)
+						int i = EditorGUILayout.IntField(data.IntValue, paramHeight, paramWidth);
+						if (i != data.IntValue)
 						{
-							data.Parameter = i;
+							data.IntValue = i;
 						}
 						break;
 					case AdvParamData.ParamType.Bool:
-						bool b = EditorGUILayout.Toggle((bool)data.Parameter, paramHeight, paramWidth);
-						if (b != (bool)data.Parameter)
+						bool b = EditorGUILayout.Toggle(data.BoolValue, paramHeight, paramWidth);
+						if (b != data.BoolValue)
 						{
-							data.Parameter = b;
+							data.BoolValue = b;
 						}
 						break;
 					case AdvParamData.ParamType.String:
-						string s = EditorGUILayout.TextField((string)data.Parameter, paramHeight, paramWidth);
-						if (s != (string)data.Parameter)
+						string s = EditorGUILayout.TextField(data.StringValue, paramHeight, paramWidth);
+						if (s != data.StringValue)
 						{
-							data.Parameter = s;
+							data.StringValue = s;
 						}
 						break;
 				}

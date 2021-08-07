@@ -29,6 +29,18 @@ namespace Utage
 		protected AdvAnimationPlayer Animation { get; set; }
 
 		protected CanvasGroup Group { get; set; }
+		
+		//オプション表示切替用の情報
+		protected class AvatarOptionInfo
+		{
+			public string paranName;
+			public string optionName;
+		};
+		protected List<AvatarOptionInfo> AvatarOptionInfoList
+		{
+			get { return avatarOptionInfoList; }
+		}
+		private List<AvatarOptionInfo> avatarOptionInfoList = new List<AvatarOptionInfo>();
 
 		//初期化処理
 		protected override void AddGraphicComponentOnInit()
@@ -65,9 +77,9 @@ namespace Utage
 		}
 
 		//目パチなどのために
-		void OnPostRefresh()
+		protected virtual void OnPostRefresh()
 		{
-			if (!this.LastResource.RenderTextureSetting.EnableRenderTexture)
+			if (!this.ParentObject.EnableRenderTexture)
 			{
 				OnEffectColorsChange(this.ParentObject.EffectColor);
 			}
@@ -92,6 +104,7 @@ namespace Utage
 			Avatar.AvatarData = avatarData;
 			Avatar.CachedRectTransform.sizeDelta = avatarData.Size;
 			Avatar.AvatarPattern.SetPattern(graphic.RowData);
+			InitAvatarOptionInfoList(avatarData);
 
 			//目パチを設定
 			SetEyeBlinkSync(graphic.EyeBlinkData);
@@ -157,5 +170,37 @@ namespace Utage
 				LipSynch.Play();
 			}
 		}
-	}
+
+		protected virtual void Update()
+		{
+			UpdateAvatarOption();
+		}
+
+		protected virtual void InitAvatarOptionInfoList(AvatarData avatarData)
+		{
+			AvatarOptionInfoList.Clear();
+			foreach (var option in avatarData.GetAllOptionPatterns())
+			{
+				string paramName = avatarData.name + "_" + option;
+				object param;
+				if( !Engine.Param.TryGetParameter(paramName, out param) ) continue;
+				AvatarOptionInfoList.Add( 
+					new AvatarOptionInfo()
+					{
+						optionName = option,
+						paranName = paramName,
+					});
+			}
+		}
+
+		//アバターのオプションを取得
+		protected virtual void UpdateAvatarOption()
+		{
+			foreach (var info in AvatarOptionInfoList)
+			{
+				bool enable = Engine.Param.GetParameterBoolean(info.paranName);
+				Avatar.AvatarPattern.SetOptionEnable(info.optionName,enable);
+			}
+		}
+    }
 }

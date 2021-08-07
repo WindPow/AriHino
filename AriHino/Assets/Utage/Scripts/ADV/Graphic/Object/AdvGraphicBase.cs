@@ -83,6 +83,17 @@ namespace Utage
 		{
 		}
 
+		//ルール画像つきのフェードコンポーネントの初期化のみ行う
+		public virtual IAnimationRuleFade BeginRuleFade(AdvEngine engine, AdvTransitionArgs data)
+		{
+			UguiTransition transition = this.gameObject.AddComponent<UguiTransition>();
+			transition.BeginRuleFade(
+				engine.EffectManager.FindRuleTexture(data.TextureName),
+				data.Vague,
+				false);
+			return transition;
+		}
+
 		//ルール画像つきのフェードイン（オブジェクト単位にかけるのでテクスチャ描き込み効果なし）
 		public virtual void RuleFadeIn(AdvEngine engine, AdvTransitionArgs data, Action onComplete)
 		{

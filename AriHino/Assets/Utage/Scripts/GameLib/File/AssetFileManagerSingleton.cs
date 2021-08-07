@@ -299,7 +299,7 @@ namespace Utage
 				{
 					if (!isEditorErrorCheck)
 					{
-						Debug.LogError("Not Found AssetFileManager in current scene");
+						Debug.Log("Not Found AssetFileManager in current scene");
 					}
 				}
 			}

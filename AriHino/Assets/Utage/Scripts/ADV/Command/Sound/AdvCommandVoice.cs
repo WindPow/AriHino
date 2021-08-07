@@ -22,11 +22,26 @@ namespace Utage
 
 		public override void DoCommand(AdvEngine engine)
 		{
-			if (engine.Page.CheckSkip() && engine.Config.SkipVoiceAndSe) 
+			bool skip = false;
+			//スキップ中の再生無効か判定
+			if (engine.Page.CheckSkip() && engine.Config.SkipVoiceAndSe)
 			{
-				return;
+				if (isLoop && engine.Config.DontSkipLoopVoiceAndSe)
+				{
+					//ループの場合はスキップしない
+					skip = false;
+				}
+				else
+				{
+					//スキップする
+					skip = true;
+				}
 			}
-			engine.SoundManager.PlayVoice(characterLabel, voiceFile, volume, isLoop);
+
+			if (!skip)
+			{
+				engine.SoundManager.PlayVoice(characterLabel, voiceFile, volume, isLoop);
+			}
 		}
 
 		public override void OnChangeLanguage(AdvEngine engine)

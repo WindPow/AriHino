@@ -181,6 +181,13 @@ namespace Utage
 			return false;
 		}
 
+		//ルール画像つきのフェードコンポーネントの初期化のみ行う
+		public override IAnimationRuleFade BeginRuleFade(AdvEngine engine, AdvTransitionArgs data)
+		{
+			Debug.LogError(this.gameObject.name + " is not support RuleFade", this.gameObject);
+			return null;
+		}
+
 		public override void RuleFadeIn(AdvEngine engine, AdvTransitionArgs data, Action onComplete)
 		{
 			Debug.LogError(this.gameObject.name + " is not support RuleFadeIn", this.gameObject);

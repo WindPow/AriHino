@@ -121,9 +121,9 @@ namespace Utage
 					foreach (var data in pattern.DataList)
 					{
 						//カテゴリタグがあうものを取得
-						if (category.Tag != data.tag) continue;
+						if (category.Tag != data.Tag) continue;
 						//パタ―ン名が一致する一つだけを取得
-						sprites.Add(category.GetSprite(data.patternName));
+						sprites.Add(category.GetSprite(data.PatternName));
 					}
 				}
 				else
@@ -144,20 +144,21 @@ namespace Utage
 			{
 				if (CheckPatternError(pattern,patternData))
 				{
-					Debug.LogErrorFormat("Tag:{0} Pattern:{1} is not found in AvatorData {2}", patternData.tag, patternData.patternName, this.name);
+					Debug.LogErrorFormat("Tag:{0} Pattern:{1} is not found in AvatorData {2}", patternData.Tag, patternData.PatternName, this.name);
 				}
 			}
 		}
 		bool CheckPatternError(AvatarPattern pattern, AvatarPattern.PartternData patternData)
 		{
-			if (string.IsNullOrEmpty(patternData.patternName)) return false;
+			if (string.IsNullOrEmpty(patternData.PatternName)) return false;
+			if (AvatarData.ToPatternName(patternData.PatternName)=="None") return false;
 
 			foreach (var category in categories)
 			{
 				if (category.Tag != optionTag)
 				{
-					if (category.Tag != patternData.tag) continue;
-					if (category.GetSprite(patternData.patternName) != null)
+					if (category.Tag != patternData.Tag) continue;
+					if (category.GetSprite(patternData.PatternName) != null)
 					{
 						return false;
 					}
@@ -173,6 +174,7 @@ namespace Utage
 					}
 				}
 			}
+			
 			return true;
 		}
 

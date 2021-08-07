@@ -18,6 +18,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Networking;
 #if UNITY_EDITOR
 using UnityEditor;
 #if UNITY_5_2_OR_EARLIER
@@ -474,6 +475,11 @@ namespace Utage
 			return float.TryParse(str, DefaultNumberStyles, System.Globalization.CultureInfo.InvariantCulture, out val);
 		}
 
+		public static string ToStringFloatGlobal(float f)
+		{
+			return f.ToString(System.Globalization.CultureInfo.InvariantCulture );
+		}
+
 		public static double ParseDoubleGlobal(string str)
 		{
 			return double.Parse(str, DefaultNumberStyles, System.Globalization.CultureInfo.InvariantCulture);
@@ -498,5 +504,24 @@ namespace Utage
 				return DateTime.UtcNow;
 			}
 		}
+		
+#if UNITY_2018_3_OR_NEWER
+		public static bool WebRequestResultError(UnityEngine.Networking.UnityWebRequest webRequest)
+		{
+#if UNITY_2020_2_OR_NEWER
+			switch (webRequest.result)
+			{
+				case UnityWebRequest.Result.ConnectionError:
+				case UnityWebRequest.Result.ProtocolError:
+				case UnityWebRequest.Result.DataProcessingError:
+					return true;
+				default:
+					return false;
+			}
+#else 
+			return (webRequest.isNetworkError || webRequest.isHttpError);
+#endif
+		}
+#endif
 	}
 }

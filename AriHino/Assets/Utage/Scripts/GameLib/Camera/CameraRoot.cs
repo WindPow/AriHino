@@ -86,6 +86,7 @@ namespace Utage
         	this.transform.localPosition = startPosition;
             this.transform.localScale = startScale;
             this.transform.localEulerAngles = startEulerAngles;
+            LetterBoxCamera.OnClear();
 			LetterBoxCamera.gameObject.RemoveComponents<ImageEffectBase>();
         }
 	}

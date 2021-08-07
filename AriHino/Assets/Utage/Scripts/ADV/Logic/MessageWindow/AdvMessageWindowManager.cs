@@ -113,7 +113,7 @@ namespace Utage
 			allWindows.Clear();
 			foreach (var keyValue in UiMessageWindowManager.AllWindows)
 			{
-				AddWindow(keyValue.Value);
+				AddWindowSub(keyValue.Value);
 			}
 			if (allWindows.Count <= 0)
 			{
@@ -125,10 +125,26 @@ namespace Utage
 				if (window.gameObject.activeSelf) defaultActiveWindowNameList.Add(window.gameObject.name);
 			}
 			isInit = true;
+			foreach (var keyValue in allWindows)
+			{
+				if (Application.isPlaying)
+				{
+					keyValue.Value.MessageWindow.OnInit(this);
+				}
+			}
 		}
 
 		//管理対象のウィンドウUIオブジェクトを追加
 		public void AddWindow( IAdvMessageWindow window )
+		{
+			AddWindowSub(window);
+			if (Application.isPlaying)
+			{
+				window.OnInit(this);
+			}
+		}
+		//管理対象のウィンドウUIオブジェクトを追加
+		void AddWindowSub( IAdvMessageWindow window )
 		{
 			string windowName = window.gameObject.name;
 			if (allWindows.ContainsKey(windowName))
@@ -137,10 +153,6 @@ namespace Utage
 				return;
 			}
 			allWindows.Add(windowName, new AdvMessageWindow(window));
-			if (Application.isPlaying)
-			{
-				window.OnInit(this);
-			}
 		}
 
 		//管理対象のウィンドウのUIオブジェクトを削除
@@ -179,7 +191,10 @@ namespace Utage
 				}
 				else
 				{
-					ActiveWindows.Add(name, window);
+					if (!ActiveWindows.ContainsKey(name))
+					{
+						ActiveWindows.Add(name, window);
+					}
 				}
 			}
 

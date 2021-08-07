@@ -10,13 +10,34 @@ namespace Utage
 	{
 		protected IAdvFadeSkippable Fade { get; set; }
 		protected AdvTransitionArgs TransitionArgs { get; set; }
-		protected AdvCommandRuleFadeBase(StringGridRow row)
-			: base(row)
+		protected AdvAnimationPlayer AnimationPlayer { get; set; }
+		protected IAnimationRuleFade AnimationRuleFade { get; set; }
+
+		protected AdvCommandRuleFadeBase(StringGridRow row, AdvSettingDataManager dataManager)
+			: base(row,dataManager)
 		{
 			string textureName = ParseCell<string>(AdvColumnName.Arg2);
 			float vague = ParseCellOptional<float>(AdvColumnName.Arg3, 0.2f);
-			float time = ParseCellOptional<float>(AdvColumnName.Arg6, 0.2f);
-			this.TransitionArgs = new AdvTransitionArgs(textureName, vague, time);
+			string arg6 = ParseCellOptional<string>(AdvColumnName.Arg6,"");
+			AdvAnimationData animationData = null;
+			float time = 0.2f;
+			if (!arg6.IsNullOrEmpty())
+			{
+				float f;
+				if (WrapperUnityVersion.TryParseFloatGlobal(arg6, out f))
+				{
+					time = f;
+				}
+				else
+				{
+					animationData = dataManager.AnimationSetting.Find(arg6);
+					if (animationData == null)
+					{
+						Debug.LogError(RowData.ToErrorString("Animation " + arg6 + " is not found"));
+					}
+				}
+			}
+			this.TransitionArgs = new AdvTransitionArgs(textureName, vague, time, animationData);
 		}
 
 		//エフェクト開始時のコールバック
@@ -28,9 +49,34 @@ namespace Utage
 				Debug.LogError("Can't find [ " + this.TargetName +" ]");
 				OnComplete(thread);
 			}
+			else if (!TransitionArgs.EnableAnimation)
+			{
+				OnStartFade(target,engine,thread);
+			}
 			else
 			{
-				OnStartFade(target, engine, thread);
+				//アニメーションに対応していない
+				IAdvFadeAnimation fadeAnimation = Fade as IAdvFadeAnimation;
+				if (fadeAnimation == null)
+				{
+					Debug.LogError(RowData.ToErrorString(Fade.GetType() + " is not support Animation"));
+					OnComplete(thread);
+					return;
+				}
+
+				//ルール画像等の設定
+				AnimationRuleFade = fadeAnimation.BeginRuleFade(engine, TransitionArgs);
+				if (AnimationRuleFade == null)
+				{
+					Debug.LogError(RowData.ToErrorString(Fade.GetType() + " is not support Animation"));
+					OnComplete(thread);
+				}
+
+				//アニメーションを再生
+				AnimationPlayer = AnimationRuleFade.gameObject.AddComponent<AdvAnimationPlayer>();
+				AnimationPlayer.AutoDestory = true;
+				AnimationPlayer.Play(TransitionArgs.AnimationData.Clip, engine.Page.SkippedSpeed,
+					() => { OnComplete(thread); });
 			}
 		}
 
@@ -51,12 +97,24 @@ namespace Utage
 		protected virtual void OnSkipFade()
 		{
 			Fade.SkipRuleFade();
+			if (AnimationPlayer != null)
+			{
+				AnimationPlayer.SkipToEnd();
+			}
 		}
 
 		//エフェクト終了時
-		public void OnEffectFinalize()
+		public virtual void OnEffectFinalize()
 		{
 			Fade = null;
+			AnimationPlayer = null;
+			if (AnimationRuleFade != null)
+			{
+				AnimationRuleFade.EndRuleFade();
+				(AnimationRuleFade as Component).RemoveComponentMySelf();
+			}
+			AnimationRuleFade = null;
 		}
 	}
+	
 }

@@ -23,8 +23,34 @@ namespace Utage
 		[System.Serializable]
 		public class PartternData
 		{
-			public string tag;
-			public string patternName;
+			public string Tag
+			{
+				get { return tag; }
+			}
+			[SerializeField]
+			string tag;
+
+			public string PatternName
+			{
+				get { return patternName; }
+				set
+				{
+					OriginalPatternName = patternName = value;
+				}
+			}
+			[SerializeField]
+			string patternName;
+
+			public string OriginalPatternName { get; private set; }
+
+			public PartternData(string tag)
+			{
+				this.tag = tag;
+			}
+			public void ChangePatternName(string pattern)
+			{
+				this.patternName = pattern;
+			}
 		}
 		//タグごとの表示パターン名のデータのリスト
 		public List<PartternData> DataList { get { return avatarPatternDataList; } }
@@ -37,28 +63,67 @@ namespace Utage
 
 		public void SetPatternName(string tag, string patternName)
 		{
-			PartternData pattern = DataList.Find(x => x.tag == tag);
+			PartternData pattern = DataList.Find(x => x.Tag == tag);
 			if (pattern == null)
 			{
 				Debug.LogError(string.Format("Unknown Pattern [{0}], tag[{1}] ", patternName, tag));
 				return;
 			}
-			pattern.patternName = patternName;
+			pattern.ChangePatternName(patternName);
 		}
 
-		public string GetPatternName(string tag)
+		public string GetOriginalPatternName(string tag)
 		{
-			PartternData pattern = DataList.Find(x => x.tag == tag);
-			return (pattern == null) ? "" : pattern.patternName;
+			PartternData pattern = DataList.Find(x => x.Tag == tag);
+			return (pattern == null) ? "" : pattern.OriginalPatternName;
 		}
 
 		internal void SetPattern(StringGridRow rowData)
 		{
 			foreach (var keyValue in rowData.Grid.ColumnIndexTbl)
 			{
-				PartternData pattern = DataList.Find(x => x.tag == keyValue.Key);
+				PartternData pattern = DataList.Find(x => x.Tag == keyValue.Key);
 				if (pattern==null) continue;
-				pattern.patternName = rowData.Strings[keyValue.Value];
+				if (keyValue.Value < rowData.Strings.Length)
+				{
+					pattern.PatternName = rowData.Strings[keyValue.Value];
+				}
+				else
+				{
+					//空欄
+					pattern.PatternName = "";
+				}
+			}
+		}
+
+		//オプション表示のオンオフ
+		public void SetOptionEnable(string optionName, bool enable)
+		{
+			if (enable)
+			{
+				EnableOption(optionName);
+			}
+			else
+			{
+				DisableOption(optionName);
+			}
+		}
+
+		//オプション表示のオン
+		public  void EnableOption(string optionName)
+		{
+			if (!OptionPatternNameList.Contains(optionName))
+			{
+				OptionPatternNameList.Add(optionName);
+			}
+		}
+
+		//オプション表示のオフ
+		public void DisableOption(string optionName)
+		{
+			if (OptionPatternNameList.Contains(optionName))
+			{
+				OptionPatternNameList.Remove(optionName);
 			}
 		}
 
@@ -74,7 +139,6 @@ namespace Utage
 			{
 				AvatarData data = CallFunction<AvatarData>(property, Attribute.Function);
 				if (data == null) return;
-
 				//パターンデータ（タグとパターン名）
 				EditorGUI.BeginProperty(position, label, property);
 				var dataListProperty = property.FindPropertyRelative("avatarPatternDataList");
@@ -94,7 +158,10 @@ namespace Utage
 					currentPatternIndex = Mathf.Max(0, currentPatternIndex);
 					position.height = h;
 					int index = EditorGUI.Popup(position, tagProperty.stringValue, currentPatternIndex, patternNameList.ToArray());
-					patternNameProperty.stringValue = patternNameList[index];
+					if (index!=currentPatternIndex)
+					{
+						patternNameProperty.stringValue = patternNameList[index];
+					}
 					position.y += h;
 				}
 
@@ -158,10 +225,10 @@ namespace Utage
 			Rebuild(data);
 			foreach (var pattern1 in DataList)
 			{
-				var pattern0 = dataList.Find(x => x.tag == pattern1.tag);
+				var pattern0 = dataList.Find(x => x.Tag == pattern1.Tag);
 				if (pattern0 != null)
 				{
-					pattern1.patternName = pattern0.patternName;
+					pattern1.PatternName = pattern0.PatternName;
 				}
 			}
 			Debug.LogFormat("this.DataList = {0}", this.DataList.Count);
@@ -174,11 +241,10 @@ namespace Utage
 			bool hasChanged = false;
 			foreach (var category in data.categories)
 			{
-				PartternData partternData = DataList.Find(x => x.tag == category.Tag);
+				PartternData partternData = DataList.Find(x => x.Tag == category.Tag);
 				if (partternData == null)
 				{
-					partternData = new PartternData();
-					partternData.tag = category.Tag;
+					partternData = new PartternData(category.Tag);
 					DataList.Add(partternData);
 					hasChanged = true;
 				}

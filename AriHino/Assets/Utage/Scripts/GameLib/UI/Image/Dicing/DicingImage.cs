@@ -20,7 +20,7 @@ namespace Utage
 	/// ダイシング（賽の目状に分割・再結合）処理したイメージ表示
 	/// </summary>
 	[AddComponentMenu("Utage/Lib/UI/DicingImage")]
-    [ExecuteInEditMode,RequireComponent(typeof(RectTransform))]
+	[ExecuteInEditMode,RequireComponent(typeof(RectTransform),typeof(CanvasRenderer))]
 	public class DicingImage : MaskableGraphic, ICanvasRaycastFilter
 	{
 		//ダイシングデータ

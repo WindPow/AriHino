@@ -394,6 +394,15 @@ namespace Utage
 		}
 
 
+		// 全レイヤーのリセット
+		public void ResetAllLayerRectTransform()
+		{
+			foreach (var keyValue in layers)
+			{
+				keyValue.Value.ResetCanvasRectTransform();
+			}
+		}
+
 		const int Version = 0;
 		//セーブデータ用のバイナリ書き込み
 		public void Write(BinaryWriter writer)

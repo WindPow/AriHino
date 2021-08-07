@@ -37,7 +37,7 @@ namespace Utage
 		/// <summary>本文テキスト</summary>
 		public UguiNovelText Text { get { return text; } }
 		[SerializeField]
-		UguiNovelText text=null;
+		protected UguiNovelText text=null;
 
 		/// <summary>名前表示テキスト</summary>
 		[SerializeField]

@@ -49,6 +49,16 @@ namespace Utage
 		[SerializeField]
 		string cacheDirectoryName = "Cache";
 
+		//アセットバンドルをキャッシュからロードする
+		public bool CacheLoad
+		{
+			get { return cacheLoad; }
+			set { cacheLoad = value; }
+		}
+		[SerializeField]
+		bool cacheLoad = true;
+
+
 		AssetFileManager AssetFileManager { get { return this.GetComponentCache<AssetFileManager>(ref assetFileManager); } }
 		[SerializeField]
 		AssetFileManager assetFileManager;
@@ -81,27 +91,19 @@ namespace Utage
 		//アセットバンドルの情報を追加(カスタムしたアセットバンドルの情報を設定する場合はここを使う)
 		public void AddAssetBundleInfo(string resourcePath, string assetBunleUrl, int assetBunleVersion, int assetBunleSize = 0)
 		{
-			try
-			{
-				dictionary.Add(resourcePath, new AssetBundleInfo(assetBunleUrl, assetBunleVersion, assetBunleSize));
-			}
-			catch
-			{
-				Debug.LogError(resourcePath + "is already contains in assetbundleManger");
-			}
+			AddAssetBundleInfo(resourcePath, new AssetBundleInfo(assetBunleUrl, assetBunleVersion, assetBunleSize));
 		}
 
 		//アセットバンドルの情報を追加(カスタムしたアセットバンドルの情報を設定する場合はここを使う)
 		public void AddAssetBundleInfo(string resourcePath, string assetBunleUrl, Hash128 assetBunleHash, int assetBunleSize = 0)
 		{
-			try
-			{
-				dictionary.Add(resourcePath, new AssetBundleInfo(assetBunleUrl, assetBunleHash, assetBunleSize));
-			}
-			catch
-			{
-				Debug.LogError(resourcePath + "is already contains in assetbundleManger");
-			}
+			AddAssetBundleInfo(resourcePath, new AssetBundleInfo(assetBunleUrl, assetBunleHash, assetBunleSize));
+		}
+
+		//アセットバンドルの情報を追加(キャッシュを使わない場合)
+		public void AddAssetBundleInfo(string resourcePath, string assetBundleUrl)
+		{
+			AddAssetBundleInfo(resourcePath, new AssetBundleInfo(assetBundleUrl));
 		}
 
 		//アセットバンドルマニフェストの情報を追加
@@ -109,16 +111,28 @@ namespace Utage
 		{
 			foreach (string name in manifest.GetAllAssetBundles())
 			{
-				Hash128 assetBundleHash = manifest.GetAssetBundleHash(name);
 				string path = FilePathUtil.Combine(rootUrl, name);
-				try
+				if (CacheLoad)
 				{
-					dictionary.Add(path, new AssetBundleInfo(path, assetBundleHash));
+					Hash128 assetBundleHash = manifest.GetAssetBundleHash(name);
+					AddAssetBundleInfo(path, new AssetBundleInfo(path, assetBundleHash));
 				}
-				catch
+				else
 				{
-					Debug.LogError(path + "is already contains in assetbundleManger");
+					AddAssetBundleInfo(path, new AssetBundleInfo(path));
 				}
+			}
+		}
+
+		void AddAssetBundleInfo( string key, AssetBundleInfo info )
+		{
+			try
+			{
+				dictionary.Add(key, info);
+			}
+			catch
+			{
+				Debug.LogError(key + "is already contains in AssetBundleManger");
 			}
 		}
 

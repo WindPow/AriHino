@@ -180,6 +180,9 @@ namespace Utage
 		[SerializeField]
 		bool isStopSoundOnEnd = true;
 
+		[SerializeField]
+		bool isStopVoiceOnSoundStop = true;
+
 		//パラメーターに言語設定があればそれに合わせる
 		public string LanguageKeyOfParam { get { return languageKeyOfParam; } }
 		[SerializeField]
@@ -502,6 +505,10 @@ namespace Utage
 				SoundManager.StopBgm();
 				SoundManager.StopAmbience();
 				SoundManager.StopAllLoop();
+				if (isStopVoiceOnSoundStop)
+				{
+					SoundManager.StopVoice();
+				}
 			}
 
 			if(MessageWindowManager==null)

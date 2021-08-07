@@ -114,6 +114,19 @@ namespace Utage
 
 		void OnSpriteClick(BaseEventData eventData, AdvSelection select)
 		{
+			PointerEventData data = eventData as PointerEventData;
+			if (data != null)
+			{
+				//シングルクリックと左クリックのみに反応
+				switch (data.pointerId)
+				{
+					case -1:
+					case 0:
+						break;
+					default:
+						return;
+				}
+			}
 			Select(select);
 		}
 

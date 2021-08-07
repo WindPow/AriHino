@@ -29,6 +29,11 @@ namespace Utage
 		public static StringGridDictionary Read( string path, char ignoreSheetMark, bool parseFormula, bool parseNumreic)
 		{
 			UnityEngine.Profiling.Profiler.BeginSample("ReadExcel");
+			
+#if UNITY_2019_1_OR_NEWER
+			var oldCulture = System.Globalization.CultureInfo.CurrentCulture;
+			System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+#endif
 			StringGridDictionary gridDictionary = new StringGridDictionary();
 			if ( IsExcelFile(path) )
 			{
@@ -45,6 +50,9 @@ namespace Utage
 					}
 				}
 			}
+#if UNITY_2019_1_OR_NEWER
+			System.Globalization.CultureInfo.CurrentCulture = oldCulture;
+#endif
 			UnityEngine.Profiling.Profiler.EndSample();
 			return gridDictionary;
 		}

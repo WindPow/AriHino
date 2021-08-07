@@ -90,6 +90,7 @@ namespace Utage
 		//　キャンバスのRectTransformをリセットして初期状態に
 		internal override void ResetCanvasRectTransform()
 		{
+			DestroyAllAnimations();
 			RectTransform rectTransform = this.Canvas.transform as RectTransform;
 
 			//今のゲーム画面の大きさと、宴のLayerシートの設定データから
@@ -105,6 +106,8 @@ namespace Utage
 			rectTransform.SetSize(width, height);
 			//スケーリング値の設定
 			rectTransform.localScale = SettingData.Scale / Manager.PixelsToUnits;
+			//回転値の設定
+			rectTransform.localRotation = Quaternion.identity;
 		}
 	}
 }

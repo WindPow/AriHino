@@ -43,7 +43,11 @@ namespace Utage
 
 		void OnDestroy()
 		{
-			ReleaseTemporary();
+			if (this.copyTemporary != null)
+			{
+				RenderTexture.ReleaseTemporary(this.copyTemporary);
+				this.copyTemporary = null;
+			}
 		}
 
 		//初期化処理
@@ -92,6 +96,17 @@ namespace Utage
 			{
 				ParentObject.FadeIn(fadeTime);
 			}
+		}
+
+		//ルール画像つきのフェードコンポーネントの初期化のみ行う
+		public override IAnimationRuleFade BeginRuleFade(AdvEngine engine, AdvTransitionArgs data)
+		{
+			UguiTransition transition = this.gameObject.AddComponent<UguiTransition>();
+			transition.BeginRuleFade(
+				engine.EffectManager.FindRuleTexture(data.TextureName),
+				data.Vague,
+				RenderTextureSpace.RenderTextureType == AdvRenderTextureMode.Image);
+			return transition;
 		}
 
 		//ルール画像つきのフェードイン

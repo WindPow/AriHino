@@ -135,19 +135,31 @@ namespace Utage
 
 		void OnComplete()
 		{
+			DestroyComponent(true);
 			if (onComplete != null) onComplete();
 			if (AutoDestory) Destroy(this);
 		}
 
 		void OnDestroy()
 		{
+			DestroyComponent(false);
+		}
+
+		public void DestroyComponentImmediate()
+		{
+			DestroyComponent(true);
+		}
+		void DestroyComponent(bool immediate)
+		{
 			if (lecayAnimation != null)
 			{
-				Destroy(lecayAnimation);
+				lecayAnimation.RemoveComponentMySelf(immediate);
+				lecayAnimation = null;
 			}
 			if (this.animator)
 			{
-				Destroy(animator);
+				animator.RemoveComponentMySelf(immediate);
+				animator = null;
 			}
 		}
 

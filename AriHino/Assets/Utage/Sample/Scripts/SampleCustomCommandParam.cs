@@ -103,8 +103,8 @@ namespace Utage
 						Debug.LogError(valueName + " is not parameter name");
 						return;
 					}
-					//指定の値と、値だったらカウントアップ
-					if ((string)data.Parameter == countValue)
+					//指定の値（文字列として比較）だったらカウントアップ
+					if (data.ParameterString == countValue)
 					{
 						++count;
 					}

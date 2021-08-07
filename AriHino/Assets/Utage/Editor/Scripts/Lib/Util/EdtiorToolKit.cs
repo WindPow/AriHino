@@ -93,10 +93,13 @@ namespace Utage
 			}
 			else
 			{
+#if UNITY_2020_2_OR_NEWER
+				EditorGUILayout.PropertyField(property, new GUIContent(label), options);
+#else
 				EditorGUILayout.PropertyField(property, new GUIContent(label), true, options);
+#endif
 			}
 		}
-
 		public static T PrefabField<T>(string title, T currentPrefab) where T : Component
 		{
 			GameObject asset = (currentPrefab != null) ? currentPrefab.gameObject : null;

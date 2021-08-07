@@ -333,6 +333,12 @@ namespace Utage
 		//エフェクトスキップが呼ばれている
 		bool HasEffectSkipped { get; set; }
 
+		//ページの終端か
+		bool IsPageEnd
+		{
+			get {return CurrentTextDataInPage == null || CurrentTextDataInPage.IsPageEnd; }
+		}
+
 		/// <summary>
 		/// クリア
 		/// </summary>
@@ -357,6 +363,7 @@ namespace Utage
 			this.CurrentData = currentPageData;
 			this.CurrentTextLength = 0;
 			this.CurrentTextLengthMax = 0;
+			this.CurrentTextDataInPage = null;
 			this.deltaTimeSendMessage = 0;
 			this.Contoller.Clear();
 			this.TextData = new TextData("");
@@ -718,7 +725,7 @@ namespace Utage
 			this.OnEndText.Invoke(this);
 			CurrentTextLength = CurrentTextLengthMax;
 			//ページ末端で選択肢の入力待ちをする場合はすぐに次のコマンドへ
-			if (CurrentTextDataInPage.IsPageEnd && Engine.SelectionManager.TryStartWaitInputIfShowing())
+			if (IsPageEnd && Engine.SelectionManager.TryStartWaitInputIfShowing())
 			{
 				ToNextCommand();
 				return;
@@ -726,7 +733,7 @@ namespace Utage
 
 			if (Contoller.IsWaitInput)
 			{
-				if (CurrentTextDataInPage.IsPageEnd)
+				if (IsPageEnd)
 				{
 					if (Engine.ScenarioPlayer.MainThread.WaitManager.IsWaitingPageEndEffect)
 					{
@@ -761,7 +768,7 @@ namespace Utage
 		{			
 			//文字送りをしておく
 			CurrentTextLength = CurrentTextLengthMax;
-			if (CurrentTextDataInPage.IsPageEnd)
+			if (IsPageEnd)
 			{
 				Status = PageStatus.None;
 			}
@@ -837,6 +844,10 @@ namespace Utage
 			if ( !Mathf.Approximately(speed,lastSkippedSpeed))
 			{
 				foreach (var item in Engine.GraphicManager.GetComponentsInChildren<IAdvSkipSpeed>())
+				{
+					item.OnChangeSkipSpeed(speed);
+				}
+				foreach (var item in Engine.CameraManager.GetComponentsInChildren<IAdvSkipSpeed>())
 				{
 					item.OnChangeSkipSpeed(speed);
 				}

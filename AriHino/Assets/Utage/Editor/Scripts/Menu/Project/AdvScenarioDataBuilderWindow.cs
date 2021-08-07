@@ -188,6 +188,8 @@ namespace Utage
 			UtageEditorToolKit.PropertyField(serializedObject, "parseFormula", "Parse Formula");
 			UtageEditorToolKit.PropertyField(serializedObject, "parseNumreic", "Parse Numreic");
 			UtageEditorToolKit.PropertyField(serializedObject, "enableCommentOutOnImport", "Comment Out On Import");
+			UtageEditorToolKit.PropertyField(serializedObject, "checkBlankRowCountOnImport", "Check Blank Row Count On Import");
+			UtageEditorToolKit.PropertyField(serializedObject, "checkColumnCountOnImport", "Check Column Count On Import");
 
 			if (GUILayout.Button("Import", GUILayout.Width(180)))
 			{

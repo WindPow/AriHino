@@ -43,7 +43,7 @@
 		Lighting Off
 		ZWrite Off
 		ZTest [unity_GUIZTestMode]
-		Blend One SrcAlpha, One OneMinusSrcAlpha
+		Blend One OneMinusSrcAlpha, One One
 		ColorMask [_ColorMask]
 
 		Pass
@@ -125,7 +125,7 @@
 				half4 color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd);
 #endif
 				color.rgb *= IN.color.rgb*IN.color.a;
-				color.a = 1 - (1 - color.a)*(IN.color.a);
+				color.a = (1 - color.a)*(IN.color.a);
 				color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
 
 				#ifdef UNITY_UI_ALPHACLIP

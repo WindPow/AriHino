@@ -17,7 +17,7 @@ namespace Utage
 		bool EnableSave { get; set; }
 
 		public AdvCommandPlayAnimatin(StringGridRow row, AdvSettingDataManager dataManager)
-			: base(row)
+			: base(row,dataManager)
 		{
 			this.animationName = ParseCell<string>(AdvColumnName.Arg2);
 			EnableSave = ParseCellOptional(AdvColumnName.Arg3,true); 

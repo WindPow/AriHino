@@ -17,14 +17,16 @@ namespace Utage
 		string ruleImage;
 		float vague;
 		Timer Timer { get; set; }
+		AdvAnimationData animationData;
+		protected AdvAnimationPlayer AnimationPlayer { get; set; }
 
-		public AdvCommandFadeBase(StringGridRow row, bool inverse)
-			: base(row)
+		protected AdvCommandFadeBase(StringGridRow row, AdvSettingDataManager dataManager, bool inverse)
+			: base(row, dataManager)
 		{
 			this.inverse = inverse;
 		}
 
-		protected override void OnParse()
+		protected override void OnParse(AdvSettingDataManager dataManager)
 		{
 			this.color = ParseCellOptional<Color>(AdvColumnName.Arg1, Color.white);
 			if (IsEmptyCell(AdvColumnName.Arg2))
@@ -37,11 +39,28 @@ namespace Utage
 				this.targetName = ParseCell<string>(AdvColumnName.Arg2);
 			}
 
-			this.time = ParseCellOptional<float>(AdvColumnName.Arg6,0.2f);
 			this.ruleImage = ParseCellOptional(AdvColumnName.Arg3, "");
 			this.vague = ParseCellOptional(AdvColumnName.Arg4, 0.2f);
-
 			this.targetType = AdvEffectManager.TargetType.Camera;
+			string arg6 = ParseCellOptional<string>(AdvColumnName.Arg6,"");
+			this.animationData = null;
+			this.time = 0.2f;
+			if (!arg6.IsNullOrEmpty())
+			{
+				float f;
+				if (WrapperUnityVersion.TryParseFloatGlobal(arg6, out f))
+				{
+					time = f;
+				}
+				else
+				{
+					animationData = dataManager.AnimationSetting.Find(arg6);
+					if (animationData == null)
+					{
+						Debug.LogError(RowData.ToErrorString("Animation " + arg6 + " is not found"));
+					}
+				}
+			}
 
 			ParseWait(AdvColumnName.WaitType);
 		}
@@ -104,35 +123,57 @@ namespace Utage
 				ruleFade.color = color;
 			}
 
-			Timer = camera.gameObject.AddComponent<Timer>();
-			Timer.AutoDestroy = true;
-			Timer.StartTimer(
-				engine.Page.ToSkippedTime(this.time),
-				engine.Time.Unscaled,
-				(x) =>
-				{
-					effectStrength.Strength = x.GetCurve(start, end);
-				},
-				(x) =>
-				{
-					OnComplete(thread);
-					if (inverse)
+			if (animationData==null)
+			{
+				Timer = camera.gameObject.AddComponent<Timer>();
+				Timer.AutoDestroy = true;
+				Timer.StartTimer(
+					engine.Page.ToSkippedTime(this.time),
+					engine.Time.Unscaled,
+					(x) =>
 					{
-						imageEffect.enabled = false;
-						imageEffect.RemoveComponentMySelf();
-					}
-				});
+						effectStrength.Strength = x.GetCurve(start, end);
+					},
+					(x) =>
+					{
+						OnComplete(thread);
+						if (inverse)
+						{
+							imageEffect.enabled = false;
+							imageEffect.RemoveComponentMySelf();
+						}
+					});
+			}
+			else
+			{
+				//アニメーションを再生
+				AnimationPlayer = imageEffect.gameObject.AddComponent<AdvAnimationPlayer>();
+				AnimationPlayer.AutoDestory = true;
+				AnimationPlayer.Play(animationData.Clip, engine.Page.SkippedSpeed,
+					() =>
+					{
+						OnComplete(thread);
+					});
+
+			}
 		}
 		
 		public void OnEffectSkip()
 		{
-			if (Timer == null) return;
-			Timer.SkipToEnd();
+			if (Timer != null)
+			{
+				Timer.SkipToEnd();
+			}
+			if (AnimationPlayer != null)
+			{
+				AnimationPlayer.SkipToEnd();
+			}
 		}
 
 		public void OnEffectFinalize()
 		{
 			Timer = null;
+			AnimationPlayer = null;
 		}
 	}
 }

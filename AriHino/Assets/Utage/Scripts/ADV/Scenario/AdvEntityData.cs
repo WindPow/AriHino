@@ -35,10 +35,9 @@ namespace Utage
 			string[] strings = original.EntityData.CreateCommandStrings(engine.Param.GetParameter);
 			row.InitFromStringArray(strings);
 			AdvCommand entityCommand = AdvCommandParser.CreateCommand(original.Id, row, engine.DataManager.SettingDataManager);
-			if (entityCommand is AdvCommandText)
+			if (entityCommand is IAdvInitOnCreateEntity)
 			{
-				AdvCommandText textCommand = entityCommand as AdvCommandText;
-				textCommand.InitOnCreateEntity(original as AdvCommandText);
+				(entityCommand as IAdvInitOnCreateEntity).InitOnCreateEntity(original);
 			}
 			return entityCommand;
 		}

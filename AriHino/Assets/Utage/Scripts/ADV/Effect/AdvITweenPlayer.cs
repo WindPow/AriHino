@@ -180,16 +180,18 @@ namespace Utage
 			{
 				Debug.LogError("Tween is missing");
 			}
+
+			TrySetImmediately();
 		}
 
 		void PlaySub()
 		{
-
 			if (isColorSprite)
 			{
 				iTween.ValueTo(gameObject, hashTbl);
 				return;
 			}
+
 
 			switch (data.Type)
 			{
@@ -259,6 +261,31 @@ namespace Utage
 					break;
 			}
 		}
+
+		//時間がゼロ秒だった場合に、即座に終わらせる
+		bool TrySetImmediately()
+		{
+			if (Tween == null) return false;
+
+			if (data.Loop != iTween.LoopType.none) return false;
+			
+			var time = hashTbl["time"];
+			if (time == null) return false;
+			if ((float)time > 0.0f)
+			{
+				return false;
+			}
+
+			var delay = hashTbl["delay"];
+			if (delay != null && (float)delay > 0.0f) return false;
+
+			Tween.time = 0;
+			Tween.SendMessage("Start");
+			Tween.SendMessage("Update");
+			Tween.SendMessage("Update");
+			return true;
+		}
+		
 
 		private void Update()
 		{
@@ -446,14 +473,32 @@ namespace Utage
 
 		public void SkipToEnd()
 		{
+#if false
 			iTween[] tweenList = GetComponents<iTween>();
 			foreach (iTween tween in tweenList)
 			{
-				if ( Mathf.Approximately(tween.time,0)) continue;
-				tween.delay = 0;
-				tween.time = 0;
-				tween.SendMessage("Update");
+				SkipTween(tween);
 			}
+#else
+			if (Tween != null)
+			{
+				SkipTween(Tween);
+			}
+			else
+			{
+				Debug.LogError("Failed Tween Skip");
+			}
+#endif
+		}
+
+		void SkipTween(iTween tween)
+		{
+			if(tween==null) return;
+			if (Mathf.Approximately(tween.time, 0)) return;
+
+			tween.delay = 0;
+			tween.time = 0;
+			tween.SendMessage("Update");
 		}
 	}
 }

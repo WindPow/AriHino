@@ -56,7 +56,20 @@ namespace Utage
 
 		
 		//テキストが今のフレームで更新されているか（falseの場合はリップシンクが止まる）
-		public bool UpdatingText { get; set; }
+		public bool UpdatingText
+		{
+			get
+			{
+				return updatingText;
+			}
+			set
+			{
+				updatingText = value;
+			}
+		}
+
+		private bool updatingText = false;
+		
 		//テキストの更新チェック
 		public LipSynchEvent OnCheckUpdateingText = new LipSynchEvent();
 
@@ -105,7 +118,22 @@ namespace Utage
 		}
 
 		//更新
-		protected virtual void Update()
+		//Updateだと、CheckUpdatingTextで取得する判定先(AdvPageのUpdateText)のUpdateがされていなくて早すぎる可能性がある
+		//なので、コルーチン（すべてのUpdateの後に実行された後）を使うことでタイミングを遅らせる。
+		protected void Start()
+		{
+			StartCoroutine(CoUpdate());
+		}
+		protected virtual IEnumerator CoUpdate()
+		{
+			while (true)
+			{
+				UpdateSub();
+				yield return null;
+			}
+		}
+		
+		protected virtual void UpdateSub()
 		{
 			bool isVoice = CheckVoiceLipSync();
 			bool isText = CheckTextLipSync();

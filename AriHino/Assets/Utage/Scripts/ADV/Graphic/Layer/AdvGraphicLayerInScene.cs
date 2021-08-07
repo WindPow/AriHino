@@ -35,6 +35,7 @@ namespace Utage
 		Vector3 defaultPosition = new Vector3();
 		Vector2 defaultSize = new Vector2();
 		Vector3 defaultScale = new Vector3();
+		Quaternion defaultRotation = new Quaternion();
 
 		//初期化
 		internal override void Init(AdvGraphicManager manager)
@@ -50,12 +51,14 @@ namespace Utage
 			defaultPosition = rectTransform.localPosition;
 			defaultSize = rectTransform.GetSize();
 			defaultScale = rectTransform.localScale;
+			defaultRotation = rectTransform.rotation;
 		}
 
 
 		//　キャンバスのRectTransformをリセットして初期状態に
 		internal override void ResetCanvasRectTransform()
 		{
+			DestroyAllAnimations();
 			RectTransform rectTransform = this.transform as RectTransform;
 
 			//テクスチャ書き込みが無効な場合、位置をそのまま設定
@@ -64,6 +67,8 @@ namespace Utage
 			rectTransform.SetSize(defaultSize);
 			//スケーリング値の設定
 			rectTransform.localScale = defaultScale;
+			//回転値の設定
+			rectTransform.rotation = defaultRotation;
 		}
 	}
 }

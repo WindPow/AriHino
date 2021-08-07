@@ -9,6 +9,7 @@ namespace Utage
 	/// コマンド：ランダムにサブルーチンへジャンプ
 	/// </summary>
 	internal class AdvCommandJumpSubroutineRandom : AdvCommand
+		, IAdvInitOnCreateEntity
 	{
 		public AdvCommandJumpSubroutineRandom(StringGridRow row, AdvSettingDataManager dataManager)
 			: base(row)
@@ -49,6 +50,13 @@ namespace Utage
 		{
 			this.scenarioLabel = pageData.ScenarioLabelData.ScenarioLabel;
 			this.subroutineCommandIndex = pageData.ScenarioLabelData.CountSubroutineCommandIndex(this);
+		}
+		//エンティティコマンドとして利用
+		public void InitOnCreateEntity(AdvCommand original)
+		{
+			AdvCommandJumpSubroutineRandom originalCommand = original as AdvCommandJumpSubroutineRandom; 
+			this.scenarioLabel = originalCommand.scenarioLabel;
+			this.subroutineCommandIndex = originalCommand.subroutineCommandIndex;
 		}
 
 		public override string[] GetJumpLabels()
