@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e15421ebe216942b2013a5bacd1bef, type: 3}
+  m_Name: Erena
+  m_EditorClassIdentifier: 
+  categories:
+  - name: Hair_r
+    sortOrder: 0
+    tag: hair_r
+    sprites:
+    - {fileID: 21300000, guid: 491b0b6cd5509614ba2cffd3f3e39d28, type: 3}
+  - name: Body
+    sortOrder: 1
+    tag: body
+    sprites:
+    - {fileID: 21300000, guid: b3de4276b4498754f9cfeb02da6906e4, type: 3}
+  - name: Head
+    sortOrder: 2
+    tag: head
+    sprites:
+    - {fileID: 21300000, guid: e5030191649d75d4895e2f729bea2c9f, type: 3}
+  - name: Hair_f
+    sortOrder: 3
+    tag: hair_f
+    sprites:
+    - {fileID: 21300000, guid: 943a72775ca2679448398a3f2d906c81, type: 3}
+  - name: Eye
+    sortOrder: 4
+    tag: eye
+    sprites:
+    - {fileID: 21300000, guid: 9f742801073e753429b23a2461f1ab20, type: 3}
+    - {fileID: 21300000, guid: 8a1b6cd38a68068418df1edb4fc6eda8, type: 3}
+    - {fileID: 21300000, guid: 5c631fef422f9654a8bcc9e99cdf57f2, type: 3}
+    - {fileID: 21300000, guid: 73859d973c2c54d4b90745b4b252c036, type: 3}
+    - {fileID: 21300000, guid: 8ad7e4273e232eb469b0442bacf5008b, type: 3}
+    - {fileID: 21300000, guid: 7a1ffa1a41124cb4f8c12fae8a8839cd, type: 3}
+  - name: Face
+    sortOrder: 5
+    tag: face
+    sprites:
+    - {fileID: 21300000, guid: 043188824154d9746a99ccc1d1aad90d, type: 3}
+    - {fileID: 21300000, guid: 13e5ec28439ce8247863dc821c109a12, type: 3}
+    - {fileID: 21300000, guid: 3f19516040fc28443a21dde2cb95e1dc, type: 3}
+    - {fileID: 21300000, guid: 6b6f987058a6b0c47b0f28c9a5b550d3, type: 3}
+  - name: Mayu
+    sortOrder: 6
+    tag: mayu
+    sprites:
+    - {fileID: 21300000, guid: 64983a474e1ba2a4a87f26e40dc726ae, type: 3}
+    - {fileID: 21300000, guid: 97c2b4736402f9246ac467c143a90255, type: 3}
+    - {fileID: 21300000, guid: 8230ea1d22f4af94fb69f2bc2c3879cb, type: 3}
+    - {fileID: 21300000, guid: e8b1a9b472069cb4c9257e295b5ee8cf, type: 3}
+    - {fileID: 21300000, guid: 5ea32ad32d20b5c48a6890c164c13443, type: 3}
+  - name: Lip
+    sortOrder: 7
+    tag: lip
+    sprites:
+    - {fileID: 21300000, guid: 1cf4be579fbbeed40bcdcd90dc1531a5, type: 3}
+    - {fileID: 21300000, guid: 6b1743e9316074647be2f34bf52226f7, type: 3}
+    - {fileID: 21300000, guid: 946d3eebdf5389f47811cd81f7502293, type: 3}
+    - {fileID: 21300000, guid: 6205d06020c6338459abd69cdcb46084, type: 3}
+    - {fileID: 21300000, guid: f59317beff1d7da4b8b36a22d93fd3ae, type: 3}
+    - {fileID: 21300000, guid: 6d97c839b18815d4c9d78d0e429546e0, type: 3}
+    - {fileID: 21300000, guid: 71b1dae1d1ab4fb4b888042347781055, type: 3}
+    - {fileID: 21300000, guid: 6371353421e53cc4d95f88bb067b0ff8, type: 3}
+    - {fileID: 21300000, guid: d9633bcbb3e102147b8b1e6a57a6e35f, type: 3}
+    - {fileID: 21300000, guid: 96d8c5e30d33cb843a49c362806dbc2d, type: 3}
+    - {fileID: 21300000, guid: 8fe87c2f1faafe24d97e83de22feb1a4, type: 3}
+    - {fileID: 21300000, guid: eb9cf659da5e4a14a8f0ab2bdf0c6e60, type: 3}
+    - {fileID: 21300000, guid: a26a9be8c9e79374380071f6a956bd3b, type: 3}
+    - {fileID: 21300000, guid: db3300ea317e3de4ebb53804a131df4a, type: 3}
+  - name: Nose
+    sortOrder: 8
+    tag: nose
+    sprites:
+    - {fileID: 21300000, guid: 2f2493e2767b5fa4bb39b854cacfbe80, type: 3}
+  tagList:
+  - body
+  - face
+  - mayu
+  - eye
+  - lip
+  - hair_f
+  - hair_r
+  - head
+  - 
+  - nose
+  optionTag: accessory
+  size: {x: 1200, y: 1920}
+  dataList:
+    list:
+    - folder: {fileID: 102900000, guid: 2e11e167006fc1c46b43edede1f5ef71, type: 3}
+      tag: hair_r
+    - folder: {fileID: 102900000, guid: 2c5127953505c6940bf65e17f5a95e7c, type: 3}
+      tag: body
+    - folder: {fileID: 102900000, guid: 2c05f5c96ae7ee3469e73ef6053412f7, type: 3}
+      tag: head
+    - folder: {fileID: 102900000, guid: 6567b41565620894d848baabd02ee737, type: 3}
+      tag: hair_f
+    - folder: {fileID: 102900000, guid: 07bd86f50d47df749910f2671de3cac5, type: 3}
+      tag: eye
+    - folder: {fileID: 102900000, guid: f2414120e4538104e9df42fd8977016c, type: 3}
+      tag: face
+    - folder: {fileID: 102900000, guid: 810949f7b77fee64da29c8446edd5334, type: 3}
+      tag: mayu
+    - folder: {fileID: 102900000, guid: 934e15a2b57688f47a58a84406439a82, type: 3}
+      tag: lip
+    - folder: {fileID: 102900000, guid: afc21939f1e358848935abb1b0d6dee8, type: 3}
+      tag: nose
+  reimportResourcesButton: 
+  applyButton: 
+  previewPattern:
+    avatarPatternDataList:
+    - tag: hair_r
+      patternName: hairR
+    - tag: body
+      patternName: erena
+    - tag: head
+      patternName: head
+    - tag: hair_f
+      patternName: hairF
+    - tag: eye
+      patternName: eyesA
+    - tag: face
+      patternName: None
+    - tag: mayu
+      patternName: mayu1
+    - tag: lip
+      patternName: 1
+    - tag: nose
+      patternName: nose
+    optionPatternNameList: []
+  updateFunction: 0
