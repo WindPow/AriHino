@@ -92,7 +92,6 @@ MonoBehaviour:
   - hair_f
   - hair_r
   - head
-  - 
   - nose
   optionTag: accessory
   size: {x: 1200, y: 1920}
@@ -129,13 +128,13 @@ MonoBehaviour:
     - tag: hair_f
       patternName: hairF
     - tag: eye
-      patternName: eyesA
+      patternName: eyes
     - tag: face
-      patternName: None
+      patternName: red
     - tag: mayu
       patternName: mayu1
     - tag: lip
-      patternName: 1
+      patternName: 2
     - tag: nose
       patternName: nose
     optionPatternNameList: []

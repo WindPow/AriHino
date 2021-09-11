@@ -40,12 +40,519 @@ MonoBehaviour:
       - Icon
       - IconSubFileName
       - IconRect
+      - hair_r
+      - body
+      - head
+      - hair_f
+      - face
+      - eye
+      - lip
+      - nose
+      - mayu
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - "\u30A8\u30EC\u30CA"
+      - 
+      - "\u901A\u5E38"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - None
+      - eyes
+      - 2
+      - nose
+      - mayu1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings:
+      - 
+      - 
+      - "\u7B11\u9854"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - red
+      - eyes
+      - smile
+      - nose
+      - mayu2
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings:
+      - 
+      - 
+      - "\u60B2\u3057\u307F"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - None
+      - eyes
+      - 1
+      - nose
+      - mayu4
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 5
+      strings:
+      - 
+      - 
+      - "\u5FC3\u914D"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - sweat
+      - eyesB
+      - 6
+      - nose
+      - mayu4
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 6
+      strings:
+      - 
+      - 
+      - "\u6D99"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - tears2
+      - eyesB
+      - 7
+      - nose
+      - mayu4
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 7
+      strings:
+      - 
+      - 
+      - "\u6211\u6162"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - tears1
+      - eyes
+      - 1
+      - nose
+      - mayu3
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 8
+      debugIndex: 8
+      strings:
+      - 
+      - 
+      - "\u76EE\u7791\u308A"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - tears1
+      - eyesA
+      - 1
+      - nose
+      - mayu1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 9
+      strings:
+      - 
+      - 
+      - "\u30C9\u30E4"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - None
+      - eyesB
+      - 4
+      - nose
+      - mayu3
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 10
+      debugIndex: 10
+      strings:
+      - 
+      - 
+      - "\u6012\u308A\u672C\u6C17"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - None
+      - eyes
+      - 7
+      - nose
+      - mayu5
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 11
+      strings:
+      - 
+      - 
+      - "\u6012\u308A"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - None
+      - eyes
+      - 1
+      - nose
+      - mayu3
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 12
+      debugIndex: 12
+      strings:
+      - 
+      - 
+      - "\u7F9E\u6065\u9A5A\u6115"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - red
+      - eyesB
+      - 7
+      - nose
+      - mayu2
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings:
+      - 
+      - 
+      - "\u7F9E\u6065\u6012\u308A"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - red
+      - eyes
+      - 1
+      - nose
+      - mayu3
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 14
+      strings:
+      - 
+      - 
+      - "\u5BDD\u9854"
+      - 
+      - -550
+      - 
+      - 
+      - 1
+      - 
+      - Erena.asset
+      - 
+      - Avatar
+      - 
+      - Image
+      - 0,2,1025,1800
+      - "\u76EE\u30D1\u30C1"
+      - 
+      - 
+      - 
+      - 
+      - hairR
+      - erena
+      - head
+      - hairF
+      - None
+      - eyesD
+      - lipB
+      - nose
+      - mayu1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 15
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 16
+      debugIndex: 16
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 17
+      debugIndex: 17
+      strings:
+      - "\u30B7\u30F3"
+      - 
+      - "\u901A\u5E38"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 18
+      debugIndex: 18
+      strings:
+      - "\u30B7\u30F3"
+      - 
+      - "\u4F38\u3070\u3057"
+      - -480
+      - -200
+      - 
+      - 
+      - 1
+      - 
+      - sin/hand.png
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     name: Assets/Adv/Adv.xls:Character
     type: 1
-    textLength: 154
+    textLength: 1315
     headerRow: 0
     sourceAssetInEditor: {fileID: 0}
   - rows:
@@ -114,9 +621,53 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings:
+      - "\u30AD\u30E3\u30E9\u4E2D\u592E"
+      - Character
+      - 0
+      - 0
+      - 200
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - "\u30AD\u30E3\u30E9\u5DE6"
+      - Character
+      - -250
+      - 0
+      - 190
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings:
+      - "\u30AD\u30E3\u30E9\u53F3"
+      - Character
+      - 250
+      - 0
+      - 190
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings:
+      - "\u30AD\u30E3\u30E9\u4E2D\u592E\u4E0A"
+      - Character
+      - 0
+      - 0
+      - 210
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/Adv/Adv.xls:Layer
     type: 1
-    textLength: 109
+    textLength: 189
     headerRow: 0
     sourceAssetInEditor: {fileID: 0}
   - rows:
@@ -141,9 +692,30 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings:
+      - "*\u76EE\u30D1\u30C1"
+      - 2
+      - 6
+      - .2
+      - eye
+      - '*_2'
+      - .06666
+      - '*_3'
+      - .06666
+      - '*_4'
+      - .06666
+      - '*_3'
+      - .06666
+      - '*_2'
+      - .06666
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/Adv/Adv.xls:EyeBlink
     type: 1
-    textLength: 112
+    textLength: 168
     headerRow: 0
     sourceAssetInEditor: {fileID: 0}
   - rows:
