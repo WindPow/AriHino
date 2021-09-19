@@ -44,7 +44,8 @@ MonoBehaviour:
       - body
       - head
       - hair_f
-      - face
+      - emotion1
+      - emotion2
       - eye
       - lip
       - nose
@@ -86,6 +87,7 @@ MonoBehaviour:
       - head
       - hairF
       - None
+      - None
       - eyes
       - 2
       - nose
@@ -121,6 +123,7 @@ MonoBehaviour:
       - head
       - hairF
       - red
+      - None
       - eyes
       - smile
       - nose
@@ -155,6 +158,7 @@ MonoBehaviour:
       - erena
       - head
       - hairF
+      - None
       - None
       - eyes
       - 1
@@ -191,6 +195,7 @@ MonoBehaviour:
       - head
       - hairF
       - sweat
+      - None
       - eyesB
       - 6
       - nose
@@ -225,6 +230,7 @@ MonoBehaviour:
       - erena
       - head
       - hairF
+      - red
       - tears2
       - eyesB
       - 7
@@ -261,6 +267,7 @@ MonoBehaviour:
       - head
       - hairF
       - tears1
+      - None
       - eyes
       - 1
       - nose
@@ -296,6 +303,7 @@ MonoBehaviour:
       - head
       - hairF
       - tears1
+      - None
       - eyesA
       - 1
       - nose
@@ -331,10 +339,11 @@ MonoBehaviour:
       - head
       - hairF
       - None
+      - None
       - eyesB
       - 4
       - nose
-      - mayu3
+      - mayu2
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -365,6 +374,7 @@ MonoBehaviour:
       - erena
       - head
       - hairF
+      - None
       - None
       - eyes
       - 7
@@ -401,6 +411,7 @@ MonoBehaviour:
       - head
       - hairF
       - None
+      - None
       - eyes
       - 1
       - nose
@@ -436,6 +447,7 @@ MonoBehaviour:
       - head
       - hairF
       - red
+      - None
       - eyesB
       - 7
       - nose
@@ -471,6 +483,7 @@ MonoBehaviour:
       - head
       - hairF
       - red
+      - None
       - eyes
       - 1
       - nose
@@ -505,6 +518,7 @@ MonoBehaviour:
       - erena
       - head
       - hairF
+      - None
       - None
       - eyesD
       - lipB
@@ -552,7 +566,7 @@ MonoBehaviour:
       debugInfo: 
     name: Assets/Adv/Adv.xls:Character
     type: 1
-    textLength: 1315
+    textLength: 1378
     headerRow: 0
     sourceAssetInEditor: {fileID: 0}
   - rows:

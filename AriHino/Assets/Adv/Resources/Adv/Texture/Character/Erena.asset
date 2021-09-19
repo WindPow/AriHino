@@ -43,16 +43,24 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 73859d973c2c54d4b90745b4b252c036, type: 3}
     - {fileID: 21300000, guid: 8ad7e4273e232eb469b0442bacf5008b, type: 3}
     - {fileID: 21300000, guid: 7a1ffa1a41124cb4f8c12fae8a8839cd, type: 3}
-  - name: Face
+  - name: Emotion
     sortOrder: 5
-    tag: face
+    tag: emotion1
+    sprites:
+    - {fileID: 21300000, guid: 043188824154d9746a99ccc1d1aad90d, type: 3}
+    - {fileID: 21300000, guid: 13e5ec28439ce8247863dc821c109a12, type: 3}
+    - {fileID: 21300000, guid: 3f19516040fc28443a21dde2cb95e1dc, type: 3}
+    - {fileID: 21300000, guid: 6b6f987058a6b0c47b0f28c9a5b550d3, type: 3}
+  - name: Emotion
+    sortOrder: 6
+    tag: emotion2
     sprites:
     - {fileID: 21300000, guid: 043188824154d9746a99ccc1d1aad90d, type: 3}
     - {fileID: 21300000, guid: 13e5ec28439ce8247863dc821c109a12, type: 3}
     - {fileID: 21300000, guid: 3f19516040fc28443a21dde2cb95e1dc, type: 3}
     - {fileID: 21300000, guid: 6b6f987058a6b0c47b0f28c9a5b550d3, type: 3}
   - name: Mayu
-    sortOrder: 6
+    sortOrder: 7
     tag: mayu
     sprites:
     - {fileID: 21300000, guid: 64983a474e1ba2a4a87f26e40dc726ae, type: 3}
@@ -61,7 +69,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: e8b1a9b472069cb4c9257e295b5ee8cf, type: 3}
     - {fileID: 21300000, guid: 5ea32ad32d20b5c48a6890c164c13443, type: 3}
   - name: Lip
-    sortOrder: 7
+    sortOrder: 8
     tag: lip
     sprites:
     - {fileID: 21300000, guid: 1cf4be579fbbeed40bcdcd90dc1531a5, type: 3}
@@ -79,13 +87,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: a26a9be8c9e79374380071f6a956bd3b, type: 3}
     - {fileID: 21300000, guid: db3300ea317e3de4ebb53804a131df4a, type: 3}
   - name: Nose
-    sortOrder: 8
+    sortOrder: 9
     tag: nose
     sprites:
     - {fileID: 21300000, guid: 2f2493e2767b5fa4bb39b854cacfbe80, type: 3}
   tagList:
   - body
-  - face
+  - emotion1
+  - emotion2
   - mayu
   - eye
   - lip
@@ -108,7 +117,9 @@ MonoBehaviour:
     - folder: {fileID: 102900000, guid: 07bd86f50d47df749910f2671de3cac5, type: 3}
       tag: eye
     - folder: {fileID: 102900000, guid: f2414120e4538104e9df42fd8977016c, type: 3}
-      tag: face
+      tag: emotion1
+    - folder: {fileID: 102900000, guid: f2414120e4538104e9df42fd8977016c, type: 3}
+      tag: emotion2
     - folder: {fileID: 102900000, guid: 810949f7b77fee64da29c8446edd5334, type: 3}
       tag: mayu
     - folder: {fileID: 102900000, guid: 934e15a2b57688f47a58a84406439a82, type: 3}
@@ -128,13 +139,15 @@ MonoBehaviour:
     - tag: hair_f
       patternName: hairF
     - tag: eye
-      patternName: eyes
-    - tag: face
+      patternName: eyesA
+    - tag: emotion1
       patternName: red
+    - tag: emotion2
+      patternName: tears1
     - tag: mayu
       patternName: mayu1
     - tag: lip
-      patternName: 2
+      patternName: 5
     - tag: nose
       patternName: nose
     optionPatternNameList: []
