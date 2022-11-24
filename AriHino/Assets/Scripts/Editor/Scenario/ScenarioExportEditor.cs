@@ -35,7 +35,9 @@ namespace Arihino.Editor
         // 読み込み開始No
         private int hedNo = 1;
         // 読み込み終了No
-        private int endNo = 1;   
+        private int endNo = 1;
+        // 全てのデータを読み込むか
+        private bool isAllInput;
 
         [MenuItem("Custom/ScenarioExportEditor")]
         public static void ShowWindow()
@@ -95,7 +97,13 @@ namespace Arihino.Editor
                 outputFile.Value = EditorGUILayout.ObjectField(outputFile.Value, typeof(DefaultAsset), true) as DefaultAsset;
             }
 
-            if (inputCsvPath == null) return;
+            EditorGUILayout.Space();
+
+            if (inputCsvPath == null) return;           
+
+            isAllInput = EditorGUILayout.Toggle("全てのデータを読み込む", isAllInput);
+
+            EditorGUI.BeginDisabledGroup(isAllInput);
 
             GUILayout.Label("先頭No");
             hedNo = EditorGUILayout.IntField(hedNo);
@@ -106,6 +114,8 @@ namespace Arihino.Editor
             endNo = EditorGUILayout.IntField(endNo);
 
             if (endNo < hedNo) endNo = hedNo;
+
+            EditorGUI.EndDisabledGroup();
 
             EditorGUILayout.Space();
 
@@ -173,6 +183,11 @@ namespace Arihino.Editor
             {
                 if (!xls.Tables.Any() || xls.Tables.Count < outputSheetNum) break;
 
+                if (isAllInput)
+                {
+                    hedNo = 1;
+                    endNo = scenarioDic.Count;
+                }
                 // 先頭Noより前なら飛ばす
                 if (scenario.Key < hedNo) continue;
                 //  終末Noより後なら抜ける
@@ -182,6 +197,8 @@ namespace Arihino.Editor
                 xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Arg1, scenario.Value.CharaName);
                 xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Arg2, scenario.Value.CharaAvatarName);
                 xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Text, scenario.Value.Text);
+                xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.ToWrite, scenario.Value.ToWriteId.ToString());
+                xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Discription, scenario.Value.Description);
             }
 
             ExcelHelper.SaveExcel(xls, outPutPath);

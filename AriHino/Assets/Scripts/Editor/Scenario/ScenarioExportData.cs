@@ -38,7 +38,19 @@ namespace Arihino.Editor
         /// 2 = ‚»‚Ì‘¼
         /// </summary>
         [Index(4)]
-        public int MessageType { get; set; }
+        public string MessageType { get; set; }
+
+        /// <summary>
+        /// ƒg‘‚«—p‚ÌID
+        /// </summary>
+        [Index(5)]
+        public string ToWriteId { get; set; }
+
+        /// <summary>
+        /// Ú×
+        /// </summary>
+        [Index(6)]
+        public string Description { get; set; }
 
     }
 }
