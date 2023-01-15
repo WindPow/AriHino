@@ -29,7 +29,11 @@ namespace Arihino.Editor
 
         // シナリオデータクラスの辞書
         private Dictionary<int, ScenarioExportData> scenarioDic = new Dictionary<int, ScenarioExportData>();
-       
+
+        // 新しくシートを作成するか
+        private bool isNewSheet;
+        // 新しいシート名
+        private string newSheetName;
         // 出力先エクセルファイルのシート番号
         private int outputSheetNum;
         // 読み込み開始No
@@ -75,7 +79,11 @@ namespace Arihino.Editor
 
         private void OnGUI()
         {
-			using (new GUILayout.VerticalScope(EditorStyles.helpBox))
+            if(GUILayout.Button("説明書(コンフルエンスに飛びます)")){
+                Application.OpenURL("https://arihino.atlassian.net/wiki/spaces/ARIHINO/pages/14942209");
+            }
+
+            using (new GUILayout.VerticalScope(EditorStyles.helpBox))
 			{
 				using (new GUILayout.HorizontalScope(EditorStyles.toolbar))
 				{
@@ -119,8 +127,23 @@ namespace Arihino.Editor
 
             EditorGUILayout.Space();
 
+            isNewSheet = EditorGUILayout.Toggle("新しくシートを作成する", isNewSheet);
+
+            EditorGUI.BeginDisabledGroup(!isNewSheet);
+
+            GUILayout.Label("新規シート名");
+            newSheetName = EditorGUILayout.TextField(newSheetName);
+
+            EditorGUI.EndDisabledGroup();
+
+            EditorGUILayout.Space();
+
+            EditorGUI.BeginDisabledGroup(isNewSheet);
+
             GUILayout.Label("シート番号");
             outputSheetNum = EditorGUILayout.IntField(outputSheetNum);
+
+            EditorGUI.EndDisabledGroup();
 
             EditorGUILayout.Space();
 
