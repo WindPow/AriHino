@@ -48,4 +48,5 @@ MonoBehaviour:
   enableCommentOutOnImport: 1
   recourceDir: {fileID: 0}
   checkExt: 0
-  customProjectSetting: {fileID: 0}
+  customProjectSetting: {fileID: 11400000, guid: 52ce21edfe4651140bafe09930b6206c,
+    type: 2}
