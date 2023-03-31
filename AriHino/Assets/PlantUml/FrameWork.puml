@@ -1,0 +1,154 @@
+@startuml フレームワーク
+
+title フレームワーク
+
+interface ISceneManager {
+    シーンのマネージャー
+}
+
+interface IScenePresenter {
+    シーンプレゼンターのインターフェース
+
+    Initialize() : 初期化
+    Display() : 表示開始
+    Delete() : 削除
+}
+
+interface ISceneModel {
+    シーンモデルのインターフェース
+
+    GetData() : データの取得
+}
+
+ISceneManager ..> IScenePresenter : 生成する
+ISceneManager ..> ISceneModel : 生成する
+IScenePresenter -- ISceneModel : 保持する
+
+@enduml
+
+@startuml シーンの管理
+
+title シーンの管理
+
+class SceneManager {
+    *常駐
+    シーンの管理
+}
+
+class AdvManager {
+    *常駐
+    アドベンチャー画面の管理
+}
+
+class StagingManager {
+    *常駐
+    画面に演出を表示する
+}
+
+class ConfigManager {
+    *常駐
+    設定を変更する
+}
+
+class AdvSceneManager {
+    アドベンチャー画面の管理クラス
+}
+
+class TitleSceneManager {
+    タイトル画面の管理クラス
+}
+
+class GallarySceneManager {
+    ギャラリー画面の管理クラス
+}
+
+SceneManager -down-> TitleSceneManager : タイトル画面遷移
+SceneManager -down-> GallarySceneManager : ギャラリー画面遷移
+SceneManager -down-> AdvSceneManager : アドベンチャー画面遷移
+
+AdvManager -- AdvSceneManager
+
+@enduml
+
+@startuml タイトル画面
+
+title タイトル画面
+
+class TitlePresenter {
+    タイトル画面の挙動
+}
+
+class TitleModel {
+    タイトルデータ処理
+}
+
+TitleSceneManager ..> TitlePresenter : <create>
+TitleSceneManager ..> TitleModel : <create>
+TitlePresenter -- TitleModel
+
+@enduml
+
+@startuml アドベンチャー画面
+
+title アドベンチャー画面
+
+class AdvPresenter {
+    アドベンチャー画面の挙動
+}
+
+class AdvModel {
+    アドベンチャーデータ処理
+}
+
+class Utageクラス {
+    Utage周りのクラス
+}
+
+AdvSceneManager ..> AdvPresenter : <create>
+AdvSceneManager ..> AdvModel : <create>
+AdvPresenter -- AdvModel
+
+@enduml
+
+@startuml ギャラリー画面
+
+title ギャラリー画面
+
+class GallaryTopPresenter {
+    ギャラリー画面の挙動クラス
+}
+
+class GallaryTopModel {
+    ギャラリーデータ処理
+}
+
+class GallarySoundPresenter {
+    サウンド鑑賞の挙動クラス
+}
+
+class GallarySoundModel {
+    サウンドデータ処理
+}
+
+class GallaryVisualPresenter {
+    CG閲覧の挙動クラス
+}
+
+class GalalryVisualModel {
+    CG閲覧データ処理
+}
+
+GallarySceneManager ..> GallaryTopPresenter : <create>
+GallarySceneManager ..> GallaryTopModel : <create>
+GallaryTopPresenter -- GallaryTopModel
+
+GallarySceneManager ..> GallarySoundPresenter : <create>
+GallarySceneManager ..> GallarySoundModel : <create>
+GallarySoundPresenter -- GallarySoundModel
+
+GallarySceneManager ..> GallaryVisualPresenter
+GallarySceneManager ..> GalalryVisualModel
+GallaryVisualPresenter -- GalalryVisualModel
+
+@enduml
+
