@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -11,6 +12,7 @@ TagManager:
   - 
   - Water
   - UI
+  - Front
   - 
   - 
   - 
@@ -35,8 +37,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - PostEffect
   m_SortingLayers:
   - name: Default
     uniqueID: 0

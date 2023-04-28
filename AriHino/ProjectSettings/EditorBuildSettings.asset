@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Arishi/Scenes/Scenario.unity
-    guid: 3425e084af98aa24fa0c760a479c0dea
+    path: Assets/Scenes/TitleScene.unity
+    guid: 3185222c9e860e74ea26570a8692ada0
   - enabled: 1
-    path: Assets/Scenes/InGame.unity
-    guid: f627c4f44b869f548b957fce6b46519e
+    path: Assets/Scenes/AdvScene.unity
+    guid: 0b78a17c87b5108489372a3dcff0635d
+  - enabled: 1
+    path: Assets/Scenes/GallaryScene.unity
+    guid: 29d54679f73de2d40ad015f1d88cec7b
   m_configObjects: {}

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 
 namespace Utage
 {
@@ -211,7 +212,12 @@ namespace Utage
 		//ゲーム終了
 		protected virtual IEnumerator CoGameExit()
 		{
-			Application.Quit();
+			#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+        	#else
+            Application.Quit();
+        	#endif
+
 			yield break;
 		}
 	}

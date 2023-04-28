@@ -1,8 +1,9 @@
-﻿// UTAGE: Unity Text Adventure Game Engine (c) Ryohei Tokimura
+// UTAGE: Unity Text Adventure Game Engine (c) Ryohei Tokimura
 using UnityEngine;
 using Utage;
 using UtageExtensions;
 using System.Collections;
+using UnityEditor;
 
 
 /// <summary>
@@ -48,8 +49,13 @@ public class UtageUguiTitle : UguiView
 	///「はじめから」ボタンが押された
 	public virtual void OnTapStart()
 	{
-		Close();
-		mainGame.OpenStartGame();
+		ScreenEffectManager.GetInstance().BlurOutSequence(3f, () => {
+			Close();
+			ScreenEffectManager.GetInstance().ResetFade();
+			SceneLoadManager.LoadScene(AppDefine.SceneName.MainGame);
+		});
+		
+		//mainGame.OpenStartGame();
 	}
 
 	///「つづきから」ボタンが押された
@@ -86,6 +92,12 @@ public class UtageUguiTitle : UguiView
 		Close();
 		mainGame.OpenStartLabel(label);
 	}
+
+	// 終了ボタンが押された
+	public virtual void OnTapQuit(){
+
+		SystemUi.GetInstance().OnOpenDialogExitGame();
+    }
 
 
 	protected virtual void OnCloseLoadChapter(string startLabel)
