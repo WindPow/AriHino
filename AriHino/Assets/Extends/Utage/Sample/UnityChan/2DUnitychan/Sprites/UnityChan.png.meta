@@ -63,7 +63,7 @@ TextureImporter:
       213: 21300038
     second: UnityChan_jump_down_1
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -83,6 +83,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -93,7 +95,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: 1
-    mipBias: -100
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -114,13 +116,53 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
@@ -564,6 +606,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      UnityChan_damage1_0: 21300006
+      UnityChan_damage2_0: 21300008
+      UnityChan_footwork_0: 21300000
+      UnityChan_footwork_1: 21300002
+      UnityChan_footwork_2: 21300004
+      UnityChan_jump_down_0: 21300036
+      UnityChan_jump_down_1: 21300038
+      UnityChan_jump_top_0: 21300030
+      UnityChan_jump_top_1: 21300032
+      UnityChan_jump_top_2: 21300034
+      UnityChan_jump_up_0: 21300026
+      UnityChan_jump_up_1: 21300028
+      UnityChan_run_0: 21300010
+      UnityChan_run_1: 21300012
+      UnityChan_run_2: 21300014
+      UnityChan_run_3: 21300016
+      UnityChan_run_4: 21300018
+      UnityChan_run_5: 21300020
+      UnityChan_run_6: 21300022
+      UnityChan_run_7: 21300024
   spritePackingTag: UnityChan
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

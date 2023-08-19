@@ -1,0 +1,32 @@
+@startuml ADVシステム
+
+class AdvCollectFacade{
+    アイテム収集を管理
+}
+
+class AdvCollectItemPresenter{
+    アイテム取得を検知する
+}
+
+class AdvCollectItemModel{
+    ロジッククラス
+}
+
+class AdvCollectItemFactory{
+    Adv画面でアイテムをストーリーに合わせて生成するクラス
+}
+
+class AdvCollectItemDataView{
+    アイテムに付与するクラス
+    ・選択されたときの処理
+    ・表示物の更新
+
+}
+
+AdvCollectFacade o--> AdvCollectItemPresenter
+AdvCollectItemPresenter --> AdvCollectItemFactory
+AdvCollectItemPresenter -- AdvCollectItemModel
+AdvCollectFacade o..> AdvCollectItemModel
+AdvCollectItemFactory *.. AdvCollectItemDataView
+
+@enduml

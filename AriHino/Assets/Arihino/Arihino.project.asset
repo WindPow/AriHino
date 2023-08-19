@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6953724c1720d6243a103c34ebd1d1fa, type: 3}
+  m_Name: Arihino.project
+  m_EditorClassIdentifier: 
+  excelList: []
+  chapterDataList:
+  - chapterName: Boot
+    excelList:
+    - {fileID: 102900000, guid: 8fab43a5f8fb17f4e9b03b2c92103d74, type: 3}
+    excelDir: {fileID: 0}
+  checkWaitType: 0
+  checkWhiteSpaceEndOfCell: 1
+  checkTextCount: 1
+  checkTextCountAllLanguage: 0
+  scenarios: {fileID: 11400000, guid: 20d64b03cf1b8da45847b8b58fd4f22d, type: 2}
+  autoImportType: 1
+  convertPath: 
+  convertVersion: 0
+  isAutoUpdateVersionAfterConvert: 0
+  isAutoConvertOnImport: 0
+  customInportSpriteFolders:
+  - {fileID: 102900000, guid: d297730f101e04a4e80c7d48cff505a2, type: 3}
+  - {fileID: 102900000, guid: b1efcdfcbedb1bd44a95da764fd049ab, type: 3}
+  - {fileID: 102900000, guid: 4b7edb63d4d23174291404bc50c96fd8, type: 3}
+  - {fileID: 102900000, guid: 1b0ade792f6574e44adbacfb6fdcbbcb, type: 3}
+  - {fileID: 102900000, guid: cadf0aa5e195cb1449dd2f3894a361c9, type: 3}
+  customInportAudioFolders:
+  - {fileID: 102900000, guid: 2b88ca7cd16487145be5d815be8ba0b0, type: 3}
+  - {fileID: 102900000, guid: 885f8c3b5c6e442489b872da019f5929, type: 3}
+  - {fileID: 102900000, guid: b919656d1edc06243badcbb6ad8b0a39, type: 3}
+  - {fileID: 102900000, guid: 362e876a19ffaca4fadad032b8681b9d, type: 3}
+  customInportMovieFolders: []
+  quickImport: 0
+  parseFormula: 0
+  parseNumreic: 0
+  checkBlankRowCountOnImport: 1000
+  checkColumnCountOnImport: 500
+  enableCommentOutOnImport: 1
+  recourceDir: {fileID: 0}
+  checkExt: 0
+  customProjectSetting: {fileID: 11400000, guid: 5cfd0673e23e51145a8836ecba06143b,
+    type: 2}
