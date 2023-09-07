@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6953724c1720d6243a103c34ebd1d1fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f183272568e6f94382e3b59c0de76cd, type: 3}
   m_Name: ArihinoAdv.project
   m_EditorClassIdentifier: 
   excelList: []

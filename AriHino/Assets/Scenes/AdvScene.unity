@@ -512,22 +512,22 @@ PrefabInstance:
     - target: {fileID: 3404803947608424022, guid: 984bcbec72747aa488ec032e63294fb7,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.02273504
-      objectReference: {fileID: 0}
-    - target: {fileID: 3404803947608424022, guid: 984bcbec72747aa488ec032e63294fb7,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3404803947608424022, guid: 984bcbec72747aa488ec032e63294fb7,
         type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0.048710592
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404803947608424022, guid: 984bcbec72747aa488ec032e63294fb7,
+        type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.95452994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3404803947608424022, guid: 984bcbec72747aa488ec032e63294fb7,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.90257883
       objectReference: {fileID: 0}
     - target: {fileID: 3404803948326005566, guid: 984bcbec72747aa488ec032e63294fb7,
         type: 3}
@@ -687,22 +687,22 @@ PrefabInstance:
     - target: {fileID: 3404803948843299992, guid: 984bcbec72747aa488ec032e63294fb7,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.02273504
-      objectReference: {fileID: 0}
-    - target: {fileID: 3404803948843299992, guid: 984bcbec72747aa488ec032e63294fb7,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3404803948843299992, guid: 984bcbec72747aa488ec032e63294fb7,
         type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0.048710592
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404803948843299992, guid: 984bcbec72747aa488ec032e63294fb7,
+        type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.95452994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3404803948843299992, guid: 984bcbec72747aa488ec032e63294fb7,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.90257883
       objectReference: {fileID: 0}
     - target: {fileID: 3404803948861512295, guid: 984bcbec72747aa488ec032e63294fb7,
         type: 3}
@@ -7194,6 +7194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca349a185f0cd3143b20a19d4b18d996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  advCollectNotification: {fileID: 0}
 --- !u!1 &1096334675
 GameObject:
   m_ObjectHideFlags: 0
@@ -10072,7 +10073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b773217f1da2d4db3f786ee3bb8257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 1180271518}
   moveDirection: {x: -1, y: 0, z: 0}
   moveAmount: -500
   moveDuration: 0.5

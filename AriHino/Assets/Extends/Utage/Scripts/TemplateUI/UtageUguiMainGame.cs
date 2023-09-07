@@ -68,13 +68,7 @@ public class UtageUguiMainGame : UguiView
 
 	protected virtual void Awake()
 	{
-		engine = AdvEngine.GetInstance();
 		Engine.Page.OnEndText.AddListener((page) => CaptureScreenOnSavePoint(page));
-	}
-
-	protected virtual void Start(){
-
-		OpenStartGame();
 	}
 
 	/// <summary>

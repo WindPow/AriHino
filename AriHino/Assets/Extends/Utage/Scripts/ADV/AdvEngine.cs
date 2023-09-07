@@ -30,27 +30,6 @@ namespace Utage
 	[RequireComponent(typeof(AdvSaveManager))]	
 	public partial class AdvEngine : MonoBehaviour
 	{
-		private static AdvEngine instance;  
-
-		public static AdvEngine GetInstance(){
-
-			return instance;
-		}
-
-		void Awake(){
-
-			// シングルトンインスタンスを設定する
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-		}
-
 		/// <summary>
 		/// 最初からはじめる場合のシナリオ名
 		/// </summary>
