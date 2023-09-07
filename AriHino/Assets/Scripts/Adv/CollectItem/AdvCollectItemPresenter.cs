@@ -4,6 +4,9 @@ using UnityEngine;
 using System;
 using UniRx;
 
+/// <summary>
+/// コレクトアイテムプレゼンター
+/// </summary>
 public class AdvCollectItemPresenter : MonoBehaviour
 {
     [SerializeField] private AdvCollectNotification advCollectNotification;
@@ -12,8 +15,12 @@ public class AdvCollectItemPresenter : MonoBehaviour
 
     private IAdvCollectItemFactory collectItemFactory;
 
-    private Dictionary<int, AdvCollectItemGroup> collectItems = new Dictionary<int, AdvCollectItemGroup>();
+    private Dictionary<int, IAdvCollectItemDataView> displayCollectItems = new Dictionary<int, IAdvCollectItemDataView>();
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    /// <param name="collectItemModel"></param>
     public void Init(AdvCollectItemModel collectItemModel){
 
         this.collectItemModel = collectItemModel;
@@ -24,31 +31,48 @@ public class AdvCollectItemPresenter : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// モデル通知登録
+    /// </summary>
     private void Bind(){
 
-        collectItemModel.CollectItemGroupId.Subscribe(collectItemId => {
-            CreateCollectItem(collectItemId);
+        // 設置アイテムに追加時の処理
+        collectItemModel.PutCollectItemAddObservable.Subscribe(collectItem => {
+            CreateCollectItem(collectItem.Value);
         })
         .AddTo(this);
 
     }
 
-    private void CreateCollectItem(int collectItemId) {
+    /// <summary>
+    /// アイテムの生成
+    /// </summary>
+    /// <param name="collectItemId"></param>
+    private void CreateCollectItem(MstAdvCollectItem collectItemData) {
 
-        var item = collectItemFactory.CreateCollectItem(collectItemId);
+        var item = collectItemFactory.CreateCollectItem(collectItemData.ItemId);
 
-        item.Init();
+        item.Init(collectItemData);
 
+        // アイテム取得時の通知監視
         item.OnGetObservable.Subscribe(item => {
-            
+
+            // 通知を表示した後に表示リストから削除            
+            ShowNotification(item);
+            displayCollectItems.Remove(item.ItemId);
         });
 
-        collectItems[collectItemId] = item;
+        displayCollectItems[collectItemData.ItemId] = item;
     }
 
-    private void ShowNotification(int collectItemId){
+    /// <summary>
+    /// 通知の表示
+    /// </summary>
+    /// <param name="collectItemId"></param>
+    private void ShowNotification(MstAdvCollectItem collectItem){
 
-        advCollectNotification
+        advCollectNotification.Init(collectItem.Name);
+
 
     }
 }

@@ -5,34 +5,41 @@ using UniRx;
 using System;
 using UnityEngine.UI;
 
-public class AdvCollectItemDataView : MonoBehaviour
+/// <summary>
+/// 画面に表示するコレクトアイテムの表示物
+/// </summary>
+public interface IAdvCollectItemDataView{
+
+    IObservable<MstAdvCollectItem> OnGetObservable { get; }
+
+    void Init(MstAdvCollectItem itemData);
+}
+
+
+public class AdvCollectItemDataView : MonoBehaviour, IAdvCollectItemDataView
 {
+
     [SerializeField] private int collectItemId;
-    [SerializeField] private Image image;
 
-    private AdvCollectItemData itemData;
+    private MstAdvCollectItem itemData;
 
-    public IObservable<AdvCollectItemData> OnGetObservable => onGetSubject;
-    private readonly Subject<AdvCollectItemData> onGetSubject = new();
+    public IObservable<MstAdvCollectItem> OnGetObservable => onGetSubject;
+    private readonly Subject<MstAdvCollectItem> onGetSubject = new();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        itemData = new AdvCollectItemData(collectItemId);
-    }
-
-    public void Init(){
-
-        image = null;
-
-        //TODO:表示の更新を行う
-    }
-
+    /// <summary>
+    /// クリックした時に呼ばれる
+    /// </summary>
     public void OnClick(){
 
         onGetSubject.OnNext(itemData);
 
         // 一旦削除（エフェクトなどを発生させる可能性あり）
         Destroy(this.gameObject);
+    }
+
+    public void Init(MstAdvCollectItem itemData)
+    {
+
+        throw new NotImplementedException();
     }
 }

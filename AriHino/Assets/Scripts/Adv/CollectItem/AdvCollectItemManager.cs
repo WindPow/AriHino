@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
+/// <summary>
+/// コレクトアイテムを管轄するマネージャー
+/// </summary>
 public class AdvCollectItemManager : MonoBehaviour
 {
     [SerializeField] private AdvCollectItemPresenter collectItemPresenter;
@@ -29,13 +33,25 @@ public class AdvCollectItemManager : MonoBehaviour
 
     public void Init(){
 
-        collectItemModel = new AdvCollectItemModel();
+        // SaveDataから所持しているコレクトアイテムリストを取得
+        collectItemModel = new AdvCollectItemModel(SaveDataPackManager.GetAdvCollectDatas());
         collectItemPresenter.Init(collectItemModel);
+
+        Bind();
     }
 
-    public void SetCollectItem(int collectItemId){
+    private void Bind(){
 
-        collectItemModel.SetCollectItem(collectItemId);
+        collectItemModel.HasCollectItemAddObservable.Subscribe(_ => {
+            //TODO セーブデータに登録
+        }).AddTo(this);
+    }
+
+    public void SetCollectItem(int collectItemId) {
+
+        //TODO IDからマスターデータを取得
+        var mstAdvCollectItem = new MstAdvCollectItem();
+        collectItemModel.SetCollectItem(mstAdvCollectItem);
     
     }
 

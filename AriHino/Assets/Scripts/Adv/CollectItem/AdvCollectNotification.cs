@@ -4,18 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Text;
 
+/// <summary>
+/// コレクトアイテム通知表示
+/// </summary>
+interface IAdvCollectNotification {
+    void Init(int collectItemId);
+
+    void Display();
+}
+
+
 public class AdvCollectNotification : MonoBehaviour
 {
     [SerializeField] private Text getText;
-    
 
-
-    public void Init (int collectItemId){
+    public void Init (string collectItemName){
 
         // TODO
-        //var itemData = null;
-        var a = ZString.Format("アーカイブ{0}を入手しました", collectItemId);
+        var str = ZString.Format("アーカイブ「{0}」を入手しました", collectItemName);
         
-        
+        getText.text = str;
+    }
+
+    public void Display(){
+
+        // TODO
     }
 }
