@@ -1,0 +1,3472 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856eecfcd6b8df42ac2ebd73cc36dff, type: 3}
+  m_Name: SampleScenario3.book
+  m_EditorClassIdentifier: 
+  importVersion: 0
+  importGridList:
+  - rows:
+    - rowIndex: 0
+      debugIndex: 0
+      strings:
+      - Command
+      - Arg1
+      - Arg2
+      - Arg3
+      - Arg4
+      - Arg5
+      - Arg6
+      - WaitType
+      - Text
+      - PageCtrl
+      - Voice
+      - WindowType
+      - English
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 1
+      debugIndex: 2
+      strings:
+      - "*\u5BB44\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 3
+      strings:
+      - "**\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 4
+      strings:
+      - Selection
+      - '*TextMeshPro'
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "TextMeshPro\u306E\u30BF\u30B0"
+      - 
+      - 
+      - 
+      - TextMeshPro tags
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 5
+      strings:
+      - Selection
+      - '*BackLog'
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30D0\u30C3\u30AF\u30ED\u30B0"
+      - 
+      - 
+      - 
+      - Back log
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 6
+      strings:
+      - Selection
+      - "*\u30B5\u30ED\u30B2\u30FC\u30C8\u30DA\u30A2\u306E\u30C6\u30B9\u30C8"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30B5\u30ED\u30B2\u30FC\u30C8\u30DA\u30A2\u6587\u5B57\u306E\u30C6\u30B9\u30C8"
+      - 
+      - 
+      - 
+      - Test surrogate pair characters
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 7
+      strings:
+      - Selection
+      - '*Utage2or3'
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u623B\u308B"
+      - 
+      - 
+      - 
+      - Return
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/Utage/Sample/Scenarios/SampleScenario3.xls:Utage4
+    type: 1
+    textLength: 262
+    headerRow: 0
+    sourceAssetInEditor: {fileID: 102900000, guid: cb28b89963be99c459afa1c0f4200266,
+      type: 3}
+    entityIndexTbl: 
+    entityDataList: []
+  - rows:
+    - rowIndex: 0
+      debugIndex: 0
+      strings:
+      - Command
+      - Arg1
+      - Arg2
+      - Arg3
+      - Arg4
+      - Arg5
+      - Arg6
+      - WaitType
+      - Text
+      - PageCtrl
+      - Voice
+      - WindowType
+      - English
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 1
+      debugIndex: 2
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "align\u30BF\u30B0\uFF08\u914D\u7F6E\uFF09"
+      - 
+      - 
+      - 
+      - 2. Text Alignment
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 3
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<align=\"right\">\u53F3\u5BC4\u305B\n<align=\"center\">\u4E2D\u592E\n<align=\"left\">\u5DE6\u5BC4\u305B"
+      - 
+      - 
+      - 
+      - '<align="right">Right
+
+        <align="center">Center
+
+        <align="left">Left'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 5
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "color\u30BF\u30B0\uFF08\u8272\uFF09"
+      - 
+      - 
+      - 
+      - 3 .Color
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 6
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<color=\"red\">\u30EC\u30C3\u30C9 <color=#005500>\u30C0\u30FC\u30AF\u30B0\u30EA\u30FC\u30F3
+        <#0000FF>\u30D6\u30EB\u30FC <color=#FF000088>\u534A\u900F\u660E\u30EC\u30C3\u30C9"
+      - 
+      - 
+      - 
+      - <color="red">Red <color=#005500>Dark Green <#0000FF>Blue <color=#FF000088>Semitransparent
+        Red
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 7
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30A2\u30EB\u30D5\u30A1\u5024\u6307\u5B9A\u30BF\u30B0<alpha=#FF>FF <alpha=#CC>CC
+        <alpha=#AA>AA <alpha=#88>88 <alpha=#66>66 <alpha=#44>44 <alpha=#22>22 <alpha=#00>00"
+      - 
+      - 
+      - 
+      - <alpha=#FF>FF <alpha=#CC>CC <alpha=#AA>AA <alpha=#88>88 <alpha=#66>66 <alpha=#44>44
+        <alpha=#22>22 <alpha=#00>00
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 8
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30AB\u30E9\u30FC\u30BF\u30B0\u306E\u5165\u308C\u5B50\u3002<color=\"red\">\u8D64\u3001<color=\"blue\">\u9752</color>\u3001\u305D\u3057\u3066\u307E\u305F\u8D64\u3002"
+      - 
+      - 
+      - 
+      - <color="red">Red, <color="blue">Blue,</color> and red again.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 11
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "b\u30BF\u30B0\uFF08\u592A\u5B57\uFF09 \u3068 i\u30BF\u30B0\uFF08\u30A4\u30BF\u30EA\u30C3\u30AF\uFF09"
+      - 
+      - 
+      - 
+      - 4 Bold and Italic
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 8
+      debugIndex: 12
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u7D20\u65E9\u3044<i>\u8336\u8272\u306E\u30AD\u30C4\u30CD</i>\u304C<b>\u6020\u60F0\u306A\u72AC</b>\u3092\u98DB\u3073\u8D8A\u3048\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 15
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "cspace\u30BF\u30B0\uFF08\u6587\u5B57\u9593\uFF09"
+      - 
+      - 
+      - 
+      - 5 Character Spacing
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 10
+      debugIndex: 16
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<cspace=1em>\u9593\u9694</cspace>\u306F<cspace=-0.5em>\u30BF\u30A4\u30DF\u30F3\u30B0\u3068\u540C\u3058\u304F\u3089\u3044\u91CD\u8981\u3067\u3059\u3002"
+      - 
+      - 
+      - 
+      - <cspace=1em>Spacing</cspace> is just as important as <cspace=-0.5em>timing.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 19
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "font\u30BF\u30B0\u3068material\u30BF\u30B0\uFF08\u30D5\u30A9\u30F3\u30C8\u3084\u30DE\u30C6\u30EA\u30A2\u30EB\u306E\u5207\u308A\u66FF\u3048\uFF09"
+      - 
+      - 
+      - 
+      - 6 Font
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 12
+      debugIndex: 20
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u5404\u30D5\u30A9\u30F3\u30C8\u306F\u8A2D\u5B9A\u3055\u308C\u305F\u6587\u5B57\u3057\u304B\u8868\u793A\u3067\u304D\u306A\u3044\u306E\u3067\u5BFE\u5FDC\u8A00\u8A9E\u306B\u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002Would
+        you like <font=\"LiberationSans SDF\">a different font?</font>or just <font=\"LiberationSans
+        SDF\" material=\"LiberationSans SDF - Outline\">a different material?"
+      - 
+      - 
+      - 
+      - 'Would you like <font="LiberationSans SDF">a different font?</font>
+
+        or
+        just <font="LiberationSans SDF" material="LiberationSans SDF - Outline">a
+        different material?'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 23
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "inndent\u30BF\u30B0\uFF08\u5B57\u4E0B\u3052\uFF09"
+      - 
+      - 
+      - 
+      - 7. Indetation
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 24
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "1. <indent=15%>\u7B87\u6761\u66F8\u304D\u306A\u3069\u306B\u4FBF\u5229\u3067\u3059\u3002</indent>\n2.
+        <indent=15%>\u7C21\u5358\u306A\u66F8\u304D\u65B9\u3002"
+      - 
+      - 
+      - 
+      - '1. <indent=15%>It is useful for things like bullet points.</indent>
+
+        2.
+        <indent=15%>It is handy.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 27
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "line-height\u30BF\u30B0\uFF08\u884C\u306E\u9AD8\u3055\uFF09"
+      - 
+      - 
+      - 
+      - 8 Line Height
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 16
+      debugIndex: 28
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<line-height=50%>\u884C\u306E\u9AD8\u3055 50%\n<line-height=100%>\u884C\u306E\u9AD8\u3055100%\n<line-height=150%>\u884C\u306E\u9AD8\u3055150%"
+      - 
+      - 
+      - 
+      - '<line-height=50%>Line height at 50%
+
+        <line-height=100%>Rather cozy.
+
+        <line-height=150%>Line
+        height at 150%'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 17
+      debugIndex: 31
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "line-indent\u30BF\u30B0\uFF08\u884C\u306E\u30A4\u30F3\u30C7\u30F3\u30C8\uFF09"
+      - 
+      - 
+      - 
+      - 9. Line Indentation
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 18
+      debugIndex: 32
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<line-indent=15%>\u3053\u308C\u306F\u3001\u3053\u306E\u30C6\u30AD\u30B9\u30C8\u4F8B\u306E\u6700\u521D\u306E\u884C\u3067\u3059\u3002\n\u3053\u308C\u306F\u540C\u3058\u30C6\u30AD\u30B9\u30C8\u306E
+        2 \u884C\u76EE\u3067\u3059\u3002"
+      - 
+      - 
+      - 
+      - '<line-indent=15%>This is the first line of this text example.
+
+        This
+        is the second line of the same text.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 19
+      debugIndex: 35
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "link\u30BF\u30B0\uFF08\u30C6\u30AD\u30B9\u30C8\u306E\u30AB\u30B9\u30BF\u30E0\u30EA\u30F3\u30AF\u30BF\u30B0\uFF09"
+      - 
+      - 
+      - 
+      - 10. Text Link
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 20
+      debugIndex: 36
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<link=\"ID\">\u30EA\u30F3\u30AF</link>"
+      - 
+      - 
+      - 
+      - <link="ID">my link</link>
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 21
+      debugIndex: 39
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "lowercase\u30BF\u30B0\uFF08\u5C0F\u6587\u5B57\uFF09\nuppercase\u30BF\u30B0\uFF08\u5927\u6587\u5B57\uFF09\nsmallcaps\uFF08\u5C0F\u6587\u5B57\u3092\u5927\u304D\u3055\u7DAD\u6301\u3057\u3066\u5927\u6587\u5B57\u3067\u8868\u793A\uFF09"
+      - 
+      - 
+      - 
+      - 11 Lowercase, Uppercase, and Smallcaps
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 22
+      debugIndex: 40
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - '<lowercase>Alice and Bob watched TV.</lowercase>
+
+        <uppercase>Alice
+        and Bob watched TV.</uppercase>
+
+        <smallcaps>Alice and Bob watched
+        TV.</smallcaps>'
+      - 
+      - 
+      - 
+      - '<lowercase>Alice and Bob watched TV.</lowercase>
+
+        <uppercase>Alice
+        and Bob watched TV.</uppercase>
+
+        <smallcaps>Alice and Bob watched
+        TV.</smallcaps>'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 23
+      debugIndex: 43
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "margin\u30BF\u30B0\uFF08\u5DE6\u53F3\u306E\u4F59\u767D\uFF09"
+      - 
+      - 
+      - 
+      - 12 Margine
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 24
+      debugIndex: 44
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4EE5\u524D\u306F\u79C1\u305F\u3061\u306E\u30DE\u30FC\u30B8\u30F3\u306F\u975E\u5E38\u306B\u5E83\u304B\u3063\u305F\u3067\u3059\u3002\n<margin=5em>\u3057\u304B\u3057\u3001\u305D\u3093\u306A\u6642\u4EE3\u306F\u3068\u3046\u306B\u904E\u304E\u53BB\u308A\u307E\u3057\u305F\u3002"
+      - 
+      - 
+      - 
+      - 'Our margins used to be very wide.
+
+        <margin=5em>But those days are
+        long gone.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 25
+      debugIndex: 47
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "mark\u30BF\u30B0\uFF08\u30C6\u30AD\u30B9\u30C8\u30DE\u30FC\u30AB\u30FC\uFF09"
+      - 
+      - 
+      - 
+      - 13 Mark
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 26
+      debugIndex: 48
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30C6\u30AD\u30B9\u30C8\u306F\u30AA\u30FC\u30D0\u30FC\u30EC\u30A4\u3067<mark=#ffff00aa>\u30DE\u30FC\u30AF\u3067\u304D\u307E\u3059</mark>\u3002"
+      - 
+      - 
+      - 
+      - Text <mark=#ffff00aa>can be marked with</mark> an overlay.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 27
+      debugIndex: 51
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "mspace\u30BF\u30B0\uFF08\u7B49\u5E45\uFF09"
+      - 
+      - 
+      - 
+      - 14 Monospacing
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 28
+      debugIndex: 52
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u672C\u5F53\u306B\u671B\u3080\u306A\u3089\u3001\u3069\u3093\u306A\u30D5\u30A9\u30F3\u30C8\u3082<mspace=2.75em>\u7B49\u5E45\u306B\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - Any font can become monospace, <mspace=2.75em>if you really want it.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 29
+      debugIndex: 55
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "noparse\u30BF\u30B0\uFF08\u30BF\u30B0\u89E3\u6790\u306A\u3057\uFF09"
+      - 
+      - 
+      - 
+      - 15 Noparse
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 30
+      debugIndex: 56
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<b>\u592A\u5B57</b> \u30C6\u30AD\u30B9\u30C8\u306B\u306F\u3001 <noparse><b></noparse>\u30BF\u30B0\u3092\u4F7F\u7528\u3057\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - Use <noparse><b></noparse> for <b>bold</b> text.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 31
+      debugIndex: 59
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "nobr\u30BF\u30B0\uFF08\u81EA\u52D5\u6539\u884C\u3057\u306A\u3044\uFF09"
+      - 
+      - 
+      - 
+      - 16 Non-breaking Spaces
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 32
+      debugIndex: 60
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "nobr\u30BF\u30B0\u3067\u56F2\u3093\u3060\u6587\u5B57\u5217\u306F\u81EA\u52D5\u6539\u884C\u3057\u306A\u3044\u3002<nobr>I
+        M P O R T A N T</nobr> "
+      - 
+      - 
+      - 
+      - You don't want <nobr>I M P O R T A N T</nobr> things to be broken up.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 33
+      debugIndex: 63
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "page\u30BF\u30B0 \uFF08TextMeshPro\u306E\u6539\u30DA\u30FC\u30B8\uFF09"
+      - 
+      - 
+      - 
+      - 17 Page Break
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 34
+      debugIndex: 64
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "TextMeshPro\u306B\u306F\u6539\u30DA\u30FC\u30B8\u30BF\u30B0\u304C\u3042\u308A\u307E\u3059\u304C\u3001\u5BB4\u3067\u306F\u5229\u7528\u3067\u304D\u307E\u305B\u3093\u3002"
+      - 
+      - 
+      - 
+      - TextMeshPro has a page break tag, but it is not available in Banquet.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 35
+      debugIndex: 66
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "pos\u30BF\u30B0\uFF08\u6C34\u5E73\u4F4D\u7F6E\uFF09"
+      - 
+      - 
+      - 
+      - '18 Horizontal Position '
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 36
+      debugIndex: 67
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<pos=75%>75% \u3067\n<pos=25%>25% \u3067\n<pos=50%>50% \u3067"
+      - 
+      - 
+      - 
+      - 'at <pos=75%>75%
+
+        at <pos=25%>25%
+
+        at <pos=50%>50%'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 37
+      debugIndex: 70
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "size\u30BF\u30B0\uFF08\u30D5\u30A9\u30F3\u30C8\u30B5\u30A4\u30BA\uFF09"
+      - 
+      - 
+      - 
+      - 19 Font Size
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 38
+      debugIndex: 71
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<size=100%>\u30A8\u30B3\u30FC <size=80%>\u30A8\u30B3\u30FC <size=60%>\u30A8\u30B3\u30FC
+        <size=40%>\u30A8\u30B3\u30FC <size=20%>\u30A8\u30B3\u30FC"
+      - 
+      - 
+      - 
+      - <size=100%>Echo <size=80%>Echo <size=60%>Echo <size=40%>Echo <size=20%>Echo
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 39
+      debugIndex: 74
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "space\u30BF\u30B0\uFF08\u6C34\u5E73\u65B9\u5411\u306E\u30B9\u30DA\u30FC\u30B9\uFF09"
+      - 
+      - 
+      - 
+      - 20 Horizontal Space
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 40
+      debugIndex: 75
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30B9\u30DA\u30FC\u30B9\u3092\u5C11\u3057<space=5em>\u304F\u3060\u3055\u3044\u3002"
+      - 
+      - 
+      - 
+      - Give me some <space=5em> space.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 41
+      debugIndex: 78
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "sprite\u30BF\u30B0\uFF08\u7D75\u6587\u5B57\uFF09"
+      - 
+      - 
+      - 
+      - 21 Sprite
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 42
+      debugIndex: 79
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u7D75\u6587\u5B57\u8868\u793A\uFF01 <sprite=0> \u3055\u3089\u306B\u7D75\u6587\u5B57!
+        <sprite index=3> \u3055\u3089\u306B\uFF01<sprite=\"SampleEmoji\" index=5
+        color=#55FF55FF>"
+      - 
+      - 
+      - 
+      - Sprites! <sprite=0> More sprites! <sprite index=3> And even more! <sprite="SampleEmoji"
+        index=5 color=#55FF55FF>
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 43
+      debugIndex: 81
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "s\u30BF\u30B0\uFF08\u53D6\u308A\u6D88\u3057\u7DDA\uFF09\u3068u\u30BF\u30B0\uFF08\u4E0B\u7DDA\uFF09"
+      - 
+      - 
+      - 
+      - 22 Strikethrough and Underline
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 44
+      debugIndex: 82
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<s>\u8DB3\u306E\u901F\u3044\u8336\u8272\u3044</s>\u30AD\u30C4\u30CD\u306F<u>\u6020\u60F0\u306A\u72AC</u>\u3092\u98DB\u3073\u8D8A\u3048\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - The <s>quick brown</s> fox jumps over <u>the lazy dog</u>.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 45
+      debugIndex: 84
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "style\u30BF\u30B0\uFF08\u30B9\u30BF\u30A4\u30EB\uFF09"
+      - 
+      - 
+      - 
+      - 23 Style
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 46
+      debugIndex: 85
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<style=\"Title\">\u30B9\u30BF\u30A4\u30EB\u306E\u9069\u7528</style>\n\u30B9\u30BF\u30A4\u30EB\u306F\u81EA\u5206\u3067\u4F5C\u6210\u3059\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - '<style="Title">Styles</style>
+
+        You can create your own.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 47
+      debugIndex: 87
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "sup\u30BF\u30B0\uFF08\u4E0A\u4ED8\u304D\u6587\u5B57\uFF09\u3068sub\u30BF\u30B0\uFF08\u4E0B\u4ED8\u304D\u6587\u5B57\uFF09"
+      - 
+      - 
+      - 
+      - 24 Subscript and Superscript
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 48
+      debugIndex: 88
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "1m<sup>3</sup> \u306E H<sub>2</sub>O \u304C\u3042\u308A\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - We have 1m<sup>3</sup> of H<sub>2</sub>O.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 49
+      debugIndex: 91
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "voffset\u30BF\u30B0\uFF08\u5782\u76F4\u30AA\u30D5\u30BB\u30C3\u30C8\uFF09"
+      - 
+      - 
+      - 
+      - 25 Vertical Offset
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 50
+      debugIndex: 92
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<voffset=1em>\u4E0A\u306B <voffset=2em>\u4E0A</voffset>\u3001<voffset=-0.5em>\u4E0B</voffset>\u306B\u623B\u308A\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - Up <voffset=1em>up <voffset=2em>UP</voffset> and <voffset=-0.5em>down</voffset>
+        we go again.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 51
+      debugIndex: 94
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "width\u30BF\u30B0\uFF08\u30C6\u30AD\u30B9\u30C8\u8868\u793A\u9818\u57DF\u306E\u5E45\uFF09"
+      - 
+      - 
+      - 
+      - '26 Text Width '
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 52
+      debugIndex: 95
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u300C\u30C6\u30AD\u30B9\u30C8\u7528\u306E\u30B9\u30DA\u30FC\u30B9\u304C\u305F\u304F\u3055\u3093\u3042\u3063\u305F\u3068\u304D\u306E\u3053\u3068\u3092\u899A\u3048\u3066\u3044\u307E\u3059\u3002<width=60%>\u3057\u304B\u3057\u3001\u305D\u3093\u306A\u6642\u4EE3\u306F\u3068\u3046\u306B\u904E\u304E\u53BB\u308A\u307E\u3057\u305F\u3002\u300D"
+      - 
+      - 
+      - 
+      - 'I remember when we had lots of space for text.
+
+        <width=60%>But those
+        days are long gone.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 53
+      debugIndex: 97
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "gradient\u30BF\u30B0\uFF08\u30B0\u30E9\u30C7\u30FC\u30B7\u30E7\u30F3\uFF09"
+      - 
+      - 
+      - 
+      - 26 Gradient
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 54
+      debugIndex: 98
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<gradient=SampleGradtion0>\u30B0\u30E9\u30C7\u30FC\u30B7\u30E7\u30F3 </gradient>
+        \u30BF\u30B0"
+      - 
+      - 
+      - 
+      - <gradient=SampleGradtion0>Gradient </gradient> tag
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 55
+      debugIndex: 100
+      strings:
+      - Jump
+      - "*\u5BB44\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/Utage/Sample/Scenarios/SampleScenario3.xls:TextMeshPro
+    type: 1
+    textLength: 4904
+    headerRow: 0
+    sourceAssetInEditor: {fileID: 102900000, guid: cb28b89963be99c459afa1c0f4200266,
+      type: 3}
+    entityIndexTbl: 
+    entityDataList: []
+  - rows:
+    - rowIndex: 0
+      debugIndex: 0
+      strings:
+      - Command
+      - Arg1
+      - Arg2
+      - Arg3
+      - Arg4
+      - Arg5
+      - Arg6
+      - WaitType
+      - Text
+      - PageCtrl
+      - Voice
+      - WindowType
+      - English
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings:
+      - "*\u30B5\u30ED\u30B2\u30FC\u30C8\u30DA\u30A2\u306E\u30C6\u30B9\u30C8"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<ruby=\u3088\u3057\u306E\u3084>\U00020BB7\u91CE\u5BB6</ruby>\u3067<ruby=\u307B\u3063\u3051>\U00029E3D</ruby>\u3092\u98DF\u3079\u305F\u3089\U00020B9F\u3089\u308C\u305F"
+      - Input
+      - voice_test1.wav
+      - 
+      - This is a sample of the Japanese surrogate pair character test.There is no
+        corresponding character in English.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<ruby=\U00020BB7\u91CE\u5BB6>\u3088\u3057\u306E\u3084</ruby>\u3067<ruby=\U00029E3D>\u307B\u3063\u3051</ruby>\u3092\u98DF\u3079\u305F\u3089\U00020B9F\u3089\u308C\u305F"
+      - 
+      - voice_test2.wav
+      - 
+      - This is a sample of the Japanese surrogate pair character test.There is no
+        corresponding character in English.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 6
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u5409\u91CE\u5BB6\u3067\u30DB\u30C3\u30B1\u3092\u98DF\u3079\u305F\u3089\u53F1\u3089\u308C\u305F"
+      - Input
+      - voice_test1.wav
+      - 
+      - This is a sample of the Japanese surrogate pair character test.There is no
+        corresponding character in English.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 7
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u5409\u91CE\u5BB6\u3067\u30DB\u30C3\u30B1\u3092\u98DF\u3079\u305F\u3089\u53F1\u3089\u308C\u305F"
+      - 
+      - voice_test2.wav
+      - 
+      - This is a sample of the Japanese surrogate pair character test.There is no
+        corresponding character in English.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 11
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u25CF\u7D75\u6587\u5B57"
+      - 
+      - 
+      - 
+      - Emoji
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 12
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<ruby=\u3048\u3082\u3058><emoji=1f60b></ruby>\u7D75\u6587\u5B57<emoji=1f60d><emoji=1f60e>\u306E\u30B5\u30F3\u30D7\u30EB<emoji=1f601>"
+      - 
+      - 
+      - 
+      - A <emoji=1f3b2>sample of <emoji=1f60a>emoji. <emoji=2665>Tags do not have
+        to be used, but this requires storing dedicated image data in Unity.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 8
+      debugIndex: 15
+      strings:
+      - Jump
+      - "*\u5BB44\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/Utage/Sample/Scenarios/SampleScenario3.xls:SurrogatePairs
+    type: 1
+    textLength: 972
+    headerRow: 0
+    sourceAssetInEditor: {fileID: 102900000, guid: cb28b89963be99c459afa1c0f4200266,
+      type: 3}
+    entityIndexTbl: 
+    entityDataList: []
+  - rows:
+    - rowIndex: 0
+      debugIndex: 0
+      strings:
+      - Command
+      - Arg1
+      - Arg2
+      - Arg3
+      - Arg4
+      - Arg5
+      - Arg6
+      - WaitType
+      - Text
+      - PageCtrl
+      - Voice
+      - WindowType
+      - English
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 1
+      debugIndex: 2
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30DC\u30A4\u30B9\u306E\u30C6\u30B9\u30C8\u518D\u751F\u3002\u6B63\u3057\u304F\u518D\u751F\u3055\u308C\u3066\u3044\u308B\u3067\u3057\u3087\u3046\u304B\uFF1F"
+      - 
+      - voice_test1.wav
+      - 
+      - This is a voice test playback. Did you hear it?
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 6
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u3093\u3001\u3070\u3063\u3061\u308A\u3088\u3002"
+      - Input
+      - voice_test2.wav
+      - 
+      - I sure did.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 7
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u304A\u304A\u30FC\u3002\u3067\u3082\u5909\u306A\u58F0\u3060\u3002"
+      - Input
+      - voice_test3.wav
+      - 
+      - Alright! But it sounds funny.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 8
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u307B\u3052"
+      - InputBr
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 9
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u5408\u6210\u97F3\u58F0\u3067\u3059\u304B\u3089\u306D\u30FC\u3002\u3061\u3083\u3093\u3068\u3057\u305F\u58F0\u304C\u6B32\u3057\u3044\u306A\u3089\u58F0\u512A\u3055\u3093\u306B\u983C\u3093\u3060\u307B\u3046\u304C\u3044\u3044\u308F\u306D\u3002"
+      - InputBr
+      - voice_test4.wav
+      - 
+      - It's a synthesized voice, that's why. If you want a real voice, you're gonna
+        have to ask a voice actor.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 11
+      strings:
+      - Jump
+      - "*\u5BB44\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/Utage/Sample/Scenarios/SampleScenario3.xls:BackLog
+    type: 1
+    textLength: 448
+    headerRow: 0
+    sourceAssetInEditor: {fileID: 102900000, guid: cb28b89963be99c459afa1c0f4200266,
+      type: 3}
+    entityIndexTbl: 
+    entityDataList: []
+  gridList:
+  - rows:
+    - rowIndex: 0
+      debugIndex: 0
+      strings:
+      - Command
+      - Arg1
+      - Arg2
+      - Arg3
+      - Arg4
+      - Arg5
+      - Arg6
+      - WaitType
+      - Text
+      - PageCtrl
+      - Voice
+      - WindowType
+      - English
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - "*\u5BB44\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings:
+      - "**\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings:
+      - Selection
+      - '*TextMeshPro'
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "TextMeshPro\u306E\u30BF\u30B0"
+      - 
+      - 
+      - 
+      - TextMeshPro tags
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 5
+      strings:
+      - Selection
+      - '*BackLog'
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30D0\u30C3\u30AF\u30ED\u30B0"
+      - 
+      - 
+      - 
+      - Back log
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 6
+      strings:
+      - Selection
+      - "*\u30B5\u30ED\u30B2\u30FC\u30C8\u30DA\u30A2\u306E\u30C6\u30B9\u30C8"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30B5\u30ED\u30B2\u30FC\u30C8\u30DA\u30A2\u6587\u5B57\u306E\u30C6\u30B9\u30C8"
+      - 
+      - 
+      - 
+      - Test surrogate pair characters
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 7
+      strings:
+      - Selection
+      - '*Utage2or3'
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u623B\u308B"
+      - 
+      - 
+      - 
+      - Return
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/Utage/Sample/Scenarios/SampleScenario3.xls:Utage4
+    type: 1
+    textLength: 262
+    headerRow: 0
+    sourceAssetInEditor: {fileID: 102900000, guid: cb28b89963be99c459afa1c0f4200266,
+      type: 3}
+  - rows:
+    - rowIndex: 0
+      debugIndex: 0
+      strings:
+      - Command
+      - Arg1
+      - Arg2
+      - Arg3
+      - Arg4
+      - Arg5
+      - Arg6
+      - WaitType
+      - Text
+      - PageCtrl
+      - Voice
+      - WindowType
+      - English
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "align\u30BF\u30B0\uFF08\u914D\u7F6E\uFF09"
+      - 
+      - 
+      - 
+      - 2. Text Alignment
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<align=\"right\">\u53F3\u5BC4\u305B\n<align=\"center\">\u4E2D\u592E\n<align=\"left\">\u5DE6\u5BC4\u305B"
+      - 
+      - 
+      - 
+      - '<align="right">Right
+
+        <align="center">Center
+
+        <align="left">Left'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 5
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "color\u30BF\u30B0\uFF08\u8272\uFF09"
+      - 
+      - 
+      - 
+      - 3 .Color
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 6
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<color=\"red\">\u30EC\u30C3\u30C9 <color=#005500>\u30C0\u30FC\u30AF\u30B0\u30EA\u30FC\u30F3
+        <#0000FF>\u30D6\u30EB\u30FC <color=#FF000088>\u534A\u900F\u660E\u30EC\u30C3\u30C9"
+      - 
+      - 
+      - 
+      - <color="red">Red <color=#005500>Dark Green <#0000FF>Blue <color=#FF000088>Semitransparent
+        Red
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 7
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30A2\u30EB\u30D5\u30A1\u5024\u6307\u5B9A\u30BF\u30B0<alpha=#FF>FF <alpha=#CC>CC
+        <alpha=#AA>AA <alpha=#88>88 <alpha=#66>66 <alpha=#44>44 <alpha=#22>22 <alpha=#00>00"
+      - 
+      - 
+      - 
+      - <alpha=#FF>FF <alpha=#CC>CC <alpha=#AA>AA <alpha=#88>88 <alpha=#66>66 <alpha=#44>44
+        <alpha=#22>22 <alpha=#00>00
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 8
+      debugIndex: 8
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30AB\u30E9\u30FC\u30BF\u30B0\u306E\u5165\u308C\u5B50\u3002<color=\"red\">\u8D64\u3001<color=\"blue\">\u9752</color>\u3001\u305D\u3057\u3066\u307E\u305F\u8D64\u3002"
+      - 
+      - 
+      - 
+      - <color="red">Red, <color="blue">Blue,</color> and red again.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 9
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 10
+      debugIndex: 10
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 11
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "b\u30BF\u30B0\uFF08\u592A\u5B57\uFF09 \u3068 i\u30BF\u30B0\uFF08\u30A4\u30BF\u30EA\u30C3\u30AF\uFF09"
+      - 
+      - 
+      - 
+      - 4 Bold and Italic
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 12
+      debugIndex: 12
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u7D20\u65E9\u3044<i>\u8336\u8272\u306E\u30AD\u30C4\u30CD</i>\u304C<b>\u6020\u60F0\u306A\u72AC</b>\u3092\u98DB\u3073\u8D8A\u3048\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 14
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 15
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "cspace\u30BF\u30B0\uFF08\u6587\u5B57\u9593\uFF09"
+      - 
+      - 
+      - 
+      - 5 Character Spacing
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 16
+      debugIndex: 16
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<cspace=1em>\u9593\u9694</cspace>\u306F<cspace=-0.5em>\u30BF\u30A4\u30DF\u30F3\u30B0\u3068\u540C\u3058\u304F\u3089\u3044\u91CD\u8981\u3067\u3059\u3002"
+      - 
+      - 
+      - 
+      - <cspace=1em>Spacing</cspace> is just as important as <cspace=-0.5em>timing.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 17
+      debugIndex: 17
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 18
+      debugIndex: 18
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 19
+      debugIndex: 19
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "font\u30BF\u30B0\u3068material\u30BF\u30B0\uFF08\u30D5\u30A9\u30F3\u30C8\u3084\u30DE\u30C6\u30EA\u30A2\u30EB\u306E\u5207\u308A\u66FF\u3048\uFF09"
+      - 
+      - 
+      - 
+      - 6 Font
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 20
+      debugIndex: 20
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u5404\u30D5\u30A9\u30F3\u30C8\u306F\u8A2D\u5B9A\u3055\u308C\u305F\u6587\u5B57\u3057\u304B\u8868\u793A\u3067\u304D\u306A\u3044\u306E\u3067\u5BFE\u5FDC\u8A00\u8A9E\u306B\u6CE8\u610F\u3057\u3066\u304F\u3060\u3055\u3044\u3002Would
+        you like <font=\"LiberationSans SDF\">a different font?</font>or just <font=\"LiberationSans
+        SDF\" material=\"LiberationSans SDF - Outline\">a different material?"
+      - 
+      - 
+      - 
+      - 'Would you like <font="LiberationSans SDF">a different font?</font>
+
+        or
+        just <font="LiberationSans SDF" material="LiberationSans SDF - Outline">a
+        different material?'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 21
+      debugIndex: 21
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 22
+      debugIndex: 22
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 23
+      debugIndex: 23
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "inndent\u30BF\u30B0\uFF08\u5B57\u4E0B\u3052\uFF09"
+      - 
+      - 
+      - 
+      - 7. Indetation
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 24
+      debugIndex: 24
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "1. <indent=15%>\u7B87\u6761\u66F8\u304D\u306A\u3069\u306B\u4FBF\u5229\u3067\u3059\u3002</indent>\n2.
+        <indent=15%>\u7C21\u5358\u306A\u66F8\u304D\u65B9\u3002"
+      - 
+      - 
+      - 
+      - '1. <indent=15%>It is useful for things like bullet points.</indent>
+
+        2.
+        <indent=15%>It is handy.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 25
+      debugIndex: 25
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 26
+      debugIndex: 26
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 27
+      debugIndex: 27
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "line-height\u30BF\u30B0\uFF08\u884C\u306E\u9AD8\u3055\uFF09"
+      - 
+      - 
+      - 
+      - 8 Line Height
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 28
+      debugIndex: 28
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<line-height=50%>\u884C\u306E\u9AD8\u3055 50%\n<line-height=100%>\u884C\u306E\u9AD8\u3055100%\n<line-height=150%>\u884C\u306E\u9AD8\u3055150%"
+      - 
+      - 
+      - 
+      - '<line-height=50%>Line height at 50%
+
+        <line-height=100%>Rather cozy.
+
+        <line-height=150%>Line
+        height at 150%'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 29
+      debugIndex: 29
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 30
+      debugIndex: 30
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 31
+      debugIndex: 31
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "line-indent\u30BF\u30B0\uFF08\u884C\u306E\u30A4\u30F3\u30C7\u30F3\u30C8\uFF09"
+      - 
+      - 
+      - 
+      - 9. Line Indentation
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 32
+      debugIndex: 32
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<line-indent=15%>\u3053\u308C\u306F\u3001\u3053\u306E\u30C6\u30AD\u30B9\u30C8\u4F8B\u306E\u6700\u521D\u306E\u884C\u3067\u3059\u3002\n\u3053\u308C\u306F\u540C\u3058\u30C6\u30AD\u30B9\u30C8\u306E
+        2 \u884C\u76EE\u3067\u3059\u3002"
+      - 
+      - 
+      - 
+      - '<line-indent=15%>This is the first line of this text example.
+
+        This
+        is the second line of the same text.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 33
+      debugIndex: 33
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 34
+      debugIndex: 34
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 35
+      debugIndex: 35
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "link\u30BF\u30B0\uFF08\u30C6\u30AD\u30B9\u30C8\u306E\u30AB\u30B9\u30BF\u30E0\u30EA\u30F3\u30AF\u30BF\u30B0\uFF09"
+      - 
+      - 
+      - 
+      - 10. Text Link
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 36
+      debugIndex: 36
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<link=\"ID\">\u30EA\u30F3\u30AF</link>"
+      - 
+      - 
+      - 
+      - <link="ID">my link</link>
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 37
+      debugIndex: 37
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 38
+      debugIndex: 38
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 39
+      debugIndex: 39
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "lowercase\u30BF\u30B0\uFF08\u5C0F\u6587\u5B57\uFF09\nuppercase\u30BF\u30B0\uFF08\u5927\u6587\u5B57\uFF09\nsmallcaps\uFF08\u5C0F\u6587\u5B57\u3092\u5927\u304D\u3055\u7DAD\u6301\u3057\u3066\u5927\u6587\u5B57\u3067\u8868\u793A\uFF09"
+      - 
+      - 
+      - 
+      - 11 Lowercase, Uppercase, and Smallcaps
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 40
+      debugIndex: 40
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - '<lowercase>Alice and Bob watched TV.</lowercase>
+
+        <uppercase>Alice
+        and Bob watched TV.</uppercase>
+
+        <smallcaps>Alice and Bob watched
+        TV.</smallcaps>'
+      - 
+      - 
+      - 
+      - '<lowercase>Alice and Bob watched TV.</lowercase>
+
+        <uppercase>Alice
+        and Bob watched TV.</uppercase>
+
+        <smallcaps>Alice and Bob watched
+        TV.</smallcaps>'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 41
+      debugIndex: 41
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 42
+      debugIndex: 42
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 43
+      debugIndex: 43
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "margin\u30BF\u30B0\uFF08\u5DE6\u53F3\u306E\u4F59\u767D\uFF09"
+      - 
+      - 
+      - 
+      - 12 Margine
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 44
+      debugIndex: 44
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4EE5\u524D\u306F\u79C1\u305F\u3061\u306E\u30DE\u30FC\u30B8\u30F3\u306F\u975E\u5E38\u306B\u5E83\u304B\u3063\u305F\u3067\u3059\u3002\n<margin=5em>\u3057\u304B\u3057\u3001\u305D\u3093\u306A\u6642\u4EE3\u306F\u3068\u3046\u306B\u904E\u304E\u53BB\u308A\u307E\u3057\u305F\u3002"
+      - 
+      - 
+      - 
+      - 'Our margins used to be very wide.
+
+        <margin=5em>But those days are
+        long gone.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 45
+      debugIndex: 45
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 46
+      debugIndex: 46
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 47
+      debugIndex: 47
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "mark\u30BF\u30B0\uFF08\u30C6\u30AD\u30B9\u30C8\u30DE\u30FC\u30AB\u30FC\uFF09"
+      - 
+      - 
+      - 
+      - 13 Mark
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 48
+      debugIndex: 48
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30C6\u30AD\u30B9\u30C8\u306F\u30AA\u30FC\u30D0\u30FC\u30EC\u30A4\u3067<mark=#ffff00aa>\u30DE\u30FC\u30AF\u3067\u304D\u307E\u3059</mark>\u3002"
+      - 
+      - 
+      - 
+      - Text <mark=#ffff00aa>can be marked with</mark> an overlay.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 49
+      debugIndex: 49
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 50
+      debugIndex: 50
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 51
+      debugIndex: 51
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "mspace\u30BF\u30B0\uFF08\u7B49\u5E45\uFF09"
+      - 
+      - 
+      - 
+      - 14 Monospacing
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 52
+      debugIndex: 52
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u672C\u5F53\u306B\u671B\u3080\u306A\u3089\u3001\u3069\u3093\u306A\u30D5\u30A9\u30F3\u30C8\u3082<mspace=2.75em>\u7B49\u5E45\u306B\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - Any font can become monospace, <mspace=2.75em>if you really want it.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 53
+      debugIndex: 53
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 54
+      debugIndex: 54
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 55
+      debugIndex: 55
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "noparse\u30BF\u30B0\uFF08\u30BF\u30B0\u89E3\u6790\u306A\u3057\uFF09"
+      - 
+      - 
+      - 
+      - 15 Noparse
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 56
+      debugIndex: 56
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<b>\u592A\u5B57</b> \u30C6\u30AD\u30B9\u30C8\u306B\u306F\u3001 <noparse><b></noparse>\u30BF\u30B0\u3092\u4F7F\u7528\u3057\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - Use <noparse><b></noparse> for <b>bold</b> text.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 57
+      debugIndex: 57
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 58
+      debugIndex: 58
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 59
+      debugIndex: 59
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "nobr\u30BF\u30B0\uFF08\u81EA\u52D5\u6539\u884C\u3057\u306A\u3044\uFF09"
+      - 
+      - 
+      - 
+      - 16 Non-breaking Spaces
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 60
+      debugIndex: 60
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "nobr\u30BF\u30B0\u3067\u56F2\u3093\u3060\u6587\u5B57\u5217\u306F\u81EA\u52D5\u6539\u884C\u3057\u306A\u3044\u3002<nobr>I
+        M P O R T A N T</nobr> "
+      - 
+      - 
+      - 
+      - You don't want <nobr>I M P O R T A N T</nobr> things to be broken up.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 61
+      debugIndex: 61
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 62
+      debugIndex: 62
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 63
+      debugIndex: 63
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "page\u30BF\u30B0 \uFF08TextMeshPro\u306E\u6539\u30DA\u30FC\u30B8\uFF09"
+      - 
+      - 
+      - 
+      - 17 Page Break
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 64
+      debugIndex: 64
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "TextMeshPro\u306B\u306F\u6539\u30DA\u30FC\u30B8\u30BF\u30B0\u304C\u3042\u308A\u307E\u3059\u304C\u3001\u5BB4\u3067\u306F\u5229\u7528\u3067\u304D\u307E\u305B\u3093\u3002"
+      - 
+      - 
+      - 
+      - TextMeshPro has a page break tag, but it is not available in Banquet.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 65
+      debugIndex: 65
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 66
+      debugIndex: 66
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "pos\u30BF\u30B0\uFF08\u6C34\u5E73\u4F4D\u7F6E\uFF09"
+      - 
+      - 
+      - 
+      - '18 Horizontal Position '
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 67
+      debugIndex: 67
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<pos=75%>75% \u3067\n<pos=25%>25% \u3067\n<pos=50%>50% \u3067"
+      - 
+      - 
+      - 
+      - 'at <pos=75%>75%
+
+        at <pos=25%>25%
+
+        at <pos=50%>50%'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 68
+      debugIndex: 68
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 69
+      debugIndex: 69
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 70
+      debugIndex: 70
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "size\u30BF\u30B0\uFF08\u30D5\u30A9\u30F3\u30C8\u30B5\u30A4\u30BA\uFF09"
+      - 
+      - 
+      - 
+      - 19 Font Size
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 71
+      debugIndex: 71
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<size=100%>\u30A8\u30B3\u30FC <size=80%>\u30A8\u30B3\u30FC <size=60%>\u30A8\u30B3\u30FC
+        <size=40%>\u30A8\u30B3\u30FC <size=20%>\u30A8\u30B3\u30FC"
+      - 
+      - 
+      - 
+      - <size=100%>Echo <size=80%>Echo <size=60%>Echo <size=40%>Echo <size=20%>Echo
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 72
+      debugIndex: 72
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 73
+      debugIndex: 73
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 74
+      debugIndex: 74
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "space\u30BF\u30B0\uFF08\u6C34\u5E73\u65B9\u5411\u306E\u30B9\u30DA\u30FC\u30B9\uFF09"
+      - 
+      - 
+      - 
+      - 20 Horizontal Space
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 75
+      debugIndex: 75
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30B9\u30DA\u30FC\u30B9\u3092\u5C11\u3057<space=5em>\u304F\u3060\u3055\u3044\u3002"
+      - 
+      - 
+      - 
+      - Give me some <space=5em> space.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 76
+      debugIndex: 76
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 77
+      debugIndex: 77
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 78
+      debugIndex: 78
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "sprite\u30BF\u30B0\uFF08\u7D75\u6587\u5B57\uFF09"
+      - 
+      - 
+      - 
+      - 21 Sprite
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 79
+      debugIndex: 79
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u7D75\u6587\u5B57\u8868\u793A\uFF01 <sprite=0> \u3055\u3089\u306B\u7D75\u6587\u5B57!
+        <sprite index=3> \u3055\u3089\u306B\uFF01<sprite=\"SampleEmoji\" index=5
+        color=#55FF55FF>"
+      - 
+      - 
+      - 
+      - Sprites! <sprite=0> More sprites! <sprite index=3> And even more! <sprite="SampleEmoji"
+        index=5 color=#55FF55FF>
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 80
+      debugIndex: 80
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 81
+      debugIndex: 81
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "s\u30BF\u30B0\uFF08\u53D6\u308A\u6D88\u3057\u7DDA\uFF09\u3068u\u30BF\u30B0\uFF08\u4E0B\u7DDA\uFF09"
+      - 
+      - 
+      - 
+      - 22 Strikethrough and Underline
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 82
+      debugIndex: 82
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<s>\u8DB3\u306E\u901F\u3044\u8336\u8272\u3044</s>\u30AD\u30C4\u30CD\u306F<u>\u6020\u60F0\u306A\u72AC</u>\u3092\u98DB\u3073\u8D8A\u3048\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - The <s>quick brown</s> fox jumps over <u>the lazy dog</u>.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 83
+      debugIndex: 83
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 84
+      debugIndex: 84
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "style\u30BF\u30B0\uFF08\u30B9\u30BF\u30A4\u30EB\uFF09"
+      - 
+      - 
+      - 
+      - 23 Style
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 85
+      debugIndex: 85
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<style=\"Title\">\u30B9\u30BF\u30A4\u30EB\u306E\u9069\u7528</style>\n\u30B9\u30BF\u30A4\u30EB\u306F\u81EA\u5206\u3067\u4F5C\u6210\u3059\u308B\u3053\u3068\u3082\u3067\u304D\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - '<style="Title">Styles</style>
+
+        You can create your own.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 86
+      debugIndex: 86
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 87
+      debugIndex: 87
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "sup\u30BF\u30B0\uFF08\u4E0A\u4ED8\u304D\u6587\u5B57\uFF09\u3068sub\u30BF\u30B0\uFF08\u4E0B\u4ED8\u304D\u6587\u5B57\uFF09"
+      - 
+      - 
+      - 
+      - 24 Subscript and Superscript
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 88
+      debugIndex: 88
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "1m<sup>3</sup> \u306E H<sub>2</sub>O \u304C\u3042\u308A\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - We have 1m<sup>3</sup> of H<sub>2</sub>O.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 89
+      debugIndex: 89
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 90
+      debugIndex: 90
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 91
+      debugIndex: 91
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "voffset\u30BF\u30B0\uFF08\u5782\u76F4\u30AA\u30D5\u30BB\u30C3\u30C8\uFF09"
+      - 
+      - 
+      - 
+      - 25 Vertical Offset
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 92
+      debugIndex: 92
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<voffset=1em>\u4E0A\u306B <voffset=2em>\u4E0A</voffset>\u3001<voffset=-0.5em>\u4E0B</voffset>\u306B\u623B\u308A\u307E\u3059\u3002"
+      - 
+      - 
+      - 
+      - Up <voffset=1em>up <voffset=2em>UP</voffset> and <voffset=-0.5em>down</voffset>
+        we go again.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 93
+      debugIndex: 93
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 94
+      debugIndex: 94
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "width\u30BF\u30B0\uFF08\u30C6\u30AD\u30B9\u30C8\u8868\u793A\u9818\u57DF\u306E\u5E45\uFF09"
+      - 
+      - 
+      - 
+      - '26 Text Width '
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 95
+      debugIndex: 95
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u300C\u30C6\u30AD\u30B9\u30C8\u7528\u306E\u30B9\u30DA\u30FC\u30B9\u304C\u305F\u304F\u3055\u3093\u3042\u3063\u305F\u3068\u304D\u306E\u3053\u3068\u3092\u899A\u3048\u3066\u3044\u307E\u3059\u3002<width=60%>\u3057\u304B\u3057\u3001\u305D\u3093\u306A\u6642\u4EE3\u306F\u3068\u3046\u306B\u904E\u304E\u53BB\u308A\u307E\u3057\u305F\u3002\u300D"
+      - 
+      - 
+      - 
+      - 'I remember when we had lots of space for text.
+
+        <width=60%>But those
+        days are long gone.'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 96
+      debugIndex: 96
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 97
+      debugIndex: 97
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "gradient\u30BF\u30B0\uFF08\u30B0\u30E9\u30C7\u30FC\u30B7\u30E7\u30F3\uFF09"
+      - 
+      - 
+      - 
+      - 26 Gradient
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 98
+      debugIndex: 98
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<gradient=SampleGradtion0>\u30B0\u30E9\u30C7\u30FC\u30B7\u30E7\u30F3 </gradient>
+        \u30BF\u30B0"
+      - 
+      - 
+      - 
+      - <gradient=SampleGradtion0>Gradient </gradient> tag
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 99
+      debugIndex: 99
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 100
+      debugIndex: 100
+      strings:
+      - Jump
+      - "*\u5BB44\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/Utage/Sample/Scenarios/SampleScenario3.xls:TextMeshPro
+    type: 1
+    textLength: 4904
+    headerRow: 0
+    sourceAssetInEditor: {fileID: 102900000, guid: cb28b89963be99c459afa1c0f4200266,
+      type: 3}
+  - rows:
+    - rowIndex: 0
+      debugIndex: 0
+      strings:
+      - Command
+      - Arg1
+      - Arg2
+      - Arg3
+      - Arg4
+      - Arg5
+      - Arg6
+      - WaitType
+      - Text
+      - PageCtrl
+      - Voice
+      - WindowType
+      - English
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings:
+      - "*\u30B5\u30ED\u30B2\u30FC\u30C8\u30DA\u30A2\u306E\u30C6\u30B9\u30C8"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<ruby=\u3088\u3057\u306E\u3084>\U00020BB7\u91CE\u5BB6</ruby>\u3067<ruby=\u307B\u3063\u3051>\U00029E3D</ruby>\u3092\u98DF\u3079\u305F\u3089\U00020B9F\u3089\u308C\u305F"
+      - Input
+      - voice_test1.wav
+      - 
+      - This is a sample of the Japanese surrogate pair character test.There is no
+        corresponding character in English.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<ruby=\U00020BB7\u91CE\u5BB6>\u3088\u3057\u306E\u3084</ruby>\u3067<ruby=\U00029E3D>\u307B\u3063\u3051</ruby>\u3092\u98DF\u3079\u305F\u3089\U00020B9F\u3089\u308C\u305F"
+      - 
+      - voice_test2.wav
+      - 
+      - This is a sample of the Japanese surrogate pair character test.There is no
+        corresponding character in English.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 5
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 6
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u5409\u91CE\u5BB6\u3067\u30DB\u30C3\u30B1\u3092\u98DF\u3079\u305F\u3089\u53F1\u3089\u308C\u305F"
+      - Input
+      - voice_test1.wav
+      - 
+      - This is a sample of the Japanese surrogate pair character test.There is no
+        corresponding character in English.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 7
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u5409\u91CE\u5BB6\u3067\u30DB\u30C3\u30B1\u3092\u98DF\u3079\u305F\u3089\u53F1\u3089\u308C\u305F"
+      - 
+      - voice_test2.wav
+      - 
+      - This is a sample of the Japanese surrogate pair character test.There is no
+        corresponding character in English.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 8
+      debugIndex: 8
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 9
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 10
+      debugIndex: 10
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 11
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u25CF\u7D75\u6587\u5B57"
+      - 
+      - 
+      - 
+      - Emoji
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 12
+      debugIndex: 12
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "<ruby=\u3048\u3082\u3058><emoji=1f60b></ruby>\u7D75\u6587\u5B57<emoji=1f60d><emoji=1f60e>\u306E\u30B5\u30F3\u30D7\u30EB<emoji=1f601>"
+      - 
+      - 
+      - 
+      - A <emoji=1f3b2>sample of <emoji=1f60a>emoji. <emoji=2665>Tags do not have
+        to be used, but this requires storing dedicated image data in Unity.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 14
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 15
+      strings:
+      - Jump
+      - "*\u5BB44\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/Utage/Sample/Scenarios/SampleScenario3.xls:SurrogatePairs
+    type: 1
+    textLength: 972
+    headerRow: 0
+    sourceAssetInEditor: {fileID: 102900000, guid: cb28b89963be99c459afa1c0f4200266,
+      type: 3}
+  - rows:
+    - rowIndex: 0
+      debugIndex: 0
+      strings:
+      - Command
+      - Arg1
+      - Arg2
+      - Arg3
+      - Arg4
+      - Arg5
+      - Arg6
+      - WaitType
+      - Text
+      - PageCtrl
+      - Voice
+      - WindowType
+      - English
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u30DC\u30A4\u30B9\u306E\u30C6\u30B9\u30C8\u518D\u751F\u3002\u6B63\u3057\u304F\u518D\u751F\u3055\u308C\u3066\u3044\u308B\u3067\u3057\u3087\u3046\u304B\uFF1F"
+      - 
+      - voice_test1.wav
+      - 
+      - This is a voice test playback. Did you hear it?
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 5
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 6
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u3093\u3001\u3070\u3063\u3061\u308A\u3088\u3002"
+      - Input
+      - voice_test2.wav
+      - 
+      - I sure did.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 7
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u304A\u304A\u30FC\u3002\u3067\u3082\u5909\u306A\u58F0\u3060\u3002"
+      - Input
+      - voice_test3.wav
+      - 
+      - Alright! But it sounds funny.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 8
+      debugIndex: 8
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u307B\u3052"
+      - InputBr
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 9
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u5408\u6210\u97F3\u58F0\u3067\u3059\u304B\u3089\u306D\u30FC\u3002\u3061\u3083\u3093\u3068\u3057\u305F\u58F0\u304C\u6B32\u3057\u3044\u306A\u3089\u58F0\u512A\u3055\u3093\u306B\u983C\u3093\u3060\u307B\u3046\u304C\u3044\u3044\u308F\u306D\u3002"
+      - InputBr
+      - voice_test4.wav
+      - 
+      - It's a synthesized voice, that's why. If you want a real voice, you're gonna
+        have to ask a voice actor.
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 10
+      debugIndex: 10
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 11
+      strings:
+      - Jump
+      - "*\u5BB44\u9078\u629E\u80A2\u30C8\u30C3\u30D7"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/Utage/Sample/Scenarios/SampleScenario3.xls:BackLog
+    type: 1
+    textLength: 448
+    headerRow: 0
+    sourceAssetInEditor: {fileID: 102900000, guid: cb28b89963be99c459afa1c0f4200266,
+      type: 3}
