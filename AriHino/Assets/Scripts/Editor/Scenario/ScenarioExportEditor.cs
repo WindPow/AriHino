@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -9,7 +8,7 @@ using System.IO;
 using System;
 using System.Text;
 using UniRx;
-using System.Linq;
+using OfficeOpenXml;
 
 namespace Arihino.Editor
 {
@@ -33,9 +32,7 @@ namespace Arihino.Editor
         // 新しくシートを作成するか
         private bool isNewSheet;
         // 新しいシート名
-        private string newSheetName;
-        // 出力先エクセルファイルのシート番号
-        private int outputSheetNum;
+        private string sheetName;
         // 読み込み開始No
         private int hedNo = 1;
         // 読み込み終了No
@@ -129,19 +126,12 @@ namespace Arihino.Editor
 
             isNewSheet = EditorGUILayout.Toggle("新しくシートを作成する", isNewSheet);
 
-            EditorGUI.BeginDisabledGroup(!isNewSheet);
-
-            GUILayout.Label("新規シート名");
-            newSheetName = EditorGUILayout.TextField(newSheetName);
-
-            EditorGUI.EndDisabledGroup();
+            GUILayout.Label("シート名");
+            sheetName = EditorGUILayout.TextField(sheetName);
 
             EditorGUILayout.Space();
 
             EditorGUI.BeginDisabledGroup(isNewSheet);
-
-            GUILayout.Label("シート番号");
-            outputSheetNum = EditorGUILayout.IntField(outputSheetNum);
 
             EditorGUI.EndDisabledGroup();
 
@@ -199,32 +189,45 @@ namespace Arihino.Editor
         /// </summary>
         private void ExportScenarioFile()
         {
-            Excel xls = ExcelHelper.LoadExcel(outPutPath);
-            xls.ShowLog();
 
-            foreach (var scenario in scenarioDic)
-            {
-                if (!xls.Tables.Any() || xls.Tables.Count < outputSheetNum) break;
+            using(ExcelPackage excelPackage = new ExcelPackage(new FileInfo(outPutPath))){
 
                 if (isAllInput)
                 {
                     hedNo = 1;
                     endNo = scenarioDic.Count;
                 }
-                // 先頭Noより前なら飛ばす
-                if (scenario.Key < hedNo) continue;
-                //  終末Noより後なら抜ける
-                if (scenario.Key > endNo) break;
 
-                int rowNum = scenario.Key + 1;
-                xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Arg1, scenario.Value.CharaName);
-                xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Arg2, scenario.Value.CharaAvatarName);
-                xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Text, scenario.Value.Text);
-                xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.ToWrite, scenario.Value.ToWriteId.ToString());
-                xls.Tables[outputSheetNum].SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Discription, scenario.Value.Description);
+                ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets[sheetName];
+                // シートがない場合追加して保存
+                if(isNewSheet || worksheet == null) {
+                    excelPackage.Workbook.Worksheets.Add(sheetName);
+                    FileInfo excelFile = new FileInfo(outPutPath);
+                    excelPackage.SaveAs(excelFile);
+                    // 再度シート取得
+                    worksheet = excelPackage.Workbook.Worksheets[sheetName];
+                }
+
+                foreach(var scenario in scenarioDic) {
+                    
+                    // 先頭Noより前なら飛ばす
+                    if (scenario.Key < hedNo) continue;
+                    //  終末Noより後なら抜ける
+                    if (scenario.Key > endNo) break;
+                    
+                    int rowNum = scenario.Key + 1;
+
+                    worksheet.SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Arg1, scenario.Value.CharaName);
+                    worksheet.SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Arg2, scenario.Value.CharaAvatarName);
+                    worksheet.SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Text, scenario.Value.Text);
+                    worksheet.SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.ToWrite, scenario.Value.ToWriteId.ToString());
+                    worksheet.SetValue(rowNum, (int)APP_DEFINE.Editor.ScenarioInputDataHedder.Discription, scenario.Value.Description);
+                }
+
+                // Excelファイルを保存
+                excelPackage.Save();
+                
             }
-
-            ExcelHelper.SaveExcel(xls, outPutPath);
         }
     }
 

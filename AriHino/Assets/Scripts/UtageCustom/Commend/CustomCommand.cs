@@ -21,7 +21,6 @@ namespace Utage {
         {
             switch (id)
             {
-                
                 case "ItemCollect":
                     command = new AdvCommandCollectItem(row);
                     break;
