@@ -15,6 +15,7 @@ MonoBehaviour:
   chapterName: Boot
   dataList:
   - {fileID: 11400000, guid: d0d046df97c05c74bb8321e0363d0a27, type: 2}
+  - {fileID: 11400000, guid: ec4b25ba46fc64b4587dad3f551a7fe5, type: 2}
   settingList:
   - rows:
     - rowIndex: 0
