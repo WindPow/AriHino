@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapterName: Boot
   dataList:
-  - {fileID: 11400000, guid: d0d046df97c05c74bb8321e0363d0a27, type: 2}
+  - {fileID: 11400000, guid: e0faad306f7f7184ab17ca9787efbcbc, type: 2}
   - {fileID: 11400000, guid: ec4b25ba46fc64b4587dad3f551a7fe5, type: 2}
   settingList:
   - rows:
@@ -44,9 +44,101 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:Character
+    - rowIndex: 1
+      debugIndex: 1
+      strings:
+      - "\u30A8\u30EC\u30CA"
+      - Erena
+      - "\u901A\u5E38"
+      - 
+      - -1100
+      - 
+      - Bottom
+      - .4
+      - 
+      - Erena/erena_nomal.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - "\u30A8\u30EC\u30CA"
+      - Erena
+      - "\u8EFD\u88C5"
+      - 
+      - -1100
+      - 
+      - Bottom
+      - .4
+      - 
+      - Erena/erena_light.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings:
+      - "\u30B7\u30F3"
+      - Shin
+      - "\u901A\u5E38"
+      - 
+      - -1100
+      - 
+      - Bottom
+      - .4
+      - 
+      - Shin/shin_nomal.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 5
+      strings:
+      - "\u30B7\u30F3"
+      - Shin
+      - "\u8EFD\u88C5"
+      - 
+      - -1100
+      - 
+      - Bottom
+      - .4
+      - 
+      - Shin/shin_light.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 6
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 7
+      strings:
+      - "\u30C0\u30B9\u30C6\u30A3\u30F3"
+      - Dustin
+      - "\u901A\u5E38"
+      - 
+      - -1100
+      - 
+      - Bottom
+      - .4
+      - 
+      - Dustin/dustin_nomal.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:Character
     type: 1
-    textLength: 154
+    textLength: 371
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
@@ -73,9 +165,24 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:Texture
+    - rowIndex: 1
+      debugIndex: 1
+      strings:
+      - "\u80CC\u666F001"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - bg001.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:Texture
     type: 1
-    textLength: 112
+    textLength: 128
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
@@ -88,7 +195,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:Particle
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:Particle
     type: 1
     textLength: 13
     headerRow: 0
@@ -118,7 +225,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:Layer
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:Layer
     type: 1
     textLength: 109
     headerRow: 0
@@ -146,7 +253,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:EyeBlink
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:EyeBlink
     type: 1
     textLength: 112
     headerRow: 0
@@ -174,7 +281,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:LipSynch
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:LipSynch
     type: 1
     textLength: 106
     headerRow: 0
@@ -272,7 +379,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:Animation
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:Animation
     type: 1
     textLength: 93
     headerRow: 0
@@ -291,7 +398,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:Sound
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:Sound
     type: 1
     textLength: 37
     headerRow: 0
@@ -318,7 +425,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:Param
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:Param
     type: 1
     textLength: 50
     headerRow: 0
@@ -346,7 +453,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:ParamTbl{}
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:ParamTbl{}
     type: 1
     textLength: 16
     headerRow: 0
@@ -362,7 +469,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:SceneGallery
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:SceneGallery
     type: 1
     textLength: 27
     headerRow: 0
@@ -376,7 +483,7 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    name: Assets/ArihinoMain/Scenarios/ArihinoMain.xls:Localize
+    name: Assets/ArihinoMain/Scenarios/Settings.xls:Localize
     type: 1
     textLength: 3
     headerRow: 0
