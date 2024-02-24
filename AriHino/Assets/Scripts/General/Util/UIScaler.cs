@@ -5,25 +5,30 @@ using DG.Tweening;
 
 public class UIScaler : MonoBehaviour
 {
+    [SerializeField] private Vector2 originScale;
+
     [SerializeField] private Vector2 toScale;
 
     [SerializeField] private float duration;
 
-    private Vector2 originScale;
+
+    public bool isScaleChanged { get; private set; }
 
     public void ScaleTransiton(){
 
         transform.DOScale(toScale, duration);
+        isScaleChanged = true;
     }
 
     public void ReturnScale(){
 
         transform.DOScale(originScale, duration);
+        isScaleChanged = false;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        originScale = transform.localScale;
+        transform.localScale = originScale;
     }
 }
