@@ -3,7 +3,7 @@ using System;
 using UniRx;
 using UniRx.Triggers;
 
-public class SystemButtonCollisionHandler : MonoBehaviour
+public class AdvMenuCollisionHandler : MonoBehaviour
 {
     [SerializeField]
     private CanvasGroup targetCanvasGroup; // 透明度を変化させたい別のオブジェクトのCanvasGroup
@@ -48,7 +48,7 @@ public class SystemButtonCollisionHandler : MonoBehaviour
         this.OnMouseExitAsObservable()
             .Subscribe(_ =>
             {
-                if (!isFadingOut && !isFadingIn && isProcessingEnabled) // フェード中でない場合かつ処理が有効な場合のみ処理を実行
+                if (!isFadingOut && !isFadingIn && isProcessingEnabled) // フェード中でない場合かつ処理が有効な場合のみフェードアウトを開始
                 {
                     fadeOutDisposable = Observable.Timer(TimeSpan.FromSeconds(fadeOutDelay))
                         .Subscribe(__ =>
@@ -56,11 +56,6 @@ public class SystemButtonCollisionHandler : MonoBehaviour
                             StartFadeOut();
                         })
                         .AddTo(disposables);
-                }
-                else if (isFadingIn && isProcessingEnabled) // フェードイン中の場合かつ処理が有効な場合はキャンセルしてフェードアウトを開始
-                {
-                    CancelFadeIn();
-                    StartFadeOut();
                 }
             })
             .AddTo(disposables);
@@ -74,18 +69,18 @@ public class SystemButtonCollisionHandler : MonoBehaviour
     private void StartFadeIn()
     {
         isFadingIn = true;
+        CancelFadeOut(); // フェードアウトが実行中であればキャンセル
+
         fadeInDisposable = Observable.Timer(TimeSpan.FromSeconds(fadeInDuration))
             .Subscribe(_ =>
             {
                 isFadingIn = false;
-                fadeInDisposable = null;
             })
             .AddTo(disposables);
 
         LeanTween.alphaCanvas(targetCanvasGroup, 1f, fadeInDuration)
             .setOnComplete(() =>
             {
-                isFadingIn = false;
                 fadeInDisposable = null;
             });
     }
@@ -93,18 +88,18 @@ public class SystemButtonCollisionHandler : MonoBehaviour
     private void StartFadeOut()
     {
         isFadingOut = true;
+        CancelFadeIn(); // フェードインが実行中であればキャンセル
+
         fadeOutDisposable = Observable.Timer(TimeSpan.FromSeconds(fadeOutDuration))
             .Subscribe(_ =>
             {
                 isFadingOut = false;
-                fadeOutDisposable = null;
             })
             .AddTo(disposables);
 
         LeanTween.alphaCanvas(targetCanvasGroup, 0f, fadeOutDuration)
             .setOnComplete(() =>
             {
-                isFadingOut = false;
                 fadeOutDisposable = null;
             });
     }

@@ -7,7 +7,7 @@ public class SystemButtonController : MonoBehaviour
     private UIMover uiMover;
 
     [SerializeField]
-    private SystemButtonCollisionHandler buttonCollisionHandler;
+    //private SystemButtonCollisionHandler buttonCollisionHandler;
 
     private CompositeDisposable disposables;
 
@@ -20,7 +20,7 @@ public class SystemButtonController : MonoBehaviour
             .Subscribe(moved =>
             {
                 // SystemButtonCollisionHandlerのenabledを制御
-                buttonCollisionHandler.SetProcessingEnabled(moved);
+                //buttonCollisionHandler.SetProcessingEnabled(moved);
             }).AddTo(disposables);
     }
 

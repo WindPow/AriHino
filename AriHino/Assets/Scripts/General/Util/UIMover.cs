@@ -72,8 +72,6 @@ public class UIMover : MonoBehaviour
 
                 // 移動状態の変化を通知
                 moveStateChangedSubject.OnNext(isInitialPosition);
-
-                //CheckInitialPosition(); // 移動完了後に座標の比較を行い、フラグを設定
             });
     }
 }
