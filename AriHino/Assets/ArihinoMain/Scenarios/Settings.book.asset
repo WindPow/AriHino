@@ -46,7 +46,7 @@ MonoBehaviour:
       debugIndex: 1
       strings:
       - "\u30A8\u30EC\u30CA"
-      - Erena
+      - "\u30A8\u30EC\u30CA"
       - "\u901A\u5E38"
       - 
       - -1100
@@ -62,7 +62,7 @@ MonoBehaviour:
       debugIndex: 2
       strings:
       - "\u30A8\u30EC\u30CA"
-      - Erena
+      - "\u30A8\u30EC\u30CA"
       - "\u8EFD\u88C5"
       - 
       - -1100
@@ -84,7 +84,7 @@ MonoBehaviour:
       debugIndex: 4
       strings:
       - "\u30B7\u30F3"
-      - Shin
+      - "\u30B7\u30F3"
       - "\u901A\u5E38"
       - 
       - -1100
@@ -100,7 +100,7 @@ MonoBehaviour:
       debugIndex: 5
       strings:
       - "\u30B7\u30F3"
-      - Shin
+      - "\u30B7\u30F3"
       - "\u8EFD\u88C5"
       - 
       - -1100
@@ -122,7 +122,7 @@ MonoBehaviour:
       debugIndex: 7
       strings:
       - "\u30C0\u30B9\u30C6\u30A3\u30F3"
-      - Dustin
+      - "\u30C0\u30B9\u30C6\u30A3\u30F3"
       - "\u901A\u5E38"
       - 
       - -1100
@@ -134,9 +134,31 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 8
+      debugIndex: 8
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 9
+      strings:
+      - "\u5144\u3055\u3093"
+      - "\u5144\u3055\u3093"
+      - "\u901A\u5E38"
+      - 
+      - -100
+      - 
+      - 
+      - 1.4
+      - 
+      - "Test/\u30B7\u30EB\u30A8\u30C3\u30C8\u7537_09.png"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/ArihinoMain/Scenarios/Settings.xls:Character
     type: 1
-    textLength: 371
+    textLength: 395
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
@@ -166,7 +188,7 @@ MonoBehaviour:
     - rowIndex: 1
       debugIndex: 1
       strings:
-      - "\u80CC\u666F001"
+      - "\u99C5\u5730\u4E0B"
       - Bg
       - 
       - 
@@ -174,13 +196,43 @@ MonoBehaviour:
       - 
       - 
       - 
-      - bg001.png
+      - bg_004.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - "\u99C5\u5730\u4E0B_\u30D9\u30F3\u30C1"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - bg_002.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings:
+      - "\u99C5\u5730\u4E0B_\u5929\u4E95"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - bg_003.png
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     name: Assets/ArihinoMain/Scenarios/Settings.xls:Texture
     type: 1
-    textLength: 128
+    textLength: 164
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
