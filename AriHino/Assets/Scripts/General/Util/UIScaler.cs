@@ -12,18 +12,22 @@ public class UIScaler : MonoBehaviour
     [SerializeField] private float duration;
 
 
-    public bool isScaleChanged { get; private set; }
+    public bool IsScaleChanged { get; private set; }
 
-    public void ScaleTransiton(){
+    public void ScaleTransiton(System.Action onScaleComplete = null){
 
-        transform.DOScale(toScale, duration);
-        isScaleChanged = true;
+        transform.DOScale(toScale, duration).OnComplete(() => {
+            IsScaleChanged = true;
+            onScaleComplete?.Invoke();
+        });
     }
 
-    public void ReturnScale(){
+    public void ReturnScale(System.Action onReturnComplete = null){
 
-        transform.DOScale(originScale, duration);
-        isScaleChanged = false;
+        transform.DOScale(originScale, duration).OnComplete(() => {
+            IsScaleChanged = false;
+            onReturnComplete?.Invoke();
+        });
     }
 
     // Start is called before the first frame update
