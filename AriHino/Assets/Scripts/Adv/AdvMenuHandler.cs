@@ -5,11 +5,11 @@ using Utage;
 
 public class AdvMenuHandler : UtageUguiMenuButtons
 {
+    [Header("拡張要素")]
+
     [SerializeField] GameObject menuButton;
     
     [SerializeField] UIScaler menuUiScaler;
-
-    [SerializeField] UIMover booksUiMover;
 
     /// <summary>
     /// Menuの閉じるボタン押下時のスケーリング処理
@@ -25,19 +25,4 @@ public class AdvMenuHandler : UtageUguiMenuButtons
             menuButton.SetActive(true);
         }
     }
-
-    /// <summary>
-    /// Booksの表示ボタン押下時の移動処理
-    /// </summary>
-    public void OnTapBooksActive() {
-
-        if (!booksUiMover.IsMoved) {
-            booksUiMover.MoveTransition();
-            booksUiMover.gameObject.SetActive(true);
-        }
-        else {
-            booksUiMover.ReturnPosition(() => booksUiMover.gameObject.SetActive(false));
-        }
-    }
-
 }
