@@ -49,10 +49,10 @@ MonoBehaviour:
       - "\u30A8\u30EC\u30CA"
       - "\u901A\u5E38"
       - 
-      - -1100
+      - -2300
       - 
       - Bottom
-      - .4
+      - .7
       - 
       - Erena/erena_nomal.png
       isEmpty: 0
@@ -230,9 +230,24 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings:
+      - "\u8349\u539F_2"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - bg_005.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/ArihinoMain/Scenarios/Settings.xls:Texture
     type: 1
-    textLength: 164
+    textLength: 180
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}

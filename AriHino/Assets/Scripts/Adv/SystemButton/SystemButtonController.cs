@@ -16,12 +16,11 @@ public class SystemButtonController : MonoBehaviour
         disposables = new CompositeDisposable();
 
         // UIMoverのIsMovingが変化した時の処理を購読
-        uiMover.OnMoveStateChanged
-            .Subscribe(moved =>
-            {
-                // SystemButtonCollisionHandlerのenabledを制御
-                //buttonCollisionHandler.SetProcessingEnabled(moved);
-            }).AddTo(disposables);
+        // uiMover.OnMoveStateChanged
+        //     .Subscribe(moved =>
+        //     {
+        //         // SystemButtonCollisionHandlerのenabledを制御
+        //         //buttonCollisionHandler.SetProcessingEnabled(moved);
     }
 
     private void OnDestroy()
