@@ -49,7 +49,7 @@ MonoBehaviour:
       - "\u30A8\u30EC\u30CA"
       - "\u901A\u5E38"
       - 
-      - -2300
+      - -2270
       - 
       - Bottom
       - .7
@@ -83,7 +83,7 @@ MonoBehaviour:
     - rowIndex: 4
       debugIndex: 4
       strings:
-      - "\u30B7\u30F3"
+      - "\u30B7\u30F3_\u6709"
       - "\u30B7\u30F3"
       - "\u901A\u5E38"
       - 
@@ -99,7 +99,7 @@ MonoBehaviour:
     - rowIndex: 5
       debugIndex: 5
       strings:
-      - "\u30B7\u30F3"
+      - "\u30B7\u30F3_\u6709"
       - "\u30B7\u30F3"
       - "\u8EFD\u88C5"
       - 
@@ -158,7 +158,7 @@ MonoBehaviour:
       debugInfo: 
     name: Assets/ArihinoMain/Scenarios/Settings.xls:Character
     type: 1
-    textLength: 395
+    textLength: 399
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
@@ -196,7 +196,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - bg_004.png
+      - bg_002.png
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -211,14 +211,14 @@ MonoBehaviour:
       - 
       - 
       - 
-      - bg_002.png
+      - bg_004.png
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 3
       debugIndex: 3
       strings:
-      - "\u99C5\u5730\u4E0B_\u5929\u4E95"
+      - "S\u99C5\u5730\u4E0B_\u5929\u4E95"
       - Bg
       - 
       - 
@@ -226,12 +226,57 @@ MonoBehaviour:
       - 
       - 
       - 
-      - bg_003.png
+      - sbg_station.png
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 4
       debugIndex: 4
+      strings:
+      - "\u99C5"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - bg_007.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 5
+      strings:
+      - "S\u5217\u8ECA\u524D"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - sbg_train.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 6
+      strings:
+      - "S\u5217\u8ECA\u524D_\u8FD1"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - sbg_trainL.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 7
       strings:
       - "\u8349\u539F_2"
       - Bg
@@ -245,9 +290,69 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 8
+      debugIndex: 8
+      strings:
+      - "S\u99C5\u5730\u9762"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - sbg_trainground.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 9
+      strings:
+      - "\u5217\u8ECA\u524D_\u5F8C"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - bg_008.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 10
+      debugIndex: 10
+      strings:
+      - "S\u6728"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - sbg_tree
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 11
+      strings:
+      - "S\u67282"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - sbg_tree2
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/ArihinoMain/Scenarios/Settings.xls:Texture
     type: 1
-    textLength: 180
+    textLength: 308
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
@@ -463,9 +568,147 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings:
+      - "\u99C5\u30E9\u30A4\u30C8"
+      - 
+      - Se
+      - spotlight.mp3
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - "\u30D6\u30B6\u30FC"
+      - 
+      - Se
+      - Flip_Clock.mp3
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings:
+      - "\u8D77\u304D\u4E0A\u304C\u308A"
+      - 
+      - Se
+      - weak.mp3
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 5
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 6
+      debugIndex: 6
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 7
+      debugIndex: 7
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 8
+      debugIndex: 8
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 9
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 10
+      debugIndex: 10
+      strings:
+      - "\u611F\u52D5"
+      - 
+      - Bgm
+      - "\u611F\u52D5.wav"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 11
+      strings:
+      - "\u30A8\u30EC\u30CA\u306E\u30C6\u30FC\u30DE"
+      - 
+      - Bgm
+      - elena.wav
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 12
+      debugIndex: 12
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 14
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 15
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 16
+      debugIndex: 16
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 17
+      debugIndex: 17
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 18
+      debugIndex: 18
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 19
+      debugIndex: 19
+      strings:
+      - "\u98A8"
+      - 
+      - Ambience
+      - wind.mp3
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/ArihinoMain/Scenarios/Settings.xls:Sound
     type: 1
-    textLength: 37
+    textLength: 137
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
