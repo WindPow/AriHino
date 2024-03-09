@@ -51,10 +51,10 @@ MonoBehaviour:
       - "\u30A8\u30EC\u30CA"
       - "\u901A\u5E38"
       - 
-      - -2270
+      - -1600
       - 
       - Bottom
-      - .7
+      - .5
       - 
       - Erena/erena_nomal.png
       isEmpty: 0
@@ -127,10 +127,10 @@ MonoBehaviour:
       - "\u30C0\u30B9\u30C6\u30A3\u30F3"
       - "\u901A\u5E38"
       - 
-      - -1100
+      - -1450
       - 
       - Bottom
-      - .4
+      - .5
       - 
       - Dustin/dustin_nomal.png
       isEmpty: 0
