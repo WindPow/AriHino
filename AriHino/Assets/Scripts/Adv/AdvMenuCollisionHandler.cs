@@ -63,7 +63,7 @@ public class AdvMenuCollisionHandler : MonoBehaviour
 
     private void OnDestroy()
     {
-        disposables.Dispose();
+        disposables?.Dispose();
     }
 
     private void StartFadeIn()
