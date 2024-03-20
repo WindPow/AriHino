@@ -8,11 +8,15 @@ public class UIMover : MonoBehaviour
     [SerializeField] private Vector2 toPosition;
     [SerializeField] private float duration;
 
+    [SerializeField] private bool isStartOn;
+
     public bool IsMoved { get; private set; }
 
     void Start()
     {
         rectTransform.anchoredPosition = originPosition;
+
+        if(isStartOn) MoveTransition();
     }
 
     public void MoveTransition(System.Action onMoveComplete = null)
