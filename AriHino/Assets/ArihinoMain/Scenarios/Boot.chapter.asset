@@ -41,39 +41,28 @@ MonoBehaviour:
       - Icon
       - IconSubFileName
       - IconRect
+      - hairback
+      - body
+      - face
+      - robe
+      - faceparts
+      - eye
+      - eyebrows
+      - lip
+      - hairfront
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 1
       debugIndex: 1
-      strings:
-      - "\u30A8\u30EC\u30CA"
-      - "\u30A8\u30EC\u30CA"
-      - "\u901A\u5E38"
-      - 
-      - -1600
-      - 
-      - Bottom
-      - .5
-      - 
-      - Erena/erena_nomal.png
-      isEmpty: 0
+      strings: []
+      isEmpty: 1
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 2
       debugIndex: 2
-      strings:
-      - "\u30A8\u30EC\u30CA"
-      - "\u30A8\u30EC\u30CA"
-      - "\u8EFD\u88C5"
-      - 
-      - -1100
-      - 
-      - Bottom
-      - .4
-      - 
-      - Erena/erena_light.png
-      isEmpty: 0
+      strings: []
+      isEmpty: 1
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 3
@@ -122,18 +111,8 @@ MonoBehaviour:
       debugInfo: 
     - rowIndex: 7
       debugIndex: 7
-      strings:
-      - "\u30C0\u30B9\u30C6\u30A3\u30F3"
-      - "\u30C0\u30B9\u30C6\u30A3\u30F3"
-      - "\u901A\u5E38"
-      - 
-      - -1450
-      - 
-      - Bottom
-      - .5
-      - 
-      - Dustin/dustin_nomal.png
-      isEmpty: 0
+      strings: []
+      isEmpty: 1
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 8
@@ -158,9 +137,304 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 10
+      debugIndex: 10
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 11
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 12
+      debugIndex: 12
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 14
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 15
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 16
+      debugIndex: 16
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 17
+      debugIndex: 17
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 18
+      debugIndex: 18
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 19
+      debugIndex: 19
+      strings:
+      - "\u30A8\u30EC\u30CA"
+      - "\u30A8\u30EC\u30CA"
+      - "\u30ED\u30FC\u30D6-\u901A\u5E38"
+      - 
+      - -1150
+      - 
+      - Bottom
+      - .5
+      - 
+      - elena.asset
+      - 
+      - Avatar
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - elena-hair-back1
+      - elena-body1
+      - elena-face1
+      - elena-robe1
+      - elena-cheek1
+      - elena-eye1
+      - elena-mayu1
+      - elena-mouth1
+      - elena-hair-front1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 20
+      debugIndex: 20
+      strings:
+      - 
+      - 
+      - "\u30ED\u30FC\u30D6-\u7B11\u9854"
+      - 
+      - -1150
+      - 
+      - Bottom
+      - .5
+      - 
+      - elena.asset
+      - 
+      - Avatar
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - elena-hair-back1
+      - elena-body1
+      - elena-face1
+      - elena-robe1
+      - elena-cheek-smile1
+      - elena-eye1
+      - elena-mayu-smile1
+      - elena-mouth-smile1
+      - elena-hair-front1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 21
+      debugIndex: 21
+      strings:
+      - 
+      - 
+      - "\u8131-\u901A\u5E38"
+      - 
+      - -1150
+      - 
+      - Bottom
+      - .5
+      - 
+      - elena.asset
+      - 
+      - Avatar
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - elena-hair-back1
+      - elena-body1
+      - elena-face1
+      - 
+      - elena-cheek1
+      - elena-eye1
+      - elena-mayu1
+      - elena-mouth1
+      - elena-hair-front1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 22
+      debugIndex: 22
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 23
+      debugIndex: 23
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 24
+      debugIndex: 24
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 25
+      debugIndex: 25
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 26
+      debugIndex: 26
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 27
+      debugIndex: 27
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 28
+      debugIndex: 28
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 29
+      debugIndex: 29
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 30
+      debugIndex: 30
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 31
+      debugIndex: 31
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 32
+      debugIndex: 32
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 33
+      debugIndex: 33
+      strings:
+      - "\u30C0\u30B9\u30C6\u30A3\u30F3"
+      - "\u30C0\u30B9\u30C6\u30A3\u30F3"
+      - "\u901A\u5E38"
+      - 
+      - -950
+      - 
+      - Bottom
+      - .5
+      - 
+      - dustin.asset
+      - 
+      - Avatar
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - dustin-hair-back1
+      - dustin-body1
+      - dustin-face1
+      - 
+      - dustin-hige1
+      - dustin-eye1
+      - dustin-mayu1
+      - dustin-lip1
+      - dustin-hair-front1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 34
+      debugIndex: 34
+      strings:
+      - 
+      - 
+      - "\u7B11\u9854"
+      - 
+      - -950
+      - 
+      - Bottom
+      - .5
+      - 
+      - dustin.asset
+      - 
+      - Avatar
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - dustin-hair-back1
+      - dustin-body1
+      - dustin-face1
+      - 
+      - dustin-hige-smile1
+      - dustin-eye-smile1
+      - dustin-mayu-smile1
+      - dustin-lip-smile1
+      - dustin-hair-front1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/ArihinoMain/Scenarios/Settings.xls:Character
     type: 1
-    textLength: 399
+    textLength: 1079
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
@@ -352,9 +626,39 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 12
+      debugIndex: 12
+      strings:
+      - "\u5BB6\u524D_\u68EE\u5074"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - bg_009.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings:
+      - "\u5BB6_\u30EA\u30D3\u30F3\u30B0"
+      - Bg
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - bg_010.png
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/ArihinoMain/Scenarios/Settings.xls:Texture
     type: 1
-    textLength: 308
+    textLength: 343
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
@@ -397,9 +701,42 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings:
+      - "\u30AD\u30E3\u30E9\u4E2D\u592E"
+      - Character
+      - 0
+      - 0
+      - 200
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - "\u30AD\u30E3\u30E9\u5DE6"
+      - Character
+      - -260
+      - 0
+      - 190
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 3
+      debugIndex: 3
+      strings:
+      - "\u30AD\u30E3\u30E9\u53F3"
+      - Character
+      - 260
+      - 0
+      - 190
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/ArihinoMain/Scenarios/Settings.xls:Layer
     type: 1
-    textLength: 109
+    textLength: 169
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: 5b2360bb86eb66744ad6012a87e22513,
       type: 3}
