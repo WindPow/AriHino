@@ -16,4 +16,9 @@ public class UIBlurHandler : MonoBehaviour
         material.DOFloat(targetValue, "_SamplingDistance", duration);
     }
 
+    protected void OnDestroy()
+    {
+        material.SetFloat("_SamplingDistance", 0);
+    }
+
 }
