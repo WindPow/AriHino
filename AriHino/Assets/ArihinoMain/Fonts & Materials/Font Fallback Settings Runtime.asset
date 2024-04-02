@@ -1,33 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073f97970fd04bfaacdc7550589b1837, type: 3}
-  m_Name: Font Fallback Settings Runtime
-  m_EditorClassIdentifier: 
-  fontSettings: {fileID: 11400000, guid: f7fa93cca4ec88e459160f861bcba443, type: 2}
-  font: {fileID: 11400000, guid: c1af97ccd82c0cc4dac530c0fc08e216, type: 2}
-  fallbackFontsPath: Fonts & Materials
-  localizeFallbacks:
-  - language: English
-    fallbackNames:
-    - ArihinoMainNotoSansJP0 SDF
-  - language: Japanese
-    fallbackNames:
-    - ArihinoMainNotoSansJP0 SDF
-  - language: Korean
-    fallbackNames:
-    - ArihinoMainNotoSansKR0 SDF
-  - language: ChineseSimplified
-    fallbackNames:
-    - ArihinoMainNotoSansSC0 SDF
-  - language: ChineseTraditional
-    fallbackNames:
-    - ArihinoMainNotoSansTC0 SDF
+version https://git-lfs.github.com/spec/v1
+oid sha256:7a0bd11f521a9d2ad8cd76ecdb1df2e1b01cad18590fc30dabcfcb6699dd184f
+size 1063

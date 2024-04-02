@@ -1,17 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16d9053a75362054598d72e1d8988bc8, type: 3}
-  m_Name: Template.scenarios
-  m_EditorClassIdentifier: 
-  importVersion: 3
-  chapters:
-  - {fileID: 11400000, guid: 71bcad74dc84a2d43bd3f907402d870f, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b0b895793e8a0541bd7dd71819053e1fcfebb51935e7738c49fac349c9f986d4
+size 527
