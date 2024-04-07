@@ -46,4 +46,21 @@ public class MultiObjectSwitcher : MonoBehaviour
             Debug.LogError("Invalid index: " + index);
         }
     }
+
+    public void SetObjectsActive(int index, bool isActive)
+{
+    // インデックスが有効な範囲内であるか確認
+    if (index >= 0 && index < objectsToSwitch.Count)
+    {
+        // 指定されたインデックスのオブジェクトをアクティブ/非アクティブにする
+        foreach (GameObject obj in objectsToSwitch[index].array)
+        {
+            obj.SetActive(isActive);
+        }
+    }
+    else
+    {
+        Debug.LogError("Invalid index: " + index);
+    }
+}
 }
