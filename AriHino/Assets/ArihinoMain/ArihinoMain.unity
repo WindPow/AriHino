@@ -3660,7 +3660,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1696870228}
         m_TargetAssemblyTypeName: Utage.UtageUguiMenuButtons, Utage
         m_MethodName: OnTapSkip
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6114,9 +6114,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.01804892
+    y: 0.024761349
     width: 1
-    height: 0.9639022
+    height: 0.9504773
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -11675,7 +11675,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1696870228}
         m_TargetAssemblyTypeName: Utage.UtageUguiMenuButtons, Utage
         m_MethodName: OnTapAuto
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -32270,9 +32270,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.01804892
+    y: 0.024761349
     width: 1
-    height: 0.9639022
+    height: 0.9504773
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
