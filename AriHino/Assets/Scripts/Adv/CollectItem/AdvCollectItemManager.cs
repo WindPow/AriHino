@@ -49,8 +49,7 @@ public class AdvCollectItemManager : MonoBehaviour
 
     public void SetCollectItem(int collectItemId) {
 
-        //TODO IDからマスターデータを取得
-        var mstAdvCollectItem = new MstAdvCollectItem();
+        var mstAdvCollectItem = MasterDataManager.Instance.GetMasterData<MstAdvCollectItem>(collectItemId);
         collectItemModel.SetCollectItem(mstAdvCollectItem);
     
     }

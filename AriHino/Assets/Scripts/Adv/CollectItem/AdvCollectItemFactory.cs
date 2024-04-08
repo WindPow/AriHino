@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Text;
 using UnityEngine;
 
 /// <summary>
@@ -11,15 +12,17 @@ public interface IAdvCollectItemFactory {
 
 public class AdvCollectItemFactory : MonoBehaviour, IAdvCollectItemFactory
 {
-    private const string prefabPath = "Adv/CollectItem/CollectItemGroup_{0}";
+    [SerializeField] Transform parent;
+
+    private const string prefabPath = "Adv/CollectItem/CollectItem_{0}";
 
     public IAdvCollectItemDataView CreateCollectItem(int collectItemId){
 
-        var prefab = Resources.Load<AdvCollectItemDataView>(prefabPath);
+        var prefab = Resources.Load<AdvCollectItemDataView>(ZString.Format(prefabPath, collectItemId));
 
         if(prefab == null) return null;
 
-        return Instantiate<AdvCollectItemDataView>(prefab);
+        return Instantiate<AdvCollectItemDataView>(prefab, parent);
 
     }
 
