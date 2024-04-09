@@ -36,9 +36,9 @@ public class AdvCollectItemModel : IAdvCollectItemModel
     public AdvCollectItemModel(List<MstAdvCollectItem> advCollectItemIds) {
 
         var MstAdvCollectItems = new List<MstAdvCollectItem>();
-        foreach (var advCollectItemId in advCollectItemIds){
-            //MstAdvCollectItems.Add(new MstAdvCollectItem(advCollectItemId,))
-        }
+        // foreach (var advCollectItemId in advCollectItemIds){
+        //     MstAdvCollectItems.Add(new MstAdvCollectItem(advCollectItemId,))
+        // }
 
         hasCollectItems = new ReactiveCollection<MstAdvCollectItem>(MstAdvCollectItems);
     }

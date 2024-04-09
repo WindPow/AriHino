@@ -9,11 +9,11 @@ using UniRx;
 /// </summary>
 public class AdvCollectItemPresenter : MonoBehaviour
 {
+    [SerializeField] private AdvCollectItemFactory advCollectItemFactory;
+
     [SerializeField] private AdvCollectNotification advCollectNotification;
     
     private IAdvCollectItemModel collectItemModel;
-
-    private IAdvCollectItemFactory collectItemFactory;
 
     private Dictionary<int, IAdvCollectItemDataView> displayCollectItems = new Dictionary<int, IAdvCollectItemDataView>();
 
@@ -24,8 +24,6 @@ public class AdvCollectItemPresenter : MonoBehaviour
     public void Init(AdvCollectItemModel collectItemModel){
 
         this.collectItemModel = collectItemModel;
-
-        collectItemFactory = new AdvCollectItemFactory();
 
         Bind();
 
@@ -50,7 +48,7 @@ public class AdvCollectItemPresenter : MonoBehaviour
     /// <param name="collectItemId"></param>
     private void CreateCollectItem(MstAdvCollectItem collectItemData) {
 
-        var item = collectItemFactory.CreateCollectItem(collectItemData.ItemId);
+        var item = advCollectItemFactory.CreateCollectItem(collectItemData.ID);
 
         item.Init(collectItemData);
 
@@ -59,10 +57,10 @@ public class AdvCollectItemPresenter : MonoBehaviour
 
             // 通知を表示した後に表示リストから削除            
             ShowNotification(item);
-            displayCollectItems.Remove(item.ItemId);
+            displayCollectItems.Remove(item.ID);
         });
 
-        displayCollectItems[collectItemData.ItemId] = item;
+        displayCollectItems[collectItemData.ID] = item;
     }
 
     /// <summary>
