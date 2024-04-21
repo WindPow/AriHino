@@ -46,7 +46,7 @@ public class AdvCollectItemPresenter : MonoBehaviour
     /// アイテムの生成
     /// </summary>
     /// <param name="collectItemId"></param>
-    private void CreateCollectItem(MstAdvCollectItem collectItemData) {
+    private void CreateCollectItem(MstAdvCollectItemData collectItemData) {
 
         var item = advCollectItemFactory.CreateCollectItem(collectItemData.ID);
 
@@ -67,7 +67,7 @@ public class AdvCollectItemPresenter : MonoBehaviour
     /// 通知の表示
     /// </summary>
     /// <param name="collectItemId"></param>
-    private void ShowNotification(MstAdvCollectItem collectItem){
+    private void ShowNotification(MstAdvCollectItemData collectItem){
 
         advCollectNotification.Init(collectItem.Name);
 

@@ -1,9 +1,6 @@
-public class MstAdvCollectItem : IMasterData<int>
-{
+public class MstCharacterData : IMasterData<int> {
     public int ID { get; private set; }
     public string Name { get; private set; }
-    public string Description { get; private set; }
-    public int Type { get; private set;}
 
     public void Initialize(string[] headers, string[] values)
     {
@@ -17,19 +14,10 @@ public class MstAdvCollectItem : IMasterData<int>
                 case "name":
                     Name = values[i];
                     break;
-                case "description":
-                    Description = values[i];
-                    break;
-                case "type":
-                    Type = int.Parse(values[i]);
-                    break;
+                
                 // Add more properties if needed
             }
         }
     }
 
-    public int GetKey()
-    {
-        return ID;
-    }
 }

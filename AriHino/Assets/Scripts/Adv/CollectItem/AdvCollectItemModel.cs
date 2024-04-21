@@ -10,45 +10,57 @@ using System;
 /// </summary>
 interface IAdvCollectItemModel {
 
-    IList<MstAdvCollectItem> HasCollectItems { get; }
-    IObservable<CollectionAddEvent<MstAdvCollectItem>> HasCollectItemAddObservable { get; }
+    IList<MstAdvCollectItemData> HasCollectItems { get; }
+    IObservable<CollectionAddEvent<MstAdvCollectItemData>> HasCollectItemAddObservable { get; }
 
-    public IList<MstAdvCollectItem> PutCollectItems { get; }
-    public IObservable<CollectionAddEvent<MstAdvCollectItem>> PutCollectItemAddObservable { get; }
-    public IObservable<CollectionRemoveEvent<MstAdvCollectItem>> PutCollectItemRemoveObservable { get;}
+    IList<MstAdvCollectItemData> PutCollectItems { get; }
+    IObservable<CollectionAddEvent<MstAdvCollectItemData>> PutCollectItemAddObservable { get; }
+    IObservable<CollectionRemoveEvent<MstAdvCollectItemData>> PutCollectItemRemoveObservable { get;}
 
-    void SetCollectItem(MstAdvCollectItem collectItem);
+    void SetCollectItem(MstAdvCollectItemData collectItem);
 }
 
 public class AdvCollectItemModel : IAdvCollectItemModel
 {
     // 取得したアイテムリスト
-    private ReactiveCollection<MstAdvCollectItem> hasCollectItems;
-    public IList<MstAdvCollectItem> HasCollectItems => hasCollectItems.ToList();
-    public IObservable<CollectionAddEvent<MstAdvCollectItem>> HasCollectItemAddObservable => hasCollectItems.ObserveAdd();
+    private ReactiveCollection<MstAdvCollectItemData> hasCollectItems;
+    public IList<MstAdvCollectItemData> HasCollectItems => hasCollectItems.ToList();
+    public IObservable<CollectionAddEvent<MstAdvCollectItemData>> HasCollectItemAddObservable => hasCollectItems.ObserveAdd();
 
     // 設置するアイテムリスト
-    private ReactiveCollection<MstAdvCollectItem> putCollectItems = new ReactiveCollection<MstAdvCollectItem>();
-    public IList<MstAdvCollectItem> PutCollectItems => putCollectItems.ToList();
-    public IObservable<CollectionAddEvent<MstAdvCollectItem>> PutCollectItemAddObservable => putCollectItems.ObserveAdd();
-    public IObservable<CollectionRemoveEvent<MstAdvCollectItem>> PutCollectItemRemoveObservable => putCollectItems.ObserveRemove();
+    private ReactiveCollection<MstAdvCollectItemData> putCollectItems = new ReactiveCollection<MstAdvCollectItemData>();
+    public IList<MstAdvCollectItemData> PutCollectItems => putCollectItems.ToList();
+    public IObservable<CollectionAddEvent<MstAdvCollectItemData>> PutCollectItemAddObservable => putCollectItems.ObserveAdd();
+    public IObservable<CollectionRemoveEvent<MstAdvCollectItemData>> PutCollectItemRemoveObservable => putCollectItems.ObserveRemove();
 
-    public AdvCollectItemModel(List<MstAdvCollectItem> advCollectItemIds) {
+    List<MstAdvCollectItemData> list;
 
-        var MstAdvCollectItems = new List<MstAdvCollectItem>();
+    public AdvCollectItemModel(List<MstAdvCollectItemData> advCollectItemIds) {
+
+        var MstAdvCollectItems = new List<MstAdvCollectItemData>();
         // foreach (var advCollectItemId in advCollectItemIds){
         //     MstAdvCollectItems.Add(new MstAdvCollectItem(advCollectItemId,))
         // }
 
-        hasCollectItems = new ReactiveCollection<MstAdvCollectItem>(MstAdvCollectItems);
+        hasCollectItems = new ReactiveCollection<MstAdvCollectItemData>(MstAdvCollectItems);
     }
 
-    public void SetCollectItem(MstAdvCollectItem collectItem){
+    public void SetCollectItem(MstAdvCollectItemData collectItem){
 
         putCollectItems.Add(collectItem);
     }
 
     public void SetHasCollectItem(){
 
+    }
+
+    public void RemoveCollectItem(int collectItemId) {
+
+        var removeItem = putCollectItems.FirstOrDefault(e => e.ID == collectItemId);
+        if (removeItem != null) putCollectItems.Remove(removeItem);
+    }
+
+    public void RemoveAllCollectItem() {
+        putCollectItems.Clear();
     }
 }

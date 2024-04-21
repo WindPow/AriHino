@@ -22,7 +22,7 @@ public class AdvCollectItemFactory : MonoBehaviour, IAdvCollectItemFactory
 
         if(prefab == null) return null;
 
-        return Instantiate<AdvCollectItemDataView>(prefab, parent);
+        return Instantiate(prefab, parent);
 
     }
 

@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using System.Linq;
+using System;
+using UniRx;
 
 public class BooksButtonHandler : MonoBehaviour
 {
 
     [SerializeField] private MultiObjectSwitcher contentsSwitcher;
-
     [SerializeField] private ObjectActivator[] stickyNoteActivators;
-
+    [SerializeField] private GameObject PageNextAnimObj;
+    [SerializeField] private GameObject PagePrevAnimObj;
     [SerializeField] private Animation[] pageNextAnims;
-
     [SerializeField] private Animation[] pagePrevAnims;
 
     private int indexNow = 0;
     private float pageAnimDeley = 0.1f;
+
+    public IObservable<int> ChangeIndexObservable => changeIndexSubject;
+    private Subject<int> changeIndexSubject = new Subject<int>();
 
     /// <summary>
     /// 付箋タップ処理
@@ -44,16 +48,28 @@ public class BooksButtonHandler : MonoBehaviour
         });
         
         indexNow = index;
+        changeIndexSubject.OnNext(index);
     }
 
     /// <summary>
     /// ページめくりアニメーション（単体）
     /// </summary>
     /// <param name="isNext"></param>
-    private void PlayPageSingleAnim(bool isNext) {
+    public async UniTask PlayPageSingleAnim(bool isNext) {
         
-        if(isNext) pageNextAnims[0].Play();
-        else pagePrevAnims[0].Play();
+        if(isNext) {
+            PageNextAnimObj.SetActive(true);
+            pageNextAnims[0].Play();
+            await pageNextAnims[0].WaitForCompletionAsync();
+            PageNextAnimObj.SetActive(false);
+            
+        }
+        else {
+            PagePrevAnimObj.SetActive(true);
+            pagePrevAnims[0].Play();
+            await pagePrevAnims[0].WaitForCompletionAsync();
+            PagePrevAnimObj.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -64,6 +80,8 @@ public class BooksButtonHandler : MonoBehaviour
     private async UniTask PlayPageMultiAnim(bool isNext) {
 
         if(isNext) {
+
+            PageNextAnimObj.SetActive(true);
             
             foreach(var anim in pageNextAnims) {
                 anim.Play();
@@ -72,9 +90,12 @@ public class BooksButtonHandler : MonoBehaviour
             }
 
             await UniTask.WhenAll(pageNextAnims.Select(anim => anim.WaitForCompletionAsync()));
+            PageNextAnimObj.SetActive(false);
         }
 
         else{
+
+            PagePrevAnimObj.SetActive(true);
 
             foreach(var anim in pagePrevAnims) {
                 anim.Play();
@@ -83,6 +104,7 @@ public class BooksButtonHandler : MonoBehaviour
             }
 
             await UniTask.WhenAll(pagePrevAnims.Select(anim => anim.WaitForCompletionAsync()));
+            PagePrevAnimObj.SetActive(false);
         }
     }
 }
