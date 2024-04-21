@@ -31,6 +31,7 @@ public class MasterDataManager : MonoBehaviour
     private void Awake()
     {
         LoadData<MstAdvCollectItemData>("m_collect_item.csv").Forget();
+        LoadData<MstCharacterData>("m_character.csv").Forget();
         LoadData<MstBooksData>("m_books.csv").Forget();
         LoadData<MstBooksCharacterPageData>("m_books_character_page.csv").Forget();
         LoadData<MstBooksCharacterExplanationData>("m_books_character_explanation.csv").Forget();

@@ -7,15 +7,15 @@ public class BooksCharacterPageViewData {
     public int ID { get; }
     public string CharaName { get; }
     public string CharaImageFilePath { get; }
-    public List<string> ExplanationStrs { get; }
-    public List<string> MemoStrs { get; }
-    public List<string> ImpressionsStrs { get; }
+    public List<string> ExplanationStrs { get; } = new();
+    public List<string> MemoStrs { get; } = new();
+    public List<string> ImpressionsStrs { get; } = new();
 
     public BooksCharacterPageViewData(MstBooksCharacterPageData characterData) {
 
         ID = characterData.ID;
         CharaImageFilePath = characterData.ImageFilePath;
-        CharaName = MasterDataManager.Instance.GetMasterData<MstCharacterData>(characterData.ID).Name;
+        CharaName = MasterDataManager.Instance.GetMasterData<MstCharacterData>(characterData.CharaId).Name;
 
         // キャラ説明を登録
         foreach (var explanationId in characterData.ExplanationIds) {

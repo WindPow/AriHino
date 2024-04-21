@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BooksCharacterPageView : MonoBehaviour
 {
-    [SerializeField] private Image characterImage;
+    [SerializeField] private RawImage characterImage;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private BooksTextView booksTextViewPrefab;
     [SerializeField] private Transform explanationParent;
@@ -28,8 +28,9 @@ public class BooksCharacterPageView : MonoBehaviour
 
     private void LoadCharacterImage() {
 
-        Sprite sprite = Resources.Load<Sprite>("Texture/Books/Character" + pageViewData.CharaImageFilePath);
-        characterImage.sprite = sprite;
+        string imagePath = "Texture/Books/Character/" + pageViewData.CharaImageFilePath;
+        Texture2D texture = Resources.Load<Texture2D>(imagePath);
+        characterImage.texture = texture;
     }
 
     private void RegistExplanationText() {

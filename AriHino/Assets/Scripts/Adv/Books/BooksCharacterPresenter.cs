@@ -50,8 +50,9 @@ public class BooksCharacterPresenter : MonoBehaviour
 
         foreach(var page in booksCharacterModel.DisplayCharacterPageDict) {
             var pageViewData = new BooksCharacterPageViewData(page.Value);
-            var view = Instantiate(pageViewPrefab);
+            var view = Instantiate(pageViewPrefab, this.transform);
             view.Init(pageViewData);
+            view.gameObject.SetActive(true);
             pageViewDict.Add(pageViewData.ID, view);
         }
     }

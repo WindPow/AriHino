@@ -40,6 +40,6 @@ public class AdvCollectItemDataView : MonoBehaviour, IAdvCollectItemDataView
     public void Init(MstAdvCollectItemData itemData)
     {
 
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

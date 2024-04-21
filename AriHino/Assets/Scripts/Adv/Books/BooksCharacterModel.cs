@@ -34,7 +34,7 @@ public class BooksCharacterModel : IBooksCharacterModel
         }
 
         foreach(var page in displayCharacterPageDict.Keys) {
-            if(ids.Contains(page)) displayCharacterPageDict.Remove(page);
+            if(!ids.Contains(page)) displayCharacterPageDict.Remove(page);
         }
     }
 }
