@@ -23,6 +23,8 @@ namespace Utage
         [HideIfLegacyText] public TextMeshProUGUI countTmp;
         [SerializeField] bool keepTextureActive;    //テクスチャのアクティブのオンオフを切り替えるか
 
+        [SerializeField] string formatCount = "{0,2}/{1,2}";
+
         public AdvCgGalleryData Data
         {
             get { return data; }
@@ -55,7 +57,7 @@ namespace Utage
             {
                 if(!keepTextureActive) texture.gameObject.SetActive(true);
                 texture.LoadTextureFile(data.ThumbnailPath);
-                SetCountText(string.Format("{0,2}/{1,2}", data.NumOpen, data.NumTotal));
+                SetCountText(string.Format(formatCount, data.NumOpen, data.NumTotal));
             }
             else
             {

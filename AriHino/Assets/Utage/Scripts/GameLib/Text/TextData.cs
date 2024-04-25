@@ -112,15 +112,25 @@ namespace Utage
 				if(cInfo.IsEmoji)
 				{
 					string arg = c.CustomInfo.EmojiKey;
-					bool startsWithIndex = arg.StartsWith("index", StringComparison.OrdinalIgnoreCase);
-					bool startsWithName = arg.StartsWith("name", StringComparison.OrdinalIgnoreCase);
-					if (!startsWithIndex && !startsWithName)
+					if (!arg.Contains("index") && !arg.Contains("name"))
 					{
-						arg = "=" + arg;
+						//旧式のemojiタグ
+						arg = $" name=\"{arg}\"";
 					}
 					else
 					{
-						arg = " " + arg;
+						bool startsWithIndex = arg.StartsWith("index", StringComparison.OrdinalIgnoreCase);
+						bool startsWithName = arg.StartsWith("name", StringComparison.OrdinalIgnoreCase);
+						if (!startsWithIndex && !startsWithName)
+						{
+							//=で値にアセット名が指定されているタイプ
+							arg = "=" + arg;
+						}
+						else
+						{
+							//アセット名省略で指定されているタイプ
+							arg = " " + arg;
+						}
 					}
 					builder.Append($"<sprite{arg}>");
 				}

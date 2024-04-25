@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -11,6 +12,8 @@ namespace Utage
 	public class UtageForTextMeshPro : MonoBehaviour
 		, ICustomTextParser
 	{
+		[SerializeField] bool enableRichTextInParamString = false;
+		
 		void Awake()
 		{
 			SetCustomTextParser();
@@ -38,7 +41,17 @@ namespace Utage
 		//テキスト解析をカスタム
 		TextParser CreateCustomTextParser(string text)
 		{
-			return new TextMeshProTextParser(text);
+			if (enableRichTextInParamString)
+			{
+				//いったんparamタグだけ変換し、その他のタグは残したままのテキストを生成
+				var parseParamOnlyString = new TextParser(text, true).NoneMetaString;
+				//改めてテキストの解析処理
+				return new TextMeshProTextParser(parseParamOnlyString);
+			}
+			else
+			{
+				return new TextMeshProTextParser(text);
+			}
 		}
 
 		//ログテキスト作成をカスタム
@@ -46,6 +59,5 @@ namespace Utage
 		{
 			return new TextMeshProTextParser(text,true).NoneMetaString;
 		}
-		
 	}
 }

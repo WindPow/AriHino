@@ -274,7 +274,7 @@ namespace Utage
 		/// <summary>
 		/// 指定のキーのレイヤーを探す
 		/// </summary>
-		internal AdvGraphicLayer FindLayer(string layerName)
+		public AdvGraphicLayer FindLayer(string layerName)
 		{
 			foreach (var keyValue in Groups)
 			{
@@ -288,7 +288,7 @@ namespace Utage
 		/// <summary>
 		/// 指定のオブジェクト名のレイヤーを探す
 		/// </summary>
-		internal AdvGraphicLayer FindLayerByObjectName(string name)
+		public AdvGraphicLayer FindLayerByObjectName(string name)
 		{
 			foreach (var keyValue in Groups)
 			{
@@ -312,21 +312,53 @@ namespace Utage
 		/// <summary>
 		/// 指定の名前のグラフィックオブジェクトを検索
 		/// </summary>
-		internal AdvGraphicObject FindObject(string name)
+		public AdvGraphicObject FindObject(string targetName)
 		{
 			foreach (var keyValue in Groups)
 			{
-				AdvGraphicObject obj = keyValue.Value.FindObject(name);
+				AdvGraphicObject obj = keyValue.Value.FindObject(targetName);
 				if (obj != null) return obj;
 			}
 
 			return null;
 		}
 
+		//指定の名前のAdvGraphicObjectを探し、そのTargetObjectを取得
+		public AdvGraphicBase FindObjectTarget(string objectLabel)
+		{
+			//指定の名前のAdvGraphicObjectを探す
+			AdvGraphicObject obj = FindObject(objectLabel);
+			if (obj == null)
+			{
+				//見つからない
+				return null;
+			}
+
+			//AdvGraphicObject以下に描画オブジェクトがない可能性があるので
+			//obj.TargetObjectで取得
+			return obj.TargetObject;
+		}
+
+		//指定の名前のAdvGraphicObjectを探し、描画オブジェクト（プレハブならプレハブインスタンス）のコンポーネントを取得
+		public T FindObjectTargetComponent<T>(string objectLabel)
+			where T : class
+		{
+			AdvGraphicBase target =  FindObjectTarget(objectLabel);
+			if (target == null)
+			{
+				//見つからない
+				return null;
+			}
+
+			//AdvGraphicObject以下に描画オブジェクトがない可能性があるので
+			//obj.TargetObjectで取得
+			return target.GetComponentInChildren<T>();
+		}
+
 		/// <summary>
 		/// 指定の名前のレイヤーかグラフィックオブジェクトを検索
 		/// </summary>
-		internal GameObject FindObjectOrLayer(string targetName)
+		public GameObject FindObjectOrLayer(string targetName)
 		{
 			AdvGraphicObject obj = FindObject(targetName);
 			if (obj != null)
@@ -344,7 +376,7 @@ namespace Utage
 		}
 
 		//全てのグラフィックオブジェクトを取得
-		internal List<AdvGraphicObject> AllGraphics()
+		public List<AdvGraphicObject> AllGraphics()
 		{
 			List<AdvGraphicObject> allGraphics = new List<AdvGraphicObject>();
 			foreach (var keyValue in Groups)

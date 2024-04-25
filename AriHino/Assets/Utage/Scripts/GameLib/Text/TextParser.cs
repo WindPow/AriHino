@@ -261,6 +261,13 @@ namespace Utage
 			}
 		}
 
+		//改行文字を追加
+		protected virtual void AddBr(string arg)
+		{
+			CharData data = new CharData('\n', parsingInfo);
+			AddCharData(data);
+		}
+
 		//インターバルの追加
 		protected virtual bool TryAddInterval(string arg)
 		{

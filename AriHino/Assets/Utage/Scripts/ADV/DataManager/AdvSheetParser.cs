@@ -76,6 +76,16 @@ namespace Utage
 		{
 			if (IsDisableSheetName(sheetName)) return false;
 			if (IsSettingsSheet(sheetName)) return false;
+
+			//後付けなので強引・・・
+			var customProjectSetting = CustomProjectSetting.Instance;
+			if (customProjectSetting != null)
+			{
+				if (customProjectSetting.CustomDataSettings.IsCustomData(sheetName))
+				{
+					return false;
+				}
+			}
 			return true;
 		}
 

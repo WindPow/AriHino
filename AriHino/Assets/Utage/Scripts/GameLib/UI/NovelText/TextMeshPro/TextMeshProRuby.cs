@@ -27,10 +27,22 @@ namespace Utage
 		//各文字が、表示可能となる元テキストのインデックスのリスト
 		List<int> VisibleIndexList { get; } = new List<int>();
 
-		//色の設定
+		TextMeshProRubyInfo RubyInfo { get; set; }
+
 		internal void SetColor(Color color)
 		{
 			TextMeshPro.color = color;
+		}
+
+		//メインテキストの色が変更されたら、ルビの色も変更するための処理
+		internal void UpdateColor(TMP_TextInfo textInfo)
+		{
+			if(RubyInfo == null) return;
+			int index = RubyInfo.BeginIndex;
+			if(index < 0 || index >= textInfo.characterInfo.Length) return;
+			var beginInfo = textInfo.characterInfo[index];
+			TextMeshPro.color = beginInfo.color;
+
 		}
 
 		//表示文字数に応じて、ルビの表示のオン、オフを更新
@@ -50,6 +62,7 @@ namespace Utage
 
 		internal void Init(TMP_TextInfo textInfo, TextMeshProRubyInfo rubyInfo, Vector2 pivotOffset)
 		{
+			RubyInfo = rubyInfo;
 			MakeRubyText(textInfo, rubyInfo, pivotOffset);
 			InitVisibleIndexList(textInfo, rubyInfo);
 		}
@@ -79,7 +92,7 @@ namespace Utage
 			float y = line.ascender + OffsetY;
 
 			//pivotを考慮して位置をずらす必要がある
-
+			
 			MakeRubyText(centerX + pivotOffset.x, y + pivotOffset.y, width, rubyInfo.Ruby, beginInfo.color);
 		}
 
@@ -130,11 +143,12 @@ namespace Utage
 			}
 
 			VisibleIndexList.Clear();
+			var rubyTextInfo = TextMeshPro.ForceGetTextInfo();
 			float x0 = TextMeshPro.rectTransform.anchoredPosition.x;
-			int length = TextMeshPro.textInfo.characterCount;
+			int length = rubyTextInfo.characterCount;
 			for (int i = 0; i < length; ++i)
 			{
-				float left = TextMeshPro.textInfo.characterInfo[i].bottomLeft.x + x0;
+				float left = rubyTextInfo.characterInfo[i].bottomLeft.x + x0;
 				int index = rightList.FindIndex(right => (right >= left));
 				if (index < 0)
 				{

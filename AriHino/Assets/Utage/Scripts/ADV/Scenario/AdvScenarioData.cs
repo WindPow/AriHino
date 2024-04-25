@@ -99,6 +99,25 @@ namespace Utage
 
 			isInit = true;
 		}
+		//全コマンドの遅延初期化を行う
+		//主にインポート時のエラーチェックのため
+		public void DelayInitializeAllCommand(AdvSettingDataManager dataManager)
+		{
+			foreach (var keyValue in ScenarioLabels)
+			{
+				var scenarioLabelData = keyValue.Value;
+				foreach (var page in scenarioLabelData.PageDataList)
+				{
+					foreach (AdvCommand command in page.CommandList)
+					{
+						if (command is IAdvCommandDelayInitialize delayInitialize)
+						{
+							delayInitialize.DelayInitialize(dataManager);
+						}
+					}
+				}
+			}
+		}
 
 		/// <summary>
 		/// 選択肢終了などの特別なコマンドを自動解析して追加

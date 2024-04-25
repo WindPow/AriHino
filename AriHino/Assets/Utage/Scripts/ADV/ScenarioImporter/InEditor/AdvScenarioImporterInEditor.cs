@@ -374,6 +374,7 @@ namespace Utage
 			foreach (AdvScenarioData data in scenarioList)
 			{
 				data.Init(setting);
+				data.DelayInitializeAllCommand(setting);
 			}
 
 

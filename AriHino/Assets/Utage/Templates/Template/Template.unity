@@ -5419,10 +5419,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.2144757
-    width: 1
-    height: 0.5710486
+    x: 0.0003069244
+    y: 0
+    width: 0.99938613
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -8567,6 +8567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be57f17e6f9f774ca6c5542a55c7a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableRichTextInParamString: 0
 --- !u!114 &456724015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26857,7 +26858,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 4
   m_wordSpacing: 0
-  m_lineSpacing: 32
+  m_lineSpacing: 36
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -27653,10 +27654,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.2144757
-    width: 1
-    height: 0.5710486
+    x: 0.0003069244
+    y: 0
+    width: 0.99938613
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

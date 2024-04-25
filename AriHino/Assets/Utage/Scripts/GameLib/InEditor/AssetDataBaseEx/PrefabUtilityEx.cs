@@ -80,6 +80,38 @@ namespace Utage
 			}
 			return asset;
 		}
+
+		//プレハブアセットのコンポーネントを削除する
+		public static void RemoveComponentPrefabAssetOrNormalInstance(Component prefabComponent)
+		{
+			if (PrefabUtility.IsPartOfPrefabAsset(prefabComponent))
+			{
+				//プレハブアセットの一部
+				Object.DestroyImmediate(prefabComponent, true);
+			}
+			else if(PrefabUtility.IsPartOfPrefabInstance(prefabComponent))
+			{
+				//プレハブinstanceなら何もしない
+				Debug.LogWarning($"{prefabComponent.name} is prefab instance");
+			}
+			else
+			{
+				Object.DestroyImmediate(prefabComponent);
+			}
+		}
+
+		//プレハブアセットのコンポーネントを削除する
+		public static void RemovePrefabAssetComponent(Component prefabComponent)
+		{
+			if (!PrefabUtility.IsPartOfPrefabAsset(prefabComponent))
+			{
+				//プレハブアセットの一部でないなら何もしない
+				Debug.LogError($"{prefabComponent.name} is not prefab asset");
+				return;
+			}
+			Object.DestroyImmediate(prefabComponent, true);
+		}
+
     }
 }
 #endif

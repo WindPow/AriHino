@@ -78,7 +78,10 @@ namespace Utage
             {
                 validator.AddFallbackFont(fallback);
             }
-
+            foreach (var spriteAsset in Settings.SpriteAssets)
+            {
+                validator.AddSpriteAsset(spriteAsset);
+            }
             return validator;
         }
 
@@ -109,6 +112,12 @@ namespace Utage
                     }
                 }
             }
+
+            foreach (var spriteAsset in Settings.SpriteAssets)
+            {
+                validator.AddSpriteAsset(spriteAsset);
+            }
+
             return validator;
         }
 

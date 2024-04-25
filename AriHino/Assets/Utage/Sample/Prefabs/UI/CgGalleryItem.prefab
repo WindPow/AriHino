@@ -123,6 +123,7 @@ MonoBehaviour:
   count: {fileID: 0}
   countTmp: {fileID: 5991862324053771662}
   keepTextureActive: 1
+  formatCount: '{0}/{1}'
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 0

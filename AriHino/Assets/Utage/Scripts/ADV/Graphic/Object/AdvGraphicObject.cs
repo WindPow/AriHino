@@ -192,6 +192,11 @@ namespace Utage
 			}
 			RenderObject.Alignment(Layer.SettingData.Alignment, graphic);
 			RenderObject.Flip(Layer.SettingData.FlipX, Layer.SettingData.FlipY);
+			foreach (var flip in TargetObject.GetComponentsInChildren<IAdvGraphicEventFlip>(true))
+			{
+				flip.Flip(Layer.SettingData.FlipX, Layer.SettingData.FlipY);
+			}
+			
 			this.LastResource = graphic;
 			this.Layer.Manager.OnDrawGraphicObject.Invoke(this, graphic);
 		}

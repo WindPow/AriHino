@@ -48,9 +48,24 @@ namespace Utage
 
         public void AddFallbackFont(TMP_FontAsset fallbackFont)
         {
-            foreach (var asset in TextMeshProUtil.GetFontAssetsWithFallback(FontAsset))
+            foreach (var asset in TextMeshProUtil.GetFontAssetsWithFallback(fallbackFont))
             {
                 AddCharacterInFontAsset(asset);
+            }
+        }
+
+        public void AddSpriteAsset(TMP_SpriteAsset spriteAsset)
+        {
+            foreach (var sprite in TextMeshProUtil.GetSpriteAssetsWithFallback(spriteAsset))
+            {
+                foreach (var character in sprite.spriteCharacterTable)
+                {
+                    var unicode = character.unicode;
+                    if (unicode != 0xfffe)
+                    {
+                        this.AddEnableCharacter(unicode);
+                    }
+                }
             }
         }
     }

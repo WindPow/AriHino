@@ -22,6 +22,24 @@ namespace Utage
             }
         }
 
+        //指定の文字列が、指定の接頭辞で始まっている場合、その接頭辞を削除した文字列を返す
+        public static string RemovePrefix(string str, string prefix)
+        {
+            return RemovePrefix(str, prefix, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        public static string RemovePrefix(string str, string prefix, StringComparison comparisonType)
+        {
+            if (str.StartsWith(prefix, comparisonType))
+            {
+                return str.Substring(prefix.Length, str.Length - prefix.Length);
+            }
+            else
+            {
+                return str;
+            }
+        }
+
 
         //改行文字をエスケープ処理
         public static string EscapeNewlines(string msg)
@@ -32,6 +50,19 @@ namespace Utage
             return msg;
         }
 
-
+        //ダブルクオーテーションで囲まれている場合はエスケープ処理を行う
+        public static string EscapeQuotes(string input)
+        {
+            if (input.StartsWith("\"") && input.EndsWith("\""))
+            {
+                // ダブルクオーテーションで囲まれている場合はエスケープ処理を行う
+                return input.Substring(1, input.Length - 2); // 先頭と末尾のダブルクオーテーションを削除
+            }
+            else
+            {
+                // ダブルクオーテーションで囲まれていない場合はそのまま返す
+                return input;
+            }
+        }
     }
 }

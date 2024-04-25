@@ -36,14 +36,6 @@ namespace Utage
             }
             set
             {
-#if false
-                if (instance != null && instance != value)
-                {
-                    string from = UnityEditor.AssetDatabase.GetAssetPath(instance);
-                    string to = UnityEditor.AssetDatabase.GetAssetPath(value);
-                    Debug.LogWarning($"CustomProjectSetting is already set. Change {from} -> {to}");
-                }
-#endif
                 instance = value;
             }
         }
@@ -69,6 +61,10 @@ namespace Utage
             set { useSheetNameToScenarioLabel = value; }
         }
         [SerializeField] bool useSheetNameToScenarioLabel = true;
+
+        //カスタムデータの設定
+        public AdvCustomDataSettings CustomDataSettings => customDataSettings;
+        [SerializeField] AdvCustomDataSettings customDataSettings = new();
 
     }
 }

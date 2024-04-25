@@ -471,6 +471,59 @@ namespace Utage
 			return defaultColumnName;
 		}
 
+
+
+		//「指定の名前＋接尾辞として言語名」をセル名としたテキストを取得
+		public string ParseCellSuffixedLanguageNameToLocalizedText(StringGridRow row, string cellName)
+		{
+			return row.ParseCell<string>(GetCellNameSuffixed(cellName));
+		}
+		public string ParseCellSuffixedLanguageNameToLocalizedTextOptional(StringGridRow row, string cellName,string defaultValue)
+		{
+			return row.ParseCellOptional<string>(GetCellNameSuffixed(cellName), defaultValue);
+		}
+		
+		//指定の
+		string GetCellNameSuffixed(string cellName)
+		{
+			//現在の言語キー
+			string languageKey = GetCurrentLanguageKey();
+			
+			//言語キー見つからない場合や、データ言語と同じ場合は、cellNameをそのまま返す
+			if (string.IsNullOrEmpty(languageKey) || DataLanguage == languageKey)
+			{
+				return cellName;
+			}
+			else
+			{
+				//接尾辞として言語名を追加したものを返す
+				return cellName + languageKey;
+			}
+		}
+		
+		//現在の言語キーを取得
+		string GetCurrentLanguageKey()
+		{
+			//対応言語名内にあれば、その言語名を返す
+			if (this.TextColumnLanguages.Contains(this.CurrentLanguage))
+			{
+				return CurrentLanguage;
+			}
+			//開発環境の言語と同じなら、その言語名を返す
+			if(DataLanguage==CurrentLanguage)
+			{
+				return CurrentLanguage;
+			}
+			
+			//開発環境言語がないなら、空文字を返す
+			if (string.IsNullOrEmpty(DataLanguage))
+			{
+				return "";
+			}
+			//ない場合はDefaultLanguageを返す
+			return DefaultLanguage;
+		}
+
 		//ローカライズによってスキップページかどうかチェック
 		public bool CheckSkipPage(StringGridRow row, string defaultColumnName)
 		{

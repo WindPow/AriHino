@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 22200000}
   - component: {fileID: 11400002}
   - component: {fileID: 7618231466184351824}
+  - component: {fileID: -5724538974911966147}
   m_Layer: 5
   m_Name: BackLogItem
   m_TagString: Untagged
@@ -101,6 +102,19 @@ MonoBehaviour:
   soundIcon: {fileID: 100008}
   button: {fileID: 6461514527437984922}
   isMultiTextInPage: 0
+--- !u!114 &-5724538974911966147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66761a2a4cd7483ea5e24aa922d7b1dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideBacklogPanel: 0
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +215,6 @@ MonoBehaviour:
   remakeLargeRuby: 1
   debugLogError: 1
   checkOverFlow: 0
-  checkOverFlowInEditor: 0
 --- !u!114 &3750042210703388486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +238,7 @@ MonoBehaviour:
   m_text: name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 701e6fb2fef94cc499a4ac0baf11005c, type: 2}
-  m_sharedMaterial: {fileID: 5448154608910584420, guid: e11abf6fc0e0b0f4eb0e9e8d1a0a05a2,
+  m_sharedMaterial: {fileID: -1686075178704036061, guid: 701e6fb2fef94cc499a4ac0baf11005c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -304,6 +317,8 @@ GameObject:
   - component: {fileID: 22200004}
   - component: {fileID: 6505212865422908322}
   - component: {fileID: 5301013384329514969}
+  - component: {fileID: 201495383644835089}
+  - component: {fileID: 5916668825021841915}
   m_Layer: 5
   m_Name: text
   m_TagString: Untagged
@@ -356,7 +371,6 @@ MonoBehaviour:
   remakeLargeRuby: 1
   debugLogError: 1
   checkOverFlow: 0
-  checkOverFlowInEditor: 0
 --- !u!114 &5301013384329514969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,7 +394,7 @@ MonoBehaviour:
   m_text: "\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19\uFF10\uFF11\uFF12\uFF13\uFF14\uFF15\uFF16\uFF17\uFF18\uFF19"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 701e6fb2fef94cc499a4ac0baf11005c, type: 2}
-  m_sharedMaterial: {fileID: 5448154608910584420, guid: e11abf6fc0e0b0f4eb0e9e8d1a0a05a2,
+  m_sharedMaterial: {fileID: -1686075178704036061, guid: 701e6fb2fef94cc499a4ac0baf11005c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -447,6 +461,59 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &201495383644835089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e828b74d8ebe244afc875db899873a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engine: {fileID: 0}
+  tipsManager: {fileID: 0}
+  textColor: {r: 0.93333334, g: 0.3137255, b: 0.7058824, a: 1}
+  underLineColor: {r: 0.93333334, g: 0.3137255, b: 0.7058824, a: 0}
+  textColorFocused: {r: 0.93333334, g: 0.5411765, b: 0.9019608, a: 1}
+  underLineColorFocused: {r: 0.93333334, g: 0.5411765, b: 0.9019608, a: 1}
+  textColorRead: {r: 0.74509805, g: 0.28235295, b: 0.5882353, a: 1}
+  underLineColorRead: {r: 0.74509805, g: 0.28235295, b: 0.5882353, a: 0}
+  textColorFocusedRead: {r: 0.78431374, g: 0.43137255, b: 0.6666667, a: 1}
+  underLineColorFocusedRead: {r: 0.78431374, g: 0.43137255, b: 0.6666667, a: 1}
+  onClickLink:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5916668825021841915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e79169941f54863956526bd3073090d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoSwitchRaycastTarget: 1
+  onTextChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnterLink:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitLink:
+    m_PersistentCalls:
+      m_Calls: []
+  onClickLink:
+    m_PersistentCalls:
+      m_Calls: []
+  onClickNoLink:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &100008
 GameObject:
   m_ObjectHideFlags: 0

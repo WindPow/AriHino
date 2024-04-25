@@ -26,20 +26,25 @@ namespace Utage
 		[SerializeField]
 		List<StringGrid> settingList = new List<StringGrid>();
 
+		//カスタムデータ
+		public List<StringGrid> CustomDataList => customDataList; 
+		[SerializeField] List<StringGrid> customDataList = new ();
+
 		public bool IsInited { get; set; }
+
+		public AdvCustomDataSettings CustomDataSettings => CustomProjectSetting.Instance.CustomDataSettings;
 
 		public void SetChapterName(string chapter)
 		{
 			this.chapterName = chapter;
 		}
-
-
+		
 		//起動時初期化
 		public void BootInit(AdvSettingDataManager settingDataManager)
 		{
 			IsInited = true;
 			//設定データの初期化
-			foreach (var grid in settingList)
+			foreach (var grid in SettingList)
 			{
 				IAdvSetting data = AdvSheetParser.FindSettingData(settingDataManager, grid.SheetName);
 				if (data != null)
@@ -47,7 +52,7 @@ namespace Utage
 					data.ParseGrid(grid);
 				}
 			}
-			foreach (var grid in settingList)
+			foreach (var grid in SettingList)
 			{
 				IAdvSetting data = AdvSheetParser.FindSettingData(settingDataManager, grid.SheetName);
 				if (data != null)
@@ -55,6 +60,7 @@ namespace Utage
 					data.BootInit(settingDataManager);
 				}
 			}
+			settingDataManager.CustomDataManager.AddAndInitChapterData(CustomDataSettings,this);
 		}
 
 
@@ -88,6 +94,7 @@ namespace Utage
 		{
 			this.DataList.Clear();
 			this.SettingList.Clear();
+			this.CustomDataList.Clear();
 			foreach (var book in importDataList)
 			{
 				this.DataList.Add(book);
@@ -95,14 +102,6 @@ namespace Utage
 				{
 					ImportSheet(sheet, macroManager);
 				}
-			}
-		}
-
-		void ImportBook(AdvImportBook book, AdvMacroManager macroManager)
-		{
-			foreach (var sheet in book.GridList)
-			{
-				ImportSheet(sheet, macroManager);
 			}
 		}
 
@@ -119,6 +118,10 @@ namespace Utage
 			if (AdvSheetParser.IsSettingsSheet(sheetName))
 			{
 				SettingList.Add(sheet);
+			}
+			else if(CustomDataSettings.IsCustomData(sheetName))
+			{
+				CustomDataList.Add(sheet);
 			}
 			else
 			{
