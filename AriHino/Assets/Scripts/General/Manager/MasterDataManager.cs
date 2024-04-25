@@ -31,12 +31,17 @@ public class MasterDataManager : MonoBehaviour
     private void Awake()
     {
         LoadData<MstAdvCollectItemData>("m_collect_item.csv").Forget();
+
         LoadData<MstCharacterData>("m_character.csv").Forget();
         LoadData<MstBooksData>("m_books.csv").Forget();
         LoadData<MstBooksCharacterPageData>("m_books_character_page.csv").Forget();
         LoadData<MstBooksCharacterExplanationData>("m_books_character_explanation.csv").Forget();
         LoadData<MstBooksCharacterMemoData>("m_books_character_memo.csv").Forget();
         LoadData<MstBooksCharacterImpressionsData>("m_books_character_impressions.csv").Forget();
+
+        LoadData<MstWorldData>("m_world.csv").Forget();
+        LoadData<MstBooksWorldPageData>("m_books_world_page.csv").Forget();
+        LoadData<MstBooksWorldExplanationData>("m_books_world_explanation.csv").Forget();
         // 他のマスターデータもここで読み込む
     }
 

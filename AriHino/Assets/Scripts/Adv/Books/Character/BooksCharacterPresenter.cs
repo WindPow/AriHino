@@ -16,14 +16,12 @@ public class BooksCharacterPresenter : MonoBehaviour
     private int indexNow;
 
     public void Init(BooksCharacterModel model, BooksButtonHandler buttonHandler) {
-        this.booksCharacterModel = model;
+        booksCharacterModel = model;
         booksButtonHandler = buttonHandler;
+        indexNow = pageViewDict.Keys.OrderBy(e => e).First();
 
         CreateCharacterPage();
         Bind();
-
-        indexNow = pageViewDict.Keys.OrderBy(e => e).First();
-
         DisplayUpdate();
     }
 
@@ -52,9 +50,10 @@ public class BooksCharacterPresenter : MonoBehaviour
             var pageViewData = new BooksCharacterPageViewData(page.Value);
             var view = Instantiate(pageViewPrefab, this.transform);
             view.Init(pageViewData);
-            view.gameObject.SetActive(true);
             pageViewDict.Add(pageViewData.ID, view);
         }
+
+        pageViewDict[indexNow].gameObject.SetActive(true);
     }
 
     private void DisplayUpdate() {
@@ -66,6 +65,7 @@ public class BooksCharacterPresenter : MonoBehaviour
 
         foreach (var page in pageViewDict) page.Value.gameObject.SetActive(false);
         int nextKey = pageViewDict.Keys.OrderBy(e => e).SkipWhile(e => e <= indexNow).First();
+        pageViewDict[indexNow].gameObject.SetActive(false);
         indexNow = nextKey;
 
         UniTask.Void(async() => {
@@ -77,6 +77,7 @@ public class BooksCharacterPresenter : MonoBehaviour
     public void OnPrevButton() {
         foreach (var page in pageViewDict) page.Value.gameObject.SetActive(false);
         int prevKey = pageViewDict.Keys.OrderByDescending(e => e).SkipWhile(e => e >= indexNow).First();
+        pageViewDict[indexNow].gameObject.SetActive(false);
         indexNow = prevKey;
 
         UniTask.Void(async() => {

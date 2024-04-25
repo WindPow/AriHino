@@ -1,10 +1,10 @@
 using System.Linq;
 
-public class MstBooksCharacterMemoData : IMasterData<int>
+public class MstBooksWorldExplanationData : IMasterData<int>
 {
     public int ID { get; private set; }
-    public int MemoId { get; private set;}
-    public int CharaId { get; private set; }
+    public int ExplanationId { get; private set;}
+    public int WorldId { get; private set; }
     public string Text { get; private set; }
     
     public void Initialize(string[] headers, string[] values)
@@ -16,11 +16,11 @@ public class MstBooksCharacterMemoData : IMasterData<int>
                 case "id":
                     ID = int.Parse(values[i]);
                     break;
-                case "memo_id":
-                    MemoId = int.Parse(values[i]);
+                case "explanation_id":
+                    ExplanationId = int.Parse(values[i]);
                     break;
-                case "chara_id":
-                    CharaId = int.Parse(values[i]);
+                case "world_id":
+                    WorldId = int.Parse(values[i]);
                     break;
                 case "text":
                     Text = values[i];

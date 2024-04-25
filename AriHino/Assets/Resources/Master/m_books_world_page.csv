@@ -1,2 +1,2 @@
-id,name,description,type
-1,エレナのパンツ,エレナの使いこまれたオパンツ,0
+id,world_id,progress_no,explanation_ids,image_path
+1,1,1,1,Books_elena
