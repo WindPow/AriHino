@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BooksManager : MonoBehaviour
@@ -43,6 +44,12 @@ public class BooksManager : MonoBehaviour
 
     public void ChangeBooksOpen(bool isOpen) {
         booksButton.SetActive(isOpen);
+    }
+
+    public void UpdateCharacterBooksPage(int charaId, int progressNo) {
+        var booksCharaPageDict = MasterDataManager.Instance.GetMasterDataDictionary<MstBooksCharacterPageData>();
+        var updateCharacterPage = booksCharaPageDict.Values.First(e => e.CharaId == charaId && e.ProgressNo == progressNo);
+        booksCharacterModel.UpdateBooksCharacter(updateCharacterPage);
     }
 
     public void UpdateBooks(int booksId) {

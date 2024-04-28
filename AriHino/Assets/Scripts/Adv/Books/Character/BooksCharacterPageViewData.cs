@@ -5,7 +5,7 @@ using System.Linq;
 
 public class BooksCharacterPageViewData {
 
-    public int ID { get; }
+    public int CharaId { get; }
     public string CharaName { get; }
     public string CharaImageFilePath { get; }
     public List<string> ExplanationStrs { get; } = new();
@@ -14,7 +14,7 @@ public class BooksCharacterPageViewData {
 
     public BooksCharacterPageViewData(MstBooksCharacterPageData characterData) {
 
-        ID = characterData.ID;
+        CharaId = characterData.ID;
         CharaImageFilePath = characterData.ImagePath;
         CharaName = MasterDataManager.Instance.GetMasterData<MstCharacterData>(characterData.CharaId).Name;
 

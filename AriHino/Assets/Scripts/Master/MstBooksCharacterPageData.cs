@@ -4,6 +4,7 @@ public class MstBooksCharacterPageData : IMasterData<int>
 {
     public int ID { get; private set; }
     public int CharaId { get; private set;}
+    public int ProgressNo { get; private set; }
     public int[] ExplanationIds { get; private set; }
     public int[] MemoIds { get; private set;}
     public int[] ImpressionsIds { get; private set;}
@@ -20,6 +21,9 @@ public class MstBooksCharacterPageData : IMasterData<int>
                     break;
                 case "chara_id":
                     CharaId = int.Parse(values[i]);
+                    break;
+                case "progress_no":
+                    ProgressNo = int.Parse(values[i]);
                     break;
                 case "explanation_ids":
                     ExplanationIds = values[i].Split('_').Select(int.Parse).ToArray();

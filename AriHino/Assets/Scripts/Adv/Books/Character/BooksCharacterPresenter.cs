@@ -18,7 +18,7 @@ public class BooksCharacterPresenter : MonoBehaviour
     public void Init(IBooksCharacterModel model, BooksPageButtonHandler buttonHandler) {
         booksCharacterModel = model;
         booksButtonHandler = buttonHandler;
-        indexNow = model.DisplayCharacterPageDict.Keys.First();
+        indexNow = model.DisplayCharacterPageDict.First().Key;
 
         CreateCharacterPage();
         Bind();
@@ -27,19 +27,27 @@ public class BooksCharacterPresenter : MonoBehaviour
 
     private void Bind() {
 
-        booksCharacterModel.DisplayCharacterPageAddObservable.Subscribe(page => {
-            
+        booksCharacterModel.DisplayCharacterPageDict.ObserveAdd().Subscribe(page => {
+
             var pageViewData = new BooksCharacterPageViewData(page.Value);
             var view = Instantiate(pageViewPrefab);
             view.Init(pageViewData);
-            pageViewDict.Add(pageViewData.ID, view);
+            pageViewDict.Add(pageViewData.CharaId, view);
             DisplayUpdate();
 
         }).AddTo(this);
 
-        booksCharacterModel.DisplayCharacterPageRemoveObservable.Subscribe(page => {
+        booksCharacterModel.DisplayCharacterPageDict.ObserveRemove().Subscribe(page => {
+
             pageViewDict.Remove(page.Value.ID);
             DisplayUpdate();
+
+        }).AddTo(this);
+
+        booksCharacterModel.DisplayCharacterPageDict.ObserveReplace().Subscribe(page => {
+
+            var pageViewData = new BooksCharacterPageViewData(page.NewValue);
+            pageViewDict[page.NewValue.CharaId].Init(pageViewData);
 
         }).AddTo(this);
     }
@@ -50,7 +58,7 @@ public class BooksCharacterPresenter : MonoBehaviour
             var pageViewData = new BooksCharacterPageViewData(page.Value);
             var view = Instantiate(pageViewPrefab, this.transform);
             view.Init(pageViewData);
-            pageViewDict.Add(pageViewData.ID, view);
+            pageViewDict.Add(pageViewData.CharaId, view);
         }
 
         pageViewDict[indexNow].gameObject.SetActive(true);

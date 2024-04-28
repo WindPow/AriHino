@@ -1,4 +1,4 @@
-﻿// UTAGE: Unity Text Adventure Game Engine (c) Ryohei Tokimura
+// UTAGE: Unity Text Adventure Game Engine (c) Ryohei Tokimura
 using UnityEngine;
 using UnityEngine.UI;
 using Utage;
@@ -45,6 +45,7 @@ namespace Utage
 					AdvCollectItemManager.Instance.RemoveAllCollectItem();
 					break;
 				case "ChangeBooksCharacter":
+				    BooksManager.Instance.UpdateCharacterBooksPage(int.Parse(command.Arg2), int.Parse(command.Arg3));
 				    break;
 				case "ChangeBooksWorld":
 				    break;

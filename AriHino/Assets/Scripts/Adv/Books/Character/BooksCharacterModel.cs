@@ -7,19 +7,16 @@ using System.Linq;
 
 public interface IBooksCharacterModel {
 
-    IDictionary<int, MstBooksCharacterPageData> DisplayCharacterPageDict { get; }
-    IObservable<DictionaryAddEvent<int, MstBooksCharacterPageData>> DisplayCharacterPageAddObservable { get; }
-    IObservable<DictionaryRemoveEvent<int, MstBooksCharacterPageData>> DisplayCharacterPageRemoveObservable { get; }
+    IReadOnlyReactiveDictionary<int, MstBooksCharacterPageData> DisplayCharacterPageDict { get; }
 
     void SetBooksCharacter(int[] ids);
+    void UpdateBooksCharacter(MstBooksCharacterPageData pageData);
 }
 
 public class BooksCharacterModel : IBooksCharacterModel
 {
     private ReactiveDictionary<int ,MstBooksCharacterPageData> displayCharacterPageDict = new();
-    public IDictionary<int, MstBooksCharacterPageData> DisplayCharacterPageDict => displayCharacterPageDict;
-    public IObservable<DictionaryAddEvent<int, MstBooksCharacterPageData>> DisplayCharacterPageAddObservable => displayCharacterPageDict.ObserveAdd();
-    public IObservable<DictionaryRemoveEvent<int, MstBooksCharacterPageData>> DisplayCharacterPageRemoveObservable => displayCharacterPageDict.ObserveRemove(); 
+    public IReadOnlyReactiveDictionary<int, MstBooksCharacterPageData> DisplayCharacterPageDict => displayCharacterPageDict;
 
     public BooksCharacterModel(int[] characterPageIds) {
 
@@ -32,11 +29,17 @@ public class BooksCharacterModel : IBooksCharacterModel
 
             if(displayCharacterPageDict.ContainsKey(id)) continue;
             var characterPage = MasterDataManager.Instance.GetMasterData<MstBooksCharacterPageData>(id);
-            displayCharacterPageDict.Add(id, characterPage);
+            displayCharacterPageDict.Add(characterPage.CharaId, characterPage);
         }
 
-        foreach(var page in displayCharacterPageDict.Keys) {
-            if(!ids.Contains(page)) displayCharacterPageDict.Remove(page);
-        }
+        // foreach(var page in displayCharacterPageDict.Keys) {
+        //     if(!ids.Contains(page)) displayCharacterPageDict.Remove(page);
+        // }
+    }
+
+    public void UpdateBooksCharacter(MstBooksCharacterPageData pageData) {
+        
+        displayCharacterPageDict[pageData.CharaId] = pageData;
+        
     }
 }
