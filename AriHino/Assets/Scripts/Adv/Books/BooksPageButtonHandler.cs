@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 using UniRx;
 
-public class BooksButtonHandler : MonoBehaviour
+public class BooksPageButtonHandler : MonoBehaviour
 {
 
     [SerializeField] private MultiObjectSwitcher contentsSwitcher;
@@ -15,12 +15,14 @@ public class BooksButtonHandler : MonoBehaviour
     [SerializeField] private GameObject PagePrevAnimObj;
     [SerializeField] private Animation[] pageNextAnims;
     [SerializeField] private Animation[] pagePrevAnims;
-
-    private int indexNow = 0;
-    private float pageAnimDeley = 0.1f;
-
+    [SerializeField] private float pageAnimDeley = 0.1f;
+    
     public IObservable<int> ChangeIndexObservable => changeIndexSubject;
     private Subject<int> changeIndexSubject = new Subject<int>();
+
+    public bool IsPlayingAnim { get; private set; }
+    private int indexNow = 0;
+    
 
     /// <summary>
     /// 付箋タップ処理
@@ -28,7 +30,7 @@ public class BooksButtonHandler : MonoBehaviour
     /// <param name="index"></param>
     public void OnTapStikcyNote(int index) {
 
-        if(index == indexNow) return;
+        if(IsPlayingAnim || index == indexNow) return;
 
         // 付箋の表示切替を行う
         for(int i = 0; i < stickyNoteActivators.Length; i++) {
@@ -56,6 +58,8 @@ public class BooksButtonHandler : MonoBehaviour
     /// </summary>
     /// <param name="isNext"></param>
     public async UniTask PlayPageSingleAnim(bool isNext) {
+
+        IsPlayingAnim = true;
         
         if(isNext) {
             PageNextAnimObj.SetActive(true);
@@ -70,6 +74,8 @@ public class BooksButtonHandler : MonoBehaviour
             await pagePrevAnims[0].WaitForCompletionAsync();
             PagePrevAnimObj.SetActive(false);
         }
+
+        IsPlayingAnim = false;
     }
 
     /// <summary>
@@ -78,6 +84,8 @@ public class BooksButtonHandler : MonoBehaviour
     /// <param name="isNext"></param>
     /// <returns></returns>
     private async UniTask PlayPageMultiAnim(bool isNext) {
+
+        IsPlayingAnim = true;
 
         if(isNext) {
 
@@ -106,5 +114,7 @@ public class BooksButtonHandler : MonoBehaviour
             await UniTask.WhenAll(pagePrevAnims.Select(anim => anim.WaitForCompletionAsync()));
             PagePrevAnimObj.SetActive(false);
         }
+
+        IsPlayingAnim = false;
     }
 }

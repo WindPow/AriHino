@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UniRx;
+using System.Linq;
 
 public class BooksPagePresenter : MonoBehaviour
 {
@@ -11,21 +12,26 @@ public class BooksPagePresenter : MonoBehaviour
     [SerializeField] BooksWardPresenter booksWardPresenter;
     [SerializeField] BooksCollectPresenter booksCollectPresenter;
     [SerializeField] AdvCollectItemPresenter advCollectItemPresenter;
-    [SerializeField] BooksButtonHandler booksButtonHandler;
+    [SerializeField] BooksPageButtonHandler booksButtonHandler;
 
-    private BooksPageModel booksPageModel;
+    private IBooksPageModel booksPageModel;
+    private IBooksCharacterModel booksCharacterModel;
+    private IBooksWorldModel booksWorldModel;
+    private IBooksWardModel booksWardModel;
+    private IBooksCollectModel booksCollectModel;
 
-    private BooksCharacterModel booksCharacterModel;
-    private BooksWorldModel booksWorldModel;
-    private BooksWardModel booksWardModel;
-    private BooksCollectModel booksCollectModel;
-
-    public void Init(BooksPageModel model) {
+    public void Init(IBooksPageModel pageModel, IBooksCharacterModel characterModel, IBooksWorldModel worldModel, IBooksWardModel wardModel, IBooksCollectModel collectModel) {
         
-        booksPageModel = model;
+        booksPageModel = pageModel;
 
-        booksCharacterModel = new BooksCharacterModel(model.BooksData.Value.CharacterPageIds);
-        booksCharacterPresenter.Init(booksCharacterModel, booksButtonHandler);
+        booksCharacterModel = characterModel;
+        if(booksCharacterPresenter) booksCharacterPresenter.Init(booksCharacterModel, booksButtonHandler);
+
+        booksWorldModel = worldModel;
+        if(booksWorldPresenter) booksWorldPresenter.Init(booksWorldModel, booksButtonHandler);
+
+        booksCollectModel = collectModel;
+        if(booksCollectPresenter) booksCollectPresenter.Init(booksCollectModel, booksButtonHandler);
 
     }
 
@@ -38,6 +44,8 @@ public class BooksPagePresenter : MonoBehaviour
         booksPageModel.BooksData.Subscribe(data => {
 
             booksCharacterModel.SetBooksCharacter(data.CharacterPageIds);
+            booksWorldModel.SetBooksWorld(data.WorldPageIds);
+
         }).AddTo(this);
     }
 

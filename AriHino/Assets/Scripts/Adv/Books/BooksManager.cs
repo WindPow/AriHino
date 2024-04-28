@@ -5,7 +5,12 @@ using UnityEngine;
 public class BooksManager : MonoBehaviour
 {
     [SerializeField] private BooksPagePresenter booksPagePresenter;
-    private BooksPageModel booksPageModel;
+    [SerializeField] private GameObject booksButton;
+    private IBooksPageModel booksPageModel;
+    private IBooksCharacterModel booksCharacterModel;
+    private IBooksWorldModel booksWorldModel;
+    private IBooksWardModel booksWardModel;
+    private IBooksCollectModel booksCollectModel;
 
     private static BooksManager instance;
     public static BooksManager Instance {
@@ -22,18 +27,30 @@ public class BooksManager : MonoBehaviour
     }
 
     public void Init() {
+
         var mstBooks = MasterDataManager.Instance.GetMasterData<MstBooksData>(1);
+
         booksPageModel = new BooksPageModel(mstBooks);
-        booksPagePresenter.Init(booksPageModel);
+        booksCharacterModel = new BooksCharacterModel(mstBooks.CharacterPageIds);
+        booksWorldModel = new BooksWorldModel(mstBooks.WorldPageIds);
+        booksCollectModel = new BooksCollectModel();
+
+        booksPagePresenter.Init(booksPageModel, booksCharacterModel, booksWorldModel, booksWardModel, booksCollectModel);
+
+        // 最初はBooksボタンを封印しておく
+        ChangeBooksOpen(false);
     }
 
-    public void ChangeBooks(int booksId) {
+    public void ChangeBooksOpen(bool isOpen) {
+        booksButton.SetActive(isOpen);
+    }
+
+    public void UpdateBooks(int booksId) {
         var mstBooks = MasterDataManager.Instance.GetMasterData<MstBooksData>(booksId);
         booksPageModel.SetBooksData(mstBooks);
     }
 
-    public void ChangeBooksCharacter(int booksCharacterId) {
-        var mstBooksCharacter = MasterDataManager.Instance.GetMasterData<MstBooksCharacterPageData>(booksCharacterId);
-
+    public void SetBooksCollectItem(MstCollectItemData collectItemData) {
+        booksCollectModel.OpenBooksCollect(collectItemData);
     }
 }

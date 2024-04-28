@@ -14,19 +14,18 @@ public class BooksWorldPresenter : MonoBehaviour
     [SerializeField] private BooksWorldPageView pageViewPrefab;
     private Dictionary<int, BooksWorldPageView> pageViewDict = new();
     private IBooksWorldModel booksWorldModel;
-    private BooksButtonHandler booksButtonHandler;
+    private BooksPageButtonHandler booksButtonHandler;
     private int indexNow;
     private int displayPageIndex;
 
-    public void Init(BooksWorldModel model, BooksButtonHandler buttonHandler) {
+    public void Init(IBooksWorldModel model, BooksPageButtonHandler buttonHandler) {
         this.booksWorldModel = model;
         booksButtonHandler = buttonHandler;
 
+        indexNow = model.DisplayWorldPageDict.Keys.First();
+
         CreateWorldPage();
         Bind();
-
-        indexNow = pageViewDict.Keys.OrderBy(e => e).First();
-
         DisplayUpdate();
     }
 
@@ -63,8 +62,8 @@ public class BooksWorldPresenter : MonoBehaviour
     }
 
     private void DisplayUpdate() {
-        nextPageButton.SetActive(pageViewDict.Keys.Any(e => indexNow < e));
-        prevPageButton.SetActive(pageViewDict.Keys.Any(e => indexNow > e));
+        nextPageButton.SetActive(pageViewDict.Keys.Any(e => indexNow + 1 < e));
+        prevPageButton.SetActive(pageViewDict.Keys.Any(e => indexNow - 1 > e));
     }
 
     public void OnNextPage() {
@@ -81,6 +80,8 @@ public class BooksWorldPresenter : MonoBehaviour
             var inactiveViews = pageViewDict.Where(e => e.Key != indexNow && e.Key != indexNow + 1);
             foreach(var page in inactiveViews) page.Value.gameObject.SetActive(false);
 
+            DisplayUpdate();
+
         });
     }
 
@@ -96,6 +97,8 @@ public class BooksWorldPresenter : MonoBehaviour
 
             var inactiveViews = pageViewDict.Where(e => e.Key != indexNow && e.Key != indexNow + 1);
             foreach(var page in inactiveViews) page.Value.gameObject.SetActive(false);
+
+            DisplayUpdate();
         });
     }
 

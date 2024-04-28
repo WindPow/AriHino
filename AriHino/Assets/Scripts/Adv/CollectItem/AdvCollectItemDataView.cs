@@ -10,9 +10,9 @@ using UnityEngine.UI;
 /// </summary>
 public interface IAdvCollectItemDataView{
 
-    IObservable<MstAdvCollectItemData> OnGetObservable { get; }
+    IObservable<MstCollectItemData> OnGetObservable { get; }
 
-    void Init(MstAdvCollectItemData itemData);
+    void Init(MstCollectItemData itemData);
 }
 
 
@@ -21,10 +21,10 @@ public class AdvCollectItemDataView : MonoBehaviour, IAdvCollectItemDataView
 
     [SerializeField] private int collectItemId;
 
-    private MstAdvCollectItemData itemData;
+    private MstCollectItemData itemData;
 
-    public IObservable<MstAdvCollectItemData> OnGetObservable => onGetSubject;
-    private readonly Subject<MstAdvCollectItemData> onGetSubject = new();
+    public IObservable<MstCollectItemData> OnGetObservable => onGetSubject;
+    private readonly Subject<MstCollectItemData> onGetSubject = new();
 
     /// <summary>
     /// クリックした時に呼ばれる
@@ -37,7 +37,7 @@ public class AdvCollectItemDataView : MonoBehaviour, IAdvCollectItemDataView
         Destroy(this.gameObject);
     }
 
-    public void Init(MstAdvCollectItemData itemData)
+    public void Init(MstCollectItemData itemData)
     {
 
         //throw new NotImplementedException();

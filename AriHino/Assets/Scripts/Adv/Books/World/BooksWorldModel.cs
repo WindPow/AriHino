@@ -5,11 +5,13 @@ using UniRx;
 using System;
 using System.Linq;
 
-interface IBooksWorldModel {
+public interface IBooksWorldModel {
 
     IDictionary<int, MstBooksWorldPageData> DisplayWorldPageDict { get; }
     IObservable<DictionaryAddEvent<int, MstBooksWorldPageData>> DisplayWorldPageAddObservable { get; }
     IObservable<DictionaryRemoveEvent<int, MstBooksWorldPageData>> DisplayWorldPageRemoveObservable { get; }
+
+    void SetBooksWorld(int[] ids);
 }
 
 public class BooksWorldModel : IBooksWorldModel

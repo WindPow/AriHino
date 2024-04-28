@@ -50,6 +50,12 @@ namespace Utage
 				    break;
 				case "ChangeBooksWard":
 				    break;
+				case "BooksOpen":
+					BooksManager.Instance.ChangeBooksOpen(true);
+					break;
+				case "BooksClose":
+					BooksManager.Instance.ChangeBooksOpen(false);
+					break;
 				default:
 					Debug.LogError("Unknown Message:" + command.Name);
 					break;

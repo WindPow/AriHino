@@ -10,9 +10,6 @@ public class BooksWorldPageView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private BooksTextView booksTextViewPrefab;
     [SerializeField] private Transform explanationParent;
-    [SerializeField] private Transform memoParent;
-    [SerializeField] private Transform impressionsParent;
-    
 
     private BooksWorldPageViewData pageViewData;
 

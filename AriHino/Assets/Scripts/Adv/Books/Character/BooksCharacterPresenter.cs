@@ -12,13 +12,13 @@ public class BooksCharacterPresenter : MonoBehaviour
     [SerializeField] private BooksCharacterPageView pageViewPrefab;
     private Dictionary<int, BooksCharacterPageView> pageViewDict = new();
     private IBooksCharacterModel booksCharacterModel;
-    private BooksButtonHandler booksButtonHandler;
+    private BooksPageButtonHandler booksButtonHandler;
     private int indexNow;
 
-    public void Init(BooksCharacterModel model, BooksButtonHandler buttonHandler) {
+    public void Init(IBooksCharacterModel model, BooksPageButtonHandler buttonHandler) {
         booksCharacterModel = model;
         booksButtonHandler = buttonHandler;
-        indexNow = pageViewDict.Keys.OrderBy(e => e).First();
+        indexNow = model.DisplayCharacterPageDict.Keys.First();
 
         CreateCharacterPage();
         Bind();
@@ -71,6 +71,7 @@ public class BooksCharacterPresenter : MonoBehaviour
         UniTask.Void(async() => {
             await booksButtonHandler.PlayPageSingleAnim(true);
             pageViewDict[indexNow].gameObject.SetActive(true);
+            DisplayUpdate();
         });
     }
 
@@ -83,6 +84,7 @@ public class BooksCharacterPresenter : MonoBehaviour
         UniTask.Void(async() => {
             await booksButtonHandler.PlayPageSingleAnim(false);
             pageViewDict[indexNow].gameObject.SetActive(true);
+            DisplayUpdate();
         });
     }
 

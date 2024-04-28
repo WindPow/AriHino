@@ -5,11 +5,13 @@ using UniRx;
 using System;
 using System.Linq;
 
-interface IBooksCharacterModel {
+public interface IBooksCharacterModel {
 
     IDictionary<int, MstBooksCharacterPageData> DisplayCharacterPageDict { get; }
     IObservable<DictionaryAddEvent<int, MstBooksCharacterPageData>> DisplayCharacterPageAddObservable { get; }
     IObservable<DictionaryRemoveEvent<int, MstBooksCharacterPageData>> DisplayCharacterPageRemoveObservable { get; }
+
+    void SetBooksCharacter(int[] ids);
 }
 
 public class BooksCharacterModel : IBooksCharacterModel

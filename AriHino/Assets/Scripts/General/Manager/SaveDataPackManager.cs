@@ -12,7 +12,7 @@ public static class SaveDataPackManager
         
     }
 
-    public static List<MstAdvCollectItemData> GetAdvCollectDatas(){
+    public static List<MstCollectItemData> GetAdvCollectDatas(){
 
         //TODO
         return null;

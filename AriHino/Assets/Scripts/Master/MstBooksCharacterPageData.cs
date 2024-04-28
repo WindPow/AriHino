@@ -22,13 +22,13 @@ public class MstBooksCharacterPageData : IMasterData<int>
                     CharaId = int.Parse(values[i]);
                     break;
                 case "explanation_ids":
-                    ExplanationIds = values[i].Split(',').Select(int.Parse).ToArray();
+                    ExplanationIds = values[i].Split('_').Select(int.Parse).ToArray();
                     break;
                 case "memo_ids":
-                    MemoIds = values[i].Split(',').Select(int.Parse).ToArray();
+                    MemoIds = values[i].Split('_').Select(int.Parse).ToArray();
                     break;
                 case "impressions_ids":
-                    ImpressionsIds = values[i].Split(',').Select(int.Parse).ToArray();
+                    ImpressionsIds = values[i].Split('_').Select(int.Parse).ToArray();
                     break;
                 case "image_path":
                     ImagePath = values[i];

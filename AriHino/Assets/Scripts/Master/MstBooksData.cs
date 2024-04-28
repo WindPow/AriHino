@@ -17,16 +17,16 @@ public class MstBooksData : IMasterData<int> {
                     ID = int.Parse(values[i]);
                     break;
                 case "character_page_ids":
-                    CharacterPageIds = values[i].Split(',').Select(int.Parse).ToArray();
+                    CharacterPageIds = values[i].Split('_').Select(int.Parse).ToArray();
                     break;
                 case "world_page_ids":
-                    WorldPageIds =values[i].Split(',').Select(int.Parse).ToArray();
+                    WorldPageIds =values[i].Split('_').Select(int.Parse).ToArray();
                     break;
                 case "ward_page_ids":
-                    WardPageIds = values[i].Split(',').Select(int.Parse).ToArray();
+                    WardPageIds = values[i].Split('_').Select(int.Parse).ToArray();
                     break;
                 case "collect_page_ids":
-                    CollectPageIds = values[i].Split(',').Select(int.Parse).ToArray();
+                    CollectPageIds = values[i].Split('_').Select(int.Parse).ToArray();
                     break;
                 
                 // Add more properties if needed

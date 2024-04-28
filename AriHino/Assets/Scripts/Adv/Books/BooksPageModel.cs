@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
-public class BooksPageModel
+public interface IBooksPageModel {
+
+    IReadOnlyReactiveProperty<MstBooksData> BooksData { get; }
+
+    void SetBooksData(MstBooksData booksData);
+}
+
+public class BooksPageModel : IBooksPageModel
 {
     public IReadOnlyReactiveProperty<MstBooksData> BooksData => booksData;
     private ReactiveProperty<MstBooksData> booksData = new();

@@ -46,7 +46,7 @@ public class AdvCollectItemPresenter : MonoBehaviour
     /// アイテムの生成
     /// </summary>
     /// <param name="collectItemId"></param>
-    private void CreateCollectItem(MstAdvCollectItemData collectItemData) {
+    private void CreateCollectItem(MstCollectItemData collectItemData) {
 
         var item = advCollectItemFactory.CreateCollectItem(collectItemData.ID);
 
@@ -54,6 +54,8 @@ public class AdvCollectItemPresenter : MonoBehaviour
 
         // アイテム取得時の通知監視
         item.OnGetObservable.Subscribe(item => {
+
+            BooksManager.Instance.SetBooksCollectItem(item);
 
             // 通知を表示した後に表示リストから削除            
             ShowNotification(item);
@@ -67,7 +69,7 @@ public class AdvCollectItemPresenter : MonoBehaviour
     /// 通知の表示
     /// </summary>
     /// <param name="collectItemId"></param>
-    private void ShowNotification(MstAdvCollectItemData collectItem){
+    private void ShowNotification(MstCollectItemData collectItem){
 
         advCollectNotification.Init(collectItem.Name);
 

@@ -20,7 +20,7 @@ public class MstBooksWorldPageData : IMasterData<int>
                     WorldId = int.Parse(values[i]);
                     break;
                 case "explanation_ids":
-                    ExplanationIds = values[i].Split(',').Select(int.Parse).ToArray();
+                    ExplanationIds = values[i].Split('_').Select(int.Parse).ToArray();
                     break;
                 case "image_path":
                     ImagePath = values[i];
