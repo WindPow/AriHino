@@ -44,17 +44,19 @@ namespace Utage
 				case "RemoveAllCollectItem":
 					AdvCollectItemManager.Instance.RemoveAllCollectItem();
 					break;
-				case "ChangeBooksCharacter":
+				case "InitBooks":
+				    BooksManager.Instance.SetBooks(int.Parse(command.Arg2));
+					break;
+				case "SetBooksCharacter":
 				    BooksManager.Instance.SetBooksCharacterPage(int.Parse(command.Arg2), int.Parse(command.Arg3));
 				    break;
-				case "ChangeBooksWorld":
+				case "SetBooksWorld":
+				    BooksManager.Instance.SetBooksWorldPage(int.Parse(command.Arg2), int.Parse(command.Arg3));
 				    break;
-				case "ChangeBooksWard":
-				    break;
-				case "BooksOpen":
+				case "OpenBooksButton":
 					BooksManager.Instance.ChangeBooksOpen(true);
 					break;
-				case "BooksClose":
+				case "CloseBooksButton":
 					BooksManager.Instance.ChangeBooksOpen(false);
 					break;
 				default:
