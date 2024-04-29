@@ -10,8 +10,6 @@ using UniRx;
 public class AdvCollectItemPresenter : MonoBehaviour
 {
     [SerializeField] private AdvCollectItemFactory advCollectItemFactory;
-
-    [SerializeField] private AdvCollectNotification advCollectNotification;
     
     private IAdvCollectItemModel collectItemModel;
 
@@ -57,22 +55,11 @@ public class AdvCollectItemPresenter : MonoBehaviour
 
             BooksManager.Instance.SetBooksCollectItem(item);
 
-            // 通知を表示した後に表示リストから削除            
-            ShowNotification(item);
+            // 通知を表示した後に表示リストから削除 
+            NotificationManager.Instance.ShowNotification(item.Name); 
             displayCollectItems.Remove(item.ID);
         });
 
         displayCollectItems[collectItemData.ID] = item;
-    }
-
-    /// <summary>
-    /// 通知の表示
-    /// </summary>
-    /// <param name="collectItemId"></param>
-    private void ShowNotification(MstCollectItemData collectItem){
-
-        advCollectNotification.Init(collectItem.Name);
-
-
     }
 }

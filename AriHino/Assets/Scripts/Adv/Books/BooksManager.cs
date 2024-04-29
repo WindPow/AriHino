@@ -37,24 +37,27 @@ public class BooksManager : MonoBehaviour
         booksCollectModel = new BooksCollectModel();
 
         booksPagePresenter.Init(booksPageModel, booksCharacterModel, booksWorldModel, booksWardModel, booksCollectModel);
-
-        // 最初はBooksボタンを封印しておく
-        ChangeBooksOpen(false);
     }
 
     public void ChangeBooksOpen(bool isOpen) {
         booksButton.SetActive(isOpen);
     }
 
-    public void UpdateCharacterBooksPage(int charaId, int progressNo) {
-        var booksCharaPageDict = MasterDataManager.Instance.GetMasterDataDictionary<MstBooksCharacterPageData>();
-        var updateCharacterPage = booksCharaPageDict.Values.First(e => e.CharaId == charaId && e.ProgressNo == progressNo);
-        booksCharacterModel.UpdateBooksCharacter(updateCharacterPage);
-    }
-
-    public void UpdateBooks(int booksId) {
+    public void SetBooks(int booksId) {
         var mstBooks = MasterDataManager.Instance.GetMasterData<MstBooksData>(booksId);
         booksPageModel.SetBooksData(mstBooks);
+    }
+
+    public void SetBooksCharacterPage(int charaId, int progressNo) {
+        var booksCharaPageDict = MasterDataManager.Instance.GetMasterDataDictionary<MstBooksCharacterPageData>();
+        var setCharacterPage = booksCharaPageDict.Values.First(e => e.CharaId == charaId && e.ProgressNo == progressNo);
+        booksCharacterModel.SetBooksCharacter(setCharacterPage);
+    }
+
+    public void SetBooksWorldPage(int worldId, int progressNo) {
+        var booksWorldPageDict = MasterDataManager.Instance.GetMasterDataDictionary<MstBooksWorldPageData>();
+        var setWorldPage = booksWorldPageDict.Values.First(e => e.WorldId == worldId && e.ProgressNo == progressNo);
+        booksWorldModel.SetBooksWorld(setWorldPage);
     }
 
     public void SetBooksCollectItem(MstCollectItemData collectItemData) {

@@ -16,13 +16,12 @@ public class BooksWorldPresenter : MonoBehaviour
     private IBooksWorldModel booksWorldModel;
     private BooksPageButtonHandler booksButtonHandler;
     private int indexNow;
-    private int displayPageIndex;
 
     public void Init(IBooksWorldModel model, BooksPageButtonHandler buttonHandler) {
         this.booksWorldModel = model;
         booksButtonHandler = buttonHandler;
 
-        indexNow = model.DisplayWorldPageDict.Keys.First();
+        indexNow = model.DisplayWorldPageDict.First().Key;
 
         CreateWorldPage();
         Bind();
@@ -31,30 +30,36 @@ public class BooksWorldPresenter : MonoBehaviour
 
     private void Bind() {
 
-        booksWorldModel.DisplayWorldPageAddObservable.Subscribe(page => {
+        booksWorldModel.DisplayWorldPageDict.ObserveAdd().Subscribe(page => {
             
-            var pageViewData = new BooksWorldPageViewData(page.Value);
             var view = Instantiate(pageViewPrefab);
-            view.Init(pageViewData);
-            pageViewDict.Add(pageViewData.ID, view);
+            view.Init(page.Value);
+            pageViewDict.Add(page.Value.WorldId, view);
             DisplayUpdate();
 
         }).AddTo(this);
 
-        booksWorldModel.DisplayWorldPageRemoveObservable.Subscribe(page => {
-            pageViewDict.Remove(page.Value.ID);
+        booksWorldModel.DisplayWorldPageDict.ObserveRemove().Subscribe(page => {
+            pageViewDict.Remove(page.Value.WorldId);
             DisplayUpdate();
 
         }).AddTo(this);
+
+        booksWorldModel.DisplayWorldPageDict.ObserveReplace().Subscribe(page => {
+
+            pageViewDict[page.NewValue.WorldId].Init(page.NewValue);
+            DisplayUpdate();
+
+            NotificationManager.Instance.ShowNotification(page.NewValue.WorldName);
+        });
     }
 
     private void CreateWorldPage() {
 
         foreach(var page in booksWorldModel.DisplayWorldPageDict) {
-            var pageViewData = new BooksWorldPageViewData(page.Value);
-            var view = Instantiate(pageViewPrefab, pageViewData.ID % 2 == 0 ? rightPageParent : leftPageParent);
-            view.Init(pageViewData);
-            pageViewDict.Add(pageViewData.ID, view);
+            var view = Instantiate(pageViewPrefab, page.Value.WorldId % 2 == 0 ? rightPageParent : leftPageParent);
+            view.Init(page.Value);
+            pageViewDict.Add(page.Value.WorldId, view);
         }
 
         var viewPage = pageViewDict.Values.Take(2);
@@ -67,6 +72,8 @@ public class BooksWorldPresenter : MonoBehaviour
     }
 
     public void OnNextPage() {
+
+        if(booksButtonHandler.IsPlayingAnim) return;
 
         foreach (var page in pageViewDict) page.Value.gameObject.SetActive(false);
         int nextKey = pageViewDict.Keys.OrderBy(e => e).SkipWhile(e => e <= indexNow + 1).First();
@@ -86,6 +93,9 @@ public class BooksWorldPresenter : MonoBehaviour
     }
 
     public void OnPrevButton() {
+
+        if(booksButtonHandler.IsPlayingAnim) return;
+
         foreach (var page in pageViewDict) page.Value.gameObject.SetActive(false);
         int prevKey = pageViewDict.Keys.OrderByDescending(e => e).SkipWhile(e => e >= indexNow - 1).First();
         indexNow = prevKey;

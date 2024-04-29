@@ -45,7 +45,7 @@ namespace Utage
 					AdvCollectItemManager.Instance.RemoveAllCollectItem();
 					break;
 				case "ChangeBooksCharacter":
-				    BooksManager.Instance.UpdateCharacterBooksPage(int.Parse(command.Arg2), int.Parse(command.Arg3));
+				    BooksManager.Instance.SetBooksCharacterPage(int.Parse(command.Arg2), int.Parse(command.Arg3));
 				    break;
 				case "ChangeBooksWorld":
 				    break;

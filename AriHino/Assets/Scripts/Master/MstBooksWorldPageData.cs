@@ -4,6 +4,7 @@ public class MstBooksWorldPageData : IMasterData<int>
 {
     public int ID { get; private set; }
     public int WorldId { get; private set; }
+    public int ProgressNo { get; private set; }
     public int[] ExplanationIds { get; private set; }
     public string ImagePath { get; private set; }
 
@@ -18,6 +19,9 @@ public class MstBooksWorldPageData : IMasterData<int>
                     break;
                 case "world_id":
                     WorldId = int.Parse(values[i]);
+                    break;
+                case "progress_no":
+                    ProgressNo = int.Parse(values[i]);
                     break;
                 case "explanation_ids":
                     ExplanationIds = values[i].Split('_').Select(int.Parse).ToArray();

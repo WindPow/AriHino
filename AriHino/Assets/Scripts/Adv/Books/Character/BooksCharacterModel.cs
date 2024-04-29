@@ -7,16 +7,16 @@ using System.Linq;
 
 public interface IBooksCharacterModel {
 
-    IReadOnlyReactiveDictionary<int, MstBooksCharacterPageData> DisplayCharacterPageDict { get; }
+    IReadOnlyReactiveDictionary<int, BooksCharacterPageViewData> DisplayCharacterPageDict { get; }
 
     void SetBooksCharacter(int[] ids);
-    void UpdateBooksCharacter(MstBooksCharacterPageData pageData);
+    void SetBooksCharacter(MstBooksCharacterPageData pageData);
 }
 
 public class BooksCharacterModel : IBooksCharacterModel
 {
-    private ReactiveDictionary<int ,MstBooksCharacterPageData> displayCharacterPageDict = new();
-    public IReadOnlyReactiveDictionary<int, MstBooksCharacterPageData> DisplayCharacterPageDict => displayCharacterPageDict;
+    private ReactiveDictionary<int ,BooksCharacterPageViewData> displayCharacterPageDict = new();
+    public IReadOnlyReactiveDictionary<int, BooksCharacterPageViewData> DisplayCharacterPageDict => displayCharacterPageDict;
 
     public BooksCharacterModel(int[] characterPageIds) {
 
@@ -29,7 +29,8 @@ public class BooksCharacterModel : IBooksCharacterModel
 
             if(displayCharacterPageDict.ContainsKey(id)) continue;
             var characterPage = MasterDataManager.Instance.GetMasterData<MstBooksCharacterPageData>(id);
-            displayCharacterPageDict.Add(characterPage.CharaId, characterPage);
+            var viewData = new BooksCharacterPageViewData(characterPage);
+            displayCharacterPageDict.Add(characterPage.CharaId, viewData);
         }
 
         // foreach(var page in displayCharacterPageDict.Keys) {
@@ -37,9 +38,15 @@ public class BooksCharacterModel : IBooksCharacterModel
         // }
     }
 
-    public void UpdateBooksCharacter(MstBooksCharacterPageData pageData) {
-        
-        displayCharacterPageDict[pageData.CharaId] = pageData;
+    public void SetBooksCharacter(MstBooksCharacterPageData pageData) {
+        var viewData = new BooksCharacterPageViewData(pageData);
+
+        if(displayCharacterPageDict.ContainsKey(viewData.CharaId)) {
+            displayCharacterPageDict[viewData.CharaId] = viewData;
+        }
+        else {
+            displayCharacterPageDict.Add(viewData.CharaId, viewData);
+        }
         
     }
 }

@@ -14,8 +14,8 @@ public class BooksCollectContentsView : MonoBehaviour
     public void Init(BooksCollectContentsViewData data) {
 
         collectItemData = data;
-
         nameText.text = data.MstCollectItemData.Name;
+        nameText.gameObject.SetActive(data.IsOpen);
 
         collectItemData.SetOpenObservable.Subscribe(isOpen => {
             nameText.gameObject.SetActive(isOpen);

@@ -4,7 +4,7 @@ using UniRx;
 public class BooksCollectContentsViewData {
 
     public MstCollectItemData MstCollectItemData { get; }
-    public bool IsOpened { get; private set; }
+    public bool IsOpen { get; private set; }
 
     public IObservable<bool> SetOpenObservable => setOpenSubject;
     private Subject<bool> setOpenSubject = new();
@@ -12,11 +12,11 @@ public class BooksCollectContentsViewData {
     public BooksCollectContentsViewData(MstCollectItemData mstCollectItemData) {
 
         MstCollectItemData = mstCollectItemData;
-        IsOpened = mstCollectItemData.OpenedFlg;
+        IsOpen = mstCollectItemData.OpenedFlg;
     }
 
     public void SetOpen(bool isOpen) {
-        IsOpened = isOpen;
-        setOpenSubject.OnNext(IsOpened);
+        IsOpen = isOpen;
+        setOpenSubject.OnNext(IsOpen);
     }
 }

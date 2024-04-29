@@ -19,7 +19,6 @@ public class BooksCollectPresenter : MonoBehaviour
     public void Init(IBooksCollectModel model, BooksPageButtonHandler buttonHandler) {
         booksCollectModel = model;
         booksButtonHandler = buttonHandler;
-        indexNow = model.DisplayCollectPageDict.Keys.First();
 
         CreateCollectPage();
         Bind();

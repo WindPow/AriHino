@@ -29,25 +29,26 @@ public class BooksCharacterPresenter : MonoBehaviour
 
         booksCharacterModel.DisplayCharacterPageDict.ObserveAdd().Subscribe(page => {
 
-            var pageViewData = new BooksCharacterPageViewData(page.Value);
             var view = Instantiate(pageViewPrefab);
-            view.Init(pageViewData);
-            pageViewDict.Add(pageViewData.CharaId, view);
+            view.Init(page.Value);
+            pageViewDict.Add(page.Value.CharaId, view);
             DisplayUpdate();
 
         }).AddTo(this);
 
         booksCharacterModel.DisplayCharacterPageDict.ObserveRemove().Subscribe(page => {
 
-            pageViewDict.Remove(page.Value.ID);
+            pageViewDict.Remove(page.Value.CharaId);
             DisplayUpdate();
 
         }).AddTo(this);
 
         booksCharacterModel.DisplayCharacterPageDict.ObserveReplace().Subscribe(page => {
 
-            var pageViewData = new BooksCharacterPageViewData(page.NewValue);
-            pageViewDict[page.NewValue.CharaId].Init(pageViewData);
+            pageViewDict[page.NewValue.CharaId].Init(page.NewValue);
+            DisplayUpdate();
+
+            NotificationManager.Instance.ShowNotification(page.NewValue.CharaName);
 
         }).AddTo(this);
     }
@@ -55,10 +56,9 @@ public class BooksCharacterPresenter : MonoBehaviour
     private void CreateCharacterPage() {
 
         foreach(var page in booksCharacterModel.DisplayCharacterPageDict) {
-            var pageViewData = new BooksCharacterPageViewData(page.Value);
             var view = Instantiate(pageViewPrefab, this.transform);
-            view.Init(pageViewData);
-            pageViewDict.Add(pageViewData.CharaId, view);
+            view.Init(page.Value);
+            pageViewDict.Add(page.Value.CharaId, view);
         }
 
         pageViewDict[indexNow].gameObject.SetActive(true);
@@ -70,6 +70,8 @@ public class BooksCharacterPresenter : MonoBehaviour
     }
 
     public void OnNextPage() {
+
+        if(booksButtonHandler.IsPlayingAnim) return;
 
         foreach (var page in pageViewDict) page.Value.gameObject.SetActive(false);
         int nextKey = pageViewDict.Keys.OrderBy(e => e).SkipWhile(e => e <= indexNow).First();
@@ -84,6 +86,9 @@ public class BooksCharacterPresenter : MonoBehaviour
     }
 
     public void OnPrevButton() {
+
+        if(booksButtonHandler.IsPlayingAnim) return;
+
         foreach (var page in pageViewDict) page.Value.gameObject.SetActive(false);
         int prevKey = pageViewDict.Keys.OrderByDescending(e => e).SkipWhile(e => e >= indexNow).First();
         pageViewDict[indexNow].gameObject.SetActive(false);

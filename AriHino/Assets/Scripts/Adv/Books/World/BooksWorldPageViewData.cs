@@ -5,14 +5,14 @@ using System.Linq;
 
 public class BooksWorldPageViewData {
 
-    public int ID { get; }
+    public int WorldId { get; }
     public string WorldName { get; }
     public string WorldImageFilePath { get; }
     public List<string> ExplanationStrs { get; } = new();
 
     public BooksWorldPageViewData(MstBooksWorldPageData WorldData) {
 
-        ID = WorldData.ID;
+        WorldId = WorldData.WorldId;
         WorldImageFilePath = WorldData.ImagePath;
         WorldName = MasterDataManager.Instance.GetMasterData<MstWorldData>(WorldData.WorldId).Name;
 

@@ -26,6 +26,11 @@ public class AdvCollectItemDataView : MonoBehaviour, IAdvCollectItemDataView
     public IObservable<MstCollectItemData> OnGetObservable => onGetSubject;
     private readonly Subject<MstCollectItemData> onGetSubject = new();
 
+    public void Init(MstCollectItemData itemData)
+    {
+        this.itemData = itemData;
+    }
+
     /// <summary>
     /// クリックした時に呼ばれる
     /// </summary>
@@ -35,11 +40,5 @@ public class AdvCollectItemDataView : MonoBehaviour, IAdvCollectItemDataView
 
         // 一旦削除（エフェクトなどを発生させる可能性あり）
         Destroy(this.gameObject);
-    }
-
-    public void Init(MstCollectItemData itemData)
-    {
-
-        //throw new NotImplementedException();
     }
 }

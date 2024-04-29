@@ -7,19 +7,16 @@ using System.Linq;
 
 public interface IBooksWorldModel {
 
-    IDictionary<int, MstBooksWorldPageData> DisplayWorldPageDict { get; }
-    IObservable<DictionaryAddEvent<int, MstBooksWorldPageData>> DisplayWorldPageAddObservable { get; }
-    IObservable<DictionaryRemoveEvent<int, MstBooksWorldPageData>> DisplayWorldPageRemoveObservable { get; }
-
+    IReadOnlyReactiveDictionary<int, BooksWorldPageViewData> DisplayWorldPageDict { get; }
+    
     void SetBooksWorld(int[] ids);
+    void SetBooksWorld(MstBooksWorldPageData pageData);
 }
 
 public class BooksWorldModel : IBooksWorldModel
 {
-    private ReactiveDictionary<int ,MstBooksWorldPageData> displayWorldPageDict = new();
-    public IDictionary<int, MstBooksWorldPageData> DisplayWorldPageDict => displayWorldPageDict;
-    public IObservable<DictionaryAddEvent<int, MstBooksWorldPageData>> DisplayWorldPageAddObservable => displayWorldPageDict.ObserveAdd();
-    public IObservable<DictionaryRemoveEvent<int, MstBooksWorldPageData>> DisplayWorldPageRemoveObservable => displayWorldPageDict.ObserveRemove(); 
+    private ReactiveDictionary<int ,BooksWorldPageViewData> displayWorldPageDict = new();
+    public IReadOnlyReactiveDictionary<int, BooksWorldPageViewData> DisplayWorldPageDict => displayWorldPageDict;
 
     public BooksWorldModel(int[] worldPageIds) {
 
@@ -32,11 +29,24 @@ public class BooksWorldModel : IBooksWorldModel
 
             if(displayWorldPageDict.ContainsKey(id)) continue;
             var characterPage = MasterDataManager.Instance.GetMasterData<MstBooksWorldPageData>(id);
-            displayWorldPageDict.Add(id, characterPage);
+            var viewData = new BooksWorldPageViewData(characterPage);
+            displayWorldPageDict.Add(id, viewData);
         }
 
         foreach(var page in displayWorldPageDict.Keys) {
             if(!ids.Contains(page)) displayWorldPageDict.Remove(page);
         }
+    }
+
+    public void SetBooksWorld(MstBooksWorldPageData pageData) {
+        var viewData = new BooksWorldPageViewData(pageData);
+
+        if(displayWorldPageDict.ContainsKey(pageData.WorldId)) {
+            displayWorldPageDict[viewData.WorldId] = viewData;
+        }
+        else {
+            displayWorldPageDict.Add(viewData.WorldId, viewData);
+        }
+        
     }
 }

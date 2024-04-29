@@ -7,9 +7,7 @@ using System.Linq;
 
 public interface IBooksCollectModel {
 
-    IDictionary<int, BooksCollectContentsViewData> DisplayCollectPageDict { get; }
-    IObservable<DictionaryAddEvent<int, BooksCollectContentsViewData>> DisplayCollectPageAddObservable { get; }
-    IObservable<DictionaryRemoveEvent<int, BooksCollectContentsViewData>> DisplayCollectPageRemoveObservable { get; }
+    IReadOnlyDictionary<int, BooksCollectContentsViewData> DisplayCollectPageDict { get; }
 
     void SetBooksCollect(List<MstCollectItemData> list);
     void OpenBooksCollect(MstCollectItemData data);
@@ -18,10 +16,8 @@ public interface IBooksCollectModel {
 
 public class BooksCollectModel : IBooksCollectModel
 {
-    private ReactiveDictionary<int ,BooksCollectContentsViewData> displayCollectPageDict = new();
-    public IDictionary<int, BooksCollectContentsViewData> DisplayCollectPageDict => displayCollectPageDict;
-    public IObservable<DictionaryAddEvent<int, BooksCollectContentsViewData>> DisplayCollectPageAddObservable => displayCollectPageDict.ObserveAdd();
-    public IObservable<DictionaryRemoveEvent<int, BooksCollectContentsViewData>> DisplayCollectPageRemoveObservable => displayCollectPageDict.ObserveRemove(); 
+    private Dictionary<int ,BooksCollectContentsViewData> displayCollectPageDict = new();
+    public IReadOnlyDictionary<int, BooksCollectContentsViewData> DisplayCollectPageDict => displayCollectPageDict;
 
     public BooksCollectModel() {
 

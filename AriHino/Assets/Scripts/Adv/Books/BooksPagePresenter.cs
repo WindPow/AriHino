@@ -11,7 +11,6 @@ public class BooksPagePresenter : MonoBehaviour
     [SerializeField] BooksWorldPresenter booksWorldPresenter;
     [SerializeField] BooksWardPresenter booksWardPresenter;
     [SerializeField] BooksCollectPresenter booksCollectPresenter;
-    [SerializeField] AdvCollectItemPresenter advCollectItemPresenter;
     [SerializeField] BooksPageButtonHandler booksButtonHandler;
 
     private IBooksPageModel booksPageModel;
@@ -49,7 +48,7 @@ public class BooksPagePresenter : MonoBehaviour
         }).AddTo(this);
     }
 
-    private void ChangePage(int pageIndex){
+    private void ChangePage(int pageIndex) {
 
         switch((BooksContents)pageIndex){
 
