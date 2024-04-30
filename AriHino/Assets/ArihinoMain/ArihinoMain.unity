@@ -6135,9 +6135,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.10386653
+    y: 0.064300865
     width: 1
-    height: 0.79226696
+    height: 0.87139827
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -32261,9 +32261,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.10386653
+    y: 0.064300865
     width: 1
-    height: 0.79226696
+    height: 0.87139827
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -35819,6 +35819,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 501571b936506254aa84c3f293cbbb3f, type: 3}
   - {fileID: 2800000, guid: bba8d90abe16c0f4da06c09a750415b7, type: 3}
   - {fileID: 2800000, guid: 0c0310158d42c4240b1561d17d9720b4, type: 3}
+  - {fileID: 2800000, guid: dd33a645bdb41074f9b30f0e26c86d3d, type: 3}
+  - {fileID: 2800000, guid: a172716ac4e1c374f9d64a37da623e0b, type: 3}
+  - {fileID: 2800000, guid: 79960a1951131a2449ee5a7617b02086, type: 3}
 --- !u!1 &1765082826
 GameObject:
   m_ObjectHideFlags: 0
