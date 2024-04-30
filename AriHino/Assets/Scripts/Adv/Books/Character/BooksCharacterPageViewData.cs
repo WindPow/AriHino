@@ -14,7 +14,7 @@ public class BooksCharacterPageViewData {
 
     public BooksCharacterPageViewData(MstBooksCharacterPageData characterData) {
 
-        CharaId = characterData.ID;
+        CharaId = characterData.CharaId;
         CharaImageFilePath = characterData.ImagePath;
         CharaName = MasterDataManager.Instance.GetMasterData<MstCharacterData>(characterData.CharaId).Name;
 
