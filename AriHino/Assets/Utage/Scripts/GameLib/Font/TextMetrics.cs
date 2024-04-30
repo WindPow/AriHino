@@ -4,6 +4,7 @@ using UnityEngine.TextCore;
 
 namespace Utage
 {
+    //TextMetricsの情報
     [System.Serializable]
     public class TextMetrics
     {
@@ -23,6 +24,9 @@ namespace Utage
         [SerializeField] float strikethroughOffset;
         [SerializeField] float strikethroughThickness;
         [SerializeField] float tabWidth;
+
+        public float AscentLine => ascentLine;
+        public float DescentLine => descentLine;
 
         public TextMetrics()
         {
@@ -70,21 +74,47 @@ namespace Utage
             lineHeight = this.ascentLine - this.descentLine;
         }
 
+        //指定のフォントアセットに、テキストメトリクスを設定可能かチェック
+        public bool EnableApply(TMP_FontAsset fontAsset, bool debuglog)
+        {
+            var originalFaceInfo = fontAsset.faceInfo;
+            if (originalFaceInfo.pointSize != pointSize)
+            {
+                if (debuglog)
+                {
+                    Debug.LogError(
+                        $"Font{fontAsset.name} PointSize({originalFaceInfo.pointSize}) is not TextMetrics PointSize{this.pointSize}",
+                        fontAsset);                    
+                }
+                return false;
+            }
+            return true;
+        }
+        
         //指定のフォントアセットに、テキストメトリクスを設定する
         public void ApplyToFontAsset(TMP_FontAsset fontAsset)
         {
-            fontAsset.faceInfo = CreateFaceInfo(fontAsset.faceInfo);
+            var originalFaceInfo = fontAsset.faceInfo;
+            if(originalFaceInfo.pointSize != pointSize)
+            {
+                Debug.LogError($"Font{fontAsset.name} PointSize({originalFaceInfo.pointSize}) is not TextMetrics PointSize{this.pointSize}",fontAsset);
+                return;
+            }
+            var newFaceInfo = CreateFaceInfo(fontAsset.faceInfo);
+            if (!fontAsset.faceInfo.Equals(newFaceInfo))
+            {
+                Debug.Log($"{fontAsset.name} TextMetrics Changed",fontAsset);
+                fontAsset.faceInfo = newFaceInfo;
 #if UNITY_EDITOR
-            UnityEditor.EditorUtility.SetDirty(fontAsset);
+                UnityEditor.EditorUtility.SetDirty(fontAsset);
 #endif
+            }
         }
 
         FaceInfo CreateFaceInfo(FaceInfo srcFaceInfo)
         {
             //構造体なのでコピー(FamilyNameだったりの、TextMetrics以外の情報をコピーする)
             FaceInfo faceInfo = srcFaceInfo;
-
-            faceInfo.pointSize = pointSize;
             faceInfo.lineHeight = lineHeight;
             faceInfo.ascentLine = ascentLine;
             faceInfo.capLine = capLine;
@@ -102,11 +132,6 @@ namespace Utage
             faceInfo.tabWidth = tabWidth;
 
             return faceInfo;
-        }
-
-        public bool DisableApplyToFontAssets(TMP_FontAsset baseFont)
-        {
-            return pointSize != baseFont.faceInfo.pointSize;
         }
     }
 }

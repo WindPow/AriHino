@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: 0d650164823ff534598dbead9e93bac1
-timeCreated: 1446907445
-licenseType: Store
 AudioImporter:
+  externalObjects: {}
   serializedVersion: 6
   defaultSettings:
     loadType: 1
@@ -13,9 +12,11 @@ AudioImporter:
     conversionMode: 0
   platformSettingOverrides: {}
   forceToMono: 0
+  normalize: 1
   preloadAudioData: 1
   loadInBackground: 0
+  ambisonic: 0
   3D: 0
   userData: 
-  assetBundleName: voice_test1
+  assetBundleName: 
   assetBundleVariant: 

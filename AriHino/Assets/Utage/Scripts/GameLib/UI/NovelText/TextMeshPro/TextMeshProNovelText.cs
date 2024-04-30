@@ -16,6 +16,11 @@ namespace Utage
 		, INovelText
 	{
 		//ルビのプレハブ
+		public TextMeshProRuby RubyPrefab
+		{
+			get => rubyPrefab;
+			set => rubyPrefab = value;
+		}
 		[SerializeField] TextMeshProRuby rubyPrefab = null;
 
 		//ルビが本文よりも大きかった場合に、本文のほうに余白を開けるようにテキストを作り直す
@@ -59,9 +64,13 @@ namespace Utage
 			set
 			{
 				TextMeshPro.color = value;
-				foreach (var obj in RubyObjectList)
+				if (RubyObjectList.Count > 0)
 				{
-					obj.SetColor(value);
+					var textInfo = TextMeshPro.ForceGetTextInfo();
+					foreach (var ruby in RubyObjectList)
+					{
+						ruby.UpdateColor(textInfo);
+					}
 				}
 			}
 		}
@@ -100,18 +109,32 @@ namespace Utage
 		protected List<TextMeshProRuby> RubyObjectList { get; } = new List<TextMeshProRuby>();
 
 		protected bool HasChanged { get; set; }
+		
+		//既にUpdateのタイミングがすぎているか
+		//これがtrueの場合は、テキスト変更が呼び出されたらすぐにForceUpdateで強制的に更新
+		//TextMeshProは、ScriptOrderが-100などに設定されているため、通常のスクリプトのLateUpdateのタイミングで更新しても間に合わない
+		protected bool Updated { get; set; }
+
 
 		public void SetNovelTextData(TextData textData, int length)
 		{
 			this.TextData = textData;
 			MaxVisibleCharacters = length;
 			HasChanged = true;
+			if (Updated)
+			{
+				ForceUpdate();
+			}
 		}
 
 		public void SetText(string text)
 		{
 			this.TextData = new TextData(text);
 			HasChanged = true;
+			if (Updated)
+			{
+				ForceUpdate();
+			}
 		}
 
 		public virtual string GetText()
@@ -134,11 +157,14 @@ namespace Utage
 		private void Update()
 		{
 			UpdateIfChanged();
+			Updated = true;
+			
 		}
 
 		private void LateUpdate()
 		{
 			UpdateIfChanged();
+			Updated = false;
 		}
 
 		public void UpdateIfChanged()
@@ -172,25 +198,37 @@ namespace Utage
 				{
 					return;
 				}
-				int len = TextData.Length;
-				int count = TextMeshPro.textInfo.characterCount;
-				if (len != count)
+				if (!CheckTextParse())
 				{
-					string tmpTxt = "";
-					for (var i = 0; i < count; i++)
-					{
-						tmpTxt += TextMeshPro.textInfo.characterInfo[i].character;
-					}
-
-					Debug.LogErrorFormat(this, $"テキストの解析結果の文字数 {len} と TextMeshProで表示する文字数 {count}　が違います\n{TextMeshPro.text}\n---\n{tmpTxt}");
 					ForceUpdateSub(ignoreActiveState, false);
 				}
-				if ( CheckOverFlow && TextMeshPro.isTextOverflowing && len > 0)
+				if ( CheckOverFlow && TextMeshPro.isTextOverflowing && TextData.Length > 0)
 				{
-					Debug.LogErrorFormat(this,"表示文字がオーバーしています\n{0}", TextMeshPro.text);
+					Debug.LogErrorFormat(this,"Overflowing text range.\n{0}", TextMeshPro.text);
 				}
 			}
 #endif
+		}
+		
+		//リッチテキストテキスト解析の結果の文字数と、TextMeshProの表示文字数が一致しているかチェックする
+		bool CheckTextParse()
+		{
+			int len = TextData.Length;
+			int count = TextMeshPro.textInfo.characterCount;
+			if (len != count)
+			{
+				string tmpTxt = "";
+				for (var i = 0; i < count; i++)
+				{
+					tmpTxt += TextMeshPro.textInfo.characterInfo[i].character;
+				}
+
+				Debug.LogErrorFormat(this,
+					$"Please Check for errors in rich text tags. The number of characters {len} in the text analysis result and the number of characters {count} displayed in TextMeshPro are different. \n"
+					+ $"{TextMeshPro.text}\n---\n{tmpTxt}");
+				return false;
+			}
+			return true;
 		}
 
 		bool CheckRemakeRuby()
@@ -285,7 +323,7 @@ namespace Utage
 								int rubyInex = RubyInfoList.Count;
 								if (rubyInex >= oldRubyList.Count)
 								{
-									Debug.LogErrorFormat("Ramke Ruby error index={0} oldRubyList.Count={1}", rubyInex, oldRubyList.Count);
+									Debug.LogErrorFormat("Ramake Ruby error index={0} oldRubyList.Count={1}", rubyInex, oldRubyList.Count);
 									rubyInex = oldRubyList.Count - 1;
 								}
 								float width = oldRubyList[rubyInex].RemakeCspace;
@@ -350,12 +388,15 @@ namespace Utage
 				}
 			}
 			RubyObjectList.Clear();
-			TMP_TextInfo textInfo = TextMeshPro.textInfo;
-			foreach (var ruby in RubyInfoList)
+			if (RubyInfoList.Count > 0)
 			{
-				AddRubyTextObject(textInfo, ruby);
+				TMP_TextInfo textInfo = TextMeshPro.ForceGetTextInfo();
+				foreach (var ruby in RubyInfoList)
+				{
+					AddRubyTextObject(textInfo, ruby);
+				}
+				UpdateVisibleIndex();
 			}
-			UpdateVisibleIndex();
 			HasChanged = false;
 		}
 
@@ -429,6 +470,7 @@ namespace Utage
 			
 			//強制アップデートして文字あふれチェック
 			ForceUpdateSubInEditor();
+			CheckTextParse();
 			if (!TextMeshPro.isTextOverflowing)
 			{
 				return true;

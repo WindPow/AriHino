@@ -28,6 +28,9 @@ namespace Utage
         public FontFallbackSettingsRuntime FontFallbackSettings => fontFallbackSettings;
         [SerializeField, Hide(nameof(IsNotMultiple),true)] FontFallbackSettingsRuntime fontFallbackSettings = null;
 
+        public List<TMP_SpriteAsset> SpriteAssets => spriteAssets;
+        [SerializeField] List<TMP_SpriteAsset> spriteAssets = new ();
+
         //ログの出力先
         public string LogOutputPath => logOutputPath;
         [SerializeField, PathDialog(PathDialogAttribute.DialogType.Directory)]

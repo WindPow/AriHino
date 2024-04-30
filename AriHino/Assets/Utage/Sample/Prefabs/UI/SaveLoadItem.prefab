@@ -586,7 +586,6 @@ MonoBehaviour:
   remakeLargeRuby: 0
   debugLogError: 0
   checkOverFlow: 0
-  checkOverFlowInEditor: 0
 --- !u!114 &2491874440698255088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,7 +626,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 416a782033d4f6745b1409c20999a49f, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

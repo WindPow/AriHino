@@ -30,7 +30,17 @@ public class MasterDataManager : MonoBehaviour
 
     private void Awake()
     {
-        LoadData<MstAdvCollectItem>("CollectItem.csv").Forget();
+        LoadData<MstCollectItemData>("m_collect_item").Forget();
+        LoadData<MstCharacterData>("m_character").Forget();
+        LoadData<MstBooksData>("m_books").Forget();
+        LoadData<MstBooksCharacterPageData>("m_books_character_page").Forget();
+        LoadData<MstBooksCharacterExplanationData>("m_books_character_explanation").Forget();
+        LoadData<MstBooksCharacterMemoData>("m_books_character_memo").Forget();
+        LoadData<MstBooksCharacterImpressionsData>("m_books_character_impressions").Forget();
+
+        LoadData<MstWorldData>("m_world").Forget();
+        LoadData<MstBooksWorldPageData>("m_books_world_page").Forget();
+        LoadData<MstBooksWorldExplanationData>("m_books_world_explanation").Forget();
         // 他のマスターデータもここで読み込む
     }
 
@@ -60,6 +70,20 @@ public class MasterDataManager : MonoBehaviour
         {
             Debug.LogError($"Master data of type {dataType.Name} not loaded.");
             return default;
+        }
+    }
+
+    public Dictionary<int, T> GetMasterDataDictionary<T>() where T : IMasterData<int>
+    {
+        Type dataType = typeof(T);
+        if (dataDictionary.ContainsKey(dataType))
+        {
+            return dataDictionary[dataType] as Dictionary<int, T>;
+        }
+        else
+        {
+            Debug.LogError($"Master data of type {dataType.Name} not loaded.");
+            return null;
         }
     }
 }

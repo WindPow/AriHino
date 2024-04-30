@@ -350,6 +350,9 @@ namespace Utage
 		[CustomEditor(typeof(AdvScenarioDataProject))]
 		public sealed class ScriptableObjectInspector : Editor
 		{
+			SerializedProperty PropertyCustomProjectSetting { get; set; }
+			SerializedProperty PropertyScenarios { get; set; }
+
 			SerializedProperty PropertyChapters { get; set; }
 			SerializedProperty PropertyScenarioFileReaderSettings { get; set; }
 			SerializedProperty PropertyEnableCommentOutOnImport { get; set; }
@@ -361,6 +364,9 @@ namespace Utage
 
 			private void OnEnable()
 			{
+				PropertyScenarios = serializedObject.FindProperty(nameof(scenarios));
+				PropertyCustomProjectSetting = serializedObject.FindProperty(nameof(customProjectSetting));
+
 				PropertyChapters = serializedObject.FindProperty(nameof(chapterDataList));
 				PropertyScenarioFileReaderSettings = serializedObject.FindProperty(nameof(scenarioFileReaderSettings));
 				PropertyEnableCommentOutOnImport = serializedObject.FindProperty(nameof(enableCommentOutOnImport));
@@ -375,6 +381,11 @@ namespace Utage
 				var project = (target as AdvScenarioDataProject);
 
 				serializedObject.Update();
+				EditorGUILayout.PropertyField(PropertyScenarios);
+				EditorGUILayout.PropertyField(PropertyCustomProjectSetting);
+				
+				
+
 				/*********************************************************************/
 				using (new EditorGuiLayoutGroupScope("Import Scenario Files"))
 				{

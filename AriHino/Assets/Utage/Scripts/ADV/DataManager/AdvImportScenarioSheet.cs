@@ -35,6 +35,23 @@ namespace Utage
 		[SerializeField]
 		List<AdvEntityData> entityDataList = new List<AdvEntityData>();
 
+		Dictionary<int, int> EntityIndexDictionary
+		{
+			get
+			{
+				if (entityIndexDictionary == null)
+				{
+					entityIndexDictionary = new Dictionary<int, int>();
+					for (var i = 0; i < entityIndexTbl.Count; i++)
+					{
+						entityIndexDictionary.Add(entityIndexTbl[i],i);
+					}
+				}
+				return entityIndexDictionary;
+			}
+		}
+		Dictionary<int, int> entityIndexDictionary = null;
+
 		//インポート用の文字列グリッドを作成
 		public AdvImportScenarioSheet(StringGrid original, AdvSettingDataManager dataManager, AdvMacroManager macroManager)
 			: base(original.Name, original.SheetName, original.Type)
@@ -116,7 +133,12 @@ namespace Utage
 
 				//エンティティ処理がある
 				Profiler.BeginSample("GetEntityIndex");
-				int entityIndex = GetEntityIndex(row.RowIndex);
+				int entityIndex = GetEntityIndexQuick(row.RowIndex);
+/*				if (entityIndex != GetEntityIndex(row.RowIndex))
+				{
+					Debug.LogError("GetEntityIndex Error!!");
+				}
+*/
 				Profiler.EndSample();
 				if (entityIndex >= 0)
 				{
@@ -126,16 +148,25 @@ namespace Utage
 			}
 			return commandList;
 		}
-
+/*
 		int GetEntityIndex(int index)
 		{
-			for ( int i = 0; i < entityIndexTbl.Count; ++i )
+			for (int i = 0; i < entityIndexTbl.Count; ++i)
 			{
 				if (entityIndexTbl[i] == index)
 				{
 					return i;
 				}
-			}
+			} 
+			return -1;
+		}
+*/
+		int GetEntityIndexQuick(int index)
+		{
+			if( EntityIndexDictionary.TryGetValue(index, out int entityIndex) )
+			{
+				return entityIndex;
+			} 
 			return -1;
 		}
 	}

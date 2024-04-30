@@ -88,34 +88,61 @@ namespace Utage
 
 			this.targetObject = Engine.GraphicManager.FindObject(info.Label);
 
-			switch (iconInfo.IconType)
+			bool SetIcon()
 			{
-				case AdvFaceIconInfo.Type.IconImage:
-					SetIconImage(iconInfo.File);
-					return true;
-				case AdvFaceIconInfo.Type.DicingPattern:
-					SetIconDicingPattern(iconInfo.File, iconInfo.IconSubFileName);
-					return true;
-				case AdvFaceIconInfo.Type.RectImage:
-					IconGraphicType type = ParseIconGraphicType(graphic, info.Label);
-					switch (type)
-					{
-						case IconGraphicType.Default:
-							SetIconRectImage(graphic, iconInfo.IconRect);
-							return true;
-						case IconGraphicType.Dicing:
-							SetIconDicing(graphic, iconInfo.IconRect);
-							return true;
-						case IconGraphicType.RenderTexture:
-							SetIconRenderTexture(iconInfo.IconRect);
-							return true;
-						case IconGraphicType.NotSupport:
-						default:
-							return false;
-					}
-				case AdvFaceIconInfo.Type.None:
-				default:
-					return false;
+				switch (iconInfo.IconType)
+				{
+					case AdvFaceIconInfo.Type.IconImage:
+						SetIconImage(iconInfo.File);
+						return true;
+					case AdvFaceIconInfo.Type.DicingPattern:
+						SetIconDicingPattern(iconInfo.File, iconInfo.IconSubFileName);
+						return true;
+					case AdvFaceIconInfo.Type.RectImage:
+						IconGraphicType type = ParseIconGraphicType(graphic, info.Label);
+						switch (type)
+						{
+							case IconGraphicType.Default:
+								SetIconRectImage(graphic, iconInfo.IconRect);
+								return true;
+							case IconGraphicType.Dicing:
+								SetIconDicing(graphic, iconInfo.IconRect);
+								return true;
+							case IconGraphicType.RenderTexture:
+								SetIconRenderTexture(iconInfo.IconRect);
+								return true;
+							case IconGraphicType.NotSupport:
+							default:
+								return false;
+						}
+					case AdvFaceIconInfo.Type.None:
+					default:
+						return false;
+				}
+			}
+			
+			//アイコンを設定
+			bool result = SetIcon();
+			
+			//アイコンの自動反転を更新する
+			RefreshFlip(targetObject, iconInfo);
+			return result;
+		}
+		
+		//アイコンの自動反転を更新する
+		void RefreshFlip(AdvGraphicObject graphicObject, AdvFaceIconInfo iconInfo)
+		{
+			var flip = iconRoot.gameObject.GetComponentCreateIfMissing<UguiFlip>();
+			if( !iconInfo.AutoFlip)
+			{
+				flip.enabled = false;
+			}
+			else
+			{
+				flip.enabled = true;
+				var layerSettings = graphicObject.Layer.SettingData;
+				flip.FlipX = layerSettings.FlipX;
+				flip.FlipY = layerSettings.FlipY;
 			}
 		}
 

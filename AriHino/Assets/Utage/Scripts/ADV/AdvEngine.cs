@@ -222,12 +222,12 @@ namespace Utage
 		//パラメーターにボイス言語設定があればそれに合わせる
 		public string VoiceLanguageKeyOfParam
 		{
-			get => languageKeyOfParam;
+			get => voiceLanguageKeyOfParam;
 			set => voiceLanguageKeyOfParam = value;
 		}
 		[SerializeField]
 		string voiceLanguageKeyOfParam = "";
-
+		
 		/// <summary>
 		/// カスタムコマンド用のコンポーネントリスト
 		/// </summary>
@@ -596,6 +596,12 @@ namespace Utage
 			TextParser.CallbackCalcExpression += Param.CalcExpressionNotSetParam;
 			iTweenData.CallbackGetValue += Param.GetParameter;
 			LanguageManagerBase.Instance.OnChangeLanguage = ChangeLanguage;
+
+			//カスタム初期化処理を呼ぶ
+			foreach (var item in this.GetComponentsInChildren<IAdvEngineCustomEventBootInit>(true))
+			{
+				item.OnBootInit();
+			}
 
 			//システムセーブデータの初期化＆ロード
 			SystemSaveData.Init(this);

@@ -14,7 +14,7 @@ public class AdvCollectItemFactory : MonoBehaviour, IAdvCollectItemFactory
 {
     [SerializeField] Transform parent;
 
-    private const string prefabPath = "Adv/CollectItem/CollectItem_{0}";
+    private const string prefabPath = "Prefabs/Adv/CollectItem/CollectItem_{0}";
 
     public IAdvCollectItemDataView CreateCollectItem(int collectItemId){
 
@@ -22,7 +22,7 @@ public class AdvCollectItemFactory : MonoBehaviour, IAdvCollectItemFactory
 
         if(prefab == null) return null;
 
-        return Instantiate<AdvCollectItemDataView>(prefab, parent);
+        return Instantiate(prefab, parent);
 
     }
 

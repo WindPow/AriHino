@@ -16,9 +16,13 @@ namespace UtageExtensions
             for (bool enterChildren = true; iterator.NextVisible(enterChildren); enterChildren = false)
             {
                 // スクリプトは表示しない
-                if("m_Script" == iterator.propertyPath) continue;
+                if ("m_Script" == iterator.propertyPath) continue;
+                // シリアライズデータモードは表示しない(UiToolKitがらみで、Unity2022から内部状態が表示されてしまうのを避けるため)
+                if ("m_SerializedDataModeController" == iterator.propertyPath) continue;
+
                 EditorGUILayout.PropertyField(iterator, true);
             }
+
             serializedObject.ApplyModifiedProperties();
             return changeCheck.changed;
         }
@@ -40,7 +44,7 @@ namespace UtageExtensions
             {
                 editor.OnInspectorGUI();
             }
-            else if(includeScript)
+            else if (includeScript)
             {
                 editor.DrawDefaultInspector();
             }

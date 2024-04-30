@@ -14,6 +14,21 @@ namespace UtageExtensions
 	    //値型の場合はboxingされたものが返る
         public static (object, FieldInfo) GetValueAndFieldInfo(this SerializedProperty property)
         {
+	        //指定のオブジェクトのフィールド名から、フィールド情報を取得する
+	        //継承元のprivateなフィールドも取得できるようにする（SerializeFiledの場合、必要になるので）
+	        FieldInfo GetFiledDeep(object targetObj, string filedName)
+	        {
+		        Type type = targetObj.GetType();
+		        do
+		        {
+			        FieldInfo fieldInfo = type.GetField(filedName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+			        if (fieldInfo != null) return fieldInfo;
+			        type = type.BaseType;
+		        } while (type!=null);
+		        return null;
+	        }
+	        
+
 	        //ルートのオブジェクト
 	        FieldInfo field = null;
 	        object obj = property.serializedObject.targetObject;
@@ -40,7 +55,7 @@ namespace UtageExtensions
 		        }
 		        else
 		        {
-			        field = parentObj.GetType().GetField(filedName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+			        field = GetFiledDeep(parentObj,filedName);
 			        if (field == null)
 			        {
 				        Debug.LogError($"Not found field {filedName} in {property.propertyPath}",
@@ -67,6 +82,23 @@ namespace UtageExtensions
         {
 	        return property.GetValueAndFieldInfo().Item2;
         }
+
+        //参照がMissingかどうか
+        public static bool IsMissingReference(this SerializedProperty property)
+        {
+	        if (property.propertyType != SerializedPropertyType.ObjectReference) return false;
+	        if (property.objectReferenceValue != null) return false;
+
+	        var fileId = property.FindPropertyRelative("m_FileID");
+	        if (fileId == null || fileId.intValue == 0) return false;
+	        return true;
+        }
+        
+        //Scriptかどうか
+        public static bool IsScript(this SerializedProperty property)
+		{
+	        return property.propertyPath == "m_Script";
+		}
     }
 }
 #endif

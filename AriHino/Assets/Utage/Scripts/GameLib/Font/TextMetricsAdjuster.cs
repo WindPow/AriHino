@@ -3,239 +3,180 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.TextCore;
 
 namespace Utage
 {
-    //TextMeshProのフォントアセットに設定するTextMetricsを調整するためのプリセット
+    //TextMeshProのフォントアセットのTextMetricsを調整するための補助ツールアセット
     [CreateAssetMenu(menuName = "Utage/Font/" + nameof(TextMetricsAdjuster))]
     public class TextMetricsAdjuster : ScriptableObject
     {
-        [SerializeField] TMP_FontAsset baseFont = null;
-        [SerializeField] List<TMP_FontAsset> fonts = new ();
+        //対象のフォントアセット
+        TMP_FontAsset Font => font;
+        [FormerlySerializedAs("baseFont")] [SerializeField] TMP_FontAsset font = null;
+        
+        //フォールバック対象のフォントアセット
+        //ローカライズしている場合は、候補となる全てのフォントを入れる
+        List<TMP_FontAsset> Fallbacks => fallbacks;
+        [FormerlySerializedAs("fonts")] [SerializeField] List<TMP_FontAsset> fallbacks = new ();
 
+        //無効になる文字の設定
         [Serializable]
-        class DisableCharacterSettings
+        public class DisableCharacterSettings
         {
-            public float maxAscent = 0;
-            public float minDescend = 0;
             public bool disableCombiningMark = true;
-            public string disableCharacters = "〱";
+            public string disableCharacters = "〱〲";
         }
-
+        public DisableCharacterSettings DisableCharacters => disableCharacterSettings;
         [SerializeField,UnfoldedSerializable] DisableCharacterSettings disableCharacterSettings = new();
+
+        //AscentLineの最大値
+        public float MaxAscent => maxAscent;
+        [SerializeField] float maxAscent = 0;
+
+        //DescentLineの最小値
+        public float MinDescent => minDescent;
+        [SerializeField] float minDescent = 0;
+
+        [SerializeField, Button(nameof(Check), false)]
+        string check;
 
         [SerializeField, Button(nameof(MakeTextMetrics), nameof(DisableMakeTextMetrics), false)]
         string makeTextMetrics;
-        [SerializeField] TextMetrics textMetrics = new ();
+
+        //Apply時に適用するTextMetricsの情報
+        TextMetrics TextMetrics => textMetrics;
+        [SerializeField] TextMetrics textMetrics = new();
+
+        [SerializeField, Button(nameof(Apply), nameof(DisableApply), false)]
+        string apply;
+
+        //フォントの設定をチェック
+        bool Check()
+        {
+            return CheckAndCreateAdjusterFonts().Item1;
+        }
         
- 
-        [SerializeField, Button(nameof(ApplyToFontAssets), nameof(DisableApplyToFontAssets), false)]
-        string applyToFontAssets;
+        IEnumerable<TMP_FontAsset> GetFonts()
+        {
+            yield return Font;
+            foreach (var fallback in Fallbacks)
+            {
+                yield return fallback;
+            }
+        }
+        
+        (bool result, List<TextMetricsAdjusterFont> adjusterFonts, TextMetrics metrics) CheckAndCreateAdjusterFonts()
+        {
+            if( !CheckSub(true) ) return (false, null,null);
+            
+            bool result = true;
 
+            List<TextMetricsAdjusterFont> adjusterFonts = GetFonts().Select(font => new TextMetricsAdjusterFont(font, this)).ToList();
 
+            var metrics = new TextMetrics(Font.faceInfo);
+            //対象フォントアセット内の全ての収録グリフの最大位置を取得
+            float ascender = adjusterFonts.Select(x => x.AscenderGlyph.Ascent).Max();
+            //対象フォントアセット内の全ての収録グリフの最小位置を取得
+            float descender = adjusterFonts.Select(x => x.DecentGlyph.Descent).Min();
+
+            metrics.AdjustLine(ascender, descender);
+            if(this.MaxAscent != 0 && metrics.AscentLine > this.MaxAscent)
+            {
+                Debug.LogWarning($"AscentLine({metrics.AscentLine}) is overed {nameof(MaxAscent)}({this.MaxAscent}).",this);
+            }
+            if (this.MinDescent != 0 && metrics.DescentLine < this.MinDescent)
+            {
+                Debug.LogWarning($"DescentLine({metrics.DescentLine}) is overed {nameof(MinDescent)}({this.MinDescent}).", this);
+            }
+
+            foreach (var adjusterFont in adjusterFonts)
+            {
+                if (!adjusterFont.CheckLine())
+                {
+                    result = false;
+                }
+            }
+            if (!result)
+            {
+                return (false, adjusterFonts, null);
+            }
+
+            return (true, adjusterFonts,metrics);
+        }
+
+        bool CheckSub(bool debugLog)
+        {
+            if (Font == null)
+            {
+                //フォントがない
+                if(debugLog) Debug.LogError("Font is null");
+                return false;
+            }
+
+            bool result = true;
+            for (var i = 0; i < Fallbacks.Count; i++)
+            {
+                var fallback = Fallbacks[i];
+                if (fallback == null)
+                {
+                    if (debugLog)
+                    {
+                        Debug.LogError($"Fallback[{i}] is null");
+                    }
+                    result = false;
+                    continue;
+                }
+                if (fallback.faceInfo.pointSize != font.faceInfo.pointSize)
+                {
+                    if (debugLog)
+                    {
+                        Debug.LogError(
+                            $"Font{fallback.name} PointSize({fallback.faceInfo.pointSize}) is not {Font.name} PointSize({font.faceInfo.pointSize})",
+                            fallback);
+                    }
+
+                    return false;
+                }
+            }
+            return result;
+        }
+        
+        //TextMetricsを作成可能かチェック
         bool DisableMakeTextMetrics()
         {
-            if (baseFont == null) return true;
-            if (fonts.Count <= 0) return true;
-            return fonts.Exists(x => x.faceInfo.pointSize != baseFont.faceInfo.pointSize);
+            if (!CheckSub(false)) return true;
+            return false;
         }
 
+        //TextMetricsを作成
         void MakeTextMetrics()
         {
-            textMetrics = new TextMetrics(baseFont.faceInfo);
-
-            List<FontAssetTextMetrics> fontAssetTextMetrics = new() { new FontAssetTextMetrics(baseFont, this) };
-            foreach (var font in fonts)
-            {
-                fontAssetTextMetrics.Add(new FontAssetTextMetrics(font, this));
-            }
-
-            //対象フォントアセット内の全ての収録グリフの最大位置を取得
-            float ascender = fontAssetTextMetrics.Select(x => x.AscenderGlyph.Ascent).Max();
-            //対象フォントアセット内の全ての収録グリフの最小位置を取得
-            float descender = fontAssetTextMetrics.Select(x => x.DecentGlyph.Descent).Min();
-            textMetrics.AdjustLine(ascender,descender);
+            (bool result, List<TextMetricsAdjusterFont> adjusterFonts, TextMetrics metrics) = CheckAndCreateAdjusterFonts();
+            if( !result ) return;
+            
+            this.textMetrics = metrics;
         }
 
-        bool DisableApplyToFontAssets()
+        //TextMetricsを各フォントに適用可能かチェック
+        bool DisableApply()
         {
-            if( !DisableMakeTextMetrics() ) return false;
-            return textMetrics.DisableApplyToFontAssets(baseFont);
+            if (!CheckSub(false)) return true;
+            foreach (var tmpFontAsset in GetFonts())
+            {
+                if( !TextMetrics.EnableApply(tmpFontAsset,false) ) return true;
+            }
+            return false;
         }
 
-
-        void ApplyToFontAssets()
+        //TextMetricsを各フォントに適用
+        void Apply()
         {
-            textMetrics.ApplyToFontAsset(baseFont);
-            foreach (var font in fonts)
+            foreach (var tmpFontAsset in GetFonts())
             {
-                textMetrics.ApplyToFontAsset(font);
+                TextMetrics.ApplyToFontAsset(tmpFontAsset);
             }
         }
-        
-        class FontAssetTextMetrics
-        {
-            TextMetricsAdjuster Settings { get; }
-            TMP_FontAsset Font { get; }
-//          public TextMetrics TextMetrics { get; }
-            public GlyphAndCharacters DecentGlyph{ get; }
-            public GlyphAndCharacters AscenderGlyph { get; }
-            List<UnicodeCharacter> DisableCharacters { get; } = new List<UnicodeCharacter>();
-
-            //グリフ情報
-            //グリフと文字の紐づけを行う
-            public class GlyphAndCharacters
-            {
-                public Glyph Glyph { get; }
-                public float Descent { get; }
-                public float Ascent { get; }
-                public List<TMP_Character> Characters { get; } = new List<TMP_Character>();
-                public CheckResult Result { get; set; } 
-                
-                public enum CheckResult
-                {
-                    Enable,
-                    DescentOver,
-                    AscentOver,
-                    CombiningMark,
-                    DisableCharacters,
-                }
-                public GlyphAndCharacters(Glyph glyph)
-                {
-                    Glyph = glyph;
-                    Descent = glyph.metrics.horizontalBearingY - glyph.metrics.height;
-                    Ascent = glyph.metrics.horizontalBearingY;
-                }
-
-                //条件に従って有効なグリフか判別する
-                public CheckResult Check(FontAssetTextMetrics metrics)
-                {
-                    Result = CheckSub(metrics);
-                    return Result;
-                }
-
-                //条件に従って有効なグリフか判別する
-                CheckResult CheckSub(FontAssetTextMetrics metrics)
-                {
-                    DisableCharacterSettings disableSettings = metrics.Settings.disableCharacterSettings;
-                    if (disableSettings.disableCombiningMark)
-                    {
-                        foreach (var character in Characters)
-                        {
-                            UnicodeCharacter c = new UnicodeCharacter(character.unicode);
-                            if (c.IsCombiningMark)
-                            {
-                                return CheckResult.CombiningMark;
-                            }
-                        }
-                    }
-
-                    if (disableSettings.disableCombiningMark)
-                    {
-                        foreach (var character in Characters)
-                        {
-                            if (metrics.DisableCharacters.Exists(x => x.Unicode == character.unicode)) return CheckResult.DisableCharacters;
-                        }
-                    }
-
-                    if (disableSettings.minDescend < 0 && Descent < disableSettings.minDescend)
-                    {
-                        return CheckResult.DescentOver;
-                    }
-
-                    if (disableSettings.maxAscent > 0 && Ascent > disableSettings.maxAscent)
-                    {
-                        return CheckResult.DescentOver;
-                    }
-
-
-                    return CheckResult.Enable;
-                }
-                
-                public string GetCharactersString()
-                {
-                    string result = "";
-                    foreach (var character in Characters)
-                    {
-                        result += FontUtil.UnicodeToCharacter(character.unicode);
-                    }
-                    return result;
-                }
-            }
-            Dictionary<uint,GlyphAndCharacters> Glyphs { get; } = new ();
-
-            public FontAssetTextMetrics(TMP_FontAsset font, TextMetricsAdjuster settings)
-            {
-                Settings = settings;
-                Font = font;
-                foreach (uint unicode in FontUtil.ToUnicodeCharacters(Settings.disableCharacterSettings.disableCharacters))
-                {
-                    DisableCharacters.Add(new UnicodeCharacter(unicode));
-                }
-                foreach (Glyph glyph in font.glyphTable)
-                {
-                    Glyphs.Add(glyph.index,new GlyphAndCharacters(glyph));
-                }
-                foreach (var character in font.characterTable)
-                {
-                    if (!Glyphs.TryGetValue(character.glyphIndex, out GlyphAndCharacters glyphAndCharacters))
-                    {
-                        Debug.LogError($"{font.name} glyphIndexError={character.glyphIndex}/{Glyphs.Count} {FontUtil.UnicodeToCharacter(character.unicode)}",font);
-                        continue;
-                    }
-                    glyphAndCharacters.Characters.Add(character);
-                }
-
-                List<GlyphAndCharacters> enableGlyphs = new ();
-                List<GlyphAndCharacters> disableGlyphs = new();
-                foreach (var keyValue in Glyphs)
-                {
-                    var glyph = keyValue.Value;
-                    if (glyph.Check(this) == GlyphAndCharacters.CheckResult.Enable)
-                    {
-                        enableGlyphs.Add(glyph);
-                    }
-                    else
-                    {
-                        disableGlyphs.Add(glyph);
-                    }
-                }
-                DecentGlyph = GetDecentGlyphByAllCharactersInFontAsset(enableGlyphs);
-                AscenderGlyph = GetAscenderGlyphByAllCharactersInFontAsset(enableGlyphs);
-                
-                //グリフ中の最低位置を持つグリフと、最高位置のグリフを出力
-                string overCharacters = "";
-                foreach (var glyph in disableGlyphs)
-                {
-                    switch (glyph.Result)
-                    {
-                        case GlyphAndCharacters.CheckResult.DescentOver:
-                        case GlyphAndCharacters.CheckResult.AscentOver:
-                            overCharacters += glyph.GetCharactersString();
-                            break;
-                        default:
-                            break;
-                    }
-                }
-
-                Debug.Log($"{font.name}  OverCharacters={overCharacters}  \n"
-                          + $"Ascent={AscenderGlyph.Ascent} Glyph({AscenderGlyph.Glyph.index}) {AscenderGlyph.GetCharactersString()}  \n"
-                          + $"Decent={DecentGlyph.Descent} Glyph({DecentGlyph.Glyph.index}) {DecentGlyph.GetCharactersString()}  \n"
-                          );
-            }
-
-            //フォントのアセットの収録文字の中で、一番低い位置を持つグリフを取得
-            GlyphAndCharacters GetDecentGlyphByAllCharactersInFontAsset(List<GlyphAndCharacters> enableGlyphs)
-            {
-                return enableGlyphs.OrderBy(x=>x.Descent).FirstOrDefault();
-            }
-            //フォントのアセットの収録文字の中で、一番高い位置を持つグリフを取得
-            GlyphAndCharacters GetAscenderGlyphByAllCharactersInFontAsset(List<GlyphAndCharacters> enableGlyphs)
-            {
-                return enableGlyphs.OrderByDescending(x=>x.Ascent).FirstOrDefault();
-            }
-        }
-
     }
 }

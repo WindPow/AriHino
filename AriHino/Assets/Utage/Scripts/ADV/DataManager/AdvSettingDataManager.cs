@@ -92,6 +92,9 @@ namespace Utage
 		/// </summary>
 		public AdvVideoSetting VideoSetting { get { return this.videoSetting; } }
 		AdvVideoSetting videoSetting = new AdvVideoSetting();
+		
+		//カスタム設定
+		public AdvCustomDataManager CustomDataManager { get; } = new();
 
 
 		List<IAdvSetting> SettingDataList
@@ -125,6 +128,7 @@ namespace Utage
 		public void BootInit(string rootDirResource, AdvDataManager dataManager = null)
 		{
 			BootSetting.BootInit(rootDirResource, dataManager);
+			CustomDataManager.BootInit(this);
 			if (this.ImportedScenarios != null)
 			{
 				foreach (AdvChapterData chapter in this.ImportedScenarios.Chapters)
@@ -140,6 +144,7 @@ namespace Utage
 		internal void DownloadAll()
 		{
 			SettingDataList.ForEach(x => x.DownloadAll());
+			CustomDataManager.DownloadAll();
 		}
 
 	}

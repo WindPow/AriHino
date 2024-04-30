@@ -21,6 +21,10 @@ namespace Utage
 		[SerializeField] protected AdvEngine engine;
 
 		[SerializeField] protected GameObject rootButtons;
+
+		//メニュー独自の背景
+		//メッセージウィンドウの背景をメニューの背景として使うために、メニュー独自の背景のオンオフ切り替えを行うために設定
+		//オンオフ切り替えが必要ない場合はNONEに設定すること
 		[SerializeField] protected Image bg;
 		
 		// スキップボタン
@@ -56,10 +60,12 @@ namespace Utage
 				rootButtons.SetActive(activeMenuButtons);
 			}
 
-			//メニュー背景の表示・表示を切り替え
+			//メニュー独自の背景の表示・表示を切り替え
 			if (bg != null)
 			{
-				//メニューボタンは表示するが、メッセージウィンドウを非表示にする場合は、メニュー背景を表示にする
+				//メッセージウィンドウの背景をメニューの背景として使うために、以下の二つの状態を切り替えるための処理
+				//メニュー独自の背景が非表示：「メッセージウィンドウの背景が表示されている」
+				//メニュー独自の背景が表示：「メッセージウィンドウが表示されない」
 				bg.enabled = activeMenuButtons && !Engine.UiManager.IsShowingMessageWindow;
 			}
 

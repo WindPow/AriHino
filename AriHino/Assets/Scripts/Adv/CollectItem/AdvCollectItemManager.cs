@@ -49,9 +49,17 @@ public class AdvCollectItemManager : MonoBehaviour
 
     public void SetCollectItem(int collectItemId) {
 
-        var mstAdvCollectItem = MasterDataManager.Instance.GetMasterData<MstAdvCollectItem>(collectItemId);
+        var mstAdvCollectItem = MasterDataManager.Instance.GetMasterData<MstCollectItemData>(collectItemId);
         collectItemModel.SetCollectItem(mstAdvCollectItem);
     
+    }
+
+    public void RemoveCollectItem(int collectItemId) {
+        collectItemModel.RemoveCollectItem(collectItemId);
+    }
+
+    public void RemoveAllCollectItem() {
+        collectItemModel.RemoveAllCollectItem();
     }
 
 }

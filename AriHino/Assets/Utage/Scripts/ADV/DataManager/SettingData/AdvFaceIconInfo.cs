@@ -27,10 +27,13 @@ namespace Utage
 		public Rect IconRect { get; internal set; }
 		//アイコンのサブファイル名
 		public string IconSubFileName { get; internal set; }
+		//レイヤー設定に合わせて反転するかの情報
+		public bool AutoFlip { get; internal set; }
 
 		public AdvFaceIconInfo(StringGridRow row)
 		{
 			this.FileName = AdvParser.ParseCellOptional<string>(row, AdvColumnName.Icon,"");
+			this.AutoFlip = AdvParser.ParseCellOptional<bool>(row, AdvColumnName.IconAutoFlip, false);
 			if (!string.IsNullOrEmpty(FileName))
 			{
 				if (!AdvParser.IsEmptyCell(row, AdvColumnName.IconSubFileName))

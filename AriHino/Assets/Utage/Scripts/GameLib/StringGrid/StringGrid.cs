@@ -142,6 +142,8 @@ namespace Utage
 		public UnityEngine.Object SourceAssetInEditor { get { return sourceAssetInEditor; } set{ sourceAssetInEditor = value; } }
 		[SerializeField]
 		UnityEngine.Object sourceAssetInEditor = null;
+#else
+		public UnityEngine.Object SourceAssetInEditor => null;
 #endif
 
 		/// <summary>

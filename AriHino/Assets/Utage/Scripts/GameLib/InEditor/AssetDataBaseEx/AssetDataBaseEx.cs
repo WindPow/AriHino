@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UtageExtensions;
 using Object = UnityEngine.Object;
 
 namespace Utage
@@ -165,6 +166,40 @@ namespace Utage
 			return !string.IsNullOrEmpty(AssetDatabase.GetAssetPath(obj));
 		}
 
+		//テンプレートのGUIDからアセットをロードして、コピーしたアセットを作成する
+		public static T CopyTemplateAsset<T>(string guid, string dstPath)
+			where T : Object
+		{
+			var asset = LoadAssetByGuid<T>(guid);
+			//アセットをコピー
+			var newAsset = AssetDataBaseEx.CopyAsset(asset, dstPath);
+			EditorUtility.SetDirty(newAsset);
+			return newAsset;
+		}
+
+		//テンプレートのGUIDからアセットをロードして、コピーしたアセットを、選択中のディレクトリ以下に指定の名前で作成する
+		public static T CopyTemplateAssetInSelectedDirectory<T>(string guid, string assetName)
+			where T : Object
+		{
+			string path = UtageEditorToolKit.GetSelectedDirectory();
+			path = Path.Combine(path, assetName);
+			path = AssetDatabase.GenerateUniqueAssetPath(path);
+			return CopyTemplateAsset<T>(guid, path);
+		}
+
+		//指定のGUIDのプレハブをロードして、シーン内にインスタンス化
+		public static GameObject InstantiateFromPrefabGuid(string guid, string gameObjectName, Transform parent=null )
+		{
+			GameObject prefab = AssetDataBaseEx.LoadAssetByGuid<GameObject>(guid);
+			var gameObject = (parent != null) ? parent.AddChildPrefab(prefab) : Object.Instantiate(prefab);
+			gameObject.name = gameObjectName;
+			return gameObject;
+		}
+		public static T InstantiateFromPrefabGuid<T>(string guid, string gameObjectName, Transform parent = null)
+		{
+			var gameObject = InstantiateFromPrefabGuid(guid, gameObjectName, parent);
+			return gameObject.GetComponent<T>();
+		}
 	}
 }
 #endif

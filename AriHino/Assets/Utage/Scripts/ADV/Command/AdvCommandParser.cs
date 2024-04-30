@@ -27,10 +27,16 @@ namespace Utage
 		/// <returns>生成されたコマンド</returns>
 		static public AdvCommand CreateCommand(StringGridRow row, AdvSettingDataManager dataManager)
 		{
+			if (row.IsCommentOut)
+			{
+				//コメント
+				return null;
+			}
 			Profiler.BeginSample("CreateCommandRow");
 
+			string id = AdvParser.ParseCellOptional<string>(row, AdvColumnName.Command, "");
 			Profiler.BeginSample("Check Comment");
-			if (row.IsCommentOut || IsComment(row))
+			if (IsComment(id,row))
 			{
 				Profiler.EndSample();
 				Profiler.EndSample();
@@ -40,7 +46,7 @@ namespace Utage
 			Profiler.EndSample();
 
 			///基本のコマンド解析処理
-			AdvCommand command = CreateCommand(ParseCommandID(row), row, dataManager);
+			AdvCommand command = CreateCommand(ParseCommandID(id,row), row, dataManager);
 
 			Profiler.BeginSample("Check IsAllEmptyCellNamedColumn");
 			if (command == null)
@@ -256,7 +262,7 @@ namespace Utage
 					return new AdvCommandSetPivot(row, dataManager);
 				case IdResetPivot:
 					return new AdvCommandResetPivot(row, dataManager);
-				
+
 				case IdVideo:
 					return new AdvCommandVideo(row, dataManager);
 
@@ -437,8 +443,13 @@ namespace Utage
 		/// <returns>生成するコマンドID</returns>
 		static string ParseCommandID(StringGridRow row)
 		{
-			Profiler.BeginSample("ParseCommandID");
 			string id = AdvParser.ParseCellOptional<string>(row, AdvColumnName.Command, "");
+			return ParseCommandID(id, row);
+		}
+
+		static string ParseCommandID(string id, StringGridRow row)
+		{
+			Profiler.BeginSample("ParseCommandID");
 			if (string.IsNullOrEmpty(id))
 			{
 				//コマンドなしは、テキスト表示が基本
@@ -511,9 +522,8 @@ namespace Utage
 
 
 		//コメントのコマンドかチェック
-		static bool IsComment(StringGridRow row)
+		static bool IsComment(string command, StringGridRow row)
 		{
-			string command = AdvParser.ParseCellOptional<string>(row, AdvColumnName.Command, "");
 			if( string.IsNullOrEmpty(command) )
 			{
 				return false;

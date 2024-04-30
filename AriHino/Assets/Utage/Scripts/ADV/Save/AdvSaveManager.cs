@@ -142,7 +142,7 @@ namespace Utage
 		[SerializeField] 
 		bool restartSubThread = false;
 
-		//バージョンアップ用のセーブデータ
+		//AdvEngine以下のオブジェクト
 		public virtual List<IBinaryIO> GetSaveIoListCreateIfMissing(AdvEngine engine)
 		{
 			if (saveIoList == null)

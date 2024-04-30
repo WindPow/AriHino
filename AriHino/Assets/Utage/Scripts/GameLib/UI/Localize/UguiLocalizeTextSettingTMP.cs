@@ -17,13 +17,15 @@ namespace Utage
 		{
 			public string language;
 			public TMP_FontAsset font;
-			public float fontSize = 36;
+			public Material fontMaterial;
+			public float fontSize = 32;
 			public float lineSpacing = 0;
 
 			//テキストに設定されている値で初期化
 			public void Init(TextMeshProUGUI text)
 			{
 				font = text.font;
+				fontMaterial = text.fontMaterial;
 				fontSize = text.fontSize;
 				lineSpacing = text.lineSpacing;
 			}
@@ -35,11 +37,16 @@ namespace Utage
 				{
 					text.font = font;
 				}
+				if(fontMaterial!=null)
+				{
+					text.fontMaterial = fontMaterial;
+				}
 				text.fontSize = fontSize;
 				text.lineSpacing = lineSpacing;
 			}
 		};
 
+		public List<Setting> SettingList => settingList;
 		[SerializeField]
 		List<Setting> settingList = new List<Setting>();
 

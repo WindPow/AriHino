@@ -182,6 +182,8 @@ namespace Utage
 					GalleryData,				//ギャラリーデータ
 					Engine.Param.SystemData,	//システムセーブデータにセーブするパラメーターのデータ
 				};
+				//拡張用
+				list.AddRange(Engine.GetComponentsInChildren<IAdvSystemSaveDataCustom>(true));
 				return list;
 			}
 		}

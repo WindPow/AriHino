@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Profiling;
@@ -8,10 +9,8 @@ namespace Utage
 {
 	//宴のタグ構文解析とTextMeshProのタグ構文解析をして、
 	//TextMeshPro形式のタグ付き文字列を生成するためのクラス
-	public class TextMeshProTextParser : TextParser
+	public class TextMeshProTextParser : CustomTextParserBase
 	{
-		protected bool NoParse { get; set; }
-
 		//サロゲートペア文字の解析をするかどうか
 		protected override bool EnableParseSurrogatePair => true;
 
@@ -21,44 +20,27 @@ namespace Utage
 		}
 
 		//TextMeshPro対応のタグ解析
-		protected override bool ParseNovelTag(string name, string arg)
+		protected override bool TryParseCustomTag(string name, string arg)
 		{
-			if (string.IsNullOrEmpty(name)) return false;
-
-			//タグの解析を無視するタグが設定されている
-			if (NoParse)
-			{
-				return IsNoParseTag(name);
-			}
-
-			//特に処理の必要のTextMeshProの基本タグ
-			if (IsDefaultTag(name))
-			{
-				return true;
-			}
-			
 			//タグ処理が必要なものは処理をする
 			if (TryTagOperation(name, arg))
 			{
 				return true;
 			}
 
-			//宴独自のタグの解析
-			return base.ParseNovelTag(name, arg);
+			//特に処理の必要のないTextMeshProの基本タグ
+			if (IsDefaultTag(name))
+			{
+				return true;
+			}
+			
+			return false;
 		}
 
 		//タグの解析を無視するタグが設定されている
-		protected virtual bool IsNoParseTag(string name)
+		protected override bool IsNoParseTag(string name)
 		{
-			if (name == "/noparse")
-			{
-				NoParse = false;
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return (name == "/noparse");
 		}
 
 		//特に処理の必要のない基本タグか
@@ -72,7 +54,7 @@ namespace Utage
 			return false;
 		}
 
-		//特に処理の必要のないタグ
+		//特に処理の必要のないTextMeshProの基本タグ
 		static readonly List<string> defaultTagTbl = new List<string>()
 			{
 				//テキストメッシュプロのタグ
@@ -91,8 +73,8 @@ namespace Utage
 				"uppercase","/uppercase",
 				"smallcaps","/smallcaps",
 				"margin","/margin",
-				"margin-left","/margin-left",
-				"margin-right","/margin-right",
+				"margin-left",//"/margin-left",
+				"margin-right", //"/margin-right",
 				"mark","/mark",
 				"mspace","/mspace",
 				"nobr","/nobr",
@@ -108,9 +90,16 @@ namespace Utage
 				"voffset","/voffset",
 				"width","/width",
 				"gradient","/gradient",
+				"rotate","/rotate",
+				"allcaps", "/allcaps",
+				"font-weight", "/font-weight",
+				
+				//追加のタグ
+				"url", "/url",
 			};
 
 		//処理の必要のあるタグなら、処理をする
+		//タグ名そのものの命名規則対応や、解析時にタグではなくテキスト文字の追加する必要がある場合などはここに記述する
 		protected virtual bool TryTagOperation(string name, string arg)
 		{
 			//カラーコードのみ指定のタグ
@@ -128,16 +117,14 @@ namespace Utage
 				case "sprite":
 					TryAddEmoji(arg);
 					return true;
-				case "sprite name":
-					TryAddEmoji(arg);
-					return true;
-				case "sprite index":
-					TryAddEmoji(arg);
-					return true;
 				case "dash":
 					//二文字ぶん
 					AddDash(arg);
 					AddDash(arg);
+					return true;
+				case "br":
+					//改行
+					AddBr(arg);
 					return true;
 				default:
 					break;
@@ -146,17 +133,45 @@ namespace Utage
 			return false;
 		}
 
-		//タグを作成（特殊な処理が必要な場合はここをoverride）
+		//タグデータを作成
+		//宴の基本タグをTextMeshProのタグ形式に変換したり、
+		//独自定義タグをTextMeshProのタグ形式のタグに変換したりする
 		protected override TagData MakeTag(string fullString, string name, string arg)
+		{
+			TagData tagData = MakeCustomTag(fullString, name, arg);
+			if (tagData != null) return tagData;
+
+			tagData = MakeUtageTag(fullString, name, arg);
+			if (tagData != null) return tagData;
+
+			switch (name)
+			{
+				//TextMeshPro用の特殊な操作が必要なタグ
+				case "br":
+					//改行文字はすでに文字として組み込まれているので、タグにしない
+					return new TagData(fullString, name, arg, true);
+				case "sprite":
+					//文字数を1カウント
+					return new TagData(fullString, name, arg) { CountCharacter = 1 };
+
+				//通常のタグ
+				default:
+					return new TagData(fullString, name, arg);
+			}
+		}
+		
+		//さらにタグ処理をカスタムする場合はさらにここを追加
+		protected virtual TagData MakeCustomTag(string fullString, string name, string arg)
+		{
+			return null;
+		}
+
+		//宴の基本タグ用のタグデータを作成する
+		protected virtual TagData MakeUtageTag(string fullString, string name, string arg)
 		{
 			switch (name)
 			{
-				//タグの名や引数を書き換える必要があるもの
-				case "color":
-					{
-						string colorString = ToTextMeshProColorString(arg);
-						return new TagData("<color=" + colorString + ">", name, colorString);
-					}
+				//宴独自タグをTextMeshProのタグに変換
 				case "group":
 					return new TagData("<nobr>", "nobr", arg);
 				case "/group":
@@ -166,22 +181,42 @@ namespace Utage
 				case "/strike":
 					return new TagData("</s>", "/s", arg);
 				case "emoji":
-					return new TagData("<sprite name=\"" + arg+ "\">", "sprite", arg){CountCharacter = 1};
+					string emojiName = "name=\"" + arg + "\"";
+					return new TagData("<sprite "+ emojiName +">", "sprite", emojiName) { CountCharacter = 1 };
 
 				case "dash":
 					//return new TagData("<nobr><mspace=0>--</mspace></nobr>", name, arg);
 					int space = int.Parse(arg);
-					return new TagData("<nobr><space=0.25em><s> <space=" + (space-1) + "em> </s><space=-0.25em></nobr>", name, arg)
+					return new TagData(
+							"<nobr><space=0.25em><s> <space=" + (space - 1) + "em> </s><space=-0.25em></nobr>", name,
+							arg)
 						{ CountCharacter = 1 };
+				case "color":
+					//旧宴のカラーコードとの互換のために
+					string colorString = ToTextMeshProColorString(arg);
+					return new TagData("<color=" + colorString + ">", name, colorString);
+
+				case "tips":
+				{
+					string linkId = $"tips,{StringUtil.EscapeQuotes(arg.Trim())}";
+					return new TagData($"<u><link={linkId}>", "tips", linkId);
+				}
+				case "/tips":
+					return new TagData("</u></link>", "/link", arg);
+
+				case "url":
+				{
+					string linkId = $"url,{StringUtil.EscapeQuotes(arg.Trim())}";
+					return new TagData($"<u><link={linkId}>", "url", linkId);
+				}
+				case "/url":
+					return new TagData("</u></link>", "/url", arg);
+
 				//宴の独自タグなので、TextMeshProのタグとして表記せずに無視する
 				case "ruby":
 				case "/ruby":
 				case "em":
 				case "/em":
-//				case "link":
-//				case "/link":
-				case "tips":
-				case "/tips":
 				case "sound":
 				case "/sound":
 				case "speed":
@@ -191,11 +226,9 @@ namespace Utage
 				case "format":
 				case "skip_page":
 				case "skip_text":
-					return new TagData(fullString, name, arg,true);
-
-				//通常のタグ
+					return new TagData(fullString, name, arg, true);
 				default:
-					return new TagData(fullString, name, arg);
+					return null;
 			}
 		}
 

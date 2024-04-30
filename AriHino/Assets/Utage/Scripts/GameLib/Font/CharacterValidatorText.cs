@@ -17,25 +17,5 @@ namespace Utage
             TextAsset = textAsset;
             AddEnableCharacters(TextAsset.text);
         }
-
-#if false
-        //テキストファイルに不足文字をマージする
-        public void MergeCharacterFile()
-        {
-#if UNITY_EDITOR
-            string addText = "";
-            foreach (var keyValue in ErrorCharacters)
-            {
-                addText += FontUtil.UnicodeToCharacter(keyValue.Value.Unicode);
-            }
-            string path = UnityEditor.AssetDatabase.GetAssetPath(TextAsset);
-            using StreamWriter writer = new StreamWriter(path, true);
-            writer.Write(addText);
-            writer.Close();
-            UnityEditor.EditorUtility.SetDirty(TextAsset);
-            Debug.Log($"Merge to {TextAsset.name}\n{addText} ");
-#endif
-        }
-#endif
     }
 }

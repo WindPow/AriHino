@@ -106,6 +106,7 @@ namespace Utage
 		Icon,               //アイコンファイル
 		IconRect,           //アイコンの矩形
 		IconSubFileName,    //アイコンのサブファイル名
+		IconAutoFlip,		//アイコンを自動的に反転させるか
 
 		Pivot0,				//ピボット位置0(親オブジェクト)
 	}

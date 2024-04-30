@@ -20,6 +20,7 @@ namespace Utage
 			public float lineSpacing = 1;
 		};
 
+		public List<Setting> SettingList => settingList;
 		[SerializeField]
 		List<Setting> settingList = new List<Setting>();
 

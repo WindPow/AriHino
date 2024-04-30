@@ -10,7 +10,7 @@ namespace Utage
     //ヒエラルキーWindow内で、GameObjectの作成などをサポート
     public class TextToTextMeshPro
     {
-        class TextSetting
+        public class TextSetting
         {
             float FontSize { get; }
             float LineSpacing { get; }
@@ -71,7 +71,7 @@ namespace Utage
             }
         }
 
-        [MenuItem("GameObject/TextToTextMeshPro",false,-1)]
+//      [MenuItem("GameObject/TextToTextMeshPro",false,-1)]
         public static void SwapTextComponent()
         {
             var target = Selection.activeGameObject;
