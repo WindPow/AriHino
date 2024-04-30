@@ -6,7 +6,6 @@ using UnityEngine;
 public class BooksManager : MonoBehaviour
 {
     [SerializeField] private BooksPagePresenter booksPagePresenter;
-    [SerializeField] private GameObject booksButton;
     private IBooksPageModel booksPageModel;
     private IBooksCharacterModel booksCharacterModel;
     private IBooksWorldModel booksWorldModel;
@@ -37,10 +36,6 @@ public class BooksManager : MonoBehaviour
         booksCollectModel = new BooksCollectModel();
 
         booksPagePresenter.Init(booksPageModel, booksCharacterModel, booksWorldModel, booksWardModel, booksCollectModel);
-    }
-
-    public void ChangeBooksOpen(bool isOpen) {
-        booksButton.SetActive(isOpen);
     }
 
     public void SetBooks(int booksId) {

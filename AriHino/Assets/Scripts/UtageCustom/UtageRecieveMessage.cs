@@ -53,12 +53,6 @@ namespace Utage
 				case "SetBooksWorld":
 				    BooksManager.Instance.SetBooksWorldPage(int.Parse(command.Arg2), int.Parse(command.Arg3));
 				    break;
-				case "OpenBooksButton":
-					BooksManager.Instance.ChangeBooksOpen(true);
-					break;
-				case "CloseBooksButton":
-					BooksManager.Instance.ChangeBooksOpen(false);
-					break;
 				default:
 					Debug.LogError("Unknown Message:" + command.Name);
 					break;
