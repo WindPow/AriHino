@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using Microsoft.Unity.VisualStudio.Editor;
 
 public class UIBlurHandler : MonoBehaviour
 {

@@ -43,20 +43,16 @@ public class CSVReader
     // TextAssetを非同期で読み込むメソッド
     private static async UniTask<TextAsset> LoadTextAssetAsync(string filePath)
     {
-        string path = "Assets/Resources/Master/" + filePath;
-        try
+        ResourceRequest request = Resources.LoadAsync<TextAsset>("Master/" + filePath);
+        await request.ToUniTask();
+
+        TextAsset textAsset = request.asset as TextAsset;
+        if (textAsset == null)
         {
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string text = await reader.ReadToEndAsync();
-                return new TextAsset(text);
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"Error loading file at path {path}: {e.Message}");
+            Debug.LogError("Error loading file at path: " + filePath);
             return null;
         }
+        return textAsset;
     }
 }
 
