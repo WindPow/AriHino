@@ -6887,9 +6887,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.008648471
+    x: 0.0020230184
     y: 0
-    width: 0.98270303
+    width: 0.995954
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -10945,7 +10945,7 @@ MonoBehaviour:
   disable: 0
   engine: {fileID: 0}
   type: 0
-  defaultSound: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
+  defaultSound: {fileID: 8300000, guid: 5757df78bfd3c954ebf53b3cf27fcba4, type: 3}
   soundInfoList: []
   intervalCount: 3
   intervalTime: 0.1
@@ -35855,9 +35855,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.008648471
+    x: 0.0020230184
     y: 0
-    width: 0.98270303
+    width: 0.995954
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -39530,7 +39530,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d8b58bfae53a4458342f83ae1f4804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ruleTextureList: []
+  ruleTextureList:
+  - {fileID: 2800000, guid: ec974f2d3eeb53a42b0ed9378ca3a301, type: 3}
+  - {fileID: 2800000, guid: 71bb954e979bfb7438cd5bc488f1d319, type: 3}
+  - {fileID: 2800000, guid: 1606f899747f0504c9ab1eebf692ed6b, type: 3}
+  - {fileID: 2800000, guid: 7f979237ecbb3cd419a493b6de714845, type: 3}
+  - {fileID: 2800000, guid: 3b5704340784b474e8649832cf3cba4a, type: 3}
+  - {fileID: 2800000, guid: 16639ed4f65a9a4439ed675448027a12, type: 3}
+  - {fileID: 2800000, guid: 575ee07049eccae42b296cf3eaeba13b, type: 3}
+  - {fileID: 2800000, guid: dd33a645bdb41074f9b30f0e26c86d3d, type: 3}
+  - {fileID: 2800000, guid: a172716ac4e1c374f9d64a37da623e0b, type: 3}
+  - {fileID: 2800000, guid: 79960a1951131a2449ee5a7617b02086, type: 3}
+  - {fileID: 2800000, guid: 59e4223fe2f38d045b49e9af105fbca1, type: 3}
 --- !u!1 &1765082826
 GameObject:
   m_ObjectHideFlags: 0
