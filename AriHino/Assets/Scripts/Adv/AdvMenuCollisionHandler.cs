@@ -48,7 +48,7 @@ public class AdvMenuCollisionHandler : MonoBehaviour
         this.OnMouseExitAsObservable()
             .Subscribe(_ =>
             {
-                if (!isFadingOut && !isFadingIn && isProcessingEnabled) // フェード中でない場合かつ処理が有効な場合のみフェードアウトを開始
+                if (!isFadingOut && isProcessingEnabled) // フェード中でない場合かつ処理が有効な場合のみフェードアウトを開始
                 {
                     fadeOutDisposable = Observable.Timer(TimeSpan.FromSeconds(fadeOutDelay))
                         .Subscribe(__ =>
@@ -88,7 +88,7 @@ public class AdvMenuCollisionHandler : MonoBehaviour
     private void StartFadeOut()
     {
         isFadingOut = true;
-        CancelFadeIn(); // フェードインが実行中であればキャンセル
+        //CancelFadeIn(); // フェードインが実行中であればキャンセル
 
         fadeOutDisposable = Observable.Timer(TimeSpan.FromSeconds(fadeOutDuration))
             .Subscribe(_ =>

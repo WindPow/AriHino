@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utage;
 
-public class AdvMenuHandler : UtageUguiMenuButtons
+public class CustomUtageUguiMenuButtons : UtageUguiMenuButtons
 {
     [Header("拡張要素")]
 
@@ -21,8 +21,7 @@ public class AdvMenuHandler : UtageUguiMenuButtons
             menuButton.SetActive(false);
         }
         else {
-            menuUiScaler.ReturnScale();
-            menuButton.SetActive(true);
+            menuUiScaler.ReturnScale(() => menuButton.SetActive(true));
         }
     }
 }

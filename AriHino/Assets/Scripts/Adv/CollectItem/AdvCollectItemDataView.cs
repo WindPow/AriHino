@@ -5,18 +5,7 @@ using UniRx;
 using System;
 using UnityEngine.UI;
 
-/// <summary>
-/// 画面に表示するコレクトアイテムの表示物
-/// </summary>
-public interface IAdvCollectItemDataView{
-
-    IObservable<MstCollectItemData> OnGetObservable { get; }
-
-    void Init(MstCollectItemData itemData);
-}
-
-
-public class AdvCollectItemDataView : MonoBehaviour, IAdvCollectItemDataView
+public class AdvCollectItemDataView : MonoBehaviour
 {
 
     [SerializeField] private int collectItemId;

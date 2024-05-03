@@ -3,6 +3,8 @@ using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.Events;
+using UniRx;
+using Cysharp.Threading.Tasks;
 
 public class ScreenEffectManager : MonoBehaviour
 {
@@ -22,18 +24,22 @@ public class ScreenEffectManager : MonoBehaviour
 
     [Header("フェード")]
 
-    [SerializeField] private CanvasGroup fadeWhite;
+    [SerializeField] private CanvasGroup fadeCanvasGroup;
+    [SerializeField] private Image fadeImage;
 
-    [Range(0f, 1f)] public float fadeWhiteIntensity;
+    public static ScreenEffectManager Instance {
 
-    [SerializeField] private CanvasGroup fadeBlack;
+        get {
+            if (instance == null) instance = GameObject.FindObjectOfType<ScreenEffectManager>();
 
-    [Range(0f, 1f)] public float fadeBlackIntensity;
-
-    public static ScreenEffectManager GetInstance()
-    {
-        return instance;
+            if (instance == null) {
+                GameObject singletonObject = new GameObject(typeof(ScreenEffectManager).Name);
+                instance = singletonObject.AddComponent<ScreenEffectManager>();
+            }
+            return instance;
+        }
     }
+    
 
     private void Awake()
     {
@@ -49,20 +55,11 @@ public class ScreenEffectManager : MonoBehaviour
 
         // エフェクトに使用するカメラからPostProcessVolumeコンポーネントを取得する
         postProcessVolume = effectCamera.GetComponentInChildren<PostProcessVolume>();
+        //SetEffectIntensity(0);
 
-        fadeWhite = fadeWhite ?? GameObject.Find("FadeWhite").GetComponent<CanvasGroup>();
-        fadeBlack = fadeBlack ?? GameObject.Find("FadeBlack").GetComponent<CanvasGroup>();
+        fadeCanvasGroup = fadeCanvasGroup ?? GameObject.Find("FadeWhite").GetComponent<CanvasGroup>();
+        SetFadeIntensity(0);
     }
-
-    // private void Update()
-    // {
-    //     // エフェクトの強度を設定する
-    //     SetEffectIntensity(effectBlurIntensity);
-
-    //     SetFadeWhiteIntensity(fadeWhiteIntensity);
-
-    //     SetFadeBlackIntensity(fadeBlackIntensity);
-    // }
 
     // エフェクトの強度を設定するメソッド
     public void SetEffectIntensity(float intensity)
@@ -106,91 +103,50 @@ public class ScreenEffectManager : MonoBehaviour
             .OnComplete(() => endCallback?.Invoke());
     }
 
-    // 白フェードの強度を調整
-    public void SetFadeWhiteIntensity(float intensity)
+    // フェードの強度を調整
+    public void SetFadeIntensity(float intensity)
     {
-        if(!fadeWhite) return;
+        if(!fadeCanvasGroup) return;
 
-        fadeWhite.alpha = intensity;
-    }
-
-    // 黒フェードの強度を調整
-    public void SetFadeBlackIntensity(float intensity)
-    {
-        if(!fadeBlack) return;
-
-        fadeBlack.alpha = intensity;
+        fadeCanvasGroup.alpha = intensity;
     }
 
     /// <summary>
-    /// 白フェードアウトする（コールバック設定可能）
+    /// フェードアウトする（コールバック設定可能）
     /// </summary>
     /// <param name="endCallback"></param>
-    public void FadeOutWhiteSequence(float duration, UnityAction endCallback = null){
+    public void FadeOutSequence(float duration, Color color, UnityAction endCallback = null){
 
-        fadeWhite.gameObject.SetActive(true);
-        fadeWhiteIntensity = 0;
+        fadeImage.color = color;
+        fadeCanvasGroup.gameObject.SetActive(true);
+        fadeCanvasGroup.alpha = 0;
 
-        fadeWhite.DOFade(1f, duration)
+        fadeCanvasGroup.DOFade(1f, duration)
             .SetEase(Ease.Linear)
             .OnComplete(() => endCallback?.Invoke());
     }
 
     /// <summary>
-    /// 白フェードインする（コールバック設定可能）
+    /// フェードインする（コールバック設定可能）
     /// </summary>
     /// <param name="endCallback"></param>
-    public void FadeInWhiteSequence(float duration, UnityAction endCallback = null){
-        fadeWhiteIntensity = 1f;
+    public void FadeInSequence(float duration, UnityAction endCallback = null){
+        
+        fadeCanvasGroup.alpha = 1;
 
-        fadeWhite.DOFade(0f, duration)
+        fadeCanvasGroup.DOFade(0f, duration)
             .SetEase(Ease.Linear)
             .OnComplete(() => {
-                fadeWhite.gameObject.SetActive(false);
+                fadeCanvasGroup.gameObject.SetActive(false);
                 endCallback?.Invoke();
             }
         );
     }
 
-    /// <summary>
-    /// 黒フェードアウトする（コールバック設定可能）
-    /// </summary>
-    /// <param name="endCallback"></param>
-    public void FadeOutBlackSequence(float duration, UnityAction endCallback = null){
-        
-        fadeBlack.gameObject.SetActive(true);
-        fadeBlackIntensity = 0;
-
-        fadeBlack.DOFade(1f, duration)
-            .SetEase(Ease.Linear)
-            .OnComplete(() => endCallback?.Invoke());
-    }
-
-    /// <summary>
-    /// 黒フェードインする（コールバック設定可能）
-    /// </summary>
-    /// <param name="endCallback"></param>
-    public void FadeInBlackSequence(float duration, UnityAction endCallback = null){
-        
-        fadeBlackIntensity = 1f;
-
-        fadeBlack.DOFade(0f, duration)
-            .SetEase(Ease.Linear)
-            .OnComplete(() => {
-                fadeBlack.gameObject.SetActive(false);
-                endCallback?.Invoke();
-            }
-        );
-    }
 
     public void ResetFade(){
-        fadeBlackIntensity = 0;
-        fadeWhiteIntensity = 0;
+        fadeCanvasGroup.alpha = 0;
         postProcessVolume.weight = 0;
     }
 
-    public void ResetFadeBlack(){
-
-        fadeBlackIntensity = 0;
-    }
 }

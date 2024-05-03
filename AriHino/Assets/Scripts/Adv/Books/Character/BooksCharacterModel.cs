@@ -11,6 +11,7 @@ public interface IBooksCharacterModel {
 
     void SetBooksCharacter(int[] ids);
     void SetBooksCharacter(MstBooksCharacterPageData pageData);
+    void RemoveBooksCharacter(int characterId);
 }
 
 public class BooksCharacterModel : IBooksCharacterModel
@@ -25,6 +26,8 @@ public class BooksCharacterModel : IBooksCharacterModel
 
     public void SetBooksCharacter(int[] ids) {
 
+        displayCharacterPageDict.Clear();
+
         foreach (int id in ids) {
 
             if(displayCharacterPageDict.ContainsKey(id)) continue;
@@ -32,10 +35,6 @@ public class BooksCharacterModel : IBooksCharacterModel
             var viewData = new BooksCharacterPageViewData(characterPage);
             displayCharacterPageDict.Add(characterPage.CharaId, viewData);
         }
-
-        // foreach(var page in displayCharacterPageDict.Keys) {
-        //     if(!ids.Contains(page)) displayCharacterPageDict.Remove(page);
-        // }
     }
 
     public void SetBooksCharacter(MstBooksCharacterPageData pageData) {
@@ -47,6 +46,12 @@ public class BooksCharacterModel : IBooksCharacterModel
         else {
             displayCharacterPageDict.Add(viewData.CharaId, viewData);
         }
-        
+    }
+
+    public void RemoveBooksCharacter(int characterId) {
+
+        if(displayCharacterPageDict.ContainsKey(characterId)) {
+            displayCharacterPageDict.Remove(characterId);
+        }
     }
 }

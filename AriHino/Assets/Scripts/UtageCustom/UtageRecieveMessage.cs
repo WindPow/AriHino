@@ -50,9 +50,21 @@ namespace Utage
 				case "SetBooksCharacter":
 				    BooksManager.Instance.SetBooksCharacterPage(int.Parse(command.Arg2), int.Parse(command.Arg3));
 				    break;
+				case "RemoveBooksCharacter":
+				    BooksManager.Instance.RemoveBooksCharacterPage(int.Parse(command.Arg2));
+					break;
 				case "SetBooksWorld":
 				    BooksManager.Instance.SetBooksWorldPage(int.Parse(command.Arg2), int.Parse(command.Arg3));
 				    break;
+				case "RemoveBooksWorld":
+					BooksManager.Instance.RemoveBooksWorldPage(int.Parse(command.Arg2));
+					break;
+				case "SetEffect":
+					ParticleEffectManager.Instance.SetParticleEffect(int.Parse(command.Arg2), int.Parse(command.Arg3));
+					break;
+				case "RemoveEffect":
+					ParticleEffectManager.Instance.RemoveEffect(int.Parse(command.Arg2));
+					break;
 				default:
 					Debug.LogError("Unknown Message:" + command.Name);
 					break;

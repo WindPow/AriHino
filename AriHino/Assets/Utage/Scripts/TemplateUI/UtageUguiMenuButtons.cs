@@ -26,7 +26,7 @@ namespace Utage
 		//メッセージウィンドウの背景をメニューの背景として使うために、メニュー独自の背景のオンオフ切り替えを行うために設定
 		//オンオフ切り替えが必要ない場合はNONEに設定すること
 		[SerializeField] protected Image bg;
-		
+
 		// スキップボタン
 		[SerializeField] Toggle checkSkip;
 
@@ -117,7 +117,7 @@ namespace Utage
 		//コンフィグボタンが押された
 		public virtual void OnTapConfig()
 		{
-			if(mainGame!=null)
+			if (mainGame != null)
 			{
 				mainGame.OnTapConfig();
 			}

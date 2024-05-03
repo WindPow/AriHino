@@ -40,9 +40,21 @@ public class BooksWorldPresenter : MonoBehaviour
         }).AddTo(this);
 
         booksWorldModel.DisplayWorldPageDict.ObserveRemove().Subscribe(page => {
-            pageViewDict.Remove(page.Value.WorldId);
-            DisplayUpdate();
+            if(pageViewDict.TryGetValue(page.Value.WorldId, out BooksWorldPageView view)) {
+                pageViewDict.Remove(page.Value.WorldId);
+                Destroy(view);
+                DisplayUpdate();
+            }
 
+        }).AddTo(this);
+
+        booksWorldModel.DisplayWorldPageDict.ObserveReset().Subscribe(_ => {
+            var destroyObjs = new List<BooksWorldPageView>(pageViewDict.Values);
+            pageViewDict.Clear();
+
+            foreach(var obj in destroyObjs) {
+                Destroy(obj);
+            }
         }).AddTo(this);
 
         booksWorldModel.DisplayWorldPageDict.ObserveReplace().Subscribe(page => {
