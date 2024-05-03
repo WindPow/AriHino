@@ -17,7 +17,11 @@ public class BooksCollectPresenter : MonoBehaviour
     private BooksPageButtonHandler booksButtonHandler;
     private int indexNow;
 
+    private CompositeDisposable disposables = new();
+
     public void Init(IBooksCollectModel model, BooksPageButtonHandler buttonHandler) {
+
+        ResetPresenter();
         booksCollectModel = model;
         booksButtonHandler = buttonHandler;
 
@@ -85,6 +89,19 @@ public class BooksCollectPresenter : MonoBehaviour
             pageViewDict[indexNow].gameObject.SetActive(true);
             DisplayUpdate();
         });
+    }
+
+    private void ResetPresenter() {
+        
+        var destroyObjs = new List<BooksCollectPageView>(pageViewDict.Values);
+        pageViewDict.Clear();
+
+        foreach(var obj in destroyObjs) {
+            Destroy(obj.gameObject);
+        }
+
+        disposables.Clear();
+
     }
 
 

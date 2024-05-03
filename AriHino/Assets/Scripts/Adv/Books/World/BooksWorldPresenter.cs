@@ -18,7 +18,11 @@ public class BooksWorldPresenter : MonoBehaviour
     private BooksPageButtonHandler booksButtonHandler;
     private int indexNow;
 
+    private CompositeDisposable disposables = new();
+
     public void Init(IBooksWorldModel model, BooksPageButtonHandler buttonHandler) {
+
+        ResetPresenter();
         this.booksWorldModel = model;
         booksButtonHandler = buttonHandler;
 
@@ -42,7 +46,7 @@ public class BooksWorldPresenter : MonoBehaviour
             //string notificationText = ZString.Format(notificationFormat, page.NewValue.WorldName);
             NotificationManager.Instance.ShowNotification(notificationFormat);
 
-        }).AddTo(this);
+        }).AddTo(disposables);
 
         booksWorldModel.DisplayWorldPageDict.ObserveRemove().Subscribe(page => {
             if(pageViewDict.TryGetValue(page.Value.WorldId, out BooksWorldPageView view)) {
@@ -51,16 +55,16 @@ public class BooksWorldPresenter : MonoBehaviour
                 DisplayUpdate();
             }
 
-        }).AddTo(this);
+        }).AddTo(disposables);
 
         booksWorldModel.DisplayWorldPageDict.ObserveReset().Subscribe(_ => {
             var destroyObjs = new List<BooksWorldPageView>(pageViewDict.Values);
             pageViewDict.Clear();
 
             foreach(var obj in destroyObjs) {
-                Destroy(obj);
+                Destroy(obj.gameObject);
             }
-        }).AddTo(this);
+        }).AddTo(disposables);
 
         booksWorldModel.DisplayWorldPageDict.ObserveReplace().Subscribe(page => {
 
@@ -70,7 +74,7 @@ public class BooksWorldPresenter : MonoBehaviour
             string notificationFormat = "世界情報を更新しました";
             //string notificationText = ZString.Format(notificationFormat, page.NewValue.WorldName);
             NotificationManager.Instance.ShowNotification(notificationFormat);
-        }).AddTo(this);
+        }).AddTo(disposables);
     }
 
     private void CreateWorldPage() {
@@ -131,5 +135,17 @@ public class BooksWorldPresenter : MonoBehaviour
         });
     }
 
+    private void ResetPresenter() {
+        
+        var destroyObjs = new List<BooksWorldPageView>(pageViewDict.Values);
+        pageViewDict.Clear();
+
+        foreach(var obj in destroyObjs) {
+            Destroy(obj.gameObject);
+        }
+
+        disposables.Clear();
+
+    }
 
 }
