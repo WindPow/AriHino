@@ -70,7 +70,6 @@ MonoBehaviour:
   onInit:
     m_PersistentCalls:
       m_Calls: []
-  rectMask2D: {fileID: 0}
 --- !u!114 &2880054277238576526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 0}
+  clicked: {fileID: 8300000, guid: 089c66c33d897774dbc507c1531272b3, type: 3}
   highlited: {fileID: 0}
   clickedPlayMode: 0
   highlitedPlayMode: 0
@@ -241,9 +240,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30A8\u30EC\u30CA\u306E\u30D1\u30F3\u30C4"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 06dd18813d7b0ff4ea9b44252cd62a34, type: 2}
-  m_sharedMaterial: {fileID: -3058904866955560782, guid: 06dd18813d7b0ff4ea9b44252cd62a34,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -267,7 +265,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.7
+  m_fontSize: 44.75
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1

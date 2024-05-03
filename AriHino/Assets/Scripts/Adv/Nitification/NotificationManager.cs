@@ -33,9 +33,13 @@ public class NotificationManager : MonoBehaviour
 
     private float originPosY;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clip;
+
     void Awake()
     {
         originPosY = notificationPanel.transform.localPosition.y;
+        audioSource.clip = clip;
     }
 
     public void ShowNotification(string message)
@@ -51,6 +55,8 @@ public class NotificationManager : MonoBehaviour
     {
         while (notificationQueue.Count > 0)
         {
+            audioSource.Play();
+
             string message = notificationQueue.Dequeue();
             notificationText.text = message;
             notificationPanel.SetActive(true);

@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UniRx;
 using System.Linq;
+using Cysharp.Text;
 
 public class BooksWorldPresenter : MonoBehaviour
 {
@@ -37,6 +38,10 @@ public class BooksWorldPresenter : MonoBehaviour
             pageViewDict.Add(page.Value.WorldId, view);
             DisplayUpdate();
 
+            string notificationFormat = "世界情報を追加しました";
+            //string notificationText = ZString.Format(notificationFormat, page.NewValue.WorldName);
+            NotificationManager.Instance.ShowNotification(notificationFormat);
+
         }).AddTo(this);
 
         booksWorldModel.DisplayWorldPageDict.ObserveRemove().Subscribe(page => {
@@ -62,8 +67,10 @@ public class BooksWorldPresenter : MonoBehaviour
             pageViewDict[page.NewValue.WorldId].Init(page.NewValue);
             DisplayUpdate();
 
-            NotificationManager.Instance.ShowNotification(page.NewValue.WorldName);
-        });
+            string notificationFormat = "世界情報を更新しました";
+            //string notificationText = ZString.Format(notificationFormat, page.NewValue.WorldName);
+            NotificationManager.Instance.ShowNotification(notificationFormat);
+        }).AddTo(this);
     }
 
     private void CreateWorldPage() {

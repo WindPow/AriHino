@@ -11,6 +11,7 @@ public class BooksCollectPresenter : MonoBehaviour
     [SerializeField] private GameObject nextPageButton;
     [SerializeField] private GameObject prevPageButton;
     [SerializeField] private BooksCollectPageView pageViewPrefab;
+    [SerializeField] private Transform detailRoot;
     private Dictionary<int, BooksCollectPageView> pageViewDict = new();
     private IBooksCollectModel booksCollectModel;
     private BooksPageButtonHandler booksButtonHandler;
@@ -41,7 +42,7 @@ public class BooksCollectPresenter : MonoBehaviour
         int count = 0;
         foreach (var dividedList in dividedLists) {
             var pageView = Instantiate(pageViewPrefab, this.transform);
-            pageView.Init(dividedList);
+            pageView.Init(dividedList, detailRoot);
             pageViewDict.Add(count, pageView);
             count++;
         }

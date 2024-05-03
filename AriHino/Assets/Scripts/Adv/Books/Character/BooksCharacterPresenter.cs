@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UniRx;
 using System.Linq;
+using Cysharp.Text;
 
 public class BooksCharacterPresenter : MonoBehaviour
 {
@@ -34,6 +35,10 @@ public class BooksCharacterPresenter : MonoBehaviour
             pageViewDict.Add(page.Value.CharaId, view);
             DisplayUpdate();
 
+            string notificationFormat = "{0}の情報を追加しました";
+            string notificationText = ZString.Format(notificationFormat, page.Value.CharaName);
+            NotificationManager.Instance.ShowNotification(notificationText);
+
         }).AddTo(this);
 
         booksCharacterModel.DisplayCharacterPageDict.ObserveRemove().Subscribe(page => {
@@ -62,7 +67,9 @@ public class BooksCharacterPresenter : MonoBehaviour
             pageViewDict[page.NewValue.CharaId].Init(page.NewValue);
             DisplayUpdate();
 
-            NotificationManager.Instance.ShowNotification(page.NewValue.CharaName);
+            string notificationFormat = "{0}の情報を更新しました";
+            string notificationText = ZString.Format(notificationFormat, page.NewValue.CharaName);
+            NotificationManager.Instance.ShowNotification(notificationText);
 
         }).AddTo(this);
     }

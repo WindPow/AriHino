@@ -74,9 +74,9 @@ public class AdvCollectItemPresenter : MonoBehaviour
 
             BooksManager.Instance.SetBooksCollectItem(item);
 
-            // 通知を表示した後に表示リストから削除 
             NotificationManager.Instance.ShowNotification(item.Name);
 
+            // 通知を表示した後に表示リストから削除
             collectItemModel.RemoveCollectItem(item.ID);
         });
 

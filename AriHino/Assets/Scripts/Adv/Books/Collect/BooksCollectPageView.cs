@@ -8,9 +8,12 @@ public class BooksCollectPageView : MonoBehaviour
     [SerializeField] private BooksCollectContentsView contentsPrefab;
     [SerializeField] private AdvCollectItemDetailDialog detailPrefab;
 
-    public void Init(List<BooksCollectContentsViewData> collectItemDatas) {
+    private Transform detailRoot;
+
+    public void Init(List<BooksCollectContentsViewData> collectItemDatas, Transform detailRoot) {
 
         CreateCollectItems(collectItemDatas);
+        this.detailRoot = detailRoot;
     }
 
     private void CreateCollectItems(List<BooksCollectContentsViewData> collectItemDatas) {
@@ -25,7 +28,7 @@ public class BooksCollectPageView : MonoBehaviour
 
     private void ShowDetailDialog(MstCollectItemData mstCollectItemData) {
 
-        var detail = Instantiate(detailPrefab, this.transform);
+        var detail = Instantiate(detailPrefab, detailRoot);
         detail.Init(mstCollectItemData);
     }
 }
