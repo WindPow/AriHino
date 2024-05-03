@@ -10,8 +10,13 @@ public class CustomUtageUguiMainGame : UtageUguiMainGame
 
     protected override void Awake()
     {
+        base.Awake();
+    }
+
+    public override void OpenStartGame()
+    {
         ScreenEffectManager.Instance.FadeInSequence(fadeInDuration);
         BooksManager.Instance.Init();
-        base.Awake();
+        base.OpenStartGame();
     }
 }
