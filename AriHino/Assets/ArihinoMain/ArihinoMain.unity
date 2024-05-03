@@ -6917,10 +6917,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0020796151
-    y: 0
-    width: 0.9958408
-    height: 1
+    x: 0
+    y: 0.15476564
+    width: 1
+    height: 0.6904687
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -35953,10 +35953,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0020796151
-    y: 0
-    width: 0.9958408
-    height: 1
+    x: 0
+    y: 0.15476564
+    width: 1
+    height: 0.6904687
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -39744,7 +39744,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d8b58bfae53a4458342f83ae1f4804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ruleTextureList: []
+  ruleTextureList:
+  - {fileID: 2800000, guid: 1606f899747f0504c9ab1eebf692ed6b, type: 3}
+  - {fileID: 2800000, guid: 32b3f127d8c14f24ea0aeabcb75fcff3, type: 3}
+  - {fileID: 2800000, guid: 0282b0311b684f34fa7b56e300082a18, type: 3}
+  - {fileID: 2800000, guid: 16639ed4f65a9a4439ed675448027a12, type: 3}
+  - {fileID: 2800000, guid: 3b5704340784b474e8649832cf3cba4a, type: 3}
+  - {fileID: 2800000, guid: ec974f2d3eeb53a42b0ed9378ca3a301, type: 3}
+  - {fileID: 2800000, guid: bba8d90abe16c0f4da06c09a750415b7, type: 3}
+  - {fileID: 2800000, guid: dd33a645bdb41074f9b30f0e26c86d3d, type: 3}
+  - {fileID: 2800000, guid: a172716ac4e1c374f9d64a37da623e0b, type: 3}
+  - {fileID: 2800000, guid: 7f979237ecbb3cd419a493b6de714845, type: 3}
+  - {fileID: 2800000, guid: 79960a1951131a2449ee5a7617b02086, type: 3}
+  - {fileID: 2800000, guid: 59e4223fe2f38d045b49e9af105fbca1, type: 3}
 --- !u!1 &1765082826
 GameObject:
   m_ObjectHideFlags: 0
