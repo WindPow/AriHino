@@ -6,6 +6,7 @@ using UnityEngine;
 public class BooksManager : MonoBehaviour
 {
     [SerializeField] private BooksPagePresenter booksPagePresenter;
+    [SerializeField] private GameObject booksButton;
     private IBooksPageModel booksPageModel;
     private IBooksCharacterModel booksCharacterModel;
     private IBooksWorldModel booksWorldModel;
@@ -65,5 +66,14 @@ public class BooksManager : MonoBehaviour
 
     public void SetBooksCollectItem(MstCollectItemData collectItemData) {
         booksCollectModel.OpenBooksCollect(collectItemData);
+    }
+
+    public void ActiveBooksButton(bool isOpen) {
+        booksButton.SetActive(isOpen);
+
+        if(isOpen) {
+            string notificationText = "ブックスを解放しました";
+            NotificationManager.Instance.ShowNotification(notificationText);
+        }
     }
 }
