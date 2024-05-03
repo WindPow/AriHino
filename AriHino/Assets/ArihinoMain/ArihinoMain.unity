@@ -7136,9 +7136,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.18317422
+    y: 0.04221361
     width: 1
-    height: 0.63365155
+    height: 0.91557276
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -35714,7 +35714,7 @@ MonoBehaviour:
   onClickNoLink:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1083959047}
         m_TargetAssemblyTypeName: Utage.AdvUguiManager, Utage
         m_MethodName: OnPointerDown
         m_Mode: 0
@@ -36722,9 +36722,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.18317422
+    y: 0.04221361
     width: 1
-    height: 0.63365155
+    height: 0.91557276
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
