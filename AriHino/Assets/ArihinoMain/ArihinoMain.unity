@@ -6918,10 +6918,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0002034968
-    y: 0
-    width: 0.999593
-    height: 1
+    x: 0
+    y: 0.0003676638
+    width: 1
+    height: 0.99926466
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -21265,6 +21265,7 @@ GameObject:
   - component: {fileID: 915936813}
   - component: {fileID: 915936815}
   - component: {fileID: 915936816}
+  - component: {fileID: 915936818}
   - component: {fileID: 915936817}
   m_Layer: 5
   m_Name: Buttons
@@ -21407,6 +21408,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &915936818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915936809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be6736b6f830a44d8d24c99f62dee77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromAlpha: 0
+  toAlpha: 1
+  duration: 0.4
 --- !u!1 &918119525
 GameObject:
   m_ObjectHideFlags: 0
@@ -35894,10 +35910,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0002034968
-    y: 0
-    width: 0.999593
-    height: 1
+    x: 0
+    y: 0.0003676638
+    width: 1
+    height: 0.99926466
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -38335,6 +38351,7 @@ MonoBehaviour:
   config: {fileID: 117901427}
   menuButton: {fileID: 1829500448}
   menuUiScaler: {fileID: 915936816}
+  menuAlphaChanger: {fileID: 915936818}
 --- !u!1 &1698234479
 GameObject:
   m_ObjectHideFlags: 0
