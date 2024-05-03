@@ -1,4 +1,4 @@
-id,chara_id,progress_no,explanation_ids,memo_ids,impressions_ids,image_path
-1,1,1,1,1,1,Books_elena
-2,1,2,1_2,1_2,1_2_3,Books_elena
-3,2,1,1,1,1,Books_elena
+﻿id,chara_id,progress_no,explanation_ids,memo_ids,impressions_ids,image_path
+1,1,1,1_2_3_4_5_6,1,1,Books_elena
+2,1,2,1_2_3_4_5_6,1_2,1,Books_elena
+3,2,1,1_2_3_4_5_6_7,1,1,
