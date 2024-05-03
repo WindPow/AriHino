@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6240129682750397998
+--- !u!1001 &3952890923131323099
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -50,12 +50,17 @@ PrefabInstance:
     - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
         type: 3}
@@ -80,27 +85,27 @@ PrefabInstance:
     - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 201.7
       objectReference: {fileID: 0}
     - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 60.8
       objectReference: {fileID: 0}
     - target: {fileID: 6950342953524626294, guid: 1fd9658560bfdb348a28e01494783ca5,
         type: 3}
