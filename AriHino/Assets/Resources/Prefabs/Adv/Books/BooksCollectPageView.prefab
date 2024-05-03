@@ -53,6 +53,8 @@ MonoBehaviour:
   ContentsRoot: {fileID: 108658923945655651}
   contentsPrefab: {fileID: 9066389009962827540, guid: e5ea7a41158f1c74786cac9b4e628901,
     type: 3}
+  detailPrefab: {fileID: 4973071264118654830, guid: c77f5def1a6502d4f9871a378eefb553,
+    type: 3}
 --- !u!1 &1895883351793224508
 GameObject:
   m_ObjectHideFlags: 0

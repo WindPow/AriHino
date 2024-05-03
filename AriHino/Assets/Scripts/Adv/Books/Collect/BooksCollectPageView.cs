@@ -25,7 +25,7 @@ public class BooksCollectPageView : MonoBehaviour
 
     private void ShowDetailDialog(MstCollectItemData mstCollectItemData) {
 
-        // var detail = Instantiate(detailPrefab);
-        // detail.Init(mstCollectItemData);
+        var detail = Instantiate(detailPrefab, this.transform);
+        detail.Init(mstCollectItemData);
     }
 }

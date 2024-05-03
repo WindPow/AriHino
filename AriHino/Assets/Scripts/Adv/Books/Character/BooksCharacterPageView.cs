@@ -12,11 +12,15 @@ public class BooksCharacterPageView : MonoBehaviour
     [SerializeField] private Transform explanationParent;
     [SerializeField] private Transform memoParent;
     [SerializeField] private Transform impressionsParent;
-    
 
     private BooksCharacterPageViewData pageViewData;
 
     public void Init(BooksCharacterPageViewData data) {
+
+        if(explanationParent.childCount > 0) explanationParent.DestroyChildren();
+        if(memoParent.childCount > 0) memoParent.DestroyChildren();
+        if(impressionsParent.childCount > 0) impressionsParent.DestroyChildren();
+
         pageViewData = data;
         nameText.text = data.CharaName;
 
