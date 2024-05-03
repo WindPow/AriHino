@@ -14,6 +14,8 @@ public class BooksWorldPageView : MonoBehaviour
     private BooksWorldPageViewData pageViewData;
 
     public void Init(BooksWorldPageViewData data) {
+
+        if(explanationParent.childCount > 0) explanationParent.DestroyChildren();
         pageViewData = data;
         nameText.text = data.WorldName;
 
