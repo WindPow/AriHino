@@ -14,7 +14,8 @@ public class MstEffectData : IMasterData<int> {
                     ID = int.Parse(values[i]);
                     break;
                 case "name":
-                    Name = values[i];
+                    string nameText = values[i].Replace("#", "\n");
+                    Name = nameText;
                     break;
                 case "life_time":
                     LifeTime = float.Parse(values[i]);

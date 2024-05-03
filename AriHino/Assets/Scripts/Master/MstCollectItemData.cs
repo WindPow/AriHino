@@ -17,10 +17,12 @@ public class MstCollectItemData : IMasterData<int>
                     ID = int.Parse(values[i]);
                     break;
                 case "name":
-                    Name = values[i];
+                    string nameText = values[i].Replace("#", "\n");
+                    Name = nameText;
                     break;
                 case "description":
-                    Description = values[i];
+                    string descriptionText = values[i].Replace("#", "\n");
+                    Description = descriptionText;
                     break;
                 case "type":
                     Type = int.Parse(values[i]);
