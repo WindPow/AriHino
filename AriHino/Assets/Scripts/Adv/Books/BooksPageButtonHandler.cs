@@ -11,8 +11,6 @@ public class BooksPageButtonHandler : MonoBehaviour
 
     [SerializeField] private MultiObjectSwitcher contentsSwitcher;
     [SerializeField] private ObjectActivator[] stickyNoteActivators;
-    [SerializeField] private GameObject PageNextAnimObj;
-    [SerializeField] private GameObject PagePrevAnimObj;
     [SerializeField] private Animation[] pageNextAnims;
     [SerializeField] private Animation[] pagePrevAnims;
     [SerializeField] private float pageAnimDeley = 0.1f;
@@ -62,17 +60,18 @@ public class BooksPageButtonHandler : MonoBehaviour
         IsPlayingAnim = true;
         
         if(isNext) {
-            PageNextAnimObj.SetActive(true);
+            pageNextAnims[0].gameObject.SetActive(true);
             pageNextAnims[0].Play();
             await pageNextAnims[0].WaitForCompletionAsync();
-            PageNextAnimObj.SetActive(false);
+            pageNextAnims[0].gameObject.SetActive(false);
             
         }
         else {
-            PagePrevAnimObj.SetActive(true);
+            pagePrevAnims[0].gameObject.SetActive(true);
             pagePrevAnims[0].Play();
             await pagePrevAnims[0].WaitForCompletionAsync();
-            PagePrevAnimObj.SetActive(false);
+            pagePrevAnims[0].gameObject.SetActive(false);
+            
         }
 
         IsPlayingAnim = false;
@@ -88,31 +87,33 @@ public class BooksPageButtonHandler : MonoBehaviour
         IsPlayingAnim = true;
 
         if(isNext) {
-
-            PageNextAnimObj.SetActive(true);
             
             foreach(var anim in pageNextAnims) {
+                anim.gameObject.SetActive(true);
                 anim.Play();
 
                 await UniTask.Delay((int)(pageAnimDeley * 1000f));
             }
 
             await UniTask.WhenAll(pageNextAnims.Select(anim => anim.WaitForCompletionAsync()));
-            PageNextAnimObj.SetActive(false);
+
+            foreach(var anim in pageNextAnims) anim.gameObject.SetActive(false);
+            
         }
 
         else{
 
-            PagePrevAnimObj.SetActive(true);
-
             foreach(var anim in pagePrevAnims) {
+                anim.gameObject.SetActive(true);
                 anim.Play();
 
                 await UniTask.Delay((int)(pageAnimDeley * 1000f));
             }
 
             await UniTask.WhenAll(pagePrevAnims.Select(anim => anim.WaitForCompletionAsync()));
-            PagePrevAnimObj.SetActive(false);
+
+            foreach(var anim in pagePrevAnims) anim.gameObject.SetActive(false);
+            
         }
 
         IsPlayingAnim = false;

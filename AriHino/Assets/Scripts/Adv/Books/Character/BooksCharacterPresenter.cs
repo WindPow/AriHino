@@ -38,8 +38,22 @@ public class BooksCharacterPresenter : MonoBehaviour
 
         booksCharacterModel.DisplayCharacterPageDict.ObserveRemove().Subscribe(page => {
 
-            pageViewDict.Remove(page.Value.CharaId);
-            DisplayUpdate();
+            if(pageViewDict.TryGetValue(page.Value.CharaId, out BooksCharacterPageView view)) {
+                pageViewDict.Remove(page.Value.CharaId);
+                Destroy(view);
+                DisplayUpdate();
+            }
+
+        }).AddTo(this);
+
+        booksCharacterModel.DisplayCharacterPageDict.ObserveReset().Subscribe(_ => {
+
+            var destroyObjs = new List<BooksCharacterPageView>(pageViewDict.Values);
+            pageViewDict.Clear();
+
+            foreach(var obj in destroyObjs) {
+                Destroy(obj);
+            }
 
         }).AddTo(this);
 

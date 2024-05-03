@@ -13,7 +13,7 @@ public class AdvCollectItemPresenter : MonoBehaviour
     
     private IAdvCollectItemModel collectItemModel;
 
-    private Dictionary<int, IAdvCollectItemDataView> displayCollectItems = new Dictionary<int, IAdvCollectItemDataView>();
+    private Dictionary<int, AdvCollectItemDataView> displayCollectItems = new Dictionary<int, AdvCollectItemDataView>();
 
     /// <summary>
     /// 初期化
@@ -33,10 +33,29 @@ public class AdvCollectItemPresenter : MonoBehaviour
     private void Bind(){
 
         // 設置アイテムに追加時の処理
-        collectItemModel.PutCollectItemAddObservable.Subscribe(collectItem => {
+        collectItemModel.PutCollectItems.ObserveAdd().Subscribe(collectItem => {
             CreateCollectItem(collectItem.Value);
         })
         .AddTo(this);
+
+        // オブジェクト削除処理
+        collectItemModel.PutCollectItems.ObserveRemove().Subscribe(collectItem => {
+
+            if(displayCollectItems.TryGetValue(collectItem.Value.ID, out AdvCollectItemDataView removeItem)){
+                displayCollectItems.Remove(collectItem.Value.ID);
+                Destroy(removeItem.gameObject);
+            }
+        }).AddTo(this);
+
+        collectItemModel.PutCollectItems.ObserveReset().Subscribe(_ => {
+            var destroyObjs = new List<AdvCollectItemDataView>(displayCollectItems.Values);
+            displayCollectItems.Clear();
+
+            foreach(var obj in destroyObjs) {
+                Destroy(obj);
+            }
+
+        }).AddTo(this);
 
     }
 
@@ -56,8 +75,9 @@ public class AdvCollectItemPresenter : MonoBehaviour
             BooksManager.Instance.SetBooksCollectItem(item);
 
             // 通知を表示した後に表示リストから削除 
-            NotificationManager.Instance.ShowNotification(item.Name); 
-            displayCollectItems.Remove(item.ID);
+            NotificationManager.Instance.ShowNotification(item.Name);
+
+            collectItemModel.RemoveCollectItem(item.ID);
         });
 
         displayCollectItems[collectItemData.ID] = item;

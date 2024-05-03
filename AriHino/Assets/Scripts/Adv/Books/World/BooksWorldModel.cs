@@ -11,6 +11,7 @@ public interface IBooksWorldModel {
     
     void SetBooksWorld(int[] ids);
     void SetBooksWorld(MstBooksWorldPageData pageData);
+    void RemoveBooksWorld(int worldId);
 }
 
 public class BooksWorldModel : IBooksWorldModel
@@ -25,16 +26,14 @@ public class BooksWorldModel : IBooksWorldModel
 
     public void SetBooksWorld(int[] ids) {
 
+        displayWorldPageDict.Clear();
+
         foreach (int id in ids) {
 
             if(displayWorldPageDict.ContainsKey(id)) continue;
             var characterPage = MasterDataManager.Instance.GetMasterData<MstBooksWorldPageData>(id);
             var viewData = new BooksWorldPageViewData(characterPage);
             displayWorldPageDict.Add(id, viewData);
-        }
-
-        foreach(var page in displayWorldPageDict.Keys) {
-            if(!ids.Contains(page)) displayWorldPageDict.Remove(page);
         }
     }
 
@@ -47,6 +46,12 @@ public class BooksWorldModel : IBooksWorldModel
         else {
             displayWorldPageDict.Add(viewData.WorldId, viewData);
         }
-        
+    }
+
+    public void RemoveBooksWorld(int worldId) {
+
+        if(displayWorldPageDict.ContainsKey(worldId)) {
+            displayWorldPageDict.Remove(worldId);
+        }
     }
 }

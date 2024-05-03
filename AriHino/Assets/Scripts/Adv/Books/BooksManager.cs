@@ -49,10 +49,18 @@ public class BooksManager : MonoBehaviour
         booksCharacterModel.SetBooksCharacter(setCharacterPage);
     }
 
+    public void RemoveBooksCharacterPage(int characterId) {
+        booksCharacterModel.RemoveBooksCharacter(characterId);
+    }
+
     public void SetBooksWorldPage(int worldId, int progressNo) {
         var booksWorldPageDict = MasterDataManager.Instance.GetMasterDataDictionary<MstBooksWorldPageData>();
         var setWorldPage = booksWorldPageDict.Values.First(e => e.WorldId == worldId && e.ProgressNo == progressNo);
         booksWorldModel.SetBooksWorld(setWorldPage);
+    }
+
+    public void RemoveBooksWorldPage(int worldId) {
+        booksWorldModel.RemoveBooksWorld(worldId);
     }
 
     public void SetBooksCollectItem(MstCollectItemData collectItemData) {

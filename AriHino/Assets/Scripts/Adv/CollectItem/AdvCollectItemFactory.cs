@@ -7,7 +7,7 @@ using UnityEngine;
 /// DataViewを生成して返す
 /// </summary>
 public interface IAdvCollectItemFactory {
-    IAdvCollectItemDataView CreateCollectItem(int collectItemId);
+    AdvCollectItemDataView CreateCollectItem(int collectItemId);
 }
 
 public class AdvCollectItemFactory : MonoBehaviour, IAdvCollectItemFactory
@@ -16,7 +16,7 @@ public class AdvCollectItemFactory : MonoBehaviour, IAdvCollectItemFactory
 
     private const string prefabPath = "Prefabs/Adv/CollectItem/CollectItem_{0}";
 
-    public IAdvCollectItemDataView CreateCollectItem(int collectItemId){
+    public AdvCollectItemDataView CreateCollectItem(int collectItemId){
 
         var prefab = Resources.Load<AdvCollectItemDataView>(ZString.Format(prefabPath, collectItemId));
 

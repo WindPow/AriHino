@@ -13,11 +13,10 @@ interface IAdvCollectItemModel {
     IList<MstCollectItemData> HasCollectItems { get; }
     IObservable<CollectionAddEvent<MstCollectItemData>> HasCollectItemAddObservable { get; }
 
-    IList<MstCollectItemData> PutCollectItems { get; }
-    IObservable<CollectionAddEvent<MstCollectItemData>> PutCollectItemAddObservable { get; }
-    IObservable<CollectionRemoveEvent<MstCollectItemData>> PutCollectItemRemoveObservable { get;}
+    IReadOnlyReactiveDictionary<int, MstCollectItemData> PutCollectItems { get; }
 
     void SetCollectItem(MstCollectItemData collectItem);
+    void RemoveCollectItem(int collectItemId);
 }
 
 public class AdvCollectItemModel : IAdvCollectItemModel
@@ -28,10 +27,8 @@ public class AdvCollectItemModel : IAdvCollectItemModel
     public IObservable<CollectionAddEvent<MstCollectItemData>> HasCollectItemAddObservable => hasCollectItems.ObserveAdd();
 
     // 設置するアイテムリスト
-    private ReactiveCollection<MstCollectItemData> putCollectItems = new ReactiveCollection<MstCollectItemData>();
-    public IList<MstCollectItemData> PutCollectItems => putCollectItems.ToList();
-    public IObservable<CollectionAddEvent<MstCollectItemData>> PutCollectItemAddObservable => putCollectItems.ObserveAdd();
-    public IObservable<CollectionRemoveEvent<MstCollectItemData>> PutCollectItemRemoveObservable => putCollectItems.ObserveRemove();
+    private ReactiveDictionary<int, MstCollectItemData> putCollectItems = new ReactiveDictionary<int, MstCollectItemData>();
+    public IReadOnlyReactiveDictionary<int, MstCollectItemData> PutCollectItems => putCollectItems;
 
     List<MstCollectItemData> list;
 
@@ -47,7 +44,7 @@ public class AdvCollectItemModel : IAdvCollectItemModel
 
     public void SetCollectItem(MstCollectItemData collectItem){
 
-        putCollectItems.Add(collectItem);
+        putCollectItems.Add(collectItem.ID, collectItem);
     }
 
     public void SetHasCollectItem(){
@@ -56,8 +53,9 @@ public class AdvCollectItemModel : IAdvCollectItemModel
 
     public void RemoveCollectItem(int collectItemId) {
 
-        var removeItem = putCollectItems.FirstOrDefault(e => e.ID == collectItemId);
-        if (removeItem != null) putCollectItems.Remove(removeItem);
+        if(putCollectItems.ContainsKey(collectItemId)) {
+            putCollectItems.Remove(collectItemId);
+        }
     }
 
     public void RemoveAllCollectItem() {
