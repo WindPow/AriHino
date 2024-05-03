@@ -6918,9 +6918,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.000081559374
+    x: 0.0002034968
     y: 0
-    width: 0.99983686
+    width: 0.999593
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -35894,9 +35894,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.000081559374
+    x: 0.0002034968
     y: 0
-    width: 0.99983686
+    width: 0.999593
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -45283,8 +45283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e5e688811f4714890e56dc5aab6f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiRoot: {fileID: 0}
-  frontRoot: {fileID: 0}
+  uiRoot: {fileID: 68753680}
+  frontRoot: {fileID: 1827348860}
 --- !u!1 &2001628104
 GameObject:
   m_ObjectHideFlags: 0
