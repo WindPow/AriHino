@@ -11,9 +11,12 @@ public class BooksCollectContentsView : MonoBehaviour
 
     private BooksCollectContentsViewData collectItemData;
 
-    public void Init(BooksCollectContentsViewData data) {
+    private Action<BooksCollectContentsViewData> clickAction;
+
+    public void Init(BooksCollectContentsViewData data, Action<BooksCollectContentsViewData> clickAction) {
 
         collectItemData = data;
+        this.clickAction = clickAction;
         nameText.text = data.MstCollectItemData.Name;
         nameText.gameObject.SetActive(data.IsOpen);
 
@@ -22,7 +25,7 @@ public class BooksCollectContentsView : MonoBehaviour
         }).AddTo(this);
     }
 
-    public void OnClick(Action<BooksCollectContentsViewData> clickAction) {
+    public void OnClick() {
 
         clickAction?.Invoke(collectItemData);
     }

@@ -5,6 +5,7 @@ public class MstCollectItemData : IMasterData<int>
     public string Description { get; private set; }
     public int Type { get; private set;}
     public bool OpenedFlg { get; private set;}
+    public string ImagePath { get; private set;}
 
     public void Initialize(string[] headers, string[] values)
     {
@@ -26,6 +27,9 @@ public class MstCollectItemData : IMasterData<int>
                     break;
                 case "opened_flg":
                     OpenedFlg = int.Parse(values[i]) != 0;
+                    break;
+                case "image_path":
+                    ImagePath = values[i];
                     break;
                 // Add more properties if needed
             }
