@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Utage;
 
 public class AdvUIHandler : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class AdvUIHandler : MonoBehaviour
 
     [SerializeField] private UnityEvent[] booksOffCallback;
 
+    [SerializeField] private AudioClip booksSe;
+    [SerializeField] private SoundPlayMode seSoundMode = SoundPlayMode.Add;
+
     private bool isWaitInput;
 
     /// <summary>
@@ -24,14 +28,21 @@ public class AdvUIHandler : MonoBehaviour
     /// </summary>
     public void OnTapBooksActive() {
 
+        ActivateBooks(booksUiMover.IsMoved);
+    }
+
+    public void ActivateBooks(bool isOpen) {
+
         if(isWaitInput) return;
 
-        if (!booksUiMover.IsMoved) {
+        if (!isOpen) {
             booksUiMover.MoveTransition(() => isWaitInput = false);
             booksUiMover.gameObject.SetActive(true);
             booksActivator.ActiveChangeObject(true);
             ActiveUiBlur(maxBlurStrength);
             foreach (var callback in booksOnCallback) callback.Invoke();
+
+            BooksManager.Instance.SetIsOpenBooks(true);
         }
         else {
             booksUiMover.ReturnPosition(() => {
@@ -41,7 +52,11 @@ public class AdvUIHandler : MonoBehaviour
             booksActivator.ActiveChangeObject(false);
             ActiveUiBlur(0f);
             foreach (var callback in booksOffCallback) callback.Invoke();
+
+            BooksManager.Instance.SetIsOpenBooks(false);
         }
+
+        SoundManager.GetInstance().PlaySe(booksSe, booksSe.name, seSoundMode);
 
         isWaitInput = true;
     }
