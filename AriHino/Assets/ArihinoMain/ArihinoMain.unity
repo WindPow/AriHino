@@ -7087,9 +7087,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.08339546
+    x: 0.033861775
     y: 0
-    width: 0.8332091
+    width: 0.9322764
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -10418,7 +10418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   booksPagePresenter: {fileID: 1895190770}
-  booksButton: {fileID: 1025430915}
+  booksButton: {fileID: 1623709783}
   advUIHandler: {fileID: 581645344}
 --- !u!1 &451482532
 GameObject:
@@ -14055,6 +14055,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 899588293}
+  - {fileID: 1826770494}
+  - {fileID: 1696870225}
+  - {fileID: 1895190766}
+  - {fileID: 1025430916}
   m_Father: {fileID: 1083959041}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21580,10 +21584,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1899130327}
-  - {fileID: 1696870225}
-  - {fileID: 1826770494}
-  - {fileID: 1895190766}
-  - {fileID: 1025430916}
   m_Father: {fileID: 581645342}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21624,8 +21624,8 @@ MonoBehaviour:
   - {fileID: 1899130326}
   - {fileID: 1696870224}
   - {fileID: 1895190765}
-  - {fileID: 1025430915}
   - {fileID: 1826770493}
+  - {fileID: 1025430915}
 --- !u!1 &899995957
 GameObject:
   m_ObjectHideFlags: 0
@@ -25272,13 +25272,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1623709784}
-  m_Father: {fileID: 899588293}
+  m_Father: {fileID: 581645342}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 847.99, y: -50.330048}
-  m_SizeDelta: {x: -1821.98, y: -248.66003}
+  m_AnchoredPosition: {x: 847.99, y: -416}
+  m_SizeDelta: {x: -1821.98, y: -980}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1025430917
 CanvasGroup:
@@ -25306,8 +25306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trueObjects: []
   falseObjects:
-  - {fileID: 899588292}
   - {fileID: 1696870224}
+  - {fileID: 1899130326}
 --- !u!1 &1028802370
 GameObject:
   m_ObjectHideFlags: 0
@@ -37106,9 +37106,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.08339546
+    x: 0.033861775
     y: 0
-    width: 0.8332091
+    width: 0.9322764
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -39529,13 +39529,13 @@ RectTransform:
   m_Children:
   - {fileID: 1830932799}
   - {fileID: 511644471}
-  m_Father: {fileID: 899588293}
-  m_RootOrder: 1
+  m_Father: {fileID: 581645342}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 365.6699}
-  m_SizeDelta: {x: 0, y: 731.33997}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1696870227
 CanvasGroup:
@@ -42301,13 +42301,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 899588293}
-  m_RootOrder: 2
+  m_Father: {fileID: 581645342}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 365.6699}
-  m_SizeDelta: {x: 0, y: 731.33997}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1826770495
 MonoBehaviour:
@@ -44352,12 +44352,12 @@ RectTransform:
   - {fileID: 487151876}
   - {fileID: 1126867977}
   - {fileID: 893611352}
-  m_Father: {fileID: 899588293}
+  m_Father: {fileID: 581645342}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -786.3301}
+  m_AnchoredPosition: {x: 0, y: -1152}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1895190767

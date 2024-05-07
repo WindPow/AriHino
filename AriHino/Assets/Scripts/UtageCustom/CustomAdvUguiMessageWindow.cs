@@ -24,24 +24,24 @@ public class CustomAdvUguiMessageWindow : AdvUguiMessageWindowTMP
     }
 
 	//毎フレームの更新
-		protected override void LateUpdate()
+	protected override void LateUpdate()
+	{
+		if (Engine.UiManager.Status == AdvUiManager.UiStatus.Default)
 		{
-			if (Engine.UiManager.Status == AdvUiManager.UiStatus.Default)
-			{
-				foreach (var obj in activateObjects) {
-					obj.SetActive(Engine.UiManager.IsShowingMessageWindow);
-				}
-
-				if (Engine.UiManager.IsShowingMessageWindow)
-				{
-					//ウィンドのアルファ値反映
-					if (translateMessageWindowRoot!=null)
-					{
-						translateMessageWindowRoot.alpha = Engine.Config.MessageWindowAlpha;
-					}
-				}
+			foreach (var obj in activateObjects) {
+				obj.SetActive(Engine.UiManager.IsShowingMessageWindow);
 			}
 
-			UpdateCurrent();
+			if (Engine.UiManager.IsShowingMessageWindow)
+			{
+				//ウィンドのアルファ値反映
+				if (translateMessageWindowRoot!=null)
+				{
+					translateMessageWindowRoot.alpha = Engine.Config.MessageWindowAlpha;
+				}
+			}
 		}
+
+		UpdateCurrent();
+	}
 }
