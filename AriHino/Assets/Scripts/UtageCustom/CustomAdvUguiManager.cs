@@ -5,6 +5,7 @@ using Utage;
 
 public class CustomAdvUguiManager : AdvUguiManager
 {
+
     protected override void Update()
 		{
 			if(CheckInputUtilDisable(InputUtilDisableFilter.Update)) return;
@@ -37,7 +38,14 @@ public class CustomAdvUguiManager : AdvUguiManager
 					if (IsShowingMessageWindow || Engine.SelectionManager.IsWaitInput)
 					{	//入力待ち
 						if (InputUtil.IsMouseRightButtonDown())
-						{	//右クリックでウィンドウ閉じる
+						{
+							// Books表示状態の場合Booksを閉じる
+							if(BooksManager.Instance.IsOpenBooks) {
+								BooksManager.Instance.ActivateBooks(false);
+								return;
+							}
+
+							//右クリックでウィンドウ閉じる
 							Status = UiStatus.HideMessageWindow;
 						}
 						else if (!DisableMouseWheelBackLog && InputUtil.IsInputScrollWheelUp())

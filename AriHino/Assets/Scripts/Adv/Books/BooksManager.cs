@@ -6,11 +6,18 @@ using UnityEngine;
 public class BooksManager : MonoBehaviour
 {
     [SerializeField] private BooksPagePresenter booksPagePresenter;
+    [SerializeField] private GameObject booksButton;
+    [SerializeField] private AdvUIHandler advUIHandler;
     private IBooksPageModel booksPageModel;
     private IBooksCharacterModel booksCharacterModel;
     private IBooksWorldModel booksWorldModel;
     private IBooksWardModel booksWardModel;
     private IBooksCollectModel booksCollectModel;
+
+    /// <summary>
+    /// Booksが表示状態かのフラグ
+    /// </summary>
+    public bool IsOpenBooks { get; private set; }
 
     private static BooksManager instance;
     public static BooksManager Instance {
@@ -37,6 +44,16 @@ public class BooksManager : MonoBehaviour
 
         booksPagePresenter.Init(booksPageModel, booksCharacterModel, booksWorldModel, booksWardModel, booksCollectModel);
     }
+
+    public void SetIsOpenBooks(bool isOpen) {
+        IsOpenBooks = isOpen;
+    }
+    
+    public void ActivateBooks(bool isOpen) {
+        advUIHandler.ActivateBooks(!isOpen);
+    }
+
+    #region Command
 
     public void SetBooks(int booksId) {
         var mstBooks = MasterDataManager.Instance.GetMasterData<MstBooksData>(booksId);
@@ -66,4 +83,16 @@ public class BooksManager : MonoBehaviour
     public void SetBooksCollectItem(MstCollectItemData collectItemData) {
         booksCollectModel.OpenBooksCollect(collectItemData);
     }
+
+    public void ActiveBooksButton(bool isOpen) {
+        booksButton.SetActive(isOpen);
+
+        if(isOpen) {
+            string notificationText = "手記を解放しました";
+            NotificationManager.Instance.ShowNotification(notificationText);
+        }
+    }
+
+    #endregion
+
 }

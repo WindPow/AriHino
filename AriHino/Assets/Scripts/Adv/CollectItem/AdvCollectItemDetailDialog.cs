@@ -24,8 +24,8 @@ public class AdvCollectItemDetailDialog : MonoBehaviour
         itemImage.texture = texture;
     }
 
-    public void OnCliseButton() {
+    public void OnCloseButton() {
 
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }

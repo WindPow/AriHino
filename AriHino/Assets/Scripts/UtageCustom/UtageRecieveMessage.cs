@@ -65,6 +65,9 @@ namespace Utage
 				case "RemoveEffect":
 					ParticleEffectManager.Instance.RemoveEffect(int.Parse(command.Arg2));
 					break;
+				case "ActiveBooksButton":
+				    BooksManager.Instance.ActiveBooksButton(int.Parse(command.Arg2) != 0);
+					break;
 				default:
 					Debug.LogError("Unknown Message:" + command.Name);
 					break;

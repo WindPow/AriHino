@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UniRx;
 using System.Linq;
+using Cysharp.Text;
 
 public class BooksWorldPresenter : MonoBehaviour
 {
@@ -17,7 +18,11 @@ public class BooksWorldPresenter : MonoBehaviour
     private BooksPageButtonHandler booksButtonHandler;
     private int indexNow;
 
+    private CompositeDisposable disposables = new();
+
     public void Init(IBooksWorldModel model, BooksPageButtonHandler buttonHandler) {
+
+        ResetPresenter();
         this.booksWorldModel = model;
         booksButtonHandler = buttonHandler;
 
@@ -37,7 +42,11 @@ public class BooksWorldPresenter : MonoBehaviour
             pageViewDict.Add(page.Value.WorldId, view);
             DisplayUpdate();
 
-        }).AddTo(this);
+            string notificationFormat = "世界情報を追加しました";
+            //string notificationText = ZString.Format(notificationFormat, page.NewValue.WorldName);
+            NotificationManager.Instance.ShowNotification(notificationFormat);
+
+        }).AddTo(disposables);
 
         booksWorldModel.DisplayWorldPageDict.ObserveRemove().Subscribe(page => {
             if(pageViewDict.TryGetValue(page.Value.WorldId, out BooksWorldPageView view)) {
@@ -46,24 +55,26 @@ public class BooksWorldPresenter : MonoBehaviour
                 DisplayUpdate();
             }
 
-        }).AddTo(this);
+        }).AddTo(disposables);
 
         booksWorldModel.DisplayWorldPageDict.ObserveReset().Subscribe(_ => {
             var destroyObjs = new List<BooksWorldPageView>(pageViewDict.Values);
             pageViewDict.Clear();
 
             foreach(var obj in destroyObjs) {
-                Destroy(obj);
+                Destroy(obj.gameObject);
             }
-        }).AddTo(this);
+        }).AddTo(disposables);
 
         booksWorldModel.DisplayWorldPageDict.ObserveReplace().Subscribe(page => {
 
             pageViewDict[page.NewValue.WorldId].Init(page.NewValue);
             DisplayUpdate();
 
-            NotificationManager.Instance.ShowNotification(page.NewValue.WorldName);
-        });
+            string notificationFormat = "世界情報を更新しました";
+            //string notificationText = ZString.Format(notificationFormat, page.NewValue.WorldName);
+            NotificationManager.Instance.ShowNotification(notificationFormat);
+        }).AddTo(disposables);
     }
 
     private void CreateWorldPage() {
@@ -124,5 +135,17 @@ public class BooksWorldPresenter : MonoBehaviour
         });
     }
 
+    private void ResetPresenter() {
+        
+        var destroyObjs = new List<BooksWorldPageView>(pageViewDict.Values);
+        pageViewDict.Clear();
+
+        foreach(var obj in destroyObjs) {
+            Destroy(obj.gameObject);
+        }
+
+        disposables.Clear();
+
+    }
 
 }

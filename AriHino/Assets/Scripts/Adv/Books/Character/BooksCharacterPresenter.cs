@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UniRx;
 using System.Linq;
+using Cysharp.Text;
 
 public class BooksCharacterPresenter : MonoBehaviour
 {
@@ -15,7 +16,12 @@ public class BooksCharacterPresenter : MonoBehaviour
     private BooksPageButtonHandler booksButtonHandler;
     private int indexNow;
 
+    private CompositeDisposable disposables = new();
+
     public void Init(IBooksCharacterModel model, BooksPageButtonHandler buttonHandler) {
+
+        ResetPresenter();
+
         booksCharacterModel = model;
         booksButtonHandler = buttonHandler;
         indexNow = model.DisplayCharacterPageDict.First().Key;
@@ -34,7 +40,11 @@ public class BooksCharacterPresenter : MonoBehaviour
             pageViewDict.Add(page.Value.CharaId, view);
             DisplayUpdate();
 
-        }).AddTo(this);
+            string notificationFormat = "{0}の情報を追加しました";
+            string notificationText = ZString.Format(notificationFormat, page.Value.CharaName);
+            NotificationManager.Instance.ShowNotification(notificationText);
+
+        }).AddTo(disposables);
 
         booksCharacterModel.DisplayCharacterPageDict.ObserveRemove().Subscribe(page => {
 
@@ -44,7 +54,7 @@ public class BooksCharacterPresenter : MonoBehaviour
                 DisplayUpdate();
             }
 
-        }).AddTo(this);
+        }).AddTo(disposables);
 
         booksCharacterModel.DisplayCharacterPageDict.ObserveReset().Subscribe(_ => {
 
@@ -52,19 +62,21 @@ public class BooksCharacterPresenter : MonoBehaviour
             pageViewDict.Clear();
 
             foreach(var obj in destroyObjs) {
-                Destroy(obj);
+                Destroy(obj.gameObject);
             }
 
-        }).AddTo(this);
+        }).AddTo(disposables);
 
         booksCharacterModel.DisplayCharacterPageDict.ObserveReplace().Subscribe(page => {
 
             pageViewDict[page.NewValue.CharaId].Init(page.NewValue);
             DisplayUpdate();
 
-            NotificationManager.Instance.ShowNotification(page.NewValue.CharaName);
+            string notificationFormat = "{0}の情報を更新しました";
+            string notificationText = ZString.Format(notificationFormat, page.NewValue.CharaName);
+            NotificationManager.Instance.ShowNotification(notificationText);
 
-        }).AddTo(this);
+        }).AddTo(disposables);
     }
 
     private void CreateCharacterPage() {
@@ -113,6 +125,19 @@ public class BooksCharacterPresenter : MonoBehaviour
             pageViewDict[indexNow].gameObject.SetActive(true);
             DisplayUpdate();
         });
+    }
+
+    private void ResetPresenter() {
+        
+        var destroyObjs = new List<BooksCharacterPageView>(pageViewDict.Values);
+        pageViewDict.Clear();
+
+        foreach(var obj in destroyObjs) {
+            Destroy(obj.gameObject);
+        }
+
+        disposables.Clear();
+
     }
 
 

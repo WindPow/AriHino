@@ -23,7 +23,8 @@ public class MstBooksWorldExplanationData : IMasterData<int>
                     WorldId = int.Parse(values[i]);
                     break;
                 case "text":
-                    Text = values[i];
+                    string text = values[i].Replace("#", "\n");
+                    Text = text;
                     break;
                 
                 // Add more properties if needed
