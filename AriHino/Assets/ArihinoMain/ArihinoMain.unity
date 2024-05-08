@@ -7087,10 +7087,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.033861775
-    y: 0
-    width: 0.9322764
-    height: 1
+    x: 0
+    y: 0.068392
+    width: 1
+    height: 0.863216
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -14035,6 +14035,7 @@ GameObject:
   - component: {fileID: 581645342}
   - component: {fileID: 581645343}
   - component: {fileID: 581645344}
+  - component: {fileID: 581645345}
   m_Layer: 5
   m_Name: MessageWindowManager
   m_TagString: Untagged
@@ -14100,6 +14101,24 @@ MonoBehaviour:
   booksOffCallback: []
   booksSe: {fileID: 8300000, guid: db5c0828b12b44247ac670c1afb5e91b, type: 3}
   seSoundMode: 0
+--- !u!114 &581645345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581645341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ccf102c7ed51d4aafdd8f5df20d73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObjecct: {fileID: 1899130326}
+  visibleObjects:
+  - {fileID: 1826770493}
+  - {fileID: 1895190765}
+  - {fileID: 1025430915}
+  hiddenObjects: []
 --- !u!1 &582572839
 GameObject:
   m_ObjectHideFlags: 0
@@ -21620,12 +21639,7 @@ MonoBehaviour:
   onPostChangeText:
     m_PersistentCalls:
       m_Calls: []
-  activateObjects:
-  - {fileID: 1899130326}
-  - {fileID: 1696870224}
-  - {fileID: 1895190765}
-  - {fileID: 1826770493}
-  - {fileID: 1025430915}
+  activateObjects: []
 --- !u!1 &899995957
 GameObject:
   m_ObjectHideFlags: 0
@@ -25306,8 +25320,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trueObjects: []
   falseObjects:
+  - {fileID: 899588292}
   - {fileID: 1696870224}
-  - {fileID: 1899130326}
 --- !u!1 &1028802370
 GameObject:
   m_ObjectHideFlags: 0
@@ -37106,10 +37120,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.033861775
-    y: 0
-    width: 0.9322764
-    height: 1
+    x: 0
+    y: 0.068392
+    width: 1
+    height: 0.863216
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
