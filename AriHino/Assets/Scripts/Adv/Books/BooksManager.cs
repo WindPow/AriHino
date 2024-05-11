@@ -88,7 +88,7 @@ public class BooksManager : MonoBehaviour
         booksButton.SetActive(isOpen);
 
         if(isOpen) {
-            string notificationText = "手記を解放しました";
+            string notificationText = "手記が使用可能になりました";
             NotificationManager.Instance.ShowNotification(notificationText);
         }
     }
