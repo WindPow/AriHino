@@ -7,7 +7,7 @@ public class ActiveSynchronizer : MonoBehaviour
     [SerializeField] private GameObject[] visibleObjects; // 表示用のオブジェクト配列
     [SerializeField] private GameObject[] hiddenObjects;  // 非表示用のオブジェクト配列
 
-    void Start()
+    void OnEnable()
     {
         // 開始時に監視を開始
         StartCoroutine(SynchronizeObjects());
