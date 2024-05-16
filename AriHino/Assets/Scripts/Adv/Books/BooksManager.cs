@@ -91,6 +91,10 @@ public class BooksManager : MonoBehaviour
             string notificationText = "手記が使用可能になりました";
             NotificationManager.Instance.ShowNotification(notificationText);
         }
+        else { 
+            string notificationText = "手記が使用不能になりました";
+            NotificationManager.Instance.ShowNotification(notificationText);
+        }
     }
 
     #endregion
