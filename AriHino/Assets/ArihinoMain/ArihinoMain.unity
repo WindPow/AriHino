@@ -3963,7 +3963,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172210241}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -4179,8 +4179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
-  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
+  clicked: {fileID: 0}
+  highlited: {fileID: 0}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &184076737
@@ -7088,9 +7088,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.068392
+    y: 0.072625704
     width: 1
-    height: 0.863216
+    height: 0.8547486
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -12022,8 +12022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
-  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
+  clicked: {fileID: 8300000, guid: cf6ab676fec54ae4cb66bb6784c202e0, type: 3}
+  highlited: {fileID: 0}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &500432281
@@ -12944,8 +12944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
-  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
+  clicked: {fileID: 0}
+  highlited: {fileID: 0}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &546995299
@@ -13884,8 +13884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
-  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
+  clicked: {fileID: 8300000, guid: 2ff1a96fa83afdc4898901377b2971e3, type: 3}
+  highlited: {fileID: 8300000, guid: 2460b09ce2d56e648ad7ee52a33a1558, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &579166063
@@ -20498,8 +20498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
-  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
+  clicked: {fileID: 8300000, guid: 2ff1a96fa83afdc4898901377b2971e3, type: 3}
+  highlited: {fileID: 8300000, guid: 2460b09ce2d56e648ad7ee52a33a1558, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &842974459
@@ -31412,8 +31412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
-  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
+  clicked: {fileID: 8300000, guid: f2981addc5102f94f8d875d7d442409b, type: 3}
+  highlited: {fileID: 8300000, guid: 2460b09ce2d56e648ad7ee52a33a1558, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &1314220234
@@ -32550,8 +32550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
-  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
+  clicked: {fileID: 0}
+  highlited: {fileID: 0}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &1351389861
@@ -37123,9 +37123,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.068392
+    y: 0.072625704
     width: 1
-    height: 0.863216
+    height: 0.8547486
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -42463,8 +42463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
-  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
+  clicked: {fileID: 8300000, guid: 2ff1a96fa83afdc4898901377b2971e3, type: 3}
+  highlited: {fileID: 8300000, guid: 37c91aa3c491bfe408f1d70a447d7544, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &1829500451
