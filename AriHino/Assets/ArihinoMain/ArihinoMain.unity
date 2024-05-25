@@ -3963,7 +3963,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172210241}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -4179,8 +4179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 0}
-  highlited: {fileID: 0}
+  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
+  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &184076737
@@ -7087,10 +7087,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.072625704
-    width: 1
-    height: 0.8547486
+    x: 0.0073486026
+    y: 0
+    width: 0.9853028
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -12022,8 +12022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: cf6ab676fec54ae4cb66bb6784c202e0, type: 3}
-  highlited: {fileID: 0}
+  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
+  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &500432281
@@ -12944,8 +12944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 0}
-  highlited: {fileID: 0}
+  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
+  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &546995299
@@ -13884,8 +13884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 2ff1a96fa83afdc4898901377b2971e3, type: 3}
-  highlited: {fileID: 8300000, guid: 2460b09ce2d56e648ad7ee52a33a1558, type: 3}
+  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
+  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &579166063
@@ -20498,8 +20498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 2ff1a96fa83afdc4898901377b2971e3, type: 3}
-  highlited: {fileID: 8300000, guid: 2460b09ce2d56e648ad7ee52a33a1558, type: 3}
+  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
+  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &842974459
@@ -21252,11 +21252,11 @@ RectTransform:
   m_Father: {fileID: 1098691443}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -62.605103}
   m_SizeDelta: {x: 392.01, y: 75.21}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &863429978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27629,7 +27629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 594.57, y: 628}
+  m_AnchoredPosition: {x: 0, y: 628}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1101613006
@@ -31412,8 +31412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: f2981addc5102f94f8d875d7d442409b, type: 3}
-  highlited: {fileID: 8300000, guid: 2460b09ce2d56e648ad7ee52a33a1558, type: 3}
+  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
+  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &1314220234
@@ -32550,8 +32550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 0}
-  highlited: {fileID: 0}
+  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
+  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &1351389861
@@ -37122,10 +37122,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.072625704
-    width: 1
-    height: 0.8547486
+    x: 0.0073486026
+    y: 0
+    width: 0.9853028
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -37289,6 +37289,7 @@ MonoBehaviour:
   moveDuration: 0.5
   audioSource: {fileID: 1563141177}
   clip: {fileID: 8300000, guid: 062875e560760a94b9c52a657eb0f32a, type: 3}
+  booksButtonShakeAnim: {fileID: 1623709789}
 --- !u!82 &1563141177
 AudioSource:
   m_ObjectHideFlags: 0
@@ -38331,6 +38332,7 @@ GameObject:
   - component: {fileID: 1623709787}
   - component: {fileID: 1623709786}
   - component: {fileID: 1623709785}
+  - component: {fileID: 1623709789}
   m_Layer: 5
   m_Name: BooksButton
   m_TagString: Untagged
@@ -38353,10 +38355,10 @@ RectTransform:
   - {fileID: 1993056905}
   m_Father: {fileID: 1025430916}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: 120, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1623709785
@@ -38469,6 +38471,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623709783}
   m_CullTransparentMesh: 0
+--- !u!111 &1623709789
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623709783}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a2996b96e7c4f1249a0400e1bc0d6da7, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a2996b96e7c4f1249a0400e1bc0d6da7, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1624741595
 GameObject:
   m_ObjectHideFlags: 0
@@ -42463,8 +42481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 2ff1a96fa83afdc4898901377b2971e3, type: 3}
-  highlited: {fileID: 8300000, guid: 37c91aa3c491bfe408f1d70a447d7544, type: 3}
+  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
+  highlited: {fileID: 8300000, guid: 8a765d11befc9f046938a053727a8606, type: 3}
   clickedPlayMode: 0
   highlitedPlayMode: 0
 --- !u!114 &1829500451
@@ -46866,9 +46884,9 @@ RectTransform:
   m_Father: {fileID: 863429977}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.005, y: -37.605}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -37.605}
   m_SizeDelta: {x: 352.01, y: 35.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2028691262

@@ -36,6 +36,8 @@ public class NotificationManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip clip;
 
+    [SerializeField] private Animation booksButtonShakeAnim;
+
     void Awake()
     {
         originPosY = notificationPanel.transform.localPosition.y;
@@ -53,6 +55,10 @@ public class NotificationManager : MonoBehaviour
 
     private IEnumerator DisplayNotification()
     {
+        if(BooksManager.Instance.IsOpenBooks) {
+            booksButtonShakeAnim.Play();
+        }
+
         while (notificationQueue.Count > 0)
         {
             audioSource.Play();

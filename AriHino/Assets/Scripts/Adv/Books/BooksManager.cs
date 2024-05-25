@@ -51,6 +51,7 @@ public class BooksManager : MonoBehaviour
     
     public void ActivateBooks(bool isOpen) {
         advUIHandler.ActivateBooks(!isOpen);
+        IsOpenBooks = isOpen;
     }
 
     #region Command
@@ -86,6 +87,7 @@ public class BooksManager : MonoBehaviour
 
     public void ActiveBooksButton(bool isOpen) {
         booksButton.SetActive(isOpen);
+        IsOpenBooks = isOpen;
 
         if(isOpen) {
             string notificationText = "手記が使用可能になりました";

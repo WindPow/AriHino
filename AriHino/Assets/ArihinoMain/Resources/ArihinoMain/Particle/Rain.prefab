@@ -9775,6 +9775,7 @@ GameObject:
   - component: {fileID: 6948735417186963826}
   - component: {fileID: 7124304455125694132}
   - component: {fileID: 7107435980136371856}
+  - component: {fileID: 6956714243187317495}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -9790,7 +9791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6946759674692066902}
   m_LocalRotation: {x: -0, y: -1, z: 0, w: -0.0000001872535}
-  m_LocalPosition: {x: 0, y: 5.7, z: 0}
+  m_LocalPosition: {x: 0, y: 5.7, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14622,3 +14623,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6956714243187317495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946759674692066902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e21f2946a904043972313214440fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSave: 1
+  stopWithChildren: 1
+  stopBehavior: 1
