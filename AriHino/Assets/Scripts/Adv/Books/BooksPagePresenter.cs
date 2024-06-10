@@ -19,6 +19,8 @@ public class BooksPagePresenter : MonoBehaviour
     private IBooksWardModel booksWardModel;
     private IBooksCollectModel booksCollectModel;
 
+    private BooksPage nowPage;
+
     public void Init(IBooksPageModel pageModel, IBooksCharacterModel characterModel, IBooksWorldModel worldModel, IBooksWardModel wardModel, IBooksCollectModel collectModel) {
         
         booksPageModel = pageModel;
@@ -32,9 +34,10 @@ public class BooksPagePresenter : MonoBehaviour
         booksCollectModel = collectModel;
         if(booksCollectPresenter) booksCollectPresenter.Init(booksCollectModel, booksButtonHandler);
 
+        Bind();
     }
 
-    public void Bind() {
+    private void Bind() {
 
         booksButtonHandler.ChangeIndexObservable.Subscribe(index => {
             ChangePage(index);
@@ -42,32 +45,40 @@ public class BooksPagePresenter : MonoBehaviour
 
         booksPageModel.BooksData.Subscribe(data => {
 
-            booksCharacterModel.SetBooksCharacter(data.CharacterPageIds);
-            booksWorldModel.SetBooksWorld(data.WorldPageIds);
+            //booksCharacterModel.SetBooksCharacter(data.CharacterPageIds);
+            //booksWorldModel.SetBooksWorld(data.WorldPageIds);
 
         }).AddTo(this);
     }
 
     private void ChangePage(int pageIndex) {
 
-        switch((BooksContents)pageIndex){
+        switch((BooksPage)pageIndex){
 
-            case BooksContents.Character:
-
-                //booksCharacterPresenter
+            case BooksPage.Character:
+                booksCharacterPresenter.ShowPage();
+                nowPage = (BooksPage)pageIndex;
                 break;
-            case BooksContents.World:
+            case BooksPage.World:
+                booksWorldPresenter.ShowPage();
+                nowPage = (BooksPage)pageIndex;
                 break;
-            case BooksContents.Ward:
+            case BooksPage.Ward:
+                nowPage = (BooksPage)pageIndex;
                 break;
-            case BooksContents.Collect:
+            case BooksPage.Collect:
+                booksCollectPresenter.ShowPage();
+                nowPage = (BooksPage)pageIndex;
                 break;
         }
+    }
 
+    public void ShowBooks() {
+        booksButtonHandler.OnTapStikcyNote((int)nowPage);
     }
 }
 
-public enum BooksContents {
+public enum BooksPage {
     Character = 0,
     World = 1,
     Ward = 2,

@@ -8,6 +8,7 @@ using System.Linq;
 public interface IBooksCharacterModel {
 
     IReadOnlyReactiveDictionary<int, BooksCharacterPageViewData> DisplayCharacterPageDict { get; }
+    ReactiveDictionary<int, bool> ReadedPageDic { get; }
 
     void SetBooksCharacter(int[] ids);
     void SetBooksCharacter(MstBooksCharacterPageData pageData);
@@ -18,6 +19,7 @@ public class BooksCharacterModel : IBooksCharacterModel
 {
     private ReactiveDictionary<int ,BooksCharacterPageViewData> displayCharacterPageDict = new();
     public IReadOnlyReactiveDictionary<int, BooksCharacterPageViewData> DisplayCharacterPageDict => displayCharacterPageDict;
+    public ReactiveDictionary<int, bool> ReadedPageDic { get; } = new();
 
     public BooksCharacterModel(int[] characterPageIds) {
 
@@ -46,6 +48,8 @@ public class BooksCharacterModel : IBooksCharacterModel
         else {
             displayCharacterPageDict.Add(viewData.CharaId, viewData);
         }
+
+        ReadedPageDic[pageData.CharaId] = false;
     }
 
     public void RemoveBooksCharacter(int characterId) {

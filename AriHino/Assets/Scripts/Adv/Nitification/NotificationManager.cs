@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using DG.Tweening;
+using Utage;
 
 public class NotificationManager : MonoBehaviour
 {
@@ -35,8 +36,7 @@ public class NotificationManager : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip clip;
-
-    [SerializeField] private Animation booksButtonShakeAnim;
+    [SerializeField] private AdvUIHandler advUIHandler;
 
     void Awake()
     {
@@ -56,7 +56,7 @@ public class NotificationManager : MonoBehaviour
     private IEnumerator DisplayNotification()
     {
         if(BooksManager.Instance.IsOpenBooks) {
-            booksButtonShakeAnim.Play();
+            advUIHandler.BooksButtonShakeAnim();
         }
 
         while (notificationQueue.Count > 0)

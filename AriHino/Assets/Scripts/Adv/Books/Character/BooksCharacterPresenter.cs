@@ -25,10 +25,9 @@ public class BooksCharacterPresenter : MonoBehaviour
         booksCharacterModel = model;
         booksButtonHandler = buttonHandler;
         indexNow = model.DisplayCharacterPageDict.First().Key;
-
         CreateCharacterPage();
+       
         Bind();
-        DisplayUpdate();
     }
 
     private void Bind() {
@@ -93,6 +92,8 @@ public class BooksCharacterPresenter : MonoBehaviour
     private void DisplayUpdate() {
         nextPageButton.SetActive(pageViewDict.Keys.Any(e => indexNow < e));
         prevPageButton.SetActive(pageViewDict.Keys.Any(e => indexNow > e));
+
+        booksCharacterModel.ReadedPageDic[pageViewDict[indexNow].PageViewData.CharaId] = true;
     }
 
     public void OnNextPage() {
@@ -140,5 +141,8 @@ public class BooksCharacterPresenter : MonoBehaviour
 
     }
 
+    public void ShowPage() {
 
+        DisplayUpdate();
+    }
 }

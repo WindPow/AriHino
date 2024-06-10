@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 public class BooksCollectPageView : MonoBehaviour
@@ -7,6 +9,9 @@ public class BooksCollectPageView : MonoBehaviour
     [SerializeField] private Transform ContentsRoot;
     [SerializeField] private BooksCollectContentsView contentsPrefab;
     [SerializeField] private AdvCollectItemDetailDialog detailPrefab;
+
+    public IObservable<MstCollectItemData> OnSelectOnservable => onSelectSubject;
+    private Subject<MstCollectItemData> onSelectSubject = new Subject<MstCollectItemData>();
 
     private Transform detailRoot;
 
@@ -30,5 +35,7 @@ public class BooksCollectPageView : MonoBehaviour
 
         var detail = Instantiate(detailPrefab, detailRoot);
         detail.Init(mstCollectItemData);
+
+        onSelectSubject.OnNext(mstCollectItemData);
     }
 }

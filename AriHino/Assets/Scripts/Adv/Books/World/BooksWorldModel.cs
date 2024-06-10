@@ -8,6 +8,7 @@ using System.Linq;
 public interface IBooksWorldModel {
 
     IReadOnlyReactiveDictionary<int, BooksWorldPageViewData> DisplayWorldPageDict { get; }
+    ReactiveDictionary<int, bool> ReadedPageDic { get; }
     
     void SetBooksWorld(int[] ids);
     void SetBooksWorld(MstBooksWorldPageData pageData);
@@ -18,6 +19,7 @@ public class BooksWorldModel : IBooksWorldModel
 {
     private ReactiveDictionary<int ,BooksWorldPageViewData> displayWorldPageDict = new();
     public IReadOnlyReactiveDictionary<int, BooksWorldPageViewData> DisplayWorldPageDict => displayWorldPageDict;
+    public ReactiveDictionary<int, bool> ReadedPageDic { get; } = new();
 
     public BooksWorldModel(int[] worldPageIds) {
 
@@ -46,6 +48,8 @@ public class BooksWorldModel : IBooksWorldModel
         else {
             displayWorldPageDict.Add(viewData.WorldId, viewData);
         }
+
+        ReadedPageDic[pageData.WorldId] = false;
     }
 
     public void RemoveBooksWorld(int worldId) {

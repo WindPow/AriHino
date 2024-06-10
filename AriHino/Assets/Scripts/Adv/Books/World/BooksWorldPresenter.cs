@@ -92,6 +92,8 @@ public class BooksWorldPresenter : MonoBehaviour
     private void DisplayUpdate() {
         nextPageButton.SetActive(pageViewDict.Keys.Any(e => indexNow + 1 < e));
         prevPageButton.SetActive(pageViewDict.Keys.Any(e => indexNow - 1 > e));
+
+        booksWorldModel.ReadedPageDic[pageViewDict[indexNow].PageViewData.WorldId] = true;
     }
 
     public void OnNextPage() {
@@ -148,4 +150,8 @@ public class BooksWorldPresenter : MonoBehaviour
 
     }
 
+    public void ShowPage() {
+
+        DisplayUpdate();
+    }
 }

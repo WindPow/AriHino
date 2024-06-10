@@ -28,7 +28,7 @@ public class BooksPageButtonHandler : MonoBehaviour
     /// <param name="index"></param>
     public void OnTapStikcyNote(int index) {
 
-        if(IsPlayingAnim || index == indexNow) return;
+        if(IsPlayingAnim) return;
 
         // 付箋の表示切替を行う
         for(int i = 0; i < stickyNoteActivators.Length; i++) {
@@ -82,7 +82,7 @@ public class BooksPageButtonHandler : MonoBehaviour
     /// </summary>
     /// <param name="isNext"></param>
     /// <returns></returns>
-    private async UniTask PlayPageMultiAnim(bool isNext) {
+    public async UniTask PlayPageMultiAnim(bool isNext) {
 
         IsPlayingAnim = true;
 

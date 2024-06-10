@@ -11,12 +11,12 @@ public class BooksWorldPageView : MonoBehaviour
     [SerializeField] private BooksTextView booksTextViewPrefab;
     [SerializeField] private Transform explanationParent;
 
-    private BooksWorldPageViewData pageViewData;
+    public BooksWorldPageViewData PageViewData { get; private set; }
 
     public void Init(BooksWorldPageViewData data) {
 
         if(explanationParent.childCount > 0) explanationParent.DestroyChildren();
-        pageViewData = data;
+        PageViewData = data;
         nameText.text = data.WorldName;
 
         LoadWorldImage();
@@ -25,14 +25,14 @@ public class BooksWorldPageView : MonoBehaviour
 
     private void LoadWorldImage() {
 
-        string imagePath = "Texture/Books/World/" + pageViewData.WorldImageFilePath;
+        string imagePath = "Texture/Books/World/" + PageViewData.WorldImageFilePath;
         Texture2D texture = Resources.Load<Texture2D>(imagePath);
         WorldImage.texture = texture;
     }
 
     private void RegistExplanationText() {
         
-        foreach (var str in pageViewData.ExplanationStrs) {
+        foreach (var str in PageViewData.ExplanationStrs) {
             var view = Instantiate(booksTextViewPrefab, explanationParent);
             view.SetData(str);
         }

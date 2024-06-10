@@ -25,7 +25,8 @@ public class BooksCollectPresenter : MonoBehaviour
         booksCollectModel = model;
         booksButtonHandler = buttonHandler;
 
-        CreateCollectPage();
+        CreateCollectPage();        
+
         Bind();
         DisplayUpdate();
     }
@@ -47,6 +48,7 @@ public class BooksCollectPresenter : MonoBehaviour
         foreach (var dividedList in dividedLists) {
             var pageView = Instantiate(pageViewPrefab, this.transform);
             pageView.Init(dividedList, detailRoot);
+            pageView.OnSelectOnservable.Subscribe(_ => booksCollectModel.ReadedContentsDic[_.ID] = true).AddTo(this);
             pageViewDict.Add(count, pageView);
             count++;
         }
@@ -104,5 +106,8 @@ public class BooksCollectPresenter : MonoBehaviour
 
     }
 
+    public void ShowPage() {
 
+        DisplayUpdate();
+    }
 }

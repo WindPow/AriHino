@@ -8,6 +8,7 @@ using System.Linq;
 public interface IBooksCollectModel {
 
     IReadOnlyDictionary<int, BooksCollectContentsViewData> DisplayCollectPageDict { get; }
+    ReactiveDictionary<int, bool> ReadedContentsDic { get; }
 
     void SetBooksCollect(List<MstCollectItemData> list);
     void OpenBooksCollect(MstCollectItemData data);
@@ -18,6 +19,7 @@ public class BooksCollectModel : IBooksCollectModel
 {
     private Dictionary<int ,BooksCollectContentsViewData> displayCollectPageDict = new();
     public IReadOnlyDictionary<int, BooksCollectContentsViewData> DisplayCollectPageDict => displayCollectPageDict;
+    public ReactiveDictionary<int, bool> ReadedContentsDic { get; } = new();
 
     public BooksCollectModel() {
 
@@ -38,5 +40,6 @@ public class BooksCollectModel : IBooksCollectModel
     public void OpenBooksCollect(MstCollectItemData data) {
 
         displayCollectPageDict[data.ID].SetOpen(true);
+        ReadedContentsDic[data.ID] = false;
     }
 }
