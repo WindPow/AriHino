@@ -17,7 +17,7 @@ public class AdvCollectItemDetailDialog : MonoBehaviour
         mstCollectItemData1 = data;
 
         titleText.text = data.Name;
-        descriptionText.text = data.Description;
+        descriptionText.text = data.Text;
 
         string imagePath = "Texture/CollectItem/" + data.ImagePath;
         Texture2D texture = Resources.Load<Texture2D>(imagePath);

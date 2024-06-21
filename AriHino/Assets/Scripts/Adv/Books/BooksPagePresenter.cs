@@ -25,6 +25,8 @@ public class BooksPagePresenter : MonoBehaviour
         
         booksPageModel = pageModel;
 
+        booksButtonHandler.Init();
+
         booksCharacterModel = characterModel;
         if(booksCharacterPresenter) booksCharacterPresenter.Init(booksCharacterModel, booksButtonHandler);
 
@@ -35,6 +37,8 @@ public class BooksPagePresenter : MonoBehaviour
         if(booksCollectPresenter) booksCollectPresenter.Init(booksCollectModel, booksButtonHandler);
 
         Bind();
+
+        ChangePage(0);
     }
 
     private void Bind() {

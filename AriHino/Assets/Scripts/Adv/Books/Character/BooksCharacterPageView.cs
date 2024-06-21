@@ -13,6 +13,8 @@ public class BooksCharacterPageView : MonoBehaviour
     [SerializeField] private Transform memoParent;
     [SerializeField] private Transform impressionsParent;
 
+    private List<BooksTextView> animTextViewList = new();
+
     public BooksCharacterPageViewData PageViewData { get; private set; }
 
     public void Init(BooksCharacterPageViewData data) {

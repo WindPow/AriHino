@@ -31,8 +31,8 @@ public class ParticleEffectManager : MonoBehaviour
         var mstEffect = MasterDataManager.Instance.GetMasterData<MstEffectData>(effectId);
         var prefab = Resources.Load<GameObject>(ZString.Format(prefabPath, mstEffect.FileName));
 
-        // var obj = Instantiate(prefab, GetEffectRoot((ParticleEffectRootType)rootType));
-        // effectDict.Add(effectId, obj);
+        var obj = Instantiate(prefab, GetEffectRoot((ParticleEffectRootType)rootType));
+        effectDict.Add(effectId, obj);
     }
 
     private Transform GetEffectRoot(ParticleEffectRootType rootType) {

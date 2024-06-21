@@ -20,6 +20,10 @@ public class BooksPageButtonHandler : MonoBehaviour
 
     public bool IsPlayingAnim { get; private set; }
     private int indexNow = 0;
+
+    public void Init() {
+        indexNow = 0;
+    }
     
 
     /// <summary>

@@ -39,6 +39,7 @@ public class AdvUIHandler : MonoBehaviour
         if(isWaitInput) return;
 
         if (!isOpen) {
+            InputUtil.EnableInput = false;
             booksUiMover.MoveTransition(() => isWaitInput = false);
             booksUiMover.gameObject.SetActive(true);
             booksActivator.ActiveChangeObject(true);
@@ -48,6 +49,7 @@ public class AdvUIHandler : MonoBehaviour
             BooksManager.Instance.SetIsOpenBooks(true);
         }
         else {
+            InputUtil.EnableInput = true;
             booksUiMover.ReturnPosition(() => {
                 BooksManager.Instance.SetIsOpenBooks(false);
                 isWaitInput = false;

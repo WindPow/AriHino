@@ -1,29 +1,15 @@
-public class MstCollectItemData : IMasterData<int>
+public class MstCollectItemData : MstLanguageData
 {
-    public int ID { get; private set; }
-    public string Name { get; private set; }
-    public string Description { get; private set; }
     public int Type { get; private set;}
     public bool OpenedFlg { get; private set;}
     public string ImagePath { get; private set;}
 
-    public void Initialize(string[] headers, string[] values)
+    public override void Initialize(string[] headers, string[] values)
     {
         for (int i = 0; i < headers.Length; i++)
         {
             switch (headers[i].ToLower())
             {
-                case "id":
-                    ID = int.Parse(values[i]);
-                    break;
-                case "name":
-                    string nameText = values[i].Replace("#", "\n");
-                    Name = nameText;
-                    break;
-                case "description":
-                    string descriptionText = values[i].Replace("#", "\n");
-                    Description = descriptionText;
-                    break;
                 case "type":
                     Type = int.Parse(values[i]);
                     break;
@@ -36,5 +22,6 @@ public class MstCollectItemData : IMasterData<int>
                 // Add more properties if needed
             }
         }
+        base.Initialize(headers, values);
     }
 }
