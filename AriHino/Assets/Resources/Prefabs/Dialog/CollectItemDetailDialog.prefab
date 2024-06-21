@@ -1126,8 +1126,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TIPS Title
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c31adaea68221ed44b3e74a5a0da23ec, type: 2}
-  m_sharedMaterial: {fileID: -3058904866955560782, guid: c31adaea68221ed44b3e74a5a0da23ec,
+  m_fontAsset: {fileID: 11400000, guid: 8224bda868db12144a95afd15d64a0da, type: 2}
+  m_sharedMaterial: {fileID: 8767546892185055428, guid: 8224bda868db12144a95afd15d64a0da,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1384,8 +1384,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c31adaea68221ed44b3e74a5a0da23ec, type: 2}
-  m_sharedMaterial: {fileID: -3058904866955560782, guid: c31adaea68221ed44b3e74a5a0da23ec,
+  m_fontAsset: {fileID: 11400000, guid: 8224bda868db12144a95afd15d64a0da, type: 2}
+  m_sharedMaterial: {fileID: 8767546892185055428, guid: 8224bda868db12144a95afd15d64a0da,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

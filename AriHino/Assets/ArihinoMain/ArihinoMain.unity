@@ -7198,9 +7198,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.0002790168
+    y: 0.00007024035
     width: 1
-    height: 0.999442
+    height: 0.9998595
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -10994,7 +10994,7 @@ MonoBehaviour:
   sendCharWaitSecMax: 0.1
   autoPageWaitSecMax: 2.5
   autoPageWaitSecMin: 0
-  forceSkipInputCtrl: 0
+  forceSkipInputCtrl: 1
   useMessageSpeedRead: 0
   skipSpeed: 20
   skipVoiceAndSe: 0
@@ -12089,7 +12089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7338c13e8f0b4173bd506c6aa80f0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: {fileID: 8300000, guid: 1dd9669a6be3cbb45acd1b0153a24482, type: 3}
+  clicked: {fileID: 8300000, guid: 320a787dda6f3e04f92bf3ed76bba9ea, type: 3}
   highlited: {fileID: 0}
   clickedPlayMode: 0
   highlitedPlayMode: 0
@@ -12767,7 +12767,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -1040, y: 560}
+  m_SizeDelta: {x: 0, y: 560}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &531424972
 MonoBehaviour:
@@ -12790,7 +12790,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 250, y: 50}
-  m_Spacing: {x: 400, y: 50}
+  m_Spacing: {x: 150, y: 50}
   m_Constraint: 2
   m_ConstraintCount: 5
 --- !u!114 &531424973
@@ -13556,7 +13556,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: TIPS Title
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c31adaea68221ed44b3e74a5a0da23ec, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8224bda868db12144a95afd15d64a0da, type: 2}
   m_sharedMaterial: {fileID: -3058904866955560782, guid: c31adaea68221ed44b3e74a5a0da23ec,
     type: 2}
   m_fontSharedMaterials: []
@@ -13621,7 +13621,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &572478645
@@ -21968,7 +21968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &893611352
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38376,9 +38376,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.0002790168
+    y: 0.00007024035
     width: 1
-    height: 0.999442
+    height: 0.9998595
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -46403,7 +46403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1917584653
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46833,7 +46833,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c31adaea68221ed44b3e74a5a0da23ec, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8224bda868db12144a95afd15d64a0da, type: 2}
   m_sharedMaterial: {fileID: -3058904866955560782, guid: c31adaea68221ed44b3e74a5a0da23ec,
     type: 2}
   m_fontSharedMaterials: []
@@ -46898,7 +46898,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1938764816
@@ -48251,7 +48251,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c31adaea68221ed44b3e74a5a0da23ec, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 18e76af96bf4a32488b6211cbd03cab6, type: 2}
   m_sharedMaterial: {fileID: -3058904866955560782, guid: c31adaea68221ed44b3e74a5a0da23ec,
     type: 2}
   m_fontSharedMaterials: []
@@ -48316,7 +48316,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2020943893
@@ -49488,8 +49488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73, y: 0}
-  m_SizeDelta: {x: 1040, y: 640}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 920, y: 640}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2078196286
 CanvasRenderer:
