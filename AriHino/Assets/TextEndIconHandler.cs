@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TextEndIconHandler : MonoBehaviour
 {
-    [SerializeField] private Animation animation;
+    [SerializeField] private Animation iconAnimation;
     
     void OnEnable()
     {
-        animation.Play();
+        iconAnimation.Play();
     }
 }

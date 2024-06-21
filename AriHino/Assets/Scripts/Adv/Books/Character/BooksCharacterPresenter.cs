@@ -5,6 +5,7 @@ using UnityEngine;
 using UniRx;
 using System.Linq;
 using Cysharp.Text;
+using Utage;
 
 public class BooksCharacterPresenter : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class BooksCharacterPresenter : MonoBehaviour
             pageViewDict.Add(page.Value.CharaId, view);
             DisplayUpdate();
 
-            string notificationFormat = "{0}の情報を追加しました";
+            string notificationFormat = LanguageManager.Instance.CurrentLanguage == "Japanese" ? "{0}の情報を追加しました" : "Added information for {0}";
             string notificationText = ZString.Format(notificationFormat, page.Value.CharaName);
             NotificationManager.Instance.ShowNotification(notificationText);
 
@@ -71,7 +72,7 @@ public class BooksCharacterPresenter : MonoBehaviour
             pageViewDict[page.NewValue.CharaId].Init(page.NewValue);
             DisplayUpdate();
 
-            string notificationFormat = "{0}の情報を更新しました";
+            string notificationFormat = LanguageManager.Instance.CurrentLanguage == "Japanese" ? "{0}の情報を更新しました" : "Updated information for {0}";
             string notificationText = ZString.Format(notificationFormat, page.NewValue.CharaName);
             NotificationManager.Instance.ShowNotification(notificationText);
 

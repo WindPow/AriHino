@@ -5,6 +5,7 @@ using UnityEngine;
 using UniRx;
 using System.Linq;
 using Cysharp.Text;
+using Utage;
 
 public class BooksWorldPresenter : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class BooksWorldPresenter : MonoBehaviour
             pageViewDict.Add(page.Value.WorldId, view);
             DisplayUpdate();
 
-            string notificationFormat = "世界情報を追加しました";
+            string notificationFormat = LanguageManager.Instance.CurrentLanguage == "Japanese" ? "世界の情報を追加しました" : "Added world information";
             //string notificationText = ZString.Format(notificationFormat, page.NewValue.WorldName);
             NotificationManager.Instance.ShowNotification(notificationFormat);
 
@@ -71,7 +72,7 @@ public class BooksWorldPresenter : MonoBehaviour
             pageViewDict[page.NewValue.WorldId].Init(page.NewValue);
             DisplayUpdate();
 
-            string notificationFormat = "世界情報を更新しました";
+            string notificationFormat = LanguageManager.Instance.CurrentLanguage == "Japanese" ? "世界の情報を更新しました" : "Updated world information";
             //string notificationText = ZString.Format(notificationFormat, page.NewValue.WorldName);
             NotificationManager.Instance.ShowNotification(notificationFormat);
         }).AddTo(disposables);

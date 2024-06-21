@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UniRx;
+using Utage;
 
 public class BooksManager : MonoBehaviour
 {
@@ -135,11 +136,11 @@ public class BooksManager : MonoBehaviour
         IsOpenBooks = isOpen;
 
         if(isOpen) {
-            string notificationText = "手記が使用可能になりました";
+            string notificationText = LanguageManager.Instance.CurrentLanguage == "Japanese" ? "手記が使用可能になりました" : "Journal is now available";
             NotificationManager.Instance.ShowNotification(notificationText);
         }
         else { 
-            string notificationText = "手記が使用不能になりました";
+            string notificationText = LanguageManager.Instance.CurrentLanguage == "Japanese" ? "手記が使用不能になりました": "Journal is now unavailable";
             NotificationManager.Instance.ShowNotification(notificationText);
         }
     }
