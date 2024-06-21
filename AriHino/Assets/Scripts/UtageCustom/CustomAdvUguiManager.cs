@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Utage;
 
 public class CustomAdvUguiManager : AdvUguiManager
 {
+	[SerializeField]
+	private Toggle hideButtonToggle;
 
     protected override void Update()
 		{
@@ -21,7 +24,8 @@ public class CustomAdvUguiManager : AdvUguiManager
 					//右クリック
 					if (InputUtil.IsMouseRightButtonDown())
 					{	//通常画面に復帰
-						Status = UiStatus.Default;
+						hideButtonToggle.isOn = false;
+						//Status = UiStatus.Default;
 					}
 					else if (!DisableMouseWheelBackLog && InputUtil.IsInputScrollWheelUp())
 					{
@@ -45,8 +49,10 @@ public class CustomAdvUguiManager : AdvUguiManager
 								return;
 							}
 
+							hideButtonToggle.isOn = true;
+
 							//右クリックでウィンドウ閉じる
-							Status = UiStatus.HideMessageWindow;
+							//Status = UiStatus.HideMessageWindow;
 						}
 						else if (!DisableMouseWheelBackLog && InputUtil.IsInputScrollWheelUp())
 						{	//バックログ開く

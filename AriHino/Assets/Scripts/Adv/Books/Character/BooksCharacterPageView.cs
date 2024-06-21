@@ -13,7 +13,9 @@ public class BooksCharacterPageView : MonoBehaviour
     [SerializeField] private Transform memoParent;
     [SerializeField] private Transform impressionsParent;
 
-    private BooksCharacterPageViewData pageViewData;
+    private List<BooksTextView> animTextViewList = new();
+
+    public BooksCharacterPageViewData PageViewData { get; private set; }
 
     public void Init(BooksCharacterPageViewData data) {
 
@@ -21,7 +23,7 @@ public class BooksCharacterPageView : MonoBehaviour
         if(memoParent.childCount > 0) memoParent.DestroyChildren();
         if(impressionsParent.childCount > 0) impressionsParent.DestroyChildren();
 
-        pageViewData = data;
+        PageViewData = data;
         nameText.text = data.CharaName;
 
         LoadCharacterImage();
@@ -32,14 +34,14 @@ public class BooksCharacterPageView : MonoBehaviour
 
     private void LoadCharacterImage() {
 
-        string imagePath = "Texture/Books/Character/" + pageViewData.CharaImageFilePath;
+        string imagePath = "Texture/Books/Character/" + PageViewData.CharaImageFilePath;
         Texture2D texture = Resources.Load<Texture2D>(imagePath);
         characterImage.texture = texture;
     }
 
     private void RegistExplanationText() {
         
-        foreach (var str in pageViewData.ExplanationStrs) {
+        foreach (var str in PageViewData.ExplanationStrs) {
             var view = Instantiate(booksTextViewPrefab, explanationParent);
             view.SetData(str);
         }
@@ -47,7 +49,7 @@ public class BooksCharacterPageView : MonoBehaviour
 
     private void RegistMemoText() {
         
-        foreach (var str in pageViewData.MemoStrs) {
+        foreach (var str in PageViewData.MemoStrs) {
             var view = Instantiate(booksTextViewPrefab, memoParent);
             view.SetData(str);
         }
@@ -55,7 +57,7 @@ public class BooksCharacterPageView : MonoBehaviour
 
     private void RegistImpressionsText() {
         
-        foreach (var str in pageViewData.ImpressionsStrs) {
+        foreach (var str in PageViewData.ImpressionsStrs) {
             var view = Instantiate(booksTextViewPrefab, impressionsParent);
             view.SetData(str);
         }

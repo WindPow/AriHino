@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UniRx;
 
 public class BooksManager : MonoBehaviour
 {
@@ -43,10 +44,54 @@ public class BooksManager : MonoBehaviour
         booksCollectModel = new BooksCollectModel();
 
         booksPagePresenter.Init(booksPageModel, booksCharacterModel, booksWorldModel, booksWardModel, booksCollectModel);
+
+        Bind();
+    }
+
+    private void Bind() {
+
+        // Booksの未読があれバッジを表示する
+        booksCharacterModel.ReadedPageDic.ObserveReplace().Subscribe(e => {
+            BooksReadUpdate();
+        }).AddTo(this);
+
+        booksCharacterModel.ReadedPageDic.ObserveAdd().Subscribe(e => {
+            BooksReadUpdate();
+        }).AddTo(this);
+
+        booksWorldModel.ReadedPageDic.ObserveReplace().Subscribe(e => {
+            BooksReadUpdate();
+        }).AddTo(this);
+
+        booksWorldModel.ReadedPageDic.ObserveAdd().Subscribe(e => {
+            BooksReadUpdate();
+        }).AddTo(this);
+
+        booksCollectModel.ReadedContentsDic.ObserveReplace().Subscribe(e => {
+            BooksReadUpdate();
+        }).AddTo(this);
+
+        booksCollectModel.ReadedContentsDic.ObserveAdd().Subscribe(e => {
+            BooksReadUpdate();
+        }).AddTo(this);
+    }
+
+    private void BooksReadUpdate() {
+
+        if(booksCharacterModel.ReadedPageDic.Values.Any(e => e == false) 
+            || booksWorldModel.ReadedPageDic.Values.Any(e => e == false)
+            || booksCollectModel.ReadedContentsDic.Values.Any(e => e == false)) 
+        {
+            advUIHandler.ChangeBooksNewBadge(true);
+        }
+        else {
+            advUIHandler.ChangeBooksNewBadge(false);
+        }
     }
 
     public void SetIsOpenBooks(bool isOpen) {
         IsOpenBooks = isOpen;
+        if(isOpen) booksPagePresenter.ShowBooks();
     }
     
     public void ActivateBooks(bool isOpen) {

@@ -27,4 +27,10 @@ public class CustomUtageUguiMenuButtons : UtageUguiMenuButtons
             menuAlphaChanger.ReturnAlpha();
         }
     }
+
+    public virtual void OnTapHide(bool isOn)
+	{
+        if(isOn) Engine.UiManager.Status = AdvUiManager.UiStatus.HideMessageWindow;
+        else Engine.UiManager.Status = AdvUiManager.UiStatus.Default;
+	}
 }

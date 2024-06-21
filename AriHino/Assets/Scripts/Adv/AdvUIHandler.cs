@@ -21,6 +21,9 @@ public class AdvUIHandler : MonoBehaviour
     [SerializeField] private AudioClip booksSe;
     [SerializeField] private SoundPlayMode seSoundMode = SoundPlayMode.Add;
 
+    [SerializeField] private GameObject booksNewBadge;
+    [SerializeField] private Animation booksButtonShakeAnim;
+
     private bool isWaitInput;
 
     /// <summary>
@@ -36,6 +39,7 @@ public class AdvUIHandler : MonoBehaviour
         if(isWaitInput) return;
 
         if (!isOpen) {
+            InputUtil.EnableInput = false;
             booksUiMover.MoveTransition(() => isWaitInput = false);
             booksUiMover.gameObject.SetActive(true);
             booksActivator.ActiveChangeObject(true);
@@ -45,15 +49,15 @@ public class AdvUIHandler : MonoBehaviour
             BooksManager.Instance.SetIsOpenBooks(true);
         }
         else {
+            InputUtil.EnableInput = true;
             booksUiMover.ReturnPosition(() => {
-                //booksUiMover.gameObject.SetActive(false);
+                BooksManager.Instance.SetIsOpenBooks(false);
                 isWaitInput = false;
                 });
             booksActivator.ActiveChangeObject(false);
             ActiveUiBlur(0f);
             foreach (var callback in booksOffCallback) callback.Invoke();
 
-            BooksManager.Instance.SetIsOpenBooks(false);
         }
 
         SoundManager.GetInstance().PlaySe(booksSe, booksSe.name, seSoundMode);
@@ -64,5 +68,13 @@ public class AdvUIHandler : MonoBehaviour
     private void ActiveUiBlur(float value) {
 
         uiBlur.ChangeMaterialValue(value);
+    }
+
+    public void ChangeBooksNewBadge(bool isOn) {
+        booksNewBadge.SetActive(isOn);
+    }
+
+    public void BooksButtonShakeAnim() {
+        booksButtonShakeAnim.Play();
     }
 }
