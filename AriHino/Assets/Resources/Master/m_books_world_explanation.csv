@@ -1,13 +1,13 @@
-﻿id,explanation_id,world_id,text
+﻿id,explanation_id,world_id,text,english_text
 1,1,1,"瓦礫になった家と豊かな自然だけが広がる高原。
 
-"
-2,2,1,牧歌的というと聞こえは良いが、エレナの感じている退屈さもよく分かる。
-3,3,1,ここには何もない。
-4,4,1,……というより、人々から捨てられたからこそ何も無くなってしまったのかもな。
-5,1,2,エレナが憧れているらしい街。
-6,2,2,ダスティンさん曰く「夢の都」と呼ばれているようだが、名前負けしてないか？
-7,3,2,……流石にヒンメルス・クレストよりは退屈はしなさそうだが。
-8,4,2,俺は行きたいとは思わない。　人混みなんて想像するだけで気持ちが悪いからな。
-9,5,2,ただ、聞くところによると前時代の料理が食べられるらしい……。
-10,6,2,ほんの少しだが興味だけはある。　ほんの少しだけ。
+",A highland where only the ruins of houses and abundant nature stretch out.
+2,2,1,牧歌的というと聞こえは良いが、エレナの感じている退屈さもよく分かる。,"""Pastoral"" might sound nice, but I completely understand Elena's sense of boredom."
+3,3,1,ここには何もない。,There's absolutely nothing here.
+4,4,1,……というより、人々から捨てられたからこそ何も無くなってしまったのかもな。,"Or rather, maybe there's nothing left because people abandoned it."
+5,1,2,エレナが憧れているらしい街。,The city that Elena seems to long for.
+6,2,2,ダスティンさん曰く「夢の都」と呼ばれているようだが、名前負けしてないか？,"According to Dustin, it's called the ""City of Dreams,"" but isn't that a bit of an overstatement?"
+7,3,2,……流石にヒンメルス・クレストよりは退屈はしなさそうだが。,"...It's probably less boring than Himmelscrest, though."
+8,4,2,俺は行きたいとは思わない。　人混みなんて想像するだけで気持ちが悪いからな。,I don't want to go there. Just imagining the crowds makes me feel sick.
+9,5,2,ただ、聞くところによると前時代の料理が食べられるらしい……。,"But, from what I've heard, you can taste pre-modern cuisine there..."
+10,6,2,ほんの少しだが興味だけはある。　ほんの少しだけ。,I'm slightly interested. Just a little.
