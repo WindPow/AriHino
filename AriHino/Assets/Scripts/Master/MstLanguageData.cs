@@ -20,19 +20,19 @@ public class MstLanguageData : IMasterData<int>
                     ID = int.Parse(values[i]);
                     break;
                 case "name":
-                    string name = values[i].Replace("#", "\n");
+                    string name = values[i].Replace("#", "\n").Replace("_", ",");
                     this.name = name;
                     break;
                 case "english_name":
-                    string englishName = values[i].Replace("#", "\n");
+                    string englishName = values[i].Replace("#", "\n").Replace("_", ",");
                     EnglishName = englishName;
                     break;
                 case "text":
-                    string text = values[i].Replace("#", "\n");
+                    string text = values[i].Replace("#", "\n").Replace("_", ",");
                     this.text = text;
                     break;
                 case "english_text":
-                    string englishText = values[i].Replace("#", "\n");
+                    string englishText = values[i].Replace("#", "\n").Replace("_", ",");
                     EnglishText = englishText;
                     break;
                 
