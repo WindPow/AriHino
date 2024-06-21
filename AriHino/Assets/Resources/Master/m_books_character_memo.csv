@@ -1,6 +1,6 @@
-﻿id,memo_id,chara_id,text
-1,1,1,・笑顔で近付いて来る時は要注意！
-2,2,1,・最近はダスティンさんと衝突することが多くなった
-3,3,1,・数日前、高熱を出して体調を崩していた
-4,4,1,・家を出て行く件はエレナには伝えないようにしよう
-5,1,2,リリースをお楽しみに！(現在未実装)
+﻿id,memo_id,chara_id,text,english_text
+1,1,1,・笑顔で近付いて来る時は要注意！,Be cautious when they approach with a smile!
+2,2,1,・最近はダスティンさんと衝突することが多くなった,"Recently, I've been clashing with Dustin more often."
+3,3,1,・数日前、高熱を出して体調を崩していた,"A few days ago, I had a high fever and was feeling unwell."
+4,4,1,・家を出て行く件はエレナには伝えないようにしよう,Let's not tell Elena about leaving the house.
+5,1,2,リリースをお楽しみに！(現在未実装),Look forward to the release! (Currently not implemented)
